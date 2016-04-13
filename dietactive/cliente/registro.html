@@ -1,0 +1,121 @@
+<!DOCTYPE HTML>
+<html>
+<head>
+<meta charset="utf-8">
+<title>Registro - DietActive</title>
+
+<link rel="stylesheet" href="http://maxcdn.bootstrapcdn.com/bootstrap/3.3.6/css/bootstrap.min.css">
+<script src="https://ajax.googleapis.com/ajax/libs/jquery/1.12.0/jquery.min.js"></script>
+<script src="http://maxcdn.bootstrapcdn.com/bootstrap/3.3.6/js/bootstrap.min.js"></script>
+<meta name="viewport" content="width=device-width, initial-scale=1">
+
+
+<link rel="stylesheet" href="//code.jquery.com/ui/1.11.4/themes/smoothness/jquery-ui.css">
+<script src="//code.jquery.com/jquery-1.10.2.js"></script>
+<script src="//code.jquery.com/ui/1.11.4/jquery-ui.js"></script>
+<link rel="stylesheet" href="/resources/demos/style.css">
+<script src="jquery.ui.datepicker-es.js"></script>
+<script>
+	window.onload=function(){
+    	$.get("../servidor/consulta_actividadf.php", function(data, status){
+				var objeto = JSON.parse(data);
+				var texto="";
+				for(var i;i<objeto.length;i++)
+				{
+					texto+="<option value='"+objeto[i].id+"'>"+objeto[i].nombre+"</option>";
+				}
+				alert(objeto[0].id);
+				$("#opciones").html(texto);
+			});
+	};
+	
+	$(function () {
+		var ano = (new Date).getFullYear();
+		$.datepicker.setDefaults($.datepicker.regional["es"]);
+		$(".fechanac").datepicker({
+			changeMonth: true,
+			changeYear: true,
+			yearRange: "1900:"+ano
+		});
+	});
+	
+	$.datepicker.regional['es'] = {
+		closeText: 'Cerrar',
+		prevText: '<Ant',
+		nextText: 'Sig>',
+		currentText: 'Hoy',
+		monthNames: ['Enero', 'Febrero', 'Marzo', 'Abril', 'Mayo', 'Junio', 'Julio', 'Agosto', 'Septiembre', 'Octubre', 'Noviembre', 'Diciembre'],
+		monthNamesShort: ['Ene','Feb','Mar','Abr', 'May','Jun','Jul','Ago','Sep', 'Oct','Nov','Dic'],
+		dayNames: ['Domingo', 'Lunes', 'Martes', 'Miércoles', 'Jueves', 'Viernes', 'Sábado'],
+		dayNamesShort: ['Dom','Lun','Mar','Mié','Juv','Vie','Sáb'],
+		dayNamesMin: ['Do','Lu','Ma','Mi','Ju','Vi','Sá'],
+		weekHeader: 'Sm',
+		dateFormat: 'yy/mm/dd',
+		firstDay: 1,
+		isRTL: false,
+		showMonthAfterYear: false,
+		yearSuffix: ''
+	};
+	
+	$.datepicker.setDefaults($.datepicker.regional['es']);
+	
+	$(function () {
+		$(".fechanac").datepicker();
+	});
+</script>
+</head>
+
+<body>
+    <div class="container">
+        <form role="form" name="registro" action="" method="post" onSubmit="return false">
+            <div class="form-group">
+        		<label for="nombre">Nombre:</label>
+        		<input type="text" class="form-control" id="nombre" name="nombre">
+     		</div>
+            <div class="form-group">
+        		<label for="apellidos">Apellidos:</label>
+        		<input type="text" class="form-control" id="apellidos" name="apellidos">
+     		</div>
+            <div class="form-group">
+        		<label for="telefono">Teléfono:</label>
+        		<input type="text" class="form-control" id="telefono" name="telefono">
+     		</div>
+            <div class="form-group">
+        		<label for="email">E-mail:</label>
+        		<input type="text" class="form-control" id="email" name="email">
+     		</div>
+            <div class="form-group">
+        		<label for="sexo">Sexo:</label>
+        		<div class="radio"> 
+                	<label>
+                    	<input type="radio" name="sexo" value="h">Hombre
+                    </label> 
+                </div>
+                <div class="radio"> 
+                	<label>
+                    	<input type="radio" name="sexo" value="m">Mujer
+                    </label> 
+                </div>
+     		</div>
+            <div class="form-group">
+        		<label for="peso">Peso:</label>
+        		<input type="number" class="form-control" id="peso" name="peso">
+     		</div>
+            <div class="form-group">
+        		<label for="altura">Altura:</label>
+        		<input type="number" class="form-control" id="altura" name="altura">
+     		</div>
+            <div class="form-group">
+        		<label for="fechanac">Fecha de nacimiento:</label>
+        		<input type="text" class="fechanac form-control" id="fechanac" name="fechanac">
+     		</div>
+            <div class="form-group">
+            	<label for="actividadf">Seleccione un elemento</label> 
+         		<select class="form-control" id="actividadf">
+                <span id="opciones"></span>
+          		</select> 
+          	</div>
+        </form>
+    </div>
+</body>
+</html>
