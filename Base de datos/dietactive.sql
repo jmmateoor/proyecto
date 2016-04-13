@@ -3,7 +3,7 @@
 -- http://www.phpmyadmin.net
 --
 -- Servidor: 127.0.0.1
--- Tiempo de generación: 12-04-2016 a las 17:47:31
+-- Tiempo de generación: 13-04-2016 a las 17:45:16
 -- Versión del servidor: 5.6.26
 -- Versión de PHP: 5.6.12
 
@@ -404,6 +404,9 @@ CREATE TABLE IF NOT EXISTS `cita` (
 
 CREATE TABLE IF NOT EXISTS `cliente` (
   `id` int(11) NOT NULL,
+  `codigo_activacion` varchar(20) COLLATE utf8_spanish_ci NOT NULL,
+  `activado` enum('s','n') COLLATE utf8_spanish_ci NOT NULL,
+  `password` varchar(30) COLLATE utf8_spanish_ci NOT NULL,
   `nombre` varchar(100) COLLATE utf8_spanish_ci NOT NULL,
   `apellidos` varchar(100) COLLATE utf8_spanish_ci NOT NULL,
   `telefono` varchar(9) COLLATE utf8_spanish_ci NOT NULL,
@@ -415,14 +418,7 @@ CREATE TABLE IF NOT EXISTS `cliente` (
   `idactividad` int(11) NOT NULL,
   `pesodeseable` decimal(10,2) DEFAULT NULL,
   `dieta` text COLLATE utf8_spanish_ci
-) ENGINE=InnoDB AUTO_INCREMENT=2 DEFAULT CHARSET=utf8 COLLATE=utf8_spanish_ci;
-
---
--- Volcado de datos para la tabla `cliente`
---
-
-INSERT INTO `cliente` (`id`, `nombre`, `apellidos`, `telefono`, `email`, `sexo`, `peso`, `altura`, `fechanac`, `idactividad`, `pesodeseable`, `dieta`) VALUES
-(1, 'Fernando', 'Cortés', '666001122', 'fernando.cortes@prueba.com', 'h', '80.50', 180, '1985-02-02', 1, '0.00', NULL);
+) ENGINE=InnoDB DEFAULT CHARSET=utf8 COLLATE=utf8_spanish_ci;
 
 -- --------------------------------------------------------
 
@@ -432,6 +428,7 @@ INSERT INTO `cliente` (`id`, `nombre`, `apellidos`, `telefono`, `email`, `sexo`,
 
 CREATE TABLE IF NOT EXISTS `dietista` (
   `id` int(11) NOT NULL,
+  `password` varchar(30) COLLATE utf8_spanish_ci NOT NULL,
   `dni` varchar(9) COLLATE utf8_spanish_ci NOT NULL,
   `nombre` varchar(100) COLLATE utf8_spanish_ci NOT NULL,
   `apellidos` varchar(100) COLLATE utf8_spanish_ci NOT NULL,
@@ -473,7 +470,14 @@ CREATE TABLE IF NOT EXISTS `patologia` (
   `id` int(11) NOT NULL,
   `nombre` varchar(100) COLLATE utf8_spanish_ci NOT NULL,
   `descripcion` text COLLATE utf8_spanish_ci
-) ENGINE=InnoDB DEFAULT CHARSET=utf8 COLLATE=utf8_spanish_ci;
+) ENGINE=InnoDB AUTO_INCREMENT=2 DEFAULT CHARSET=utf8 COLLATE=utf8_spanish_ci;
+
+--
+-- Volcado de datos para la tabla `patologia`
+--
+
+INSERT INTO `patologia` (`id`, `nombre`, `descripcion`) VALUES
+(1, 'Nefropatía', NULL);
 
 -- --------------------------------------------------------
 
@@ -653,7 +657,7 @@ ALTER TABLE `alimento`
 -- AUTO_INCREMENT de la tabla `cliente`
 --
 ALTER TABLE `cliente`
-  MODIFY `id` int(11) NOT NULL AUTO_INCREMENT,AUTO_INCREMENT=2;
+  MODIFY `id` int(11) NOT NULL AUTO_INCREMENT;
 --
 -- AUTO_INCREMENT de la tabla `dietista`
 --
@@ -663,7 +667,7 @@ ALTER TABLE `dietista`
 -- AUTO_INCREMENT de la tabla `patologia`
 --
 ALTER TABLE `patologia`
-  MODIFY `id` int(11) NOT NULL AUTO_INCREMENT;
+  MODIFY `id` int(11) NOT NULL AUTO_INCREMENT,AUTO_INCREMENT=2;
 --
 -- AUTO_INCREMENT de la tabla `testdias`
 --
