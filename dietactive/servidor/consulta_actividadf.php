@@ -1,5 +1,6 @@
 <?php
-	$c = new MySQLi("localhost","root","1234","dietactive");
+	include("conexion.php");
+	$c = new MySQLi($servidor,$usuario,$password,$bbdd);
 	$c->set_charset("utf8");
 	$preparada = $c->prepare("select id, nombre from actividadfisica");
 	$preparada->execute();

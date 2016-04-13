@@ -19,16 +19,67 @@
 	window.onload=function(){
     	$.get("../servidor/consulta_actividadf.php", function(data, status){
 				var objeto = JSON.parse(data);
-				var texto="";
-				for(var i;i<objeto.length;i++)
+				var texto="<select class='form-control' id='actividadf'>";
+				for(var i=0;i<objeto.length;i++)
 				{
 					texto+="<option value='"+objeto[i].id+"'>"+objeto[i].nombre+"</option>";
 				}
-				alert(objeto[0].id);
+				texto+="</select>";
 				$("#opciones").html(texto);
 			});
 	};
 	
+	
+	function validaEmail()
+	{
+		var er_email =/[_a-z0-9-]+(\.[_a-z0-9-]+)*@[a-z0-9-]+(\.[a-z0-9-]+)*(\.[a-z]{2,3})/;
+		var texto=$("#email").val();
+		if(er_email.test(texto))
+		{
+			$("#email2").html("");
+			return true;
+		}
+		else
+		{
+			$("#email2").html("E-mail no válido");
+			return false;
+		}
+	}
+	
+	function validaPassword()
+	{
+		if($("#password").val()==$("#password2").val())
+		{
+			$("#compruebapassword").html("");
+			return true;
+		}
+		else
+		{
+			$("#compruebapassword").html("Las contraseñas deben ser iguales");
+			return false;
+		}
+	}
+	
+	function compruebaTodo()
+	{
+		return validaEmail();
+		return validaPassword();
+	}
+	
+	function validaTelefono(e)
+	{
+		tecla = (document.all) ? e.keyCode : e.which; 
+		if (tecla==8) return true;
+		patron = /\d/;
+		te = String.fromCharCode(tecla);
+		return patron.test(te);
+	}
+	
+	
+	
+	
+	
+	//A partir de aquí es para el calendario de edad
 	$(function () {
 		var ano = (new Date).getFullYear();
 		$.datepicker.setDefaults($.datepicker.regional["es"]);
@@ -45,7 +96,7 @@
 		nextText: 'Sig>',
 		currentText: 'Hoy',
 		monthNames: ['Enero', 'Febrero', 'Marzo', 'Abril', 'Mayo', 'Junio', 'Julio', 'Agosto', 'Septiembre', 'Octubre', 'Noviembre', 'Diciembre'],
-		monthNamesShort: ['Ene','Feb','Mar','Abr', 'May','Jun','Jul','Ago','Sep', 'Oct','Nov','Dic'],
+		monthNamesShort: ['Enero','Febrero','Marzo','Abril', 'Mayo','Junio','Julio','Agosto','Septiembre', 'Octubre','Noviembre','Diciembre'],
 		dayNames: ['Domingo', 'Lunes', 'Martes', 'Miércoles', 'Jueves', 'Viernes', 'Sábado'],
 		dayNamesShort: ['Dom','Lun','Mar','Mié','Juv','Vie','Sáb'],
 		dayNamesMin: ['Do','Lu','Ma','Mi','Ju','Vi','Sá'],
@@ -62,59 +113,72 @@
 	$(function () {
 		$(".fechanac").datepicker();
 	});
+	//Aquí termina el calendario de edad
+	
 </script>
 </head>
 
 <body>
     <div class="container">
-        <form role="form" name="registro" action="" method="post" onSubmit="return false">
+        <form role="form" name="registro" action="../servidor/registrar.php" method="post" onSubmit="return compruebaTodo();">
             <div class="form-group">
-        		<label for="nombre">Nombre:</label>
-        		<input type="text" class="form-control" id="nombre" name="nombre">
+        		<label for="nombre">Nombre (requerido)</label>
+        		<input type="text" class="form-control" id="nombre" name="nombre" required maxlength="100" />
      		</div>
             <div class="form-group">
-        		<label for="apellidos">Apellidos:</label>
-        		<input type="text" class="form-control" id="apellidos" name="apellidos">
+        		<label for="apellidos">Apellidos (requerido)</label>
+        		<input type="text" class="form-control" id="apellidos" name="apellidos" required maxlength="100" />
      		</div>
             <div class="form-group">
-        		<label for="telefono">Teléfono:</label>
-        		<input type="text" class="form-control" id="telefono" name="telefono">
+        		<label for="telefono">Teléfono (requerido)</label>
+        		<input type="tel" class="form-control" id="telefono" name="telefono" onKeyPress="return validaTelefono(event);" required maxlength="9" onpaste="return false;" />
      		</div>
             <div class="form-group">
-        		<label for="email">E-mail:</label>
-        		<input type="text" class="form-control" id="email" name="email">
+        		<label for="email">E-mail (requerido)</label>
+        		<input type="email" class="form-control" id="email" name="email" required maxlength="100" onKeyUp="validaEmail();" />
+                <span id="email2"></span>
+     		</div>
+            
+            <div class="form-group">
+        		<label for="password">Contraseña (requerido)</label>
+        		<input type="password" class="form-control" id="password" name="password" required maxlength="30" />
      		</div>
             <div class="form-group">
-        		<label for="sexo">Sexo:</label>
+        		<label for="password2">Repite contraseña</label>
+        		<input type="password" class="form-control" id="password2" name="password2" required maxlength="30" onKeyUp="validaPassword();" />
+                <span id="compruebapassword"></span>
+     		</div>
+            
+            <div class="form-group">
+        		<label for="sexo">Sexo (requerido)</label>
         		<div class="radio"> 
                 	<label>
-                    	<input type="radio" name="sexo" value="h">Hombre
+                    	<input type="radio" name="sexo" value="h" required />Hombre
                     </label> 
                 </div>
                 <div class="radio"> 
                 	<label>
-                    	<input type="radio" name="sexo" value="m">Mujer
+                    	<input type="radio" name="sexo" value="m" />Mujer
                     </label> 
                 </div>
      		</div>
             <div class="form-group">
-        		<label for="peso">Peso:</label>
-        		<input type="number" class="form-control" id="peso" name="peso">
+        		<label for="peso">Peso (requerido)</label>
+        		<input type="number" class="form-control" id="peso" name="peso" min="0" max="500" step="0.01" required onpaste="return false;" />
      		</div>
             <div class="form-group">
-        		<label for="altura">Altura:</label>
-        		<input type="number" class="form-control" id="altura" name="altura">
+        		<label for="altura">Altura (requerido)</label>
+        		<input type="number" class="form-control" id="altura" name="altura" required min="0" max="500" onpaste="return false;" />
      		</div>
             <div class="form-group">
-        		<label for="fechanac">Fecha de nacimiento:</label>
-        		<input type="text" class="fechanac form-control" id="fechanac" name="fechanac">
+        		<label for="fechanac">Fecha de nacimiento (requerido)</label>
+        		<input type="text" class="fechanac form-control" id="fechanac" name="fechanac" required onpaste="return false;" />
      		</div>
             <div class="form-group">
-            	<label for="actividadf">Seleccione un elemento</label> 
-         		<select class="form-control" id="actividadf">
+            	<label for="actividadf">Selecciona tu actividad física (requerido)</label> 
                 <span id="opciones"></span>
-          		</select> 
           	</div>
+            <input type="submit" value="Enviar" class="btn btn-default" />
         </form>
     </div>
 </body>
