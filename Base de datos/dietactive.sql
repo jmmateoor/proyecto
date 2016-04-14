@@ -3,7 +3,7 @@
 -- http://www.phpmyadmin.net
 --
 -- Servidor: 127.0.0.1
--- Tiempo de generación: 13-04-2016 a las 17:45:16
+-- Tiempo de generación: 14-04-2016 a las 17:00:13
 -- Versión del servidor: 5.6.26
 -- Versión de PHP: 5.6.12
 
@@ -417,8 +417,18 @@ CREATE TABLE IF NOT EXISTS `cliente` (
   `fechanac` date NOT NULL,
   `idactividad` int(11) NOT NULL,
   `pesodeseable` decimal(10,2) DEFAULT NULL,
-  `dieta` text COLLATE utf8_spanish_ci
-) ENGINE=InnoDB DEFAULT CHARSET=utf8 COLLATE=utf8_spanish_ci;
+  `dieta` text COLLATE utf8_spanish_ci,
+  `fechaingreso` date NOT NULL
+) ENGINE=InnoDB AUTO_INCREMENT=6 DEFAULT CHARSET=utf8 COLLATE=utf8_spanish_ci;
+
+--
+-- Volcado de datos para la tabla `cliente`
+--
+
+INSERT INTO `cliente` (`id`, `codigo_activacion`, `activado`, `password`, `nombre`, `apellidos`, `telefono`, `email`, `sexo`, `peso`, `altura`, `fechanac`, `idactividad`, `pesodeseable`, `dieta`, `fechaingreso`) VALUES
+(1, '', 'n', '1234', 'Juan', 'Fernandez', '000666999', 'prueba@prueba.com', 'h', '70.60', 179, '1980-08-04', 1, NULL, NULL, '2016-04-14'),
+(3, '62a7e2da310bdb98fb0b', 's', '1234', 'Jose', 'Mateo Ortega', '666010101', 'josem.mateo.ortega@gmail.com', 'h', '78.80', 176, '1989-07-11', 1, '55.00', NULL, '2016-04-14'),
+(5, 'bbd4e463fe0ad675dcb2', 's', '1234', 'Juanito', 'Valenciano Rey', '666666666', 'josemaria.mateo@hotmail.com', 'h', '88.00', 188, '2016-04-05', 1, '55.00', NULL, '2016-04-14');
 
 -- --------------------------------------------------------
 
@@ -657,7 +667,7 @@ ALTER TABLE `alimento`
 -- AUTO_INCREMENT de la tabla `cliente`
 --
 ALTER TABLE `cliente`
-  MODIFY `id` int(11) NOT NULL AUTO_INCREMENT;
+  MODIFY `id` int(11) NOT NULL AUTO_INCREMENT,AUTO_INCREMENT=6;
 --
 -- AUTO_INCREMENT de la tabla `dietista`
 --
