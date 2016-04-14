@@ -40,10 +40,26 @@ function pesoDeseable($altura,$sexo)
 	return $pesodeseable;
 }
 
-function crearIntercambios($sexo,$fechanac,$altura,$peso,$actividadf)
+function crearIntercambios($idcliente)
 {
+	$c = new MySQLi($servidor,$usuario,$password,$bbdd);
+	$c->set_charset("utf8");
+	
+	$consulta = $c->prepare("select sexo, peso, altura, fechanac, idactividad, pesodeseable from cliente where id = ?");
+	$consulta->bind_param("s",$idcliente);
+	$consulta->execute();
+	$consulta->bind_result($sexoq, $pesoq, $alturaq, $fechanacq, $actividadfq, $pesodeseableq);
+	while($consulta->fetch())
+	{
+		$sexo=$sexoq;
+		$peso=$pesoq;
+		$altura=$alturaq;
+		$fechanac=$fechanacq;
+		$actividadf=$actividadfq;
+		$pesodeseable=$pesodeseableq;
+	}
+	
 	$edad=edad($fechanac);
-	$pesodeseable=pesoDeseable($altura,$sexo);
 	
 	//Cálculo de la Tasa Metabólica Basal, tmb
 	if($sexo=="h")
@@ -112,13 +128,43 @@ function crearIntercambios($sexo,$fechanac,$altura,$peso,$actividadf)
 	$fruta=($hdcg/10)*0.22;
 	$verdura=($hdcg/10)*0.07;
 	$lacteos=($hdcg/10)*0.1;
-	$farinaceos=($hdcg/10)*0.61;
+	$hidratos=($hdcg/10)*0.61;
 	$grasas=($lig/10)*0.66;
 	$proteinas=($prg/10)*0.75;
 	
+	$fecha=date("Y-m-d");
+	
+	$preparada = $c->prepare("insert into tablaintercambio(idcliente, idgrupo, valor, fecha) values (?, ?, ?, ?)");
+	$preparada->bind_param("iif",$idcliente,$idgrupo,$valor, $fecha);
+	
+	$idgrupo=1;
+	$valor=$lacteos;
+	$preparada->execute();
+	
+	$idgrupo=2;
+	$valor=$proteinas;
+	$preparada->execute();
+	
+	$idgrupo=3;
+	$valor=$verdura;
+	$preparada->execute();
+	
+	$idgrupo=4;
+	$valor=$hidratos;
+	$preparada->execute();
+	
+	$idgrupo=5;
+	$valor=$fruta;
+	$preparada->execute();
+	
+	$idgrupo=6;
+	$valor=$grasas;
+	$preparada->execute();
+	
+	$c->close();
 }
 
-function reparteIntercambios()
+function reparteIntercambios($id)
 {
 	$c = new MySQLi($servidor,$usuario,$password,$bbdd);
 	$c->set_charset("utf8");

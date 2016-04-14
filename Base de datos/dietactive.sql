@@ -3,7 +3,7 @@
 -- http://www.phpmyadmin.net
 --
 -- Servidor: 127.0.0.1
--- Tiempo de generación: 14-04-2016 a las 17:00:13
+-- Tiempo de generación: 14-04-2016 a las 20:58:05
 -- Versión del servidor: 5.6.26
 -- Versión de PHP: 5.6.12
 
@@ -419,7 +419,7 @@ CREATE TABLE IF NOT EXISTS `cliente` (
   `pesodeseable` decimal(10,2) DEFAULT NULL,
   `dieta` text COLLATE utf8_spanish_ci,
   `fechaingreso` date NOT NULL
-) ENGINE=InnoDB AUTO_INCREMENT=6 DEFAULT CHARSET=utf8 COLLATE=utf8_spanish_ci;
+) ENGINE=InnoDB AUTO_INCREMENT=7 DEFAULT CHARSET=utf8 COLLATE=utf8_spanish_ci;
 
 --
 -- Volcado de datos para la tabla `cliente`
@@ -427,8 +427,9 @@ CREATE TABLE IF NOT EXISTS `cliente` (
 
 INSERT INTO `cliente` (`id`, `codigo_activacion`, `activado`, `password`, `nombre`, `apellidos`, `telefono`, `email`, `sexo`, `peso`, `altura`, `fechanac`, `idactividad`, `pesodeseable`, `dieta`, `fechaingreso`) VALUES
 (1, '', 'n', '1234', 'Juan', 'Fernandez', '000666999', 'prueba@prueba.com', 'h', '70.60', 179, '1980-08-04', 1, NULL, NULL, '2016-04-14'),
-(3, '62a7e2da310bdb98fb0b', 's', '1234', 'Jose', 'Mateo Ortega', '666010101', 'josem.mateo.ortega@gmail.com', 'h', '78.80', 176, '1989-07-11', 1, '55.00', NULL, '2016-04-14'),
-(5, 'bbd4e463fe0ad675dcb2', 's', '1234', 'Juanito', 'Valenciano Rey', '666666666', 'josemaria.mateo@hotmail.com', 'h', '88.00', 188, '2016-04-05', 1, '55.00', NULL, '2016-04-14');
+(3, '62a7e2da310bdb98fb0b', 's', '1234', 'Jose', 'Mateo Ortega', '666010101', 'josem.mateo.ortega@gmail.com', 'h', '78.80', 176, '1989-07-11', 1, '69.50', NULL, '2016-04-14'),
+(5, 'bbd4e463fe0ad675dcb2', 's', '1234', 'Juanito', 'Valenciano Rey', '666666666', 'josemaria.mateo@hotmail.com', 'h', '88.00', 188, '2016-04-05', 1, '55.00', NULL, '2016-04-14'),
+(6, '90248d0a98105fa534cf', 's', '1234', 'Jose Maria', 'Mateo Ortega', '601013254', 'jose_sin_rostro@hotmail.com', 'h', '76.60', 176, '1989-07-11', 2, '69.50', NULL, '2016-04-14');
 
 -- --------------------------------------------------------
 
@@ -509,7 +510,8 @@ CREATE TABLE IF NOT EXISTS `patologiacliente` (
 CREATE TABLE IF NOT EXISTS `tablaintercambio` (
   `idcliente` int(11) NOT NULL,
   `idgrupo` int(11) NOT NULL,
-  `valor` decimal(10,1) DEFAULT NULL
+  `valor` decimal(10,1) DEFAULT NULL,
+  `fecha` date NOT NULL
 ) ENGINE=InnoDB DEFAULT CHARSET=utf8 COLLATE=utf8_spanish_ci;
 
 -- --------------------------------------------------------
@@ -667,7 +669,7 @@ ALTER TABLE `alimento`
 -- AUTO_INCREMENT de la tabla `cliente`
 --
 ALTER TABLE `cliente`
-  MODIFY `id` int(11) NOT NULL AUTO_INCREMENT,AUTO_INCREMENT=6;
+  MODIFY `id` int(11) NOT NULL AUTO_INCREMENT,AUTO_INCREMENT=7;
 --
 -- AUTO_INCREMENT de la tabla `dietista`
 --
