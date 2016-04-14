@@ -1,5 +1,5 @@
 <?php
-	include("conexion.php");
+	include("config.php");
 	$c = new MySQLi($servidor,$usuario,$password,$bbdd);
 	$c->set_charset("utf8");
 	$preparada = $c->prepare("select id, nombre from actividadfisica");
