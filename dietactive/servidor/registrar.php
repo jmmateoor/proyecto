@@ -17,8 +17,8 @@
 	$fechanac=$_POST['fechanac'];
 	$actividadf=$_POST['actividadf'];
 	
-	//calcular
-	$pesodeseable=55;
+	//calcula peso deseable
+	$pesodeseable=pesoDeseable($altura,$sexo);
 	
 	$fechaingreso=date("Y-m-d");
 	
