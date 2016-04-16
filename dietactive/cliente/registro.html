@@ -11,10 +11,10 @@
 
 
 <link rel="stylesheet" href="//code.jquery.com/ui/1.11.4/themes/smoothness/jquery-ui.css">
-<script src="//code.jquery.com/jquery-1.10.2.js"></script>
+<!--<script src="//code.jquery.com/jquery-1.10.2.js"></script>-->
 <script src="//code.jquery.com/ui/1.11.4/jquery-ui.js"></script>
-<link rel="stylesheet" href="/resources/demos/style.css">
-<script src="jquery.ui.datepicker-es.js"></script>
+<!--<link rel="stylesheet" href="/resources/demos/style.css">
+<script src="jquery.ui.datepicker-es.js"></script>-->
 <script>
 	window.onload=function(){
     	$.get("../servidor/consulta_actividadf.php", function(data, status){
@@ -103,9 +103,53 @@
 	
 	
 	
+	//Isnertar en la BBDD
+	
+	function insertarCliente()
+	{
+		/*$password=$_POST['password'];
+		$nombre=$_POST['nombre'];
+		$apellidos=$_POST['apellidos'];
+		$telefono=$_POST['telefono'];
+		$email=$_POST['email'];
+		$sexo=$_POST['sexo'];
+		$peso=$_POST['peso'];
+		$altura=$_POST['altura'];
+		$fechanac=$_POST['fechanac'];
+		$actividadf=$_POST['actividadf'];*/
+		compruebaTodo();
+		
+		$.post("../servidor/registrar.php",{
+			password: $("#password").val(),
+			nombre: $("#nombre").val(), 
+			apellidos: $("#apellidos").val(),
+			telefono: $("#telefono").val(),
+			email: $("#email").val(),
+			sexo: $("input:radio[name=sexo]:checked").val(),
+			peso: $("#peso").val(),
+			altura: $("#altura").val(),
+			fechanac: $("#fechanac").val(),
+			actividadf: $("#actividadf").val()
+							},
+							function(datos, estado)
+							{
+								//alert();
+								if(datos=='s')
+								{
+									$("#contenido").html("Se ha enviado un e-mail a tu correo electrónico para activar la cuenta. Verifica tu bandeja de entrada y tu carpeta de spam.");
+									
+								}
+								else
+								{
+									$("#contenido").html("Ha ocurrido un error durante el registro. Intentalo de nuevo más tarde.");
+								}
+							});
+	}
 	
 	
-	//A partir de aquí es para el calendario de edad
+	
+	
+	//Calendario de edad
 	$(function () {
 		var ano = (new Date).getFullYear();
 		$.datepicker.setDefaults($.datepicker.regional["es"]);
@@ -139,73 +183,76 @@
 	$(function () {
 		$(".fechanac").datepicker();
 	});
-	//Aquí termina el calendario de edad
+	//FIN Calendario de edad
 	
 </script>
 </head>
 
 <body>
     <div class="container">
-        <form role="form" name="registro" action="../servidor/registrar.php" method="post" onSubmit="return compruebaTodo();">
-            <div class="form-group">
-        		<label for="nombre">Nombre (requerido)</label>
-        		<input type="text" class="form-control" id="nombre" name="nombre" required maxlength="100" />
-     		</div>
-            <div class="form-group">
-        		<label for="apellidos">Apellidos (requerido)</label>
-        		<input type="text" class="form-control" id="apellidos" name="apellidos" required maxlength="100" />
-     		</div>
-            <div class="form-group">
-        		<label for="telefono">Teléfono (requerido)</label>
-        		<input type="tel" class="form-control" id="telefono" name="telefono" onKeyPress="return validaTelefono(event);" required maxlength="9" onpaste="return false;" />
-     		</div>
-            <div class="form-group">
-        		<label for="email">E-mail (requerido)</label>
-        		<input type="email" class="form-control" id="email" name="email" required maxlength="100" onKeyUp="validaEmail();return compruebaEmail();" onChange="validaEmail();return compruebaEmail();" />
-                <span id="email2"></span>
-     		</div>
-            
-            <div class="form-group">
-        		<label for="password">Contraseña (requerido)</label>
-        		<input type="password" class="form-control" id="password" name="password" required maxlength="30" onKeyUp="validaPassword(); />
-     		</div>
-            <div class="form-group">
-        		<label for="password2">Repite contraseña</label>
-        		<input type="password" class="form-control" id="password2" name="password2" required maxlength="30" onKeyUp="validaPassword();" />
-                <span id="compruebapassword"></span>
-     		</div>
-            
-            <div class="form-group">
-        		<label for="sexo">Sexo (requerido)</label>
-        		<div class="radio"> 
-                	<label>
-                    	<input type="radio" name="sexo" value="h" required />Hombre
-                    </label> 
+    	<h1>Registro</h1>
+    	<div id="contenido">
+            <form role="form" name="registro" method="post" >
+                <div class="form-group">
+                    <label for="nombre">Nombre (requerido)</label>
+                    <input type="text" class="form-control" id="nombre" name="nombre" required maxlength="100" />
                 </div>
-                <div class="radio"> 
-                	<label>
-                    	<input type="radio" name="sexo" value="m" />Mujer
-                    </label> 
+                <div class="form-group">
+                    <label for="apellidos">Apellidos (requerido)</label>
+                    <input type="text" class="form-control" id="apellidos" name="apellidos" required maxlength="100" />
                 </div>
-     		</div>
-            <div class="form-group">
-        		<label for="peso">Peso (requerido)</label>
-        		<input type="number" class="form-control" id="peso" name="peso" min="0" max="500" step="0.01" required onpaste="return false;" />
-     		</div>
-            <div class="form-group">
-        		<label for="altura">Altura (requerido)</label>
-        		<input type="number" class="form-control" id="altura" name="altura" required min="0" max="500" onpaste="return false;" />
-     		</div>
-            <div class="form-group">
-        		<label for="fechanac">Fecha de nacimiento (requerido)</label>
-        		<input type="text" class="fechanac form-control" id="fechanac" name="fechanac" required onpaste="return false;" />
-     		</div>
-            <div class="form-group">
-            	<label for="actividadf">Selecciona tu actividad física (requerido)</label> 
-                <span id="opciones"></span>
-          	</div>
-            <input type="submit" value="Enviar" class="btn btn-default" />
-        </form>
+                <div class="form-group">
+                    <label for="telefono">Teléfono (requerido)</label>
+                    <input type="tel" class="form-control" id="telefono" name="telefono" onKeyPress="return validaTelefono(event);" required maxlength="9" onpaste="return false;" />
+                </div>
+                <div class="form-group">
+                    <label for="email">E-mail (requerido)</label>
+                    <input type="email" class="form-control" id="email" name="email" required maxlength="100" onKeyUp="validaEmail();return compruebaEmail();" onChange="validaEmail();return compruebaEmail();" />
+                    <span id="email2"></span>
+                </div>
+                
+                <div class="form-group">
+                    <label for="password">Contraseña (requerido)</label>
+                    <input type="password" class="form-control" id="password" name="password" required maxlength="30" onKeyUp="validaPassword();" />
+                </div>
+                <div class="form-group">
+                    <label for="password2">Repite contraseña</label>
+                    <input type="password" class="form-control" id="password2" name="password2" required maxlength="30" onKeyUp="validaPassword();" />
+                    <span id="compruebapassword"></span>
+                </div>
+                
+                <div class="form-group">
+                    <label for="sexo">Sexo (requerido)</label>
+                    <div class="radio"> 
+                        <label>
+                            <input type="radio" name="sexo" value="h" required />Hombre
+                        </label> 
+                    </div>
+                    <div class="radio"> 
+                        <label>
+                            <input type="radio" name="sexo" value="m" />Mujer
+                        </label> 
+                    </div>
+                </div>
+                <div class="form-group">
+                    <label for="peso">Peso (requerido)</label>
+                    <input type="number" class="form-control" id="peso" name="peso" min="0" max="500" step="0.01" required onpaste="return false;" />
+                </div>
+                <div class="form-group">
+                    <label for="altura">Altura (requerido)</label>
+                    <input type="number" class="form-control" id="altura" name="altura" required min="0" max="500" onpaste="return false;" />
+                </div>
+                <div class="form-group">
+                    <label for="fechanac">Fecha de nacimiento (requerido)</label>
+                    <input type="text" class="fechanac form-control" id="fechanac" name="fechanac" required onpaste="return false;" />
+                </div>
+                <div class="form-group">
+                    <label for="actividadf">Selecciona tu actividad física (requerido)</label> 
+                    <span id="opciones"></span>
+                </div>
+                <input type="button" value="Enviar" class="btn btn-default" onClick="insertarCliente();" />
+            </form>
+        </div>
     </div>
 </body>
 </html>

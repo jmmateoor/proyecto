@@ -5,107 +5,28 @@
 <title>Documento sin título</title>
 <script src="https://ajax.googleapis.com/ajax/libs/jquery/1.12.0/jquery.min.js"></script>
 <script>
-function validaEmail()
-	{
-		var er_email =/[_a-z0-9-]+(\.[_a-z0-9-]+)*@[a-z0-9-]+(\.[a-z0-9-]+)*(\.[a-z]{2,3})/;
-		var texto=$("#email").val();
-		if(er_email.test(texto))
-		{
-			$("#email2").html("");
-			return true;
-		}
-		else
-		{
-			$("#email2").html("E-mail no válido");
-			return false;
-		}
-	}
-	
-	function compruebaEmail()
-	{
-		var email=$("#email").val();
-		
-		$.get("../servidor/comprueba_email.php?email="+email, function(data, status){
-				if(status="success")
-				{
-					if(data=="s")
-					{
-						alert("existe");
-						$("#email2").html("Ese email ya existe.");
-						return false;
-					}
-					else
-					{
-						alert("no existe");
-						//$("#email2").html("");
-						return true;
-					}
-				}
-				
-			});
-		//$("#email2").load("../servidor/comprueba_email.php?email="+email);
-	}
-	
-	function validaPassword()
-	{
-		if($("#password").val()==$("#password2").val())
-		{
-			$("#compruebapassword").html("");
-			return true;
-		}
-		else
-		{
-			$("#compruebapassword").html("Las contraseñas deben ser iguales");
-			return false;
-		}
-	}
-	
-	function compruebaTodo()
-	{
-		if($("#email2").html()!="")
-		{
-			alert(2);
-			return false;
-		}
-		if(!validaPassword())
-		{
-			alert(3);
-			return false;
-		}
-	}
-	
-	function validaTelefono(e)
-	{
-		tecla = (document.all) ? e.keyCode : e.which; 
-		if (tecla==8) return true;
-		patron = /\d/;
-		te = String.fromCharCode(tecla);
-		return patron.test(te);
-	}
+function pruebaSexo()
+{
+	alert("La edad seleccionada es: " + $('input:radio[name=sexo]:checked').val());
+}
 </script>
 </head>
 
 <body>
-<form role="form" name="registro" action="../servidor/1pruebas.php" method="post" onSubmit="return compruebaTodo();">
+<form role="form" name="registro" action="../servidor/1pruebas.php" method="post" onSubmit="pruebaSexo();">
     <div class="form-group">
-        <label for="telefono">Teléfono (requerido)</label>
-        <input type="tel" class="form-control" id="telefono" name="telefono" onKeyPress="return validaTelefono(event);" required maxlength="9" onpaste="return false;" />
-    </div>
-    <div class="form-group">
-        <label for="email">E-mail (requerido)</label>
-        <input type="email" class="form-control" id="email" name="email" required maxlength="100" onKeyUp="validaEmail();return compruebaEmail();" onChange="validaEmail();return compruebaEmail();" />
-        <span id="email2"></span>
-    </div>
-    
-    <div class="form-group">
-        <label for="password">Contraseña (requerido)</label>
-        <input type="password" class="form-control" id="password" name="password" required maxlength="30" onKeyUp="validaPassword();" />
-    </div>
-    <div class="form-group">
-        <label for="password2">Repite contraseña</label>
-        <input type="password" class="form-control" id="password2" name="password2" required maxlength="30" onKeyUp="validaPassword();" />
-        <span id="compruebapassword"></span>
-    </div>
+        		<label for="sexo">Sexo (requerido)</label>
+        		<div class="radio"> 
+                	<label>
+                    	<input type="radio" name="sexo" value="h" required />Hombre
+                    </label> 
+                </div>
+                <div class="radio"> 
+                	<label>
+                    	<input type="radio" name="sexo" value="m" />Mujer
+                    </label> 
+                </div>
+     		</div>
     <input type="submit" value="enviar" />
 </form>
 </body>
