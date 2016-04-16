@@ -1,4 +1,8 @@
 /* CSS Document */
+.error{
+	color:red;
+}
+
 body{
 	background-color:#1B1B1B;
 	'25541e;'
@@ -9,6 +13,7 @@ body{
 h1{
 	color:#d3d1ce;
 	font-size:64px;
+	border-bottom:solid 1px;
 }
 a.menu{
 	color:#d3d1ce;

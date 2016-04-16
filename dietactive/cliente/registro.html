@@ -3,188 +3,22 @@
 <head>
 <meta charset="utf-8">
 <title>Registro - DietActive</title>
-
+<link rel="stylesheet" href="estilos.css">
 <link rel="stylesheet" href="http://maxcdn.bootstrapcdn.com/bootstrap/3.3.6/css/bootstrap.min.css">
 <script src="https://ajax.googleapis.com/ajax/libs/jquery/1.12.0/jquery.min.js"></script>
 <script src="http://maxcdn.bootstrapcdn.com/bootstrap/3.3.6/js/bootstrap.min.js"></script>
 <meta name="viewport" content="width=device-width, initial-scale=1">
-
-
+<script src="funciones.js"></script>
 <link rel="stylesheet" href="//code.jquery.com/ui/1.11.4/themes/smoothness/jquery-ui.css">
-<!--<script src="//code.jquery.com/jquery-1.10.2.js"></script>-->
-<script src="//code.jquery.com/ui/1.11.4/jquery-ui.js"></script>
-<!--<link rel="stylesheet" href="/resources/demos/style.css">
-<script src="jquery.ui.datepicker-es.js"></script>-->
+<script src="../jquery-ui-1.11.4/jquery-ui.js"></script>
+
 <script>
 	window.onload=function(){
-    	$.get("../servidor/consulta_actividadf.php", function(data, status){
-				var objeto = JSON.parse(data);
-				var texto="<select class='form-control' name='actividadf' id='actividadf'>";
-				for(var i=0;i<objeto.length;i++)
-				{
-					texto+="<option value='"+objeto[i].id+"'>"+objeto[i].nombre+"</option>";
-				}
-				texto+="</select>";
-				$("#opciones").html(texto);
-			});
+		$("#embarazo").attr("disabled",true);
+		cargarActividadFisica();
+		cargarPatologias();
+		cargarCalendario();
 	};
-	
-	
-	function validaEmail()
-	{
-		var er_email =/[_a-z0-9-]+(\.[_a-z0-9-]+)*@[a-z0-9-]+(\.[a-z0-9-]+)*(\.[a-z]{2,3})/;
-		var texto=$("#email").val();
-		if(er_email.test(texto))
-		{
-			$("#email2").html("");
-			return true;
-		}
-		else
-		{
-			$("#email2").html("E-mail no válido");
-			return false;
-		}
-	}
-	
-	function compruebaEmail()
-	{
-		var email=$("#email").val();
-		
-		$.get("../servidor/comprueba_email.php?email="+email, function(data, status){
-				if(data=="s")
-				{
-					$("#email2").html("Ese email ya existe.");
-					return false;
-				}
-				else
-				{
-					//$("#email2").html("");
-					return true;
-				}
-				
-			});
-		//$("#email2").load("../servidor/comprueba_email.php?email="+email);
-	}
-	
-	function validaPassword()
-	{
-		if($("#password").val()==$("#password2").val())
-		{
-			$("#compruebapassword").html("");
-			return true;
-		}
-		else
-		{
-			$("#compruebapassword").html("Las contraseñas deben ser iguales");
-			return false;
-		}
-	}
-	
-	function compruebaTodo()
-	{
-		if($("#email2").html()!="")
-		{
-			return false;
-		}
-		if(!validaPassword())
-		{
-			return false;
-		}
-	}
-	
-	function validaTelefono(e)
-	{
-		tecla = (document.all) ? e.keyCode : e.which; 
-		if (tecla==8) return true;
-		patron = /\d/;
-		te = String.fromCharCode(tecla);
-		return patron.test(te);
-	}
-	
-	
-	
-	//Isnertar en la BBDD
-	
-	function insertarCliente()
-	{
-		/*$password=$_POST['password'];
-		$nombre=$_POST['nombre'];
-		$apellidos=$_POST['apellidos'];
-		$telefono=$_POST['telefono'];
-		$email=$_POST['email'];
-		$sexo=$_POST['sexo'];
-		$peso=$_POST['peso'];
-		$altura=$_POST['altura'];
-		$fechanac=$_POST['fechanac'];
-		$actividadf=$_POST['actividadf'];*/
-		compruebaTodo();
-		
-		$.post("../servidor/registrar.php",{
-			password: $("#password").val(),
-			nombre: $("#nombre").val(), 
-			apellidos: $("#apellidos").val(),
-			telefono: $("#telefono").val(),
-			email: $("#email").val(),
-			sexo: $("input:radio[name=sexo]:checked").val(),
-			peso: $("#peso").val(),
-			altura: $("#altura").val(),
-			fechanac: $("#fechanac").val(),
-			actividadf: $("#actividadf").val()
-							},
-							function(datos, estado)
-							{
-								//alert();
-								if(datos=='s')
-								{
-									$("#contenido").html("Se ha enviado un e-mail a tu correo electrónico para activar la cuenta. Verifica tu bandeja de entrada y tu carpeta de spam.");
-									
-								}
-								else
-								{
-									$("#contenido").html("Ha ocurrido un error durante el registro. Intentalo de nuevo más tarde.");
-								}
-							});
-	}
-	
-	
-	
-	
-	//Calendario de edad
-	$(function () {
-		var ano = (new Date).getFullYear();
-		$.datepicker.setDefaults($.datepicker.regional["es"]);
-		$(".fechanac").datepicker({
-			changeMonth: true,
-			changeYear: true,
-			yearRange: "1900:"+ano
-		});
-	});
-	
-	$.datepicker.regional['es'] = {
-		closeText: 'Cerrar',
-		prevText: '<Ant',
-		nextText: 'Sig>',
-		currentText: 'Hoy',
-		monthNames: ['Enero', 'Febrero', 'Marzo', 'Abril', 'Mayo', 'Junio', 'Julio', 'Agosto', 'Septiembre', 'Octubre', 'Noviembre', 'Diciembre'],
-		monthNamesShort: ['Enero','Febrero','Marzo','Abril', 'Mayo','Junio','Julio','Agosto','Septiembre', 'Octubre','Noviembre','Diciembre'],
-		dayNames: ['Domingo', 'Lunes', 'Martes', 'Miércoles', 'Jueves', 'Viernes', 'Sábado'],
-		dayNamesShort: ['Dom','Lun','Mar','Mié','Juv','Vie','Sáb'],
-		dayNamesMin: ['Do','Lu','Ma','Mi','Ju','Vi','Sá'],
-		weekHeader: 'Sm',
-		dateFormat: 'yy/mm/dd',
-		firstDay: 1,
-		isRTL: false,
-		showMonthAfterYear: false,
-		yearSuffix: ''
-	};
-	
-	$.datepicker.setDefaults($.datepicker.regional['es']);
-	
-	$(function () {
-		$(".fechanac").datepicker();
-	});
-	//FIN Calendario de edad
-	
 </script>
 </head>
 
@@ -206,9 +40,9 @@
                     <input type="tel" class="form-control" id="telefono" name="telefono" onKeyPress="return validaTelefono(event);" required maxlength="9" onpaste="return false;" />
                 </div>
                 <div class="form-group">
-                    <label for="email">E-mail (requerido)</label>
+                    <label for="email">Correo electrónico (requerido)</label>
                     <input type="email" class="form-control" id="email" name="email" required maxlength="100" onKeyUp="validaEmail();return compruebaEmail();" onChange="validaEmail();return compruebaEmail();" />
-                    <span id="email2"></span>
+                    <span class="error" id="email2"></span>
                 </div>
                 
                 <div class="form-group">
@@ -218,20 +52,20 @@
                 <div class="form-group">
                     <label for="password2">Repite contraseña</label>
                     <input type="password" class="form-control" id="password2" name="password2" required maxlength="30" onKeyUp="validaPassword();" />
-                    <span id="compruebapassword"></span>
+                    <span class="error" id="compruebapassword"></span>
                 </div>
                 
                 <div class="form-group">
                     <label for="sexo">Sexo (requerido)</label>
                     <div class="radio"> 
                         <label>
-                            <input type="radio" name="sexo" value="h" required />Hombre
+                            <input type="radio" name="sexo" value="h" required onChange="controlaSexoEmbarazo();" />Hombre
                         </label> 
                     </div>
                     <div class="radio"> 
                         <label>
-                            <input type="radio" name="sexo" value="m" />Mujer
-                        </label> 
+                            <input type="radio" name="sexo" value="m" onChange="controlaSexoEmbarazo();" />Mujer  
+                        </label><label><input id="embarazo" type='checkbox' name="embarazo" value="1" /> Embarazo</label>
                     </div>
                 </div>
                 <div class="form-group">
@@ -239,7 +73,7 @@
                     <input type="number" class="form-control" id="peso" name="peso" min="0" max="500" step="0.01" required onpaste="return false;" />
                 </div>
                 <div class="form-group">
-                    <label for="altura">Altura (requerido)</label>
+                    <label for="altura">Altura en centímetros (requerido)</label>
                     <input type="number" class="form-control" id="altura" name="altura" required min="0" max="500" onpaste="return false;" />
                 </div>
                 <div class="form-group">
@@ -249,6 +83,10 @@
                 <div class="form-group">
                     <label for="actividadf">Selecciona tu actividad física (requerido)</label> 
                     <span id="opciones"></span>
+                </div>
+                <div class="form-group">
+                    <label for="patologias">Si tienes alguna de estas patologías, seleccionala:</label> 
+                    <span id="patologias"></span>
                 </div>
                 <input type="button" value="Enviar" class="btn btn-default" onClick="insertarCliente();" />
             </form>

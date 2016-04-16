@@ -3,7 +3,7 @@
 	include("funciones.php");
 	$c = new MySQLi($servidor,$usuario,$password,$bbdd);
 	$c->set_charset("utf8");
-	$preparada = $c->prepare("select id, nombre from actividadfisica");
+	$preparada = $c->prepare("select id, nombre from patologia");
 	$preparada->execute();
 	$preparada->bind_result($id,$nombre);
 	$salida="[";

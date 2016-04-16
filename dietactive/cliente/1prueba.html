@@ -5,29 +5,28 @@
 <title>Documento sin título</title>
 <script src="https://ajax.googleapis.com/ajax/libs/jquery/1.12.0/jquery.min.js"></script>
 <script>
-function pruebaSexo()
+var checkbox="";
+function enviar()
 {
-	alert("La edad seleccionada es: " + $('input:radio[name=sexo]:checked').val());
+	$("input:checkbox:checked").each(function(){
+		//cada elemento seleccionado
+		checkbox+=$(this).val()+",";
+	});
+	checkbox=checkbox.substring(0,checkbox.length-1);
+	$("#prueba").html(checkbox);
 }
 </script>
 </head>
 
 <body>
-<form role="form" name="registro" action="../servidor/1pruebas.php" method="post" onSubmit="pruebaSexo();">
-    <div class="form-group">
-        		<label for="sexo">Sexo (requerido)</label>
-        		<div class="radio"> 
-                	<label>
-                    	<input type="radio" name="sexo" value="h" required />Hombre
-                    </label> 
-                </div>
-                <div class="radio"> 
-                	<label>
-                    	<input type="radio" name="sexo" value="m" />Mujer
-                    </label> 
-                </div>
-     		</div>
-    <input type="submit" value="enviar" />
+<form role="form" name="registro" action="" method="post" onSubmit="enviar();">
+    <label><input type="checkbox" name="elemento1" value="1"/>Intestino Irritable</label><br/>
+	<label><input type="checkbox" name="elemento2" value="2"/>Hernia de hiato</label><br/>
+	<label><input type="checkbox" name="elemento3" value="3"/>Sindrome de Crohn</label><br/>
+	<label><input type="checkbox" name="elemento4" value="4"/>Tonterias</label><br/>
+	<label><input type="checkbox" name="elemento5" value="5"/>Embarazo</label><br/>
+    <input type="submit" value="Enviar"/>
 </form>
+<span id="prueba"></span>
 </body>
 </html>

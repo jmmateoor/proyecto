@@ -8,6 +8,7 @@
 <body>
 <?php
 include("config.php");
+include("funciones.php");
 if (isset($_GET['id']))
 {
 	$c = new MySQLi($servidor,$usuario,$password,$bbdd);

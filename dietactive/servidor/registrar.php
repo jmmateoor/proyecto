@@ -1,6 +1,7 @@
 <?php
 
 	include("config.php");
+	include("funciones.php");
 	$c = new MySQLi($servidor,$usuario,$password,$bbdd);
 	$c->set_charset("utf8");
 	
@@ -16,7 +17,7 @@
 	$altura=$_POST['altura'];
 	$fechanac=$_POST['fechanac'];
 	$actividadf=$_POST['actividadf'];
-	
+	$patologias=$_POST['patologias'];
 	//calcula peso deseable
 	$pesodeseable=pesoDeseable($altura,$sexo);
 	
@@ -38,6 +39,21 @@
 		{
 			$id=$idcliente;
 		}
+		
+		if($patologias!="ninguna")
+		{
+			$patologias=explode(",",$patologias);
+			$insertpatologias = $c->prepare("insert into patologiacliente(idcliente, idpatologia) values (?, ?)");
+			$insertpatologias->bind_param("ii",$idcliente,$patologia);
+			
+			for($i=0;$i<count($patologias);$i++)
+			{
+				$patologia=$patologias[$i];
+				$insertpatologias->execute();
+			}
+		}
+		
+		crearIntercambios($idcliente);
 		
 		$path="http://localhost/daw/proyecto/dietactive/servidor/activar_cuenta.php";
 		$link=$path."?id=".$id."&codigo=".$codigo."";
