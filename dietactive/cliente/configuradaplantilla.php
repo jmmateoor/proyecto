@@ -1,3 +1,12 @@
+<?php
+session_start();
+$_SESSION["nombre"]="José Mª";
+$_SESSION["apellidos"]="Mateo Ortega";
+$_SESSION["email"]="josem.mateo.ortega@gmail.com";
+$_SESSION["peso"]="77";
+$_SESSION["pesodeseable"]="69.5";
+
+?>
 <!DOCTYPE HTML>
 <html>
 <head>
@@ -9,12 +18,13 @@
 <script src="http://maxcdn.bootstrapcdn.com/bootstrap/3.3.6/js/bootstrap.min.js"></script>
 <meta name="viewport" content="width=device-width, initial-scale=1">
 <link rel="stylesheet" type="text/css" href="estilos.css">
+
 <script src="funciones.js"></script>
 <script>
 window.onload=function(){
 	datosEmpresa();
 }
-</script>
+
 </head>
 
 <body>
@@ -24,7 +34,7 @@ window.onload=function(){
                 	
                 </div>
                 <div class="col-md-4">
-                	<span class="glyphicon glyphicon-user"></span> <span id="email">josem.mateo.ortega@gmail.com</span>
+                	<span class="glyphicon glyphicon-user"></span> <span id="email"><?php echo $_SESSION["email"] ?></span>
                 </div>
                 <div class="col-md-2">
                 	<a class="cerrarsesion" href="#"><span class="glyphicon glyphicon-off"></span> Cerrar sesión</a>
@@ -61,13 +71,13 @@ window.onload=function(){
             	<div class="row">
             		<h3 class="datospers">Datos Personales <a href="#" class="enlacenormal">[Actualizar]</a></h3>
                     <p><b>Nombre</b></p>
-                    <p id="nombre">Jose Mª</p>
+                    <p id="nombre"><?php echo $_SESSION["nombre"] ?></p>
                     <p><b>Apellidos</b></p>
-                    <p id="apellidos">Mateo Ortega</p>
+                    <p id="apellidos"><?php echo $_SESSION["apellidos"] ?></p>
                     <p><b>Tu peso</b></p>
-                    <p id="peso">76.6</p>
+                    <p id="peso"><?php echo $_SESSION["peso"] ?></p>
                     <p><b>Tu peso deseable</b></p>
-                    <p id="pesodeseable">69.5</p>
+                    <p id="pesodeseable"><?php echo $_SESSION["pesodeseable"] ?></p>
                 </div>
                 <div class="row">
                 	<h3 class="datospers">Tus intercambios</h3>
@@ -83,16 +93,17 @@ window.onload=function(){
             <div class="row pie">
                 <div class="col-md-3">
                     <h4>Teléfonos</h4>
-                    <p id="dietfijo" class="pietexto"><a class="pieenlace" href="tel:956555777">956 555 777</a></p>
-                    <p id="dietmovil" class="pietexto"><a class="pieenlace" href="tel:666000888">666 000 888</a></p>
+                    <p class="pietexto"><a id="dietfijo1" class="pieenlace" href=""><span id="dietfijo2"></span></a></p>
+                    <p class="pietexto"><a id="dietmovil1" class="pieenlace" href=""><span id="dietmovil2"></span></a></p>
                 </div>
                 <div class="col-md-3">
                     <h4>Dirección</h4>
-                    <p id="dietdireccion" class="pietexto">Calle Comer Bien</p>
+                    <p id="dietdireccion" class="pietexto"></p>
+                    <p id="dietdirecciondatos" class="pietexto"></p>
                 </div>
                 <div class="col-md-3">
                     <h4>Correo electrónico</h4>
-                    <p id="dietemail" class="pietexto">josem.daw2@gmail.com</p>
+                    <p id="dietemail" class="pietexto"></p>
                 </div>
                 <div class="col-md-3">
                     <h4>Aviso Legal</h4>
@@ -100,7 +111,7 @@ window.onload=function(){
             </div>
         </footer>
         <div class="row">
-        	<h5 class="desarrollo">DietActive</h5>
+        	<h5 id="dietnombre" class="desarrollo"></h5>
             <h5 class="desarrollo">Desarrollado por José Mª Mateo</h5>
         </div>
     </div>

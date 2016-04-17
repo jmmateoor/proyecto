@@ -2,13 +2,11 @@
 <html>
 <head>
 <meta charset="utf-8">
-<title>Registro - DietActive</title>
-
+<title>Documento sin título</title>
 <link rel="stylesheet" href="http://maxcdn.bootstrapcdn.com/bootstrap/3.3.6/css/bootstrap.min.css">
 <script src="https://ajax.googleapis.com/ajax/libs/jquery/1.12.0/jquery.min.js"></script>
 <script src="http://maxcdn.bootstrapcdn.com/bootstrap/3.3.6/js/bootstrap.min.js"></script>
 <meta name="viewport" content="width=device-width, initial-scale=1">
-<link rel="stylesheet" href="estilos.css">
 <link rel="stylesheet" href="//code.jquery.com/ui/1.11.4/themes/smoothness/jquery-ui.css">
 <script src="../jquery-ui-1.11.4/jquery-ui.js"></script>
 <script src="funciones.js"></script>
@@ -24,34 +22,19 @@
 </head>
 
 <body>
-    <div class="container-fluid">
-        <div class="row cabecera">
-            <div class="col-md-12">
-                <h1>Zona Cliente</h1>
-            </div>
-        </div>
-        <div class="row cuerpo">
-        	<div class="col-md-2">
-            </div>
-            <div class="col-md-8">
-            	<h3 class="datospers">Registro de nuevo usuario</h3><!-- CONTENIDO DE LA WEB <a href="#" class="enlacenormal">[Actualizar]</a> -->
-                <p id="contenidos">
-                <div id="contenido">
+<div id="contenido">
                     <form role="form" name="registro" method="post"  >
                         <div class="form-group">
                             <label for="nombre">Nombre (requerido)</label>
                             <input type="text" class="form-control" id="nombre" name="nombre" required maxlength="100" />
-                            <span class="error" id="nombre2"></span>
                         </div>
                         <div class="form-group">
                             <label for="apellidos">Apellidos (requerido)</label>
                             <input type="text" class="form-control" id="apellidos" name="apellidos" required maxlength="100" />
-                            <span class="error" id="apellidos2"></span>
                         </div>
                         <div class="form-group">
                             <label for="telefono">Teléfono (requerido)</label>
                             <input type="tel" class="form-control" id="telefono" name="telefono" onKeyPress="return validaTelefono(event);" required maxlength="9" onpaste="return false;" />
-                            <span class="error" id="telefono2"></span>
                         </div>
                         <div class="form-group">
                             <label for="email">Correo electrónico (requerido)</label>
@@ -62,13 +45,11 @@
                         <div class="form-group">
                             <label for="password">Contraseña (requerido)</label>
                             <input type="password" class="form-control" id="password" name="password" required maxlength="30" onKeyUp="validaPassword();" />
-                            <span class="error" id="errorpassword1"></span>
                         </div>
                         <div class="form-group">
                             <label for="password2">Repite contraseña</label>
                             <input type="password" class="form-control" id="password2" name="password2" required maxlength="30" onKeyUp="validaPassword();" />
                             <span class="error" id="compruebapassword"></span>
-                            <span class="error" id="errorpassword2"></span>
                         </div>
                         
                         <div class="form-group">
@@ -83,22 +64,18 @@
                                     <input type="radio" name="sexo" value="m" onChange="controlaSexoEmbarazo();" />Mujer  
                                 </label><label><input id="embarazo" type='checkbox' name="embarazo" value="1" /> Embarazo</label>
                             </div>
-                            <span id="sexo2" class="error"></span>
                         </div>
                         <div class="form-group">
                             <label for="peso">Peso (requerido)</label>
                             <input type="number" class="form-control" id="peso" name="peso" min="0" max="500" step="0.01" required onpaste="return false;" />
-                            <span class="error" id="peso2"></span>
                         </div>
                         <div class="form-group">
                             <label for="altura">Altura en centímetros (requerido)</label>
                             <input type="number" class="form-control" id="altura" name="altura" required min="0" max="500" onpaste="return false;" />
-                            <span class="error" id="altura2"></span>
                         </div>
                         <div class="form-group">
                             <label for="fechanac">Fecha de nacimiento (requerido)</label>
                             <input type="text" class="fechanac form-control" id="fechanac" name="fechanac" required onpaste="return false;" />
-                            <span class="error" id="fechanac2"></span>
                         </div>
                         <div class="form-group">
                             <label for="actividadf">Selecciona tu actividad física (requerido)</label> 
@@ -111,35 +88,5 @@
                         <input type="button" value="Registrarse" class="btn btn-default" onClick="insertarCliente();" />
                     </form>
                 </div>
-        </p>
-            </div>
-            <div class="col-md-2">
-            </div>
-        </div>
-        <footer>
-            <div class="row pie">
-                <div class="col-md-3">
-                    <h4>Teléfonos</h4>
-                    <p id="dietfijo" class="pietexto"><a class="pieenlace" href="tel:956555777">956 555 777</a></p>
-                    <p id="dietmovil" class="pietexto"><a class="pieenlace" href="tel:666000888">666 000 888</a></p>
-                </div>
-                <div class="col-md-3">
-                    <h4>Dirección</h4>
-                    <p id="dietdireccion" class="pietexto">Calle Comer Bien</p>
-                </div>
-                <div class="col-md-3">
-                    <h4>Correo electrónico</h4>
-                    <p id="dietemail" class="pietexto">josem.daw2@gmail.com</p>
-                </div>
-                <div class="col-md-3">
-                    <h4>Aviso Legal</h4>
-                </div>
-            </div>
-        </footer>
-        <div class="row">
-        	<h5 class="desarrollo">DietActive</h5>
-            <h5 class="desarrollo">Desarrollado por José Mª Mateo</h5>
-        </div>
-    </div>
 </body>
 </html>

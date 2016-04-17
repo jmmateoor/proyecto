@@ -1,5 +1,8 @@
 // JavaScript Document
-function validaEmail()
+
+//Registro
+
+	function validaEmail()
 	{
 		var er_email =/[_a-z0-9-]+(\.[_a-z0-9-]+)*@[a-z0-9-]+(\.[a-z0-9-]+)*(\.[a-z]{2,3})/;
 		var texto=$("#email").val();
@@ -76,18 +79,138 @@ function validaEmail()
 	
 	function insertarCliente()
 	{
+		if($("#nombre").val()=="")
+		{
+			$("#nombre").focus();
+			$("#nombre2").html("Requerido");
+			return false;
+			
+		}
+		else
+		{
+			$("#nombre2").html("");
+		}
+		
+		if($("#apellidos").val()=="")
+		{
+			$("#apellidos").focus();
+			$("#apellidos2").html("Requerido");
+			return false;
+			
+		}
+		else
+		{
+			$("#apellidos2").html("");
+		}
+		
+		if($("#telefono").val()=="")
+		{
+			$("#telefono").focus();
+			$("#telefono2").html("Requerido");
+			return false;
+			
+		}
+		else
+		{
+			$("#telefono2").html("");
+		}
+		
+		
+		if($("#email").val()=="")
+		{
+			$("#email").focus();
+			$("#email2").html("Requerido");
+			return false;
+			
+		}
+		else
+		{
+			$("#email2").html("");
+		}
+		
 		if($("#email2").html()!="")
 		{
 			$("#email").focus();
 			return false;
 		}
+		
+		if($("#password").val()=="")
+		{
+			$("#password").focus();
+			$("#errorpassword1").html("Requerido");
+			return false;
+			
+		}
+		else
+		{
+			$("#errorpassword1").html("");
+		}
+		
+		if($("#password2").val()=="")
+		{
+			$("#password2").focus();
+			$("#errorpassword2").html("Requerido");
+			return false;
+			
+		}
+		else
+		{
+			$("#errorpassword2").html("");
+		}
+		
 		if(!validaPassword())
 		{
 			$("#password2").focus();
 			return false;
 		}
 		
+		if( !$("input[name='sexo']:radio").is(':checked'))
+		{
+			location.href = "#sexo";
+			$("#sexo2").html("Requerido");
+			return false;
+		}
+		else
+		{
+			$("#sexo2").html("");
+		}
 		
+		
+		if($("#peso").val()=="")
+		{
+			$("#peso").focus();
+			$("#peso2").html("Requerido");
+			return false;
+			
+		}
+		else
+		{
+			$("#peso2").html("");
+		}
+		
+		if($("#altura").val()=="")
+		{
+			$("#altura").focus();
+			$("#altura2").html("Requerido");
+			return false;
+			
+		}
+		else
+		{
+			$("#altura2").html("");
+		}
+		
+		if($("#fechanac").val()=="")
+		{
+			$("#fechanc").focus();
+			$("#fechanac2").html("Requerido");
+			return false;
+			
+		}
+		else
+		{
+			$("#fechanac2").html("");
+		}
 		
 		var checkbox="";
 		$("input:checkbox:checked").each(function(){
@@ -160,7 +283,7 @@ function validaEmail()
 	{
 		$.get("../servidor/consulta_patologia.php", function(data, status){
 				var objeto = JSON.parse(data);
-				var texto="<table class='table'><tbody><tr>";
+				var texto="<div class='table-responsive'><table class='table'><tbody><tr>";
 				for(var i=1;i<objeto.length;i++)
 				{
 					texto+="<td><label><input type='checkbox' name='"+objeto[i].nombre+"' value='"+objeto[i].id+"' /> "+objeto[i].nombre+"</label></td>";
@@ -169,7 +292,7 @@ function validaEmail()
 						texto+="</tr><tr>";
 					}
 				}
-				texto+="</tr></table>";
+				texto+="</tr></tbdody></table></div>";
 				$("#patologias").html(texto);
 			});
 	}
@@ -212,3 +335,25 @@ function validaEmail()
 		});
 	}
 	//FIN Calendario de edad
+//Fin Registro
+
+//Plantilla
+function datosEmpresa()
+{
+	$.get("../servidor/consulta_datosempresa.php", function(data, status){
+				var objeto = JSON.parse(data);
+				$("#dietnombre").html(objeto[0].nombre);
+				
+				$("#dietfijo1").attr("href","tel:"+objeto[0].telefono1);
+				$("#dietfijo2").html(objeto[0].telefono1);
+				
+				$("#dietmovil1").attr("href","tel:"+objeto[0].telefono2);
+				$("#dietmovil2").html(objeto[0].telefono2);
+				
+				$("#dietdireccion").html(objeto[0].direccion);
+				$("#dietdirecciondatos").html(objeto[0].provincia+", "+objeto[0].localidad+" "+objeto[0].codigopostal);
+				$("#dietemail").html(objeto[0].email);
+			});
+}
+
+//FIN Plantilla

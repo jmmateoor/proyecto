@@ -1,43 +1,103 @@
 /* CSS Document */
+@import url(https://fonts.googleapis.com/css?family=Comfortaa);
+@import url(https://fonts.googleapis.com/css?family=Headland+One);
+h1,h2,h3,h4,h5,h6{
+	font-family: 'Comfortaa', cursive;
+}
+
+h1{
+	color:#d3d1ce;
+	font-size:54px;
+}
+
 .error{
 	color:red;
 }
 
 body{
-	background-color:#1B1B1B;
-	'25541e;'
+	background-color:#1B1B1B !important;
+	font-family: 'Headland One', serif;
 }
-.cabecera{
-	background-color:#25541e;
-}
-h1{
+
+.barrasuperior{
+	background-color:#040404;
+	padding-top:10px;
+	padding-bottom:10px;
 	color:#d3d1ce;
-	font-size:64px;
-	border-bottom:solid 1px;
+	border-bottom:#777674 solid 2px;
+	text-align:center;
+	font-size:16px;
 }
+
+
+a.cerrarsesion{
+	color:#d3d1ce;
+	margin:auto;
+}
+
+a.cerrarsesion:link{
+	text-decoration:none;
+}
+
+a.cerrarsesion:visited{
+	color:#d3d1ce;
+	text-decoration:none;
+}
+
+a.cerrarsesion:hover{
+	color:#fff;
+	text-decoration:none;
+}
+
+
+
+.cabecera{
+	background-color:RGB(3,90,0);
+}
+
+
 a.menu{
 	color:#d3d1ce;
 	font-size:18px;
 	margin:auto;
 }
-a.menu:hover{
+
+a.menu:link{
+	text-decoration:none;
+}
+
+a.menu:visited{
 	color:#d3d1ce;
+	font-size:18px;
+	text-decoration:none;
+}
+
+a.menu:hover{
+	color:#fff;
 	text-decoration:none;
 	border-bottom:solid 1px;
 }
+
+.seleccionado{
+	color:#fff !important;
+	text-decoration:none;
+	border-bottom:solid 1px;
+	font-size:24px !important;
+}
+
 .inicio{
 	font-size:52px !important;
 }
 a.enlaceinicio{
 	color:#d3d1ce;
 	padding-right:10px;
-	border-right:solid 1px;	
+	border-right:solid 2px;	
 }
 a.enlaceinicio:link{
 	text-decoration:none;
 }
 a.enlaceinicio:hover{
-	color:#d3d1ce;
+	color:#fff !important;
 	text-decoration:none;
 }
 a.enlaceinicio:visited{
@@ -45,9 +105,6 @@ a.enlaceinicio:visited{
 	text-decoration:none;
 }
 
-a.enlaceinicio:active{
-	text-decoration:none;
-}
 .cuerpo{
 	border-top:#777674 solid 5px;
 	background-color:#d3d1ce;
@@ -57,7 +114,7 @@ a.enlaceinicio:active{
 .datospers{
 	border-bottom:solid 1px;
 }
-.actualizar{
+.enlacenormal{
 	font-size:14px;
 }
 .pie{
@@ -65,7 +122,6 @@ a.enlaceinicio:active{
 	background-color:#040404;
 	color:#d3d1ce;
 }
-
 
 a.pieenlace{
 	color:#777674;
@@ -93,10 +149,4 @@ footer{
 .desarrollo{
 	color:#777674;
 	text-align:center;
-}
-
-.seleccionado{
-	text-decoration:none;
-	border-bottom:solid 1px;
-	font-size:24px !important;
 }

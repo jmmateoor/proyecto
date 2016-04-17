@@ -53,6 +53,20 @@ function crearIntercambios($idcliente)
 	
 	$edad=edad($fechanac);
 	
+	$consultaembarazo = $c->prepare("select idpatologia from patologiacliente where idcliente = ? and idpatologia = 1");
+	$consultaembarazo->bind_param("i",$idcliente);
+	$consultaembarazo->execute();
+	$consultaembarazo->store_result();
+	if($consultaembarazo->num_rows>0)
+	{
+		$embarazo=true;
+	}
+	else
+	{
+		$embarazo=false;
+	}
+	
+	
 	//Cálculo de la Tasa Metabólica Basal, tmb
 	if($sexo=="h")
 	{
@@ -67,10 +81,19 @@ function crearIntercambios($idcliente)
 	if($edad<40)
 	{
 		$tmbr=$tmb;
+		if($sexo=="m" && $embarazo)
+		{
+			$tmbr=$tmbr+200;
+		}
+		
 	}
 	else if($edad>=40 && $edad<50)
 	{
 		$tmbr=$tmb*0.95;
+		if($sexo=="m" && $embarazo)
+		{
+			$tmbr=$tmbr+200;
+		}
 	}
 	else if($edad>=50 && $edad<60)
 	{
@@ -158,6 +181,30 @@ function crearIntercambios($idcliente)
 	
 	$idgrupo=6;
 	$valor=$grasas;
+	$preparada->execute();
+	
+	$c->close();
+}
+
+function pesoHistorico($idcliente)
+{
+	include("config.php");
+	$c = new MySQLi($servidor,$usuario,$password,$bbdd);
+	$c->set_charset("utf8");
+	
+	$consulta = $c->prepare("select peso from cliente where id = ?");
+	$consulta->bind_param("i",$idcliente);
+	$consulta->execute();
+	$consulta->bind_result($pesoq);
+	while($consulta->fetch())
+	{
+		$peso=$pesoq;
+	}
+	
+	$fecha=date("Y-m-d H:i:s");
+	
+	$preparada = $c->prepare("insert into historicopeso(fecha, idcliente, peso) values (?, ?, ?)");
+	$preparada->bind_param("sid",$fecha,$idcliente,$peso);
 	$preparada->execute();
 	
 	$c->close();

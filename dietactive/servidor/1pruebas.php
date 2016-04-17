@@ -7,10 +7,10 @@
 
 <body>
 <?php
-	include("config.php");
 	include("funciones.php");
-	$idcliente=10;
-	crearIntercambios($idcliente)
+	
+	$idcliente=11;
+	pesoHistorico($idcliente);
 ?>
 
 </body>
