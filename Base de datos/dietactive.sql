@@ -3,7 +3,7 @@
 -- http://www.phpmyadmin.net
 --
 -- Servidor: 127.0.0.1
--- Tiempo de generación: 14-04-2016 a las 20:58:05
+-- Tiempo de generación: 17-04-2016 a las 19:21:45
 -- Versión del servidor: 5.6.26
 -- Versión de PHP: 5.6.12
 
@@ -419,17 +419,38 @@ CREATE TABLE IF NOT EXISTS `cliente` (
   `pesodeseable` decimal(10,2) DEFAULT NULL,
   `dieta` text COLLATE utf8_spanish_ci,
   `fechaingreso` date NOT NULL
-) ENGINE=InnoDB AUTO_INCREMENT=7 DEFAULT CHARSET=utf8 COLLATE=utf8_spanish_ci;
+) ENGINE=InnoDB AUTO_INCREMENT=13 DEFAULT CHARSET=utf8 COLLATE=utf8_spanish_ci;
 
 --
 -- Volcado de datos para la tabla `cliente`
 --
 
 INSERT INTO `cliente` (`id`, `codigo_activacion`, `activado`, `password`, `nombre`, `apellidos`, `telefono`, `email`, `sexo`, `peso`, `altura`, `fechanac`, `idactividad`, `pesodeseable`, `dieta`, `fechaingreso`) VALUES
-(1, '', 'n', '1234', 'Juan', 'Fernandez', '000666999', 'prueba@prueba.com', 'h', '70.60', 179, '1980-08-04', 1, NULL, NULL, '2016-04-14'),
-(3, '62a7e2da310bdb98fb0b', 's', '1234', 'Jose', 'Mateo Ortega', '666010101', 'josem.mateo.ortega@gmail.com', 'h', '78.80', 176, '1989-07-11', 1, '69.50', NULL, '2016-04-14'),
-(5, 'bbd4e463fe0ad675dcb2', 's', '1234', 'Juanito', 'Valenciano Rey', '666666666', 'josemaria.mateo@hotmail.com', 'h', '88.00', 188, '2016-04-05', 1, '55.00', NULL, '2016-04-14'),
-(6, '90248d0a98105fa534cf', 's', '1234', 'Jose Maria', 'Mateo Ortega', '601013254', 'jose_sin_rostro@hotmail.com', 'h', '76.60', 176, '1989-07-11', 2, '69.50', NULL, '2016-04-14');
+(12, '08b41ec0a7a71415ee6b', 's', '1234', 'Maria', 'Ortega', '666010101', 'josem.mateo.ortega@gmail.com', 'm', '60.00', 170, '1988-02-17', 1, '60.00', NULL, '2016-04-17');
+
+-- --------------------------------------------------------
+
+--
+-- Estructura de tabla para la tabla `datosempresa`
+--
+
+CREATE TABLE IF NOT EXISTS `datosempresa` (
+  `nombre` varchar(100) COLLATE utf8_spanish_ci NOT NULL,
+  `provincia` varchar(100) COLLATE utf8_spanish_ci NOT NULL,
+  `localidad` varchar(100) COLLATE utf8_spanish_ci NOT NULL,
+  `codigopostal` varchar(5) COLLATE utf8_spanish_ci NOT NULL,
+  `direccion` varchar(100) COLLATE utf8_spanish_ci NOT NULL,
+  `telefono1` varchar(9) COLLATE utf8_spanish_ci NOT NULL,
+  `telefono2` varchar(9) COLLATE utf8_spanish_ci NOT NULL,
+  `email` varchar(100) COLLATE utf8_spanish_ci NOT NULL
+) ENGINE=InnoDB DEFAULT CHARSET=utf8 COLLATE=utf8_spanish_ci;
+
+--
+-- Volcado de datos para la tabla `datosempresa`
+--
+
+INSERT INTO `datosempresa` (`nombre`, `provincia`, `localidad`, `codigopostal`, `direccion`, `telefono1`, `telefono2`, `email`) VALUES
+('DietActive', 'Cádiz', 'Cádiz', '11004', 'Calle de la Comida Sana nº 2', '956112233', '666112233', 'josem.daw2@gmail.com');
 
 -- --------------------------------------------------------
 
@@ -474,6 +495,25 @@ INSERT INTO `grupointercambio` (`id`, `nombre`) VALUES
 -- --------------------------------------------------------
 
 --
+-- Estructura de tabla para la tabla `historicopeso`
+--
+
+CREATE TABLE IF NOT EXISTS `historicopeso` (
+  `fecha` datetime NOT NULL,
+  `idcliente` int(11) NOT NULL,
+  `peso` decimal(10,2) NOT NULL
+) ENGINE=InnoDB DEFAULT CHARSET=utf8 COLLATE=utf8_spanish_ci;
+
+--
+-- Volcado de datos para la tabla `historicopeso`
+--
+
+INSERT INTO `historicopeso` (`fecha`, `idcliente`, `peso`) VALUES
+('2016-04-17 14:44:14', 12, '60.00');
+
+-- --------------------------------------------------------
+
+--
 -- Estructura de tabla para la tabla `patologia`
 --
 
@@ -481,14 +521,32 @@ CREATE TABLE IF NOT EXISTS `patologia` (
   `id` int(11) NOT NULL,
   `nombre` varchar(100) COLLATE utf8_spanish_ci NOT NULL,
   `descripcion` text COLLATE utf8_spanish_ci
-) ENGINE=InnoDB AUTO_INCREMENT=2 DEFAULT CHARSET=utf8 COLLATE=utf8_spanish_ci;
+) ENGINE=InnoDB AUTO_INCREMENT=20 DEFAULT CHARSET=utf8 COLLATE=utf8_spanish_ci;
 
 --
 -- Volcado de datos para la tabla `patologia`
 --
 
 INSERT INTO `patologia` (`id`, `nombre`, `descripcion`) VALUES
-(1, 'Nefropatía', NULL);
+(1, 'Embarazo', NULL),
+(2, 'Alergia a frutos secos', NULL),
+(3, 'Alergia a la leche', NULL),
+(4, 'Alergia al huevo', NULL),
+(5, 'Alergia al pescado y al marisco', NULL),
+(6, 'Cáncer', NULL),
+(7, 'Celíaco', NULL),
+(8, 'Diabetes', NULL),
+(9, 'Enfermedad  intestinal', NULL),
+(10, 'Enfermedad renal', NULL),
+(11, 'Enfermedad del hígado', NULL),
+(12, 'Hernia de hiato', NULL),
+(13, 'Hipertensión arterial', NULL),
+(14, 'Hipertiroidismo', NULL),
+(15, 'Hiperuricemia o gota', NULL),
+(16, 'Hipotiroidismo', NULL),
+(17, 'Intolerante a la lactosa', NULL),
+(18, 'Otras alergia/intolerancia alimentaria', NULL),
+(19, 'Colesterol alto', NULL);
 
 -- --------------------------------------------------------
 
@@ -500,6 +558,14 @@ CREATE TABLE IF NOT EXISTS `patologiacliente` (
   `idcliente` int(11) NOT NULL,
   `idpatologia` int(11) NOT NULL
 ) ENGINE=InnoDB DEFAULT CHARSET=utf8 COLLATE=utf8_spanish_ci;
+
+--
+-- Volcado de datos para la tabla `patologiacliente`
+--
+
+INSERT INTO `patologiacliente` (`idcliente`, `idpatologia`) VALUES
+(12, 1),
+(12, 12);
 
 -- --------------------------------------------------------
 
@@ -513,6 +579,18 @@ CREATE TABLE IF NOT EXISTS `tablaintercambio` (
   `valor` decimal(10,1) DEFAULT NULL,
   `fecha` date NOT NULL
 ) ENGINE=InnoDB DEFAULT CHARSET=utf8 COLLATE=utf8_spanish_ci;
+
+--
+-- Volcado de datos para la tabla `tablaintercambio`
+--
+
+INSERT INTO `tablaintercambio` (`idcliente`, `idgrupo`, `valor`, `fecha`) VALUES
+(12, 1, '2.5', '2016-04-17'),
+(12, 2, '5.5', '2016-04-17'),
+(12, 3, '2.0', '2016-04-17'),
+(12, 4, '16.0', '2016-04-17'),
+(12, 5, '6.0', '2016-04-17'),
+(12, 6, '4.0', '2016-04-17');
 
 -- --------------------------------------------------------
 
@@ -617,6 +695,13 @@ ALTER TABLE `grupointercambio`
   ADD PRIMARY KEY (`id`);
 
 --
+-- Indices de la tabla `historicopeso`
+--
+ALTER TABLE `historicopeso`
+  ADD PRIMARY KEY (`fecha`,`idcliente`),
+  ADD KEY `fk_histpeso_cliente` (`idcliente`);
+
+--
 -- Indices de la tabla `patologia`
 --
 ALTER TABLE `patologia`
@@ -669,7 +754,7 @@ ALTER TABLE `alimento`
 -- AUTO_INCREMENT de la tabla `cliente`
 --
 ALTER TABLE `cliente`
-  MODIFY `id` int(11) NOT NULL AUTO_INCREMENT,AUTO_INCREMENT=7;
+  MODIFY `id` int(11) NOT NULL AUTO_INCREMENT,AUTO_INCREMENT=13;
 --
 -- AUTO_INCREMENT de la tabla `dietista`
 --
@@ -679,7 +764,7 @@ ALTER TABLE `dietista`
 -- AUTO_INCREMENT de la tabla `patologia`
 --
 ALTER TABLE `patologia`
-  MODIFY `id` int(11) NOT NULL AUTO_INCREMENT,AUTO_INCREMENT=2;
+  MODIFY `id` int(11) NOT NULL AUTO_INCREMENT,AUTO_INCREMENT=20;
 --
 -- AUTO_INCREMENT de la tabla `testdias`
 --
@@ -714,17 +799,23 @@ ALTER TABLE `cliente`
   ADD CONSTRAINT `fk_cliente_actividad` FOREIGN KEY (`idactividad`) REFERENCES `actividadfisica` (`id`) ON DELETE NO ACTION ON UPDATE NO ACTION;
 
 --
+-- Filtros para la tabla `historicopeso`
+--
+ALTER TABLE `historicopeso`
+  ADD CONSTRAINT `fk_histpeso_cliente` FOREIGN KEY (`idcliente`) REFERENCES `cliente` (`id`) ON DELETE CASCADE ON UPDATE NO ACTION;
+
+--
 -- Filtros para la tabla `patologiacliente`
 --
 ALTER TABLE `patologiacliente`
-  ADD CONSTRAINT `fk_patologia_cliente` FOREIGN KEY (`idcliente`) REFERENCES `cliente` (`id`) ON DELETE NO ACTION ON UPDATE NO ACTION,
+  ADD CONSTRAINT `fk_patologia_cliente` FOREIGN KEY (`idcliente`) REFERENCES `cliente` (`id`) ON DELETE CASCADE ON UPDATE NO ACTION,
   ADD CONSTRAINT `fk_patologia_patologia` FOREIGN KEY (`idpatologia`) REFERENCES `patologia` (`id`) ON DELETE NO ACTION ON UPDATE NO ACTION;
 
 --
 -- Filtros para la tabla `tablaintercambio`
 --
 ALTER TABLE `tablaintercambio`
-  ADD CONSTRAINT `fk_intercambio_cliente` FOREIGN KEY (`idcliente`) REFERENCES `cliente` (`id`) ON DELETE NO ACTION ON UPDATE NO ACTION,
+  ADD CONSTRAINT `fk_intercambio_cliente` FOREIGN KEY (`idcliente`) REFERENCES `cliente` (`id`) ON DELETE CASCADE ON UPDATE NO ACTION,
   ADD CONSTRAINT `fk_intercambio_grupo` FOREIGN KEY (`idgrupo`) REFERENCES `grupointercambio` (`id`) ON DELETE NO ACTION ON UPDATE NO ACTION;
 
 --
