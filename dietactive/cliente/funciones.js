@@ -338,29 +338,10 @@
 //Fin Registro
 
 //Login
-function clienteLogin()
-{
-	var email=$("#email").val();
-	var password=$("#password").val();
-	
-	$.post("../servidor/clientelogin.php",{
-			password: $("#password").val(),
-			email: $("#email").val()
-							},
-							function(datos, estado)
-							{
-								if(datos=="s")
-								{
-									return true;
-								}
-								else
-								{
-									$("#fallologin").html("El correo electrónico y/o contraseña son incorrectos.");
-									return false;
-								}
-							});
-}
+
 //Fin Login
+
+
 
 //Plantilla
 function datosEmpresa()

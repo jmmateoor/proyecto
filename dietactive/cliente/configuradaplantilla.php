@@ -1,31 +1,17 @@
 <?php
 	session_start();
-
-	$_SESSION["email"]=$_POST['email'];
-	include("../servidor/config.inc.php");
 	include("../servidor/funciones.php");
-	$c = new MySQLi($servidor,$usuario,$password,$bbdd);
-	$c->set_charset("utf8");
+	$_SESSION["id"]=$_COOKIE["id"];
+	$_SESSION["nombre"]=$_COOKIE["nombre"];
+	$_SESSION["apellidos"]=$_COOKIE["apellidos"];
+	$_SESSION["email"]=$_COOKIE["email"];
+	$_SESSION["peso"]=$_COOKIE["peso"];
+	$_SESSION["pesodeseable"]=$_COOKIE["pesodeseable"];
+	$_SESSION["sexo"]=$_COOKIE["sexo"];
+	$_SESSION["fechanac"]=$_COOKIE["fechanac"];
+	$_SESSION["altura"]=$_COOKIE["altura"];
+	$_SESSION["dieta"]=$_COOKIE["dieta"];
 	
-	$password=md5($_POST['password']);
-	$email=$_POST['email'];
-		
-	$consulta = $c->prepare("select id, nombre, apellidos, telefono, email, peso, pesodeseable, dieta from cliente where email = ?");
-	$consulta->bind_param("s",$email);
-	$consulta->execute();
-	$consulta->bind_result($id, $nombre, $apellidos, $telefono, $email, $peso, $pesodeseable, $dieta);
-	while($consulta->fetch())
-	{
-		$_SESSION["id"]=$id;
-		$_SESSION["nombre"]=$nombre;
-		$_SESSION["apellidos"]=$apellidos;
-		$_SESSION["telefono"]=$telefono;
-		$_SESSION["email"]=$email;
-		$_SESSION["peso"]=$peso;
-		$_SESSION["pesodeseable"]=$pesodeseable;
-		$_SESSION["dieta"]=$dieta;
-	}
-	$c->close();
 ?>
 <!DOCTYPE HTML>
 <html>
@@ -59,6 +45,20 @@ window.onload=function(){
 		);
     });
 }
+function getCookie(cname) {
+    var name = cname + "=";
+    var ca = document.cookie.split(';');
+    for(var i = 0; i <ca.length; i++) {
+        var c = ca[i];
+        while (c.charAt(0)==' ') {
+            c = c.substring(1);
+        }
+        if (c.indexOf(name) == 0) {
+            return c.substring(name.length,c.length);
+        }
+    }
+    return "";
+}
 </script>
 </head>
 
@@ -69,7 +69,7 @@ window.onload=function(){
                 	
                 </div>
                 <div class="col-md-4">
-                	<span class="glyphicon glyphicon-user"></span> <span id="email"><?php echo $_SESSION["email"] ?></span>
+                	<span class="glyphicon glyphicon-user"></span> <span id="email"><?php echo $_SESSION['email'] ?></span>
                 </div>
                 <div class="col-md-2">
                 	<a class="cerrarsesion" href="#"><span class="glyphicon glyphicon-off"></span> Cerrar sesión</a>
@@ -118,6 +118,12 @@ window.onload=function(){
                         <p id="peso"><?php echo $_SESSION["peso"] ?></p>
                         <p><b>Tu peso deseable</b></p>
                         <p id="pesodeseable"><?php echo $_SESSION["pesodeseable"] ?></p>
+                        <p><b>Sexo</b></p>
+                        <p id="sexo"><?php if($_SESSION["sexo"]=="h"){echo "Hombre";} else {echo "Mujer";} ?></p>
+                        <p><b>Altura</b></p>
+                        <p id="altura"><?php echo $_SESSION["altura"] ?></p>
+                        <p><b>Edad</b></p>
+                        <p id="edad"><?php echo edad($_SESSION["fechanac"]) ?></p>
                     </div>
                 </div>
                 <div class="row">

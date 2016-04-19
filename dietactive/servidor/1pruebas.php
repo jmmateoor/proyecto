@@ -1,3 +1,8 @@
+<?php
+session_start();
+
+$_SESSION["nombre"]="Jose";
+?>
 <!DOCTYPE HTML>
 <html>
 <head>
@@ -6,19 +11,14 @@
 </head>
 
 <body>
-<?php
-	include("funciones.php");
-	
-	if(md5("1234")=="81dc9bdb52d04dc20036dbd8313ed055")
-	{
-		echo "Si";
-	}
-	else
-	{
-		echo "No";
-	}
 
+
+<?php
+	
+$_SESSION["nombre"]="<script>document.write('Laura');</script>";
 ?>
+
+<a href="2pruebas.php">Ir a</a>
 
 </body>
 </html>
