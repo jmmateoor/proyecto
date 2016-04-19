@@ -33,7 +33,7 @@ function pesoDeseable($altura,$sexo)
 
 function crearIntercambios($idcliente)
 {
-	include("config.php");
+	include("config.inc.php");
 	$c = new MySQLi($servidor,$usuario,$password,$bbdd);
 	$c->set_charset("utf8");
 	
@@ -98,14 +98,26 @@ function crearIntercambios($idcliente)
 	else if($edad>=50 && $edad<60)
 	{
 		$tmbr=$tmb*0.90;
+		if($sexo=="m" && $embarazo)
+		{
+			$tmbr=$tmbr+200;
+		}
 	}
 	else if($edad>=60 && $edad<70)
 	{
 		$tmbr=$tmb*0.80;
+		if($sexo=="m" && $embarazo)
+		{
+			$tmbr=$tmbr+200;
+		}
 	}
 	else if($edad>=70)
 	{
 		$tmbr=$tmb*0.70;
+		if($sexo=="m" && $embarazo)
+		{
+			$tmbr=$tmbr+200;
+		}
 	}
 	
 	//Cálculo del Gasto de Actividad, ga
@@ -154,10 +166,9 @@ function crearIntercambios($idcliente)
 	$grasas=redondeo($grasas);
 	$proteinas=redondeo($proteinas);
 	
-	$fecha=date("Y-m-d");
 	
-	$preparada = $c->prepare("insert into tablaintercambio(idcliente, idgrupo, valor, fecha) values (?, ?, ?, ?)");
-	$preparada->bind_param("iids",$idcliente,$idgrupo,$valor, $fecha);
+	$preparada = $c->prepare("insert into tablaintercambio(idcliente, idgrupo, valor) values (?, ?, ?)");
+	$preparada->bind_param("iid",$idcliente,$idgrupo,$valor);
 	
 	$idgrupo=1;
 	$valor=$lacteos;
@@ -188,7 +199,7 @@ function crearIntercambios($idcliente)
 
 function pesoHistorico($idcliente)
 {
-	include("config.php");
+	include("config.inc.php");
 	$c = new MySQLi($servidor,$usuario,$password,$bbdd);
 	$c->set_charset("utf8");
 	

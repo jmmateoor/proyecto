@@ -1,5 +1,5 @@
 <?php
-	include("config.php");
+	include("config.inc.php");
 	include("funciones.php");
 	$email=$_GET['email'];
 	

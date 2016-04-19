@@ -1,11 +1,31 @@
 <?php
-session_start();
-$_SESSION["nombre"]="José Mª";
-$_SESSION["apellidos"]="Mateo Ortega";
-$_SESSION["email"]="josem.mateo.ortega@gmail.com";
-$_SESSION["peso"]="77";
-$_SESSION["pesodeseable"]="69.5";
+	session_start();
 
+	$_SESSION["email"]=$_POST['email'];
+	include("../servidor/config.inc.php");
+	include("../servidor/funciones.php");
+	$c = new MySQLi($servidor,$usuario,$password,$bbdd);
+	$c->set_charset("utf8");
+	
+	$password=md5($_POST['password']);
+	$email=$_POST['email'];
+		
+	$consulta = $c->prepare("select id, nombre, apellidos, telefono, email, peso, pesodeseable, dieta from cliente where email = ?");
+	$consulta->bind_param("s",$email);
+	$consulta->execute();
+	$consulta->bind_result($id, $nombre, $apellidos, $telefono, $email, $peso, $pesodeseable, $dieta);
+	while($consulta->fetch())
+	{
+		$_SESSION["id"]=$id;
+		$_SESSION["nombre"]=$nombre;
+		$_SESSION["apellidos"]=$apellidos;
+		$_SESSION["telefono"]=$telefono;
+		$_SESSION["email"]=$email;
+		$_SESSION["peso"]=$peso;
+		$_SESSION["pesodeseable"]=$pesodeseable;
+		$_SESSION["dieta"]=$dieta;
+	}
+	$c->close();
 ?>
 <!DOCTYPE HTML>
 <html>
@@ -22,9 +42,24 @@ $_SESSION["pesodeseable"]="69.5";
 <script src="funciones.js"></script>
 <script>
 window.onload=function(){
+	$("#panel1").hide();
+	$("#panel2").hide();
+	var oculto1=true;
 	datosEmpresa();
+	$("#flip1").click(function(){
+        $("#panel1").slideToggle(function(){
+				$("#iconoflip1").toggleClass("glyphicon-menu-up","glyphicon-menu-down");
+			}
+		);
+    });
+	$("#flip2").click(function(){
+        $("#panel2").slideToggle(function(){
+				$("#iconoflip2").toggleClass("glyphicon-menu-up","glyphicon-menu-down");
+			}
+		);
+    });
 }
-
+</script>
 </head>
 
 <body>
@@ -69,19 +104,31 @@ window.onload=function(){
         <div class="row cuerpo">
         	<div class="col-md-3">
             	<div class="row">
-            		<h3 class="datospers">Datos Personales <a href="#" class="enlacenormal">[Actualizar]</a></h3>
-                    <p><b>Nombre</b></p>
-                    <p id="nombre"><?php echo $_SESSION["nombre"] ?></p>
-                    <p><b>Apellidos</b></p>
-                    <p id="apellidos"><?php echo $_SESSION["apellidos"] ?></p>
-                    <p><b>Tu peso</b></p>
-                    <p id="peso"><?php echo $_SESSION["peso"] ?></p>
-                    <p><b>Tu peso deseable</b></p>
-                    <p id="pesodeseable"><?php echo $_SESSION["pesodeseable"] ?></p>
-                </div>
-                <div class="row">
                 	<h3 class="datospers">Tus intercambios</h3>
                     <p id="intercambios"><br/><br/><br/><br/></p>
+                </div>
+                <div class="row">
+            		<h3 id="flip1" class="datospers"><span id="iconoflip1" class="glyphicon glyphicon-menu-down"></span> Datos Personales <a href="#" class="enlacenormal">[Actualizar]</a></h3>
+                    <div id="panel1">
+                        <p><b>Nombre</b></p>
+                        <p id="nombre"><?php echo $_SESSION["nombre"] ?></p>
+                        <p><b>Apellidos</b></p>
+                        <p id="apellidos"><?php echo $_SESSION["apellidos"] ?></p>
+                        <p><b>Tu peso</b></p>
+                        <p id="peso"><?php echo $_SESSION["peso"] ?></p>
+                        <p><b>Tu peso deseable</b></p>
+                        <p id="pesodeseable"><?php echo $_SESSION["pesodeseable"] ?></p>
+                    </div>
+                </div>
+                <div class="row">
+                	<h3 id="flip2" class="datospers"><span id="iconoflip2" class="glyphicon glyphicon-menu-down"></span> Tu historial de peso</h3>
+                    <div id="panel2">
+                    	<p>91</p>
+                        <p>89</p>
+                        <p>84</p>
+                        <p>81</p>
+                        <p>78</p>
+                    </div>
                 </div>
             </div>
             <div class="col-md-9">
@@ -112,7 +159,7 @@ window.onload=function(){
         </footer>
         <div class="row">
         	<h5 id="dietnombre" class="desarrollo"></h5>
-            <h5 class="desarrollo">Desarrollado por José Mª Mateo</h5>
+            <h5 class="desarrollo">Desarrollado por <span id="dietdesarrollado"></span></h5>
         </div>
     </div>
 </body>

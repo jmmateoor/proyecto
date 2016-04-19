@@ -18,6 +18,8 @@ session_start();
 window.onload=function(){
 	datosEmpresa();
 }
+
+
 </script>
 </head>
 
@@ -34,18 +36,18 @@ window.onload=function(){
             <div class="col-md-4">
             	<h3 class="datospers">Inicio de sesión</h3><!-- CONTENIDO DE LA WEB <a href="#" class="actualizar">[Actualizar]</a> -->
                 <p id="contenidos">
-                <form>
+                <form action="configuradaplantilla.php" method="post" onSubmit="return(clienteLogin())">
                 <div class="form-group">
                     <label for="email">Correo electrónico</label>
                     <input type="email" class="form-control" id="email" name="email" required maxlength="100" />
-                    <span class="error" id="email2"></span>
                 </div>
                 <div class="form-group">
                     <label for="password">Contraseña</label>
                     <input type="password" class="form-control" id="password" name="password" required maxlength="30" onKeyUp="validaPassword();" />
                 </div>
-                <input type="button" value="Iniciar sesión" class="btn btn-default" onClick="" /> o <a class="enlacenormal" href="registro.html">Registrar</a>
+                <input type="submit" value="Iniciar sesión" class="btn btn-default" /> o <a class="enlacenormal" href="registro.html">Registrar</a>
                 </form>
+                <span id="fallologin"></span>
                 </p>
             </div>
             <div class="col-md-4">
@@ -55,16 +57,17 @@ window.onload=function(){
             <div class="row pie">
                 <div class="col-md-3">
                     <h4>Teléfonos</h4>
-                    <p id="dietfijo" class="pietexto"><a class="pieenlace" href="tel:956555777">956 555 777</a></p>
-                    <p id="dietmovil" class="pietexto"><a class="pieenlace" href="tel:666000888">666 000 888</a></p>
+                    <p class="pietexto"><a id="dietfijo1" class="pieenlace" href=""><span id="dietfijo2"></span></a></p>
+                    <p class="pietexto"><a id="dietmovil1" class="pieenlace" href=""><span id="dietmovil2"></span></a></p>
                 </div>
                 <div class="col-md-3">
                     <h4>Dirección</h4>
-                    <p id="dietdireccion" class="pietexto">Calle Comer Bien</p>
+                    <p id="dietdireccion" class="pietexto"></p>
+                    <p id="dietdirecciondatos" class="pietexto"></p>
                 </div>
                 <div class="col-md-3">
                     <h4>Correo electrónico</h4>
-                    <p id="dietemail" class="pietexto">josem.daw2@gmail.com</p>
+                    <p id="dietemail" class="pietexto"></p>
                 </div>
                 <div class="col-md-3">
                     <h4>Aviso Legal</h4>
@@ -72,8 +75,8 @@ window.onload=function(){
             </div>
         </footer>
         <div class="row">
-        	<h5 class="desarrollo">DietActive</h5>
-            <h5 class="desarrollo">Desarrollado por José Mª Mateo</h5>
+        	<h5 id="dietnombre" class="desarrollo"></h5>
+            <h5 class="desarrollo">Desarrollado por <span id="dietdesarrollado"></span></h5>
         </div>
     </div>
 </body>

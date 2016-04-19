@@ -9,8 +9,15 @@
 <?php
 	include("funciones.php");
 	
-	$idcliente=11;
-	pesoHistorico($idcliente);
+	if(md5("1234")=="81dc9bdb52d04dc20036dbd8313ed055")
+	{
+		echo "Si";
+	}
+	else
+	{
+		echo "No";
+	}
+
 ?>
 
 </body>

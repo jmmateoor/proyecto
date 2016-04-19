@@ -1,11 +1,11 @@
 <?php
-	include("config.php");
+	include("config.inc.php");
 	include("funciones.php");
 	$c = new MySQLi($servidor,$usuario,$password,$bbdd);
 	$c->set_charset("utf8");
-	$preparada = $c->prepare("select nombre, provincia, localidad, codigopostal, direccion, telefono1, telefono2, email from datosempresa");
+	$preparada = $c->prepare("select nombre, provincia, localidad, codigopostal, direccion, telefono1, telefono2, email, desarrollado from datosempresa");
 	$preparada->execute();
-	$preparada->bind_result($nombre, $provincia, $localidad, $codigopostal, $direccion, $telefono1, $telefono2, $email);
+	$preparada->bind_result($nombre, $provincia, $localidad, $codigopostal, $direccion, $telefono1, $telefono2, $email, $desarrollado);
 	$salida="[";
 	while($preparada->fetch())
 	{
@@ -17,7 +17,8 @@
 		$salida.="\"direccion\" : \"".$direccion."\",";
 		$salida.="\"telefono1\" : \"".$telefono1."\",";
 		$salida.="\"telefono2\" : \"".$telefono2."\",";
-		$salida.="\"email\" : \"".$email."\"";
+		$salida.="\"email\" : \"".$email."\",";
+		$salida.="\"desarrollado\" : \"".$desarrollado."\"";
 		$salida.="},";
 	}
 	$salida=substr($salida,0,-1);

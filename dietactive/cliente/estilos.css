@@ -1,6 +1,5 @@
 /* CSS Document */
 @import url(https://fonts.googleapis.com/css?family=Comfortaa);
-@import url(https://fonts.googleapis.com/css?family=Headland+One);
 h1,h2,h3,h4,h5,h6{
 	font-family: 'Comfortaa', cursive;
 }
@@ -16,7 +15,6 @@ h1{
 
 body{
 	background-color:#1B1B1B !important;
-	font-family: 'Headland One', serif;
 }
 
 .barrasuperior{
@@ -109,6 +107,12 @@ a.enlaceinicio:visited{
 	border-top:#777674 solid 5px;
 	background-color:#d3d1ce;
 	padding-left:30px;
+}
+
+@media screen and (min-width: 480px) {
+    .cuerpo {
+        min-height:400px;
+    }
 }
 
 .datospers{

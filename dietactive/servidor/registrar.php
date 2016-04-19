@@ -1,13 +1,13 @@
 <?php
 
-	include("config.php");
+	include("config.inc.php");
 	include("funciones.php");
 	$c = new MySQLi($servidor,$usuario,$password,$bbdd);
 	$c->set_charset("utf8");
 	
 	$codigo=genera_random(20);
 	$activado="n";
-	$password=$_POST['password'];
+	$password=md5($_POST['password']);
 	$nombre=$_POST['nombre'];
 	$apellidos=$_POST['apellidos'];
 	$telefono=$_POST['telefono'];
