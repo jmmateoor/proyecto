@@ -3,7 +3,7 @@
 -- http://www.phpmyadmin.net
 --
 -- Servidor: 127.0.0.1
--- Tiempo de generación: 17-04-2016 a las 19:21:45
+-- Tiempo de generación: 19-04-2016 a las 16:24:46
 -- Versión del servidor: 5.6.26
 -- Versión de PHP: 5.6.12
 
@@ -28,6 +28,7 @@ USE `dietactive`;
 -- Estructura de tabla para la tabla `actividadfisica`
 --
 
+DROP TABLE IF EXISTS `actividadfisica`;
 CREATE TABLE IF NOT EXISTS `actividadfisica` (
   `id` int(11) NOT NULL,
   `nombre` varchar(100) COLLATE utf8_spanish_ci NOT NULL,
@@ -50,6 +51,7 @@ INSERT INTO `actividadfisica` (`id`, `nombre`, `descripcion`) VALUES
 -- Estructura de tabla para la tabla `alimento`
 --
 
+DROP TABLE IF EXISTS `alimento`;
 CREATE TABLE IF NOT EXISTS `alimento` (
   `id` int(11) NOT NULL,
   `idtipoalimento` int(11) NOT NULL,
@@ -390,6 +392,7 @@ INSERT INTO `alimento` (`id`, `idtipoalimento`, `alimento`, `comestible`, `energ
 -- Estructura de tabla para la tabla `cita`
 --
 
+DROP TABLE IF EXISTS `cita`;
 CREATE TABLE IF NOT EXISTS `cita` (
   `cita` datetime NOT NULL,
   `iddietista` int(11) NOT NULL,
@@ -402,11 +405,12 @@ CREATE TABLE IF NOT EXISTS `cita` (
 -- Estructura de tabla para la tabla `cliente`
 --
 
+DROP TABLE IF EXISTS `cliente`;
 CREATE TABLE IF NOT EXISTS `cliente` (
   `id` int(11) NOT NULL,
   `codigo_activacion` varchar(20) COLLATE utf8_spanish_ci NOT NULL,
   `activado` enum('s','n') COLLATE utf8_spanish_ci NOT NULL,
-  `password` varchar(30) COLLATE utf8_spanish_ci NOT NULL,
+  `password` varchar(60) COLLATE utf8_spanish_ci NOT NULL,
   `nombre` varchar(100) COLLATE utf8_spanish_ci NOT NULL,
   `apellidos` varchar(100) COLLATE utf8_spanish_ci NOT NULL,
   `telefono` varchar(9) COLLATE utf8_spanish_ci NOT NULL,
@@ -419,14 +423,14 @@ CREATE TABLE IF NOT EXISTS `cliente` (
   `pesodeseable` decimal(10,2) DEFAULT NULL,
   `dieta` text COLLATE utf8_spanish_ci,
   `fechaingreso` date NOT NULL
-) ENGINE=InnoDB AUTO_INCREMENT=13 DEFAULT CHARSET=utf8 COLLATE=utf8_spanish_ci;
+) ENGINE=InnoDB AUTO_INCREMENT=14 DEFAULT CHARSET=utf8 COLLATE=utf8_spanish_ci;
 
 --
 -- Volcado de datos para la tabla `cliente`
 --
 
 INSERT INTO `cliente` (`id`, `codigo_activacion`, `activado`, `password`, `nombre`, `apellidos`, `telefono`, `email`, `sexo`, `peso`, `altura`, `fechanac`, `idactividad`, `pesodeseable`, `dieta`, `fechaingreso`) VALUES
-(12, '08b41ec0a7a71415ee6b', 's', '1234', 'Maria', 'Ortega', '666010101', 'josem.mateo.ortega@gmail.com', 'm', '60.00', 170, '1988-02-17', 1, '60.00', NULL, '2016-04-17');
+(13, '5adaacd4531b78ff8b5c', 's', '81dc9bdb52d04dc20036dbd8313ed055', 'Jose Mª', 'Mateo', '666010101', 'josem.mateo.ortega@gmail.com', 'h', '80.00', 176, '1989-07-11', 1, '69.50', NULL, '2016-04-19');
 
 -- --------------------------------------------------------
 
@@ -434,7 +438,9 @@ INSERT INTO `cliente` (`id`, `codigo_activacion`, `activado`, `password`, `nombr
 -- Estructura de tabla para la tabla `datosempresa`
 --
 
+DROP TABLE IF EXISTS `datosempresa`;
 CREATE TABLE IF NOT EXISTS `datosempresa` (
+  `id` int(11) NOT NULL,
   `nombre` varchar(100) COLLATE utf8_spanish_ci NOT NULL,
   `provincia` varchar(100) COLLATE utf8_spanish_ci NOT NULL,
   `localidad` varchar(100) COLLATE utf8_spanish_ci NOT NULL,
@@ -442,15 +448,16 @@ CREATE TABLE IF NOT EXISTS `datosempresa` (
   `direccion` varchar(100) COLLATE utf8_spanish_ci NOT NULL,
   `telefono1` varchar(9) COLLATE utf8_spanish_ci NOT NULL,
   `telefono2` varchar(9) COLLATE utf8_spanish_ci NOT NULL,
-  `email` varchar(100) COLLATE utf8_spanish_ci NOT NULL
+  `email` varchar(100) COLLATE utf8_spanish_ci NOT NULL,
+  `desarrollado` varchar(100) COLLATE utf8_spanish_ci NOT NULL
 ) ENGINE=InnoDB DEFAULT CHARSET=utf8 COLLATE=utf8_spanish_ci;
 
 --
 -- Volcado de datos para la tabla `datosempresa`
 --
 
-INSERT INTO `datosempresa` (`nombre`, `provincia`, `localidad`, `codigopostal`, `direccion`, `telefono1`, `telefono2`, `email`) VALUES
-('DietActive', 'Cádiz', 'Cádiz', '11004', 'Calle de la Comida Sana nº 2', '956112233', '666112233', 'josem.daw2@gmail.com');
+INSERT INTO `datosempresa` (`id`, `nombre`, `provincia`, `localidad`, `codigopostal`, `direccion`, `telefono1`, `telefono2`, `email`, `desarrollado`) VALUES
+(1, 'DietActive', 'Cádiz', 'Cádiz', '11004', 'Calle de la Comida Sana nº 2', '956112233', '666112233', 'josem.daw2@gmail.com', 'José María Mateo Ortega');
 
 -- --------------------------------------------------------
 
@@ -458,6 +465,7 @@ INSERT INTO `datosempresa` (`nombre`, `provincia`, `localidad`, `codigopostal`, 
 -- Estructura de tabla para la tabla `dietista`
 --
 
+DROP TABLE IF EXISTS `dietista`;
 CREATE TABLE IF NOT EXISTS `dietista` (
   `id` int(11) NOT NULL,
   `password` varchar(30) COLLATE utf8_spanish_ci NOT NULL,
@@ -475,6 +483,7 @@ CREATE TABLE IF NOT EXISTS `dietista` (
 -- Estructura de tabla para la tabla `grupointercambio`
 --
 
+DROP TABLE IF EXISTS `grupointercambio`;
 CREATE TABLE IF NOT EXISTS `grupointercambio` (
   `id` int(11) NOT NULL,
   `nombre` varchar(100) COLLATE utf8_spanish_ci NOT NULL
@@ -498,6 +507,7 @@ INSERT INTO `grupointercambio` (`id`, `nombre`) VALUES
 -- Estructura de tabla para la tabla `historicopeso`
 --
 
+DROP TABLE IF EXISTS `historicopeso`;
 CREATE TABLE IF NOT EXISTS `historicopeso` (
   `fecha` datetime NOT NULL,
   `idcliente` int(11) NOT NULL,
@@ -509,7 +519,7 @@ CREATE TABLE IF NOT EXISTS `historicopeso` (
 --
 
 INSERT INTO `historicopeso` (`fecha`, `idcliente`, `peso`) VALUES
-('2016-04-17 14:44:14', 12, '60.00');
+('2016-04-19 11:34:29', 13, '80.00');
 
 -- --------------------------------------------------------
 
@@ -517,6 +527,7 @@ INSERT INTO `historicopeso` (`fecha`, `idcliente`, `peso`) VALUES
 -- Estructura de tabla para la tabla `patologia`
 --
 
+DROP TABLE IF EXISTS `patologia`;
 CREATE TABLE IF NOT EXISTS `patologia` (
   `id` int(11) NOT NULL,
   `nombre` varchar(100) COLLATE utf8_spanish_ci NOT NULL,
@@ -554,6 +565,7 @@ INSERT INTO `patologia` (`id`, `nombre`, `descripcion`) VALUES
 -- Estructura de tabla para la tabla `patologiacliente`
 --
 
+DROP TABLE IF EXISTS `patologiacliente`;
 CREATE TABLE IF NOT EXISTS `patologiacliente` (
   `idcliente` int(11) NOT NULL,
   `idpatologia` int(11) NOT NULL
@@ -564,8 +576,8 @@ CREATE TABLE IF NOT EXISTS `patologiacliente` (
 --
 
 INSERT INTO `patologiacliente` (`idcliente`, `idpatologia`) VALUES
-(12, 1),
-(12, 12);
+(13, 9),
+(13, 12);
 
 -- --------------------------------------------------------
 
@@ -573,24 +585,24 @@ INSERT INTO `patologiacliente` (`idcliente`, `idpatologia`) VALUES
 -- Estructura de tabla para la tabla `tablaintercambio`
 --
 
+DROP TABLE IF EXISTS `tablaintercambio`;
 CREATE TABLE IF NOT EXISTS `tablaintercambio` (
   `idcliente` int(11) NOT NULL,
   `idgrupo` int(11) NOT NULL,
-  `valor` decimal(10,1) DEFAULT NULL,
-  `fecha` date NOT NULL
+  `valor` decimal(10,1) DEFAULT NULL
 ) ENGINE=InnoDB DEFAULT CHARSET=utf8 COLLATE=utf8_spanish_ci;
 
 --
 -- Volcado de datos para la tabla `tablaintercambio`
 --
 
-INSERT INTO `tablaintercambio` (`idcliente`, `idgrupo`, `valor`, `fecha`) VALUES
-(12, 1, '2.5', '2016-04-17'),
-(12, 2, '5.5', '2016-04-17'),
-(12, 3, '2.0', '2016-04-17'),
-(12, 4, '16.0', '2016-04-17'),
-(12, 5, '6.0', '2016-04-17'),
-(12, 6, '4.0', '2016-04-17');
+INSERT INTO `tablaintercambio` (`idcliente`, `idgrupo`, `valor`) VALUES
+(13, 1, '3.0'),
+(13, 2, '6.5'),
+(13, 3, '2.0'),
+(13, 4, '18.5'),
+(13, 5, '6.5'),
+(13, 6, '5.0');
 
 -- --------------------------------------------------------
 
@@ -598,6 +610,7 @@ INSERT INTO `tablaintercambio` (`idcliente`, `idgrupo`, `valor`, `fecha`) VALUES
 -- Estructura de tabla para la tabla `testdias`
 --
 
+DROP TABLE IF EXISTS `testdias`;
 CREATE TABLE IF NOT EXISTS `testdias` (
   `id` int(11) NOT NULL,
   `idcliente` int(11) NOT NULL,
@@ -612,6 +625,7 @@ CREATE TABLE IF NOT EXISTS `testdias` (
 -- Estructura de tabla para la tabla `tipoalimento`
 --
 
+DROP TABLE IF EXISTS `tipoalimento`;
 CREATE TABLE IF NOT EXISTS `tipoalimento` (
   `id` int(11) NOT NULL,
   `nombre` varchar(200) COLLATE utf8_spanish_ci NOT NULL
@@ -681,6 +695,12 @@ ALTER TABLE `cliente`
   ADD PRIMARY KEY (`id`),
   ADD UNIQUE KEY `email` (`email`),
   ADD KEY `idactividad` (`idactividad`);
+
+--
+-- Indices de la tabla `datosempresa`
+--
+ALTER TABLE `datosempresa`
+  ADD PRIMARY KEY (`id`);
 
 --
 -- Indices de la tabla `dietista`
@@ -754,7 +774,7 @@ ALTER TABLE `alimento`
 -- AUTO_INCREMENT de la tabla `cliente`
 --
 ALTER TABLE `cliente`
-  MODIFY `id` int(11) NOT NULL AUTO_INCREMENT,AUTO_INCREMENT=13;
+  MODIFY `id` int(11) NOT NULL AUTO_INCREMENT,AUTO_INCREMENT=14;
 --
 -- AUTO_INCREMENT de la tabla `dietista`
 --
