@@ -22,6 +22,8 @@
 <link rel="stylesheet" href="http://maxcdn.bootstrapcdn.com/bootstrap/3.3.6/css/bootstrap.min.css">
 <script src="https://ajax.googleapis.com/ajax/libs/jquery/1.12.0/jquery.min.js"></script>
 <script src="http://maxcdn.bootstrapcdn.com/bootstrap/3.3.6/js/bootstrap.min.js"></script>
+<script src="https://code.highcharts.com/highcharts.js"></script>
+<script src="https://code.highcharts.com/modules/exporting.js"></script>
 <meta name="viewport" content="width=device-width, initial-scale=1">
 <link rel="stylesheet" type="text/css" href="estilos.css">
 
@@ -31,6 +33,7 @@ window.onload=function(){
 	$("#panel1").hide();
 	$("#panel2").hide();
 	cargarIntercambios(<?php echo $_SESSION["id"] ?>);
+	graficaPeso(<?php echo $_SESSION["id"] ?>);
 	datosEmpresa();
 	$("#flip1").click(function(){
         $("#panel1").slideToggle(function(){
@@ -127,11 +130,7 @@ function getCookie(cname) {
                 <div class="row">
                 	<h3 id="flip2" class="datospers"><span id="iconoflip2" class="glyphicon glyphicon-menu-down"></span> Tu historial de peso</h3>
                     <div id="panel2">
-                    	<p>91</p>
-                        <p>89</p>
-                        <p>84</p>
-                        <p>81</p>
-                        <p>78</p>
+                    	<div id="grafica"></div>
                     </div>
                 </div>
             </div>

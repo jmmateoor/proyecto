@@ -6,18 +6,14 @@
 <script src="https://ajax.googleapis.com/ajax/libs/jquery/1.12.0/jquery.min.js"></script>
 <script src="https://code.highcharts.com/highcharts.js"></script>
 <script src="https://code.highcharts.com/modules/exporting.js"></script>
-<style>
-${demo.css}
-</style>
+
 <script type="text/javascript">
 window.onload=graficaPeso;
 
 
 function graficaPeso() {
-	
-	
-	var fechas=['Jan', 'Feb', 'Mar', 'Apr', 'May', 'Jun', 'Jul', 'Aug', 'Sep', 'Oct', 'Nov', 'Dec'];
-	var pesos=[7.0, 6.9, 9.5, 14.5, 18.4, 21.5, 25.2, 26.5, 23.3, 18.3, 13.9, 9.6];
+	var fechas=['Jan'];
+	var pesos=[7.0];
 	var pesodeseable=[20.5,20.5,20.5,20.5,20.5,20.5,20.5,20.5,20.5,20.5,20.5,20.5];
     $('#container').highcharts({
         chart: {

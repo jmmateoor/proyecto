@@ -480,6 +480,58 @@ function redondeo(alimento)
 	return alimento;
 }
 
+function graficaPeso(idcliente)
+{
+	var fechas=[];
+	var pesos=[];
+	$.post("../servidor/consulta_peso.php",{
+			idcliente: idcliente
+							},
+							function(data, estado)
+							{
+								
+								datos=JSON.parse(data);
+								for(var i=0;i<datos.length;i++)
+								{
+									var fecha=(datos[i].fecha).split(" ");
+									fechas.push(fecha[0]);
+									pesos.push(parseFloat(datos[i].peso));
+								}
+								fechas.reverse();
+								pesos.reverse();
+								$("#grafica").highcharts(
+								{
+									chart: {
+										type: 'line'
+									},
+									title: {
+										text: 'Tu historial de peso'
+									},
+									xAxis: {
+										categories: fechas
+									},
+									yAxis: {
+										title: {
+											text: 'Peso (Kg.)'
+										}
+									},
+									plotOptions: {
+										line: {
+											dataLabels: {
+												enabled: true
+											},
+											enableMouseTracking: false
+										}
+									},
+									series: [{
+										name: 'Peso',
+										data: pesos
+									}]
+								});
+								
+						});
+};
+
 
 //Plantilla
 function datosEmpresa()
