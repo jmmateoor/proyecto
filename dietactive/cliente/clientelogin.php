@@ -40,7 +40,7 @@ function clienteLogin()
 							{
 								if(data=="n")
 								{
-									$("#fallologin").html("El correo electrónico y/o contraseña son incorrectos.");
+									$("#fallologin").html("El correo electrónico y/o contraseña son incorrectos o tu cuenta no está activada.");
 								}
 								else
 								{

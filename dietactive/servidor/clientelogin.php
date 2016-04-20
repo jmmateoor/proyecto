@@ -7,9 +7,9 @@
 	
 	$password=md5($_POST['password']);
 	$email=$_POST['email'];
-	
-	$consulta = $c->prepare("select id, nombre, apellidos, email, peso, pesodeseable, sexo, fechanac, altura, dieta from cliente where email = ? and password = ?");
-	$consulta->bind_param("ss",$email, $password);
+	$activado="s";
+	$consulta = $c->prepare("select id, nombre, apellidos, email, peso, pesodeseable, sexo, fechanac, altura, dieta from cliente where email = ? and password = ? and activado = ?");
+	$consulta->bind_param("sss",$email, $password, $activado);
 	$consulta->execute();
 	$consulta->bind_result($id,$nombre, $apellidos, $email, $peso, $pesodeseable, $sexo, $fechanac, $altura, $dieta);
 	$consulta->store_result();
