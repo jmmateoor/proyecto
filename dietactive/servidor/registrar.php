@@ -1,7 +1,7 @@
 <?php
 
 	include("config.inc.php");
-	include("funciones.php");
+	include("funciones.inc.php");
 	$c = new MySQLi($servidor,$usuario,$password,$bbdd);
 	$c->set_charset("utf8");
 	

@@ -121,21 +121,21 @@ function crearIntercambios($idcliente)
 	}
 	
 	//Cálculo del Gasto de Actividad, ga
-	
+	include("coefactividad.inc.php");
 	switch ($actividadf)
 	{
 		//TERMINAR
-		case 1: $ga=$tmbr*0.2; break;
-		case 2: $ga=$tmbr*0.3; break;
-		case 3: $ga=$tmbr*0.5; break;
-		case 4: $ga=$tmbr*1; break;
+		case 1: $ga=$tmbr*$tipo1; break;
+		case 2: $ga=$tmbr*$tipo2; break;
+		case 3: $ga=$tmbr*$tipo3; break;
+		case 4: $ga=$tmbr*$tipo4; break;
 	}
 	
 	//Cálculo de la Energía Términa de los Alimentos, eta
 	$eta=($tmbr+$ga)*0.1;
 	
 	//Cálculo del Gasto Energético Total, geet
-	$geet=($tmbr+$ga+$eta)*0.90; //Kcal/dia
+	$geet=($tmbr+$ga+$eta)-640; //Kcal/dia
 	
 	//Reparto de principios inmediatos
 	

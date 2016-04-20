@@ -1,6 +1,6 @@
 <?php
 	session_start();
-	include("../servidor/funciones.php");
+	include("../servidor/funciones.inc.php");
 	$_SESSION["id"]=$_COOKIE["id"];
 	$_SESSION["nombre"]=$_COOKIE["nombre"];
 	$_SESSION["apellidos"]=$_COOKIE["apellidos"];
@@ -30,7 +30,7 @@
 window.onload=function(){
 	$("#panel1").hide();
 	$("#panel2").hide();
-	var oculto1=true;
+	cargarIntercambios(<?php echo $_SESSION["id"] ?>);
 	datosEmpresa();
 	$("#flip1").click(function(){
         $("#panel1").slideToggle(function(){
@@ -102,27 +102,25 @@ function getCookie(cname) {
             </div>
         </div>
         <div class="row cuerpo">
-        	<div class="col-md-3">
+        	<div class="col-md-4">
             	<div class="row">
                 	<h3 class="datospers">Tus intercambios</h3>
-                    <p id="intercambios"><br/><br/><br/><br/></p>
+                    <p id="intercambios"></p>
                 </div>
                 <div class="row">
             		<h3 id="flip1" class="datospers"><span id="iconoflip1" class="glyphicon glyphicon-menu-down"></span> Datos Personales <a href="#" class="enlacenormal">[Actualizar]</a></h3>
                     <div id="panel1">
-                        <p><b>Nombre</b></p>
-                        <p id="nombre"><?php echo $_SESSION["nombre"] ?></p>
-                        <p><b>Apellidos</b></p>
-                        <p id="apellidos"><?php echo $_SESSION["apellidos"] ?></p>
+                        <p><b>Nombre completo</b></p>
+                        <p id="nombre"><?php echo $_SESSION["nombre"]." ".$_SESSION["apellidos"] ?></p>
                         <p><b>Tu peso</b></p>
-                        <p id="peso"><?php echo $_SESSION["peso"] ?></p>
+                        <p id="peso"><?php echo $_SESSION["peso"] ?> Kg.</p>
                         <p><b>Tu peso deseable</b></p>
-                        <p id="pesodeseable"><?php echo $_SESSION["pesodeseable"] ?></p>
+                        <p id="pesodeseable"><?php echo $_SESSION["pesodeseable"] ?> Kg.</p>
                         <p><b>Sexo</b></p>
                         <p id="sexo"><?php if($_SESSION["sexo"]=="h"){echo "Hombre";} else {echo "Mujer";} ?></p>
                         <p><b>Altura</b></p>
-                        <p id="altura"><?php echo $_SESSION["altura"] ?></p>
-                        <p><b>Edad</b></p>
+                        <p id="altura"><?php echo $_SESSION["altura"] ?> cm.</p>
+                        <p><b>Tu edad</b></p>
                         <p id="edad"><?php echo edad($_SESSION["fechanac"]) ?></p>
                     </div>
                 </div>
@@ -137,7 +135,7 @@ function getCookie(cname) {
                     </div>
                 </div>
             </div>
-            <div class="col-md-9">
+            <div class="col-md-8">
             	<h3 class="datospers">Contenidos</h3><!-- CONTENIDO DE LA WEB -->
                 <p id="contenidos"><br/><br/><br/><br/><br/><br/><br/><br/><br/><br/><br/><br/><br/><br/><br/><br/><br/><br/><br/><br/><br/><br/><br/><br/><br/></p>
             </div>

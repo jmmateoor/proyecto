@@ -33,7 +33,7 @@ window.onload=function(){
                 <p id="contenidos">
 <?php
 include("config.inc.php");
-include("funciones.php");
+include("funciones.inc.php");
 if (isset($_GET['id']))
 {
 	$c = new MySQLi($servidor,$usuario,$password,$bbdd);

@@ -154,3 +154,12 @@ footer{
 	color:#777674;
 	text-align:center;
 }
+
+tr.tablanum td{
+	text-align:center;
+}
+
+td.titulo{
+	text-align:left !important;
+	font-weight:bold;
+}

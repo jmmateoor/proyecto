@@ -19,6 +19,14 @@ window.onload=function(){
 	datosEmpresa();
 }
 
+function pulsarEnter(e) {
+  		tecla =e.keyCode;
+  		if (tecla==13)
+		{ 
+			clienteLogin();
+		}
+}
+
 function clienteLogin()
 {
 	var email=$("#email").val();
@@ -86,11 +94,11 @@ function clienteLogin()
                 <form action="" method="post" >
                 <div class="form-group">
                     <label for="email">Correo electrónico</label>
-                    <input type="email" class="form-control" id="email" name="email" required maxlength="100" />
+                    <input type="email" class="form-control" id="email" name="email" onKeyPress="pulsarEnter(event);" required maxlength="100" />
                 </div>
                 <div class="form-group">
                     <label for="password">Contraseña</label>
-                    <input type="password" class="form-control" id="password" name="password" required maxlength="30" onKeyUp="validaPassword();" />
+                    <input type="password" class="form-control" id="password" name="password" required maxlength="30" onKeyPress="pulsarEnter(event);" onKeyUp="validaPassword();" />
                 </div>
                 <input type="button" value="Iniciar sesión" class="btn btn-default" onClick="clienteLogin();" /> o <a class="enlacenormal" href="registro.html">Registrar</a>
                 </form>

@@ -1,6 +1,6 @@
 <?php
 	include("config.inc.php");
-	include("funciones.php");
+	include("funciones.inc.php");
 	$email=$_GET['email'];
 	
 	$c = new MySQLi($servidor,$usuario,$password,$bbdd);

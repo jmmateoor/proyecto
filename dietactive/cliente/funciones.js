@@ -341,6 +341,144 @@
 
 //Fin Login
 
+function cargarIntercambios(idcliente)
+{
+	$.post("../servidor/consulta_intercambios.php",{
+			idcliente: idcliente
+							},
+							function(data, estado)
+							{
+								if(data!="")
+								{
+									var datos=JSON.parse(data);
+									
+									
+									//grupo 1 = lacteos
+									var lacteodesayuno;
+									var lacteomerienda;
+									
+									//grupo 2 = proteinas
+									var proteinadesayuno;
+									var proteinaalmuerzo;
+									var proteinamerienda;
+									var proteinacena;
+									
+									//grupo 3 = verduras
+									var verduraalmuerzo;
+									var verduracena;
+									
+									//grupo 4 = hidratos de carbono
+									var hdcdesayuno;
+									var hdcalmuerzo;
+									var hdcmerienda;
+									var hdccena;
+									
+									//grupo 5 = frutas
+									var frutadesayuno;
+									var frutaalmuerzo;
+									var frutacena;
+									
+									//grupo 6 = grasas
+									var grasasdesayuno;
+									var grasasalmuerzo;
+									var grasasmerienda;
+									var grasascena;
+									
+									for(var i=0;i<datos.length;i++)
+									{
+										var valor=parseFloat(datos[i].valor);
+										//alert(valor*0.5);
+										switch(parseInt(datos[i].idgrupo))
+										{
+											case 1:
+											{
+												lacteodesayuno=redondeo(valor*0.50);
+												lacteomerienda=redondeo(valor*0.50);
+												break;
+											}
+											
+											case 2:
+											{
+												proteinadesayuno=redondeo(valor*0.15);
+												proteinaalmuerzo=redondeo(valor*0.40);
+												proteinamerienda=redondeo(valor*0.15);
+												proteinacena=redondeo(valor*0.30);
+												break;
+											}
+											
+											case 3:
+											{
+												verduraalmuerzo=redondeo(valor*0.50);
+												verduracena=redondeo(valor*0.50);
+												break;
+											}
+											
+											case 4:
+											{
+												hdcdesayuno=redondeo(valor*0.15);
+												hdcalmuerzo=redondeo(valor*0.35);
+												hdcmerienda=redondeo(valor*0.15);
+												hdccena=redondeo(valor*0.35);
+												break;
+											}
+											
+											case 5:
+											{
+												frutadesayuno=redondeo(valor*0.33);
+												frutaalmuerzo=redondeo(valor*0.33);
+												frutacena=redondeo(valor*0.33);
+												break;
+											}
+											
+											case 6:
+											{
+												grasasdesayuno=redondeo(valor*0.10);
+												grasasalmuerzo=redondeo(valor*0.40);
+												grasasmerienda=redondeo(valor*0.10);
+												grasascena=redondeo(valor*0.40);
+												break;
+											}
+											
+										}
+									}
+									var tabla="<div class='table-responsive'><table class='table table-condensed'>";
+									tabla+="<tr><thead><td></td><th>Lácteos</th><th>Proteínas</th><th>Verduras</th><th>Hidratos de Carbono</th><th>Frutas</th><th>Grasas</th></thead></tr><tbody>";
+									tabla+="<tr class='tablanum'><td class='titulo'><b>Desayuno</b></td><td>"+lacteodesayuno+"</td><td>"+proteinadesayuno+"</td><td> </td><td>"+hdcdesayuno+"</td><td>"+frutadesayuno+"</td><td>"+grasasdesayuno+"</td></tr>";
+									tabla+="<tr class='tablanum'><td class='titulo'><b>Almuerzo</b></td><td> </td><td>"+proteinaalmuerzo+"</td><td>"+verduraalmuerzo+"</td><td>"+hdcalmuerzo+"</td><td>"+frutaalmuerzo+"</td><td>"+grasasalmuerzo+"</td></tr>";
+									tabla+="<tr class='tablanum'><td class='titulo'><b>Merienda</b></td><td>"+lacteomerienda+" </td><td> "+proteinamerienda+" </td><td> </td><td>"+hdcmerienda+"</td><td>  </td><td>"+grasasmerienda+"</td></tr>";
+									tabla+="<tr class='tablanum'><td class='titulo'><b>Cena</b></td><td> </td><td>"+proteinacena+" </td><td>"+verduracena+" </td><td>"+hdccena+"</td><td>"+frutacena+"</td><td>"+grasascena+"</td></tr>";
+									tabla+="</tbody></table></div>";
+									$("#intercambios").html(tabla);
+								}
+								else
+								{
+									$("#contenido").html("No se han podido cargar tus intercambios.");
+								}
+							});
+}
+
+function redondeo(alimento)
+{
+	if(alimento-Math.floor(alimento)<0.25)
+	{
+		alimento=Math.floor(alimento);
+	}
+	else
+	{
+		if(alimento-Math.floor(alimento)>=0.25 && alimento-Math.floor(alimento)<0.75)
+		{
+			alimento=Math.floor(alimento)+0.5;
+		}
+		else
+		{
+			if(alimento-Math.floor(alimento)>=0.75)
+			{
+				alimento=Math.floor(alimento)+1;
+			}
+		}
+	}
+	return alimento;
+}
 
 
 //Plantilla
