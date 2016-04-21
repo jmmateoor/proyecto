@@ -38,39 +38,15 @@ function clienteLogin()
 							},
 							function(data, estado)
 							{
-								if(data=="n")
+								if(data=="s")
 								{
-									$("#fallologin").html("El correo electrónico y/o contraseña son incorrectos o tu cuenta no está activada.");
+									location.href="configuradaplantilla.php";
+									
 								}
 								else
 								{
-									datos=JSON.parse(data);
-									
-									document.cookie="id="+datos[0].id;
-									document.cookie="nombre="+datos[0].nombre;
-									document.cookie="apellidos="+datos[0].apellidos;
-									document.cookie="email="+datos[0].email;
-									document.cookie="peso="+datos[0].peso;
-									document.cookie="pesodeseable="+datos[0].pesodeseable;
-									document.cookie="sexo="+datos[0].sexo;
-									document.cookie="fechanac="+datos[0].fechanac;
-									document.cookie="altura="+datos[0].altura;
-									document.cookie="dieta="+datos[0].dieta;
-									
-									
-									<?php /*?><?php $_SESSION["id"]=$_COOKIE["id"];
-									 $_SESSION["nombre"]=$_COOKIE["nombre"];
-									 $_SESSION["apellidos"]=$_COOKIE["apellidos"];
-									 $_SESSION["email"]=$_COOKIE["email"];
-									 $_SESSION["peso"]=$_COOKIE["peso"];
-									 $_SESSION["pesodeseable"]=$_COOKIE["pesodeseable"];
-									 $_SESSION["sexo"]=$_COOKIE["sexo"];
-									 $_SESSION["fechanac"]=$_COOKIE["fechanac"];
-									 $_SESSION["altura"]=$_COOKIE["altura"];
-									 $_SESSION["dieta"]=$_COOKIE["dieta"];
-									 ?><?php */?>
-									
-									location.href="configuradaplantilla.php";
+									$("#password").val("");
+									$("#fallologin").html("El correo electrónico y/o contraseña son incorrectos o tu cuenta no está activada.");
 								}
 							});
 }
@@ -100,7 +76,7 @@ function clienteLogin()
                     <label for="password">Contraseña</label>
                     <input type="password" class="form-control" id="password" name="password" required maxlength="30" onKeyPress="pulsarEnter(event);" onKeyUp="validaPassword();" />
                 </div>
-                <input type="button" value="Iniciar sesión" class="btn btn-default" onClick="clienteLogin();" /> o <a class="enlacenormal" href="registro.html">Registrar</a>
+                <input type="button" value="Iniciar sesión" class="btn btn-default" onClick="clienteLogin();" /> o <a class="enlacenormal" href="registro.html">registrarse</a>
                 </form>
                 <span id="fallologin"></span>
                 </p>

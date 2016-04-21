@@ -1,4 +1,6 @@
 <?php
+	session_start();
+	
 	include("config.inc.php");
 	include("funciones.inc.php");
 	$c = new MySQLi($servidor,$usuario,$password,$bbdd);
@@ -15,25 +17,23 @@
 	$consulta->store_result();
 	if($consulta->num_rows>0)
 	{
-		$salida="[";
+		$_SESSION["logeado"]=true;
+		
 		while($consulta->fetch())
 		{
-			$salida.="{";
-			$salida.="\"id\" : \"".$id."\",";
-			$salida.="\"nombre\" : \"".$nombre."\",";
-			$salida.="\"apellidos\" : \"".$apellidos."\",";
-			$salida.="\"email\" : \"".$email."\",";
-			$salida.="\"peso\" : \"".$peso."\",";
-			$salida.="\"pesodeseable\" : \"".$pesodeseable."\",";
-			$salida.="\"sexo\" : \"".$sexo."\",";
-			$salida.="\"fechanac\" : \"".$fechanac."\",";
-			$salida.="\"altura\" : \"".$altura."\",";
-			$salida.="\"dieta\" : \"".$dieta."\"";
-			$salida.="},";
+			$_SESSION["id"]=$id;
+			$_SESSION["nombre"]=$nombre;
+			$_SESSION["apellidos"]=$apellidos;
+			$_SESSION["email"]=$email;
+			$_SESSION["peso"]=$peso;
+			$_SESSION["pesodeseable"]=$pesodeseable;
+			$_SESSION["sexo"]=$sexo;
+			$_SESSION["fechanac"]=$fechanac;
+			$_SESSION["altura"]=$altura;
+			$_SESSION["dieta"]=$dieta;
+			
 		}
-		$salida=substr($salida,0,-1);
-		$salida.="]";
-
+		$salida="s";
 	}
 	else
 	{

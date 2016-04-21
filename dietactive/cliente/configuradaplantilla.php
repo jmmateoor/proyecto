@@ -1,17 +1,10 @@
 <?php
 	session_start();
+	if($_SESSION["logeado"]!=true)
+	{
+		header("location: clientelogin.php");
+	}
 	include("../servidor/funciones.inc.php");
-	$_SESSION["id"]=$_COOKIE["id"];
-	$_SESSION["nombre"]=$_COOKIE["nombre"];
-	$_SESSION["apellidos"]=$_COOKIE["apellidos"];
-	$_SESSION["email"]=$_COOKIE["email"];
-	$_SESSION["peso"]=$_COOKIE["peso"];
-	$_SESSION["pesodeseable"]=$_COOKIE["pesodeseable"];
-	$_SESSION["sexo"]=$_COOKIE["sexo"];
-	$_SESSION["fechanac"]=$_COOKIE["fechanac"];
-	$_SESSION["altura"]=$_COOKIE["altura"];
-	$_SESSION["dieta"]=$_COOKIE["dieta"];
-	
 ?>
 <!DOCTYPE HTML>
 <html>
@@ -75,7 +68,7 @@ function getCookie(cname) {
                 	<span class="glyphicon glyphicon-user"></span> <span id="email"><?php echo $_SESSION['email'] ?></span>
                 </div>
                 <div class="col-md-2">
-                	<a class="cerrarsesion" href="#"><span class="glyphicon glyphicon-off"></span> Cerrar sesión</a>
+                	<a class="cerrarsesion" href="cerrar_sesion_cliente.php"><span class="glyphicon glyphicon-off"></span> Cerrar sesión</a>
                 </div>
             </div>
         <div class="row cabecera">
@@ -113,18 +106,34 @@ function getCookie(cname) {
                 <div class="row">
             		<h3 id="flip1" class="datospers"><span id="iconoflip1" class="glyphicon glyphicon-menu-down"></span> Datos Personales <a href="#" class="enlacenormal">[Actualizar]</a></h3>
                     <div id="panel1">
-                        <p><b>Nombre completo</b></p>
-                        <p id="nombre"><?php echo $_SESSION["nombre"]." ".$_SESSION["apellidos"] ?></p>
-                        <p><b>Tu peso</b></p>
-                        <p id="peso"><?php echo $_SESSION["peso"] ?> Kg.</p>
-                        <p><b>Tu peso deseable</b></p>
-                        <p id="pesodeseable"><?php echo $_SESSION["pesodeseable"] ?> Kg.</p>
-                        <p><b>Sexo</b></p>
-                        <p id="sexo"><?php if($_SESSION["sexo"]=="h"){echo "Hombre";} else {echo "Mujer";} ?></p>
-                        <p><b>Altura</b></p>
-                        <p id="altura"><?php echo $_SESSION["altura"] ?> cm.</p>
-                        <p><b>Tu edad</b></p>
-                        <p id="edad"><?php echo edad($_SESSION["fechanac"]) ?></p>
+                    	<div class="row">
+                            <div class="col-sm-3">
+                                <p><b>Nombre completo</b></p>
+                                <p id="nombre"><?php echo $_SESSION["nombre"]." ".$_SESSION["apellidos"] ?></p>
+                            </div>
+                            <div class="col-sm-3">
+                                <p><b>Sexo</b></p>
+                                <p id="sexo"><?php if($_SESSION["sexo"]=="h"){echo "Hombre";} else {echo "Mujer";} ?></p>
+                            </div>
+                            <div class="col-sm-3">
+                            	<p><b>Tu edad</b></p>
+                        		<p id="edad"><?php echo edad($_SESSION["fechanac"]) ?></p>
+                            </div>
+                        </div>
+                        <div class="row">
+                        	<div class="col-sm-3">
+                                <p><b>Altura</b></p>
+                                <p id="altura"><?php echo $_SESSION["altura"] ?> cm.</p>
+                            </div>
+                            <div class="col-sm-3">
+                                <p><b>Tu peso deseable</b></p>
+                                <p id="pesodeseable"><?php echo $_SESSION["pesodeseable"] ?> Kg.</p>
+                            </div>
+                            <div class="col-sm-3">
+                                <p><b>Tu peso actual</b></p>
+                                <p id="peso"><?php echo $_SESSION["peso"] ?> Kg.</p>
+                            </div>
+                        </div>
                     </div>
                 </div>
                 <div class="row">

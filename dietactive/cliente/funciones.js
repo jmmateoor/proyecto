@@ -283,16 +283,16 @@
 	{
 		$.get("../servidor/consulta_patologia.php", function(data, status){
 				var objeto = JSON.parse(data);
-				var texto="<div class='table-responsive'><table class='table'><tbody><tr>";
+				var texto="<div class='row'>";
 				for(var i=1;i<objeto.length;i++)
 				{
-					texto+="<td><label><input type='checkbox' name='"+objeto[i].nombre+"' value='"+objeto[i].id+"' /> "+objeto[i].nombre+"</label></td>";
+					texto+="<div class='col-sm-3'><label><input type='checkbox' name='"+objeto[i].nombre+"' value='"+objeto[i].id+"' /> "+objeto[i].nombre+"</label></div>";
 					if(i%3==0)
 					{
-						texto+="</tr><tr>";
+						texto+="</div><div class='row'>";
 					}
 				}
-				texto+="</tr></tbdody></table></div>";
+				texto+="</div>";
 				$("#patologias").html(texto);
 			});
 	}
@@ -480,6 +480,12 @@ function redondeo(alimento)
 	return alimento;
 }
 
+function poneFecha(cadena)
+{
+	var fecha = new Date(cadena);
+	return fecha.toLocaleDateString();
+}
+
 function graficaPeso(idcliente)
 {
 	var fechas=[];
@@ -493,8 +499,10 @@ function graficaPeso(idcliente)
 								datos=JSON.parse(data);
 								for(var i=0;i<datos.length;i++)
 								{
-									var fecha=(datos[i].fecha).split(" ");
-									fechas.push(fecha[0]);
+									var fechahora=(datos[i].fecha).split(" ");
+																		
+									fechas.push(poneFecha(fechahora[0]));
+									
 									pesos.push(parseFloat(datos[i].peso));
 								}
 								fechas.reverse();
@@ -502,15 +510,17 @@ function graficaPeso(idcliente)
 								$("#grafica").highcharts(
 								{
 									chart: {
-										type: 'line'
+										type: 'line',
+										backgroundColor: '#d3d1ce'
 									},
 									title: {
-										text: 'Tu historial de peso'
+										text: 'Historial'
 									},
 									xAxis: {
 										categories: fechas
 									},
 									yAxis: {
+										gridLineColor: '#777674',
 										title: {
 											text: 'Peso (Kg.)'
 										}
@@ -528,7 +538,6 @@ function graficaPeso(idcliente)
 										data: pesos
 									}]
 								});
-								
 						});
 };
 

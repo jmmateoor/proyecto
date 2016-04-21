@@ -163,3 +163,7 @@ td.titulo{
 	text-align:left !important;
 	font-weight:bold;
 }
+
+#panel1{
+	padding-left:10px;
+}
