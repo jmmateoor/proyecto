@@ -49,7 +49,9 @@ a.cerrarsesion:hover{
 	text-decoration:none;
 }
 
-
+h2{
+	font-size:18px !important;
+}
 
 .cabecera{
 	background-color:RGB(3,90,0);
@@ -62,8 +64,9 @@ a.cerrarsesion:hover{
 
 a.menu{
 	color:#d3d1ce;
-	font-size:18px;
+	font-size:12px !important;
 	margin:auto;
+	text-align:center;
 }
 
 a.menu:link{
@@ -85,7 +88,24 @@ a.menu:hover{
 .seleccionado{
 	color:#fff !important;
 	text-decoration:none;
-	border-bottom:solid 1px;
+	background-color:#A0CBA4 !important;
+}
+
+.colmenu:hover{
+	background-color:#A0CBA4 !important;
+}
+
+.colmenu{
+	border:1px solid #fff;
+}
+
+@media screen and (max-width: 800px) {
+    .colmenu{
+	border-bottom:2px solid #fff;
+	margin:0;
+	padding-top:10px;
+	text-align:left !important;
+}
 }
 
 .inicio{
@@ -96,7 +116,6 @@ a.menu:hover{
 a.enlaceinicio{
 	color:#d3d1ce;
 	padding-right:10px;
-	border-right:solid 2px;	
 }
 a.enlaceinicio:link{
 	text-decoration:none;
