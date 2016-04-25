@@ -6,7 +6,7 @@ session_start();
 <head>
 <meta charset="utf-8">
 <title>Inicio de sesión - DietActive</title>
-
+<link rel="shortcut icon" href="images/fav.png">
 
 <link rel="stylesheet" href="http://maxcdn.bootstrapcdn.com/bootstrap/3.3.6/css/bootstrap.min.css">
 <script src="https://ajax.googleapis.com/ajax/libs/jquery/1.12.0/jquery.min.js"></script>
@@ -17,6 +17,7 @@ session_start();
 <script>
 window.onload=function(){
 	datosEmpresa();
+	ocultaLoading();
 }
 
 function pulsarEnter(e) {
@@ -54,7 +55,7 @@ function clienteLogin()
 </script>
 </head>
 
-<body onLoad="ocultaLoading();">
+<body>
 	<div id="loading"></div>
     <div id="imgLoading">
         <img src="images/loading.gif" alt="loading" title="loading" />
@@ -62,7 +63,10 @@ function clienteLogin()
 	<script>muestraLoading();</script>
     <div class="container-fluid">
         <div class="row cabecera">
-            <div class="col-md-12">
+        	<div class="col-md-1">
+                <img src="images/cab.png" class="img-responsive" width="100px" />
+            </div>
+            <div class="col-md-11">
                 <h1>Zona Cliente</h1>
             </div>
         </div>

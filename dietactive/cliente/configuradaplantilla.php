@@ -11,7 +11,7 @@
 <head>
 <meta charset="utf-8">
 <title>Plantilla</title>
-
+<link rel="shortcut icon" href="images/fav.png">
 <link rel="stylesheet" href="http://maxcdn.bootstrapcdn.com/bootstrap/3.3.6/css/bootstrap.min.css">
 <script src="https://ajax.googleapis.com/ajax/libs/jquery/1.12.0/jquery.min.js"></script>
 <script src="http://maxcdn.bootstrapcdn.com/bootstrap/3.3.6/js/bootstrap.min.js"></script>
@@ -23,38 +23,37 @@
 <script src="funciones.js"></script>
 <script>
 window.onload=function(){
-	$("#panel1").hide();
-	$("#panel2").hide();
-	cargarIntercambios(<?php echo $_SESSION["id"] ?>);
-	graficaPeso(<?php echo $_SESSION["id"] ?>);
-	datosEmpresa();
-	$("#flip1").click(function(){
-        $("#panel1").slideToggle(function(){
-				$("#iconoflip1").toggleClass("glyphicon-menu-up","glyphicon-menu-down");
-			}
-		);
-    });
+	var si=true;
 	$("#flip2").click(function(){
-        $("#panel2").slideToggle(function(){
-				$("#iconoflip2").toggleClass("glyphicon-menu-up","glyphicon-menu-down");
+	$("#panel2").slideToggle(function(){
+				//$("#iconoflip2").toggleClass("glyphicon-menu-down");
+				if(si)
+				{
+					$("#iconoflip2").removeClass("glyphicon-menu-up");
+					$("#iconoflip2").addClass("glyphicon-menu-down");
+					si=false;
+				}
+				else
+				{
+					$("#iconoflip2").removeClass("glyphicon-menu-down");
+					$("#iconoflip2").addClass("glyphicon-menu-up");
+					si=true;
+				}
 			}
 		);
-    });
+	});
+	$("#flip1").click(function(){
+	$("#panel1").slideToggle(function(){
+				$("#iconoflip1").toggleClass("glyphicon-menu-up");
+			}
+		);
+	});
+	
+	$("#panel1").hide();
+	graficaPeso(<?php echo $_SESSION["id"] ?>);
+	cargarIntercambios(<?php echo $_SESSION["id"] ?>);
+	datosEmpresa();
 	ocultaLoading();
-}
-function getCookie(cname) {
-    var name = cname + "=";
-    var ca = document.cookie.split(';');
-    for(var i = 0; i <ca.length; i++) {
-        var c = ca[i];
-        while (c.charAt(0)==' ') {
-            c = c.substring(1);
-        }
-        if (c.indexOf(name) == 0) {
-            return c.substring(name.length,c.length);
-        }
-    }
-    return "";
 }
 </script>
 </head>
@@ -78,7 +77,10 @@ function getCookie(cname) {
                 </div>
             </div>
         <div class="row cabecera">
-            <div class="col-md-12">
+            <div class="col-md-1">
+                <p align="center"><img src="images/cab.png" class="img-responsive" width="100px" /></p>
+            </div>
+            <div class="col-md-11">
                 <h1>Zona Cliente</h1>
             </div>
         </div>
@@ -104,54 +106,64 @@ function getCookie(cname) {
             </div>
         </div>
         <div class="row cuerpo">
-        	<div class="col-md-4">
-            	<div class="row">
-                	<h3 class="datospers">Tus intercambios</h3>
-                    <p id="intercambios"></p>
-                </div>
-                <div class="row">
-            		<h3 id="flip1" class="datospers"><span id="iconoflip1" class="glyphicon glyphicon-menu-down"></span> Datos Personales <a href="#" class="enlacenormal">[Actualizar]</a></h3>
-                    <div id="panel1">
-                    	<div class="row">
-                            <div class="col-sm-3">
-                                <p><b>Nombre completo</b></p>
-                                <p id="nombre"><?php echo $_SESSION["nombre"]." ".$_SESSION["apellidos"] ?></p>
-                            </div>
-                            <div class="col-sm-3">
-                                <p><b>Sexo</b></p>
-                                <p id="sexo"><?php if($_SESSION["sexo"]=="h"){echo "Hombre";} else {echo "Mujer";} ?></p>
-                            </div>
-                            <div class="col-sm-3">
-                            	<p><b>Tu edad</b></p>
-                        		<p id="edad"><?php echo edad($_SESSION["fechanac"]) ?></p>
-                            </div>
-                        </div>
-                        <div class="row">
-                        	<div class="col-sm-3">
-                                <p><b>Altura</b></p>
-                                <p id="altura"><?php echo $_SESSION["altura"] ?> cm.</p>
-                            </div>
-                            <div class="col-sm-3">
-                                <p><b>Tu peso deseable</b></p>
-                                <p id="pesodeseable"><?php echo $_SESSION["pesodeseable"] ?> Kg.</p>
-                            </div>
-                            <div class="col-sm-3">
-                                <p><b>Tu peso actual</b></p>
-                                <p id="peso"><?php echo $_SESSION["peso"] ?> Kg.</p>
-                            </div>
-                        </div>
-                    </div>
-                </div>
-                <div class="row">
-                	<h3 id="flip2" class="datospers"><span id="iconoflip2" class="glyphicon glyphicon-menu-down"></span> Tu historial de peso</h3>
-                    <div id="panel2">
-                    	<div id="grafica"></div>
-                    </div>
-                </div>
-            </div>
-            <div class="col-md-8">
+        	<div class="col-md-7">
             	<h3 class="datospers">Contenidos</h3><!-- CONTENIDO DE LA WEB -->
                 <p id="contenidos"><br/><br/><br/><br/><br/><br/><br/><br/><br/><br/><br/><br/><br/><br/><br/><br/><br/><br/><br/><br/><br/><br/><br/><br/><br/></p>
+            </div>
+            
+            <div class="col-md-5">
+            	<div class="row">
+                	<div class="col-md-12">
+                        <h3 class="datospers">Tus intercambios</h3>
+                        <p id="intercambios"></p>
+                    </div>
+                </div>
+                
+                <div class="row">
+                	<div class="col-md-12">
+                        <h3 class="datospers"><span id="flip1" style="cursor: pointer;"><span id="iconoflip1" class="glyphicon glyphicon-menu-down"></span> Datos Personales </span><a href="#" class="enlacenormal">[Actualizar]</a></h3>
+                        <div id="panel1">
+                            <div class="row">
+                                <div class="col-sm-3">
+                                    <p><b>Nombre completo</b></p>
+                                    <p id="nombre"><?php echo $_SESSION["nombre"]." ".$_SESSION["apellidos"] ?></p>
+                                </div>
+                                <div class="col-sm-3">
+                                    <p><b>Sexo</b></p>
+                                    <p id="sexo"><?php if($_SESSION["sexo"]=="h"){echo "Hombre";} else {echo "Mujer";} ?></p>
+                                </div>
+                                <div class="col-sm-3">
+                                    <p><b>Tu edad</b></p>
+                                    <p id="edad"><?php echo edad($_SESSION["fechanac"]) ?></p>
+                                </div>
+                            </div>
+                            <div class="row">
+                                <div class="col-sm-3">
+                                    <p><b>Altura</b></p>
+                                    <p id="altura"><?php echo $_SESSION["altura"] ?> cm.</p>
+                                </div>
+                                <div class="col-sm-3">
+                                    <p><b>Tu peso deseable</b></p>
+                                    <p id="pesodeseable"><?php echo $_SESSION["pesodeseable"] ?> Kg.</p>
+                                </div>
+                                <div class="col-sm-3">
+                                    <p><b>Tu peso actual</b></p>
+                                    <p id="peso"><?php echo $_SESSION["peso"] ?> Kg.</p>
+                                </div>
+                            </div>
+                        </div>
+                	</div>
+                </div>
+                <div class="row">
+                	<div class="col-md-12">
+                        <h3 class="datospers"><span id="flip2" style="cursor: pointer;"> <span id="iconoflip2" class="glyphicon glyphicon-menu-up"></span> Tu historial de peso</span></h3>
+                        <div id="panel2">
+                        	<div id="caja">
+                            	<div id="grafica"></div>
+                            </div>
+                        </div>
+                    </div>
+                </div>
             </div>
         </div>
         <footer>

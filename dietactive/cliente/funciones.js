@@ -442,7 +442,7 @@ function cargarIntercambios(idcliente)
 										}
 									}
 									var tabla="<div class='table-responsive'><table class='table table-condensed'>";
-									tabla+="<tr><thead><td></td><th>Lácteos</th><th>Proteínas</th><th>Verduras</th><th>Hidratos de Carbono</th><th>Frutas</th><th>Grasas</th></thead></tr><tbody>";
+									tabla+="<tr><thead><td></td><th>Lácteos</th><th>Proteínas</th><th>Verduras</th><th>H. de Carbono</th><th>Frutas</th><th>Grasas</th></thead></tr><tbody>";
 									tabla+="<tr class='tablanum'><td class='titulo'><b>Desayuno</b></td><td>"+lacteodesayuno+"</td><td>"+proteinadesayuno+"</td><td> </td><td>"+hdcdesayuno+"</td><td>"+frutadesayuno+"</td><td>"+grasasdesayuno+"</td></tr>";
 									tabla+="<tr class='tablanum'><td class='titulo'><b>Almuerzo</b></td><td> </td><td>"+proteinaalmuerzo+"</td><td>"+verduraalmuerzo+"</td><td>"+hdcalmuerzo+"</td><td>"+frutaalmuerzo+"</td><td>"+grasasalmuerzo+"</td></tr>";
 									tabla+="<tr class='tablanum'><td class='titulo'><b>Merienda</b></td><td>"+lacteomerienda+" </td><td> "+proteinamerienda+" </td><td> </td><td>"+hdcmerienda+"</td><td>  </td><td>"+grasasmerienda+"</td></tr>";
