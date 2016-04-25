@@ -40,6 +40,7 @@ window.onload=function(){
 			}
 		);
     });
+	ocultaLoading();
 }
 function getCookie(cname) {
     var name = cname + "=";
@@ -59,6 +60,11 @@ function getCookie(cname) {
 </head>
 
 <body>
+<div id="loading"></div>
+        <div id="imgLoading">
+            <img src="images/loading.gif" alt="loading" title="loading" />
+        </div>
+	<script>muestraLoading();</script>
     <div class="container-fluid">
     	<div class="row barrasuperior">
             	<div class="col-md-6">

@@ -54,7 +54,12 @@ function clienteLogin()
 </script>
 </head>
 
-<body>
+<body onLoad="ocultaLoading();">
+	<div id="loading"></div>
+    <div id="imgLoading">
+        <img src="images/loading.gif" alt="loading" title="loading" />
+    </div>
+	<script>muestraLoading();</script>
     <div class="container-fluid">
         <div class="row cabecera">
             <div class="col-md-12">

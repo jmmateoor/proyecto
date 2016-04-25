@@ -25,6 +25,8 @@ body{
 	border-bottom:#777674 solid 2px;
 	text-align:center;
 	font-size:16px;
+	background-image:url(images/fondosuperior.png);
+	background-repeat:repeat;
 }
 
 
@@ -51,6 +53,9 @@ a.cerrarsesion:hover{
 
 .cabecera{
 	background-color:RGB(3,90,0);
+	background-image:url(images/fondo.png);
+	/*#0f520a*/
+	background-repeat:repeat;
 }
 
 
@@ -104,8 +109,10 @@ a.enlaceinicio:visited{
 }
 
 .cuerpo{
-	border-top:#777674 solid 5px;
+	border-top:#777674 solid 4px;
 	background-color:#d3d1ce;
+	background-image:url(images/fondocuerpo.png);
+	background-repeat:repeat;
 	padding-left:30px;
 }
 
@@ -122,7 +129,7 @@ a.enlaceinicio:visited{
 	font-size:14px;
 }
 .pie{
-	border-top:#777674 solid 5px;
+	border-top:#777674 solid 4px;
 	background-color:#040404;
 	color:#d3d1ce;
 }
@@ -166,4 +173,24 @@ td.titulo{
 
 #panel1{
 	padding-left:10px;
+}
+
+div#loading {
+    display:none;
+    position:fixed;
+    top:0;
+    left:0;
+    width:100%;
+    height:100%;
+    background-color:#FFF;
+    z-index:99999;
+}
+div#imgLoading {
+    display:none;
+    position:fixed;
+    top:48%;
+    left:48%;
+    width:32px;
+    height:32px;
+    z-index:99999;
 }

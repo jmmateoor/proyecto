@@ -511,7 +511,7 @@ function graficaPeso(idcliente)
 								{
 									chart: {
 										type: 'line',
-										backgroundColor: '#d3d1ce'
+										backgroundColor: 'transparent'
 									},
 									title: {
 										text: 'Historial'
@@ -560,6 +560,15 @@ function datosEmpresa()
 				$("#dietemail").html(objeto[0].email);
 				$("#dietdesarrollado").html(objeto[0].desarrollado);
 			});
+}
+
+function muestraLoading(){
+    $('#loading').show();
+    $('#imgLoading').show();
+}
+function ocultaLoading(){
+    $('#loading').hide();
+    $('#imgLoading').hide();
 }
 
 //FIN Plantilla
