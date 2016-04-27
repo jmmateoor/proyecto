@@ -3,7 +3,7 @@
 -- http://www.phpmyadmin.net
 --
 -- Servidor: 127.0.0.1
--- Tiempo de generación: 19-04-2016 a las 16:24:46
+-- Tiempo de generación: 27-04-2016 a las 20:32:36
 -- Versión del servidor: 5.6.26
 -- Versión de PHP: 5.6.12
 
@@ -28,7 +28,6 @@ USE `dietactive`;
 -- Estructura de tabla para la tabla `actividadfisica`
 --
 
-DROP TABLE IF EXISTS `actividadfisica`;
 CREATE TABLE IF NOT EXISTS `actividadfisica` (
   `id` int(11) NOT NULL,
   `nombre` varchar(100) COLLATE utf8_spanish_ci NOT NULL,
@@ -51,7 +50,6 @@ INSERT INTO `actividadfisica` (`id`, `nombre`, `descripcion`) VALUES
 -- Estructura de tabla para la tabla `alimento`
 --
 
-DROP TABLE IF EXISTS `alimento`;
 CREATE TABLE IF NOT EXISTS `alimento` (
   `id` int(11) NOT NULL,
   `idtipoalimento` int(11) NOT NULL,
@@ -392,7 +390,6 @@ INSERT INTO `alimento` (`id`, `idtipoalimento`, `alimento`, `comestible`, `energ
 -- Estructura de tabla para la tabla `cita`
 --
 
-DROP TABLE IF EXISTS `cita`;
 CREATE TABLE IF NOT EXISTS `cita` (
   `cita` datetime NOT NULL,
   `iddietista` int(11) NOT NULL,
@@ -405,7 +402,6 @@ CREATE TABLE IF NOT EXISTS `cita` (
 -- Estructura de tabla para la tabla `cliente`
 --
 
-DROP TABLE IF EXISTS `cliente`;
 CREATE TABLE IF NOT EXISTS `cliente` (
   `id` int(11) NOT NULL,
   `codigo_activacion` varchar(20) COLLATE utf8_spanish_ci NOT NULL,
@@ -422,15 +418,16 @@ CREATE TABLE IF NOT EXISTS `cliente` (
   `idactividad` int(11) NOT NULL,
   `pesodeseable` decimal(10,2) DEFAULT NULL,
   `dieta` text COLLATE utf8_spanish_ci,
+  `geet` decimal(10,2) DEFAULT NULL,
   `fechaingreso` date NOT NULL
-) ENGINE=InnoDB AUTO_INCREMENT=14 DEFAULT CHARSET=utf8 COLLATE=utf8_spanish_ci;
+) ENGINE=InnoDB AUTO_INCREMENT=18 DEFAULT CHARSET=utf8 COLLATE=utf8_spanish_ci;
 
 --
 -- Volcado de datos para la tabla `cliente`
 --
 
-INSERT INTO `cliente` (`id`, `codigo_activacion`, `activado`, `password`, `nombre`, `apellidos`, `telefono`, `email`, `sexo`, `peso`, `altura`, `fechanac`, `idactividad`, `pesodeseable`, `dieta`, `fechaingreso`) VALUES
-(13, '5adaacd4531b78ff8b5c', 's', '81dc9bdb52d04dc20036dbd8313ed055', 'Jose Mª', 'Mateo', '666010101', 'josem.mateo.ortega@gmail.com', 'h', '80.00', 176, '1989-07-11', 1, '69.50', NULL, '2016-04-19');
+INSERT INTO `cliente` (`id`, `codigo_activacion`, `activado`, `password`, `nombre`, `apellidos`, `telefono`, `email`, `sexo`, `peso`, `altura`, `fechanac`, `idactividad`, `pesodeseable`, `dieta`, `geet`, `fechaingreso`) VALUES
+(17, 'a1d41c14c1d0aa9b9cc1', 's', '81dc9bdb52d04dc20036dbd8313ed055', 'Jose Maria', 'Mateo Ortega', '666010101', 'josem.mateo.ortega@gmail.com', 'h', '82.20', 176, '1989-07-11', 1, '69.57', NULL, '1869.61', '2016-04-26');
 
 -- --------------------------------------------------------
 
@@ -438,7 +435,6 @@ INSERT INTO `cliente` (`id`, `codigo_activacion`, `activado`, `password`, `nombr
 -- Estructura de tabla para la tabla `datosempresa`
 --
 
-DROP TABLE IF EXISTS `datosempresa`;
 CREATE TABLE IF NOT EXISTS `datosempresa` (
   `id` int(11) NOT NULL,
   `nombre` varchar(100) COLLATE utf8_spanish_ci NOT NULL,
@@ -465,7 +461,6 @@ INSERT INTO `datosempresa` (`id`, `nombre`, `provincia`, `localidad`, `codigopos
 -- Estructura de tabla para la tabla `dietista`
 --
 
-DROP TABLE IF EXISTS `dietista`;
 CREATE TABLE IF NOT EXISTS `dietista` (
   `id` int(11) NOT NULL,
   `password` varchar(30) COLLATE utf8_spanish_ci NOT NULL,
@@ -483,7 +478,6 @@ CREATE TABLE IF NOT EXISTS `dietista` (
 -- Estructura de tabla para la tabla `grupointercambio`
 --
 
-DROP TABLE IF EXISTS `grupointercambio`;
 CREATE TABLE IF NOT EXISTS `grupointercambio` (
   `id` int(11) NOT NULL,
   `nombre` varchar(100) COLLATE utf8_spanish_ci NOT NULL
@@ -507,7 +501,6 @@ INSERT INTO `grupointercambio` (`id`, `nombre`) VALUES
 -- Estructura de tabla para la tabla `historicopeso`
 --
 
-DROP TABLE IF EXISTS `historicopeso`;
 CREATE TABLE IF NOT EXISTS `historicopeso` (
   `fecha` datetime NOT NULL,
   `idcliente` int(11) NOT NULL,
@@ -519,7 +512,9 @@ CREATE TABLE IF NOT EXISTS `historicopeso` (
 --
 
 INSERT INTO `historicopeso` (`fecha`, `idcliente`, `peso`) VALUES
-('2016-04-19 11:34:29', 13, '80.00');
+('2016-04-11 13:34:34', 17, '85.00'),
+('2016-04-20 06:17:21', 17, '83.00'),
+('2016-04-26 16:17:00', 17, '82.20');
 
 -- --------------------------------------------------------
 
@@ -527,7 +522,6 @@ INSERT INTO `historicopeso` (`fecha`, `idcliente`, `peso`) VALUES
 -- Estructura de tabla para la tabla `patologia`
 --
 
-DROP TABLE IF EXISTS `patologia`;
 CREATE TABLE IF NOT EXISTS `patologia` (
   `id` int(11) NOT NULL,
   `nombre` varchar(100) COLLATE utf8_spanish_ci NOT NULL,
@@ -565,7 +559,6 @@ INSERT INTO `patologia` (`id`, `nombre`, `descripcion`) VALUES
 -- Estructura de tabla para la tabla `patologiacliente`
 --
 
-DROP TABLE IF EXISTS `patologiacliente`;
 CREATE TABLE IF NOT EXISTS `patologiacliente` (
   `idcliente` int(11) NOT NULL,
   `idpatologia` int(11) NOT NULL
@@ -576,8 +569,8 @@ CREATE TABLE IF NOT EXISTS `patologiacliente` (
 --
 
 INSERT INTO `patologiacliente` (`idcliente`, `idpatologia`) VALUES
-(13, 9),
-(13, 12);
+(17, 9),
+(17, 12);
 
 -- --------------------------------------------------------
 
@@ -585,7 +578,6 @@ INSERT INTO `patologiacliente` (`idcliente`, `idpatologia`) VALUES
 -- Estructura de tabla para la tabla `tablaintercambio`
 --
 
-DROP TABLE IF EXISTS `tablaintercambio`;
 CREATE TABLE IF NOT EXISTS `tablaintercambio` (
   `idcliente` int(11) NOT NULL,
   `idgrupo` int(11) NOT NULL,
@@ -597,12 +589,12 @@ CREATE TABLE IF NOT EXISTS `tablaintercambio` (
 --
 
 INSERT INTO `tablaintercambio` (`idcliente`, `idgrupo`, `valor`) VALUES
-(13, 1, '3.0'),
-(13, 2, '6.5'),
-(13, 3, '2.0'),
-(13, 4, '18.5'),
-(13, 5, '6.5'),
-(13, 6, '5.0');
+(17, 1, '2.5'),
+(17, 2, '5.5'),
+(17, 3, '2.0'),
+(17, 4, '15.5'),
+(17, 5, '5.5'),
+(17, 6, '4.0');
 
 -- --------------------------------------------------------
 
@@ -610,7 +602,6 @@ INSERT INTO `tablaintercambio` (`idcliente`, `idgrupo`, `valor`) VALUES
 -- Estructura de tabla para la tabla `testdias`
 --
 
-DROP TABLE IF EXISTS `testdias`;
 CREATE TABLE IF NOT EXISTS `testdias` (
   `id` int(11) NOT NULL,
   `idcliente` int(11) NOT NULL,
@@ -625,7 +616,6 @@ CREATE TABLE IF NOT EXISTS `testdias` (
 -- Estructura de tabla para la tabla `tipoalimento`
 --
 
-DROP TABLE IF EXISTS `tipoalimento`;
 CREATE TABLE IF NOT EXISTS `tipoalimento` (
   `id` int(11) NOT NULL,
   `nombre` varchar(200) COLLATE utf8_spanish_ci NOT NULL
@@ -774,7 +764,7 @@ ALTER TABLE `alimento`
 -- AUTO_INCREMENT de la tabla `cliente`
 --
 ALTER TABLE `cliente`
-  MODIFY `id` int(11) NOT NULL AUTO_INCREMENT,AUTO_INCREMENT=14;
+  MODIFY `id` int(11) NOT NULL AUTO_INCREMENT,AUTO_INCREMENT=18;
 --
 -- AUTO_INCREMENT de la tabla `dietista`
 --

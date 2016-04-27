@@ -135,7 +135,12 @@ function crearIntercambios($idcliente)
 	$eta=($tmbr+$ga)*0.1;
 	
 	//Cálculo del Gasto Energético Total, geet
+	//Se le resta 640 para que se pueda adelgazar
 	$geet=($tmbr+$ga+$eta)-640; //Kcal/dia
+	
+	$insertar = $c->prepare("update cliente set geet = ? where id = ?");
+	$insertar->bind_param("di",$geet,$idcliente);
+	$insertar->execute();
 	
 	//Reparto de principios inmediatos
 	

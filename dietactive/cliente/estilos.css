@@ -50,7 +50,7 @@ a.cerrarsesion:hover{
 }
 
 h2{
-	font-size:18px !important;
+	font-size:20px !important;
 }
 
 .cabecera{
@@ -64,7 +64,6 @@ h2{
 
 a.menu{
 	color:#d3d1ce;
-	font-size:12px !important;
 	margin:auto;
 	text-align:center;
 }
@@ -75,7 +74,6 @@ a.menu:link{
 
 a.menu:visited{
 	color:#d3d1ce;
-	font-size:18px;
 	text-decoration:none;
 }
 
@@ -88,20 +86,28 @@ a.menu:hover{
 .seleccionado{
 	color:#fff !important;
 	text-decoration:none;
-	background-color:#A0CBA4 !important;
+	background-color:#169A37 !important;
 }
 
 .colmenu:hover{
 	background-color:#A0CBA4 !important;
 }
 
+ul#menu li {
+    display: inline;
+}
+
+ul#menu {
+    padding: 0;
+}
+
 .colmenu{
 	border:1px solid #fff;
 }
 
-@media screen and (max-width: 800px) {
+@media screen and (max-width: 1000px) {
     .colmenu{
-	border-bottom:2px solid #fff;
+	/*border-bottom:2px solid #fff;*/
 	margin:0;
 	padding-top:10px;
 	text-align:left !important;

@@ -87,21 +87,43 @@ window.onload=function(){
         <div class="row cabecera">
             <div class="col-md-12">
                 <div class="row inicio">
-                    <div class="col-md-1">
-                        <h2><a href="#" class="enlaceinicio">Inicio</a></h2>
-                    </div>
-                    <div class="col-md-1">
-                        <h2><a href="#" class="menu"><span class="glyphicon glyphicon-calendar"></span> Citas</h2></h2>
-                    </div>
-                    <div class="col-md-2">
-                        <h2><a href="#" class="menu seleccionado"><span class="glyphicon glyphicon-book"></span> Diario dietético</a></h2>
-                    </div>
-                    <div class="col-md-1">
-                        <h2><a href="#" class="menu"><span class="glyphicon glyphicon-heart"></span> Dieta</a></h2>
-                    </div>
-                    <div class="col-md-5">
-                        <h2><a href="#" class="menu"><span class="glyphicon glyphicon-list"></span> Grupos de alimentos por intercambio</a></h2>
-                    </div>
+                    <ul id="menu">
+                    	<li>
+                            <a href="#" class="menu">
+                                <div class="col-md-2 colmenu">
+                                    <h2><span class="glyphicon glyphicon-home"></span> Inicio</h2>
+                                </div>
+                            </a>
+                        </li>
+                        <li>
+                            <a href="#" class="menu">
+                                <div class="col-md-2 colmenu">
+                                    <h2><span class="glyphicon glyphicon-calendar"></span> Citas</h2>
+                                </div>
+                            </a>
+                        </li>
+                        <li>
+                            <a href="#" class="menu">
+                                <div class="col-md-2 colmenu seleccionado">
+                                    <h2><span class="glyphicon glyphicon-book"></span> Diario dietético</h2>
+                                </div>
+                            </a>
+                        </li>
+                        <li>
+                            <a href="#" class="menu">
+                                <div class="col-md-2 colmenu">
+                                    <h2><span class="glyphicon glyphicon-heart"></span> Dieta</h2>
+                                </div>
+                            </a>
+                        </li>
+                        <li>
+                            <a href="#" class="menu">
+                                <div class="col-md-4 colmenu">
+                                    <h2><span class="glyphicon glyphicon-list"></span> Alimentos por intercambio</h2>
+                                </div>
+                            </a>
+                        </li>
+                    </ul>
                 </div>
             </div>
         </div>
@@ -140,15 +162,21 @@ window.onload=function(){
                             <div class="row">
                                 <div class="col-sm-3">
                                     <p><b>Altura</b></p>
-                                    <p id="altura"><?php echo $_SESSION["altura"] ?> cm.</p>
+                                    <p><span id="altura"><?php echo $_SESSION["altura"] ?></span> cm.</p>
                                 </div>
                                 <div class="col-sm-3">
                                     <p><b>Tu peso deseable</b></p>
-                                    <p id="pesodeseable"><?php echo $_SESSION["pesodeseable"] ?> Kg.</p>
+                                    <p><span id="pesodeseable"><?php echo $_SESSION["pesodeseable"] ?></span> Kg.</p>
                                 </div>
                                 <div class="col-sm-3">
                                     <p><b>Tu peso actual</b></p>
-                                    <p id="peso"><?php echo $_SESSION["peso"] ?> Kg.</p>
+                                    <p><span id="peso"><?php echo $_SESSION["peso"] ?></span> Kg.</p>
+                                </div>
+                            </div>
+                            <div class="row">
+                            	<div class="col-sm-9">
+                                	<p><b>Tu gasto energético total</b></p>
+                                    <p><span id="geet"><?php echo $_SESSION["geet"] ?></span> Kcal/día</p>
                                 </div>
                             </div>
                         </div>
