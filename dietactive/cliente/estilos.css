@@ -113,6 +113,9 @@ ul#menu {
 	.cabecera{
 		text-align:center;
 	}
+	.cuerpo{
+		padding:10px !important;
+	}
 }
 
 .inicio{
@@ -141,7 +144,7 @@ a.enlaceinicio:visited{
 	background-color:#d3d1ce;
 	background-image:url(images/fondocuerpo.png);
 	background-repeat:repeat;
-	padding-left:30px;
+	padding:30px;
 }
 
 @media screen and (min-width: 480px) {

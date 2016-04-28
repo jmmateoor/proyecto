@@ -26,8 +26,8 @@ window.onload=function(){
 	var si=true;
 	$("#flip2").click(function(){
 	$("#panel2").slideToggle(function(){
-				//$("#iconoflip2").toggleClass("glyphicon-menu-down");
-				if(si)
+				$("#iconoflip2").toggleClass("glyphicon-menu-up");
+				/*if(si)
 				{
 					$("#iconoflip2").removeClass("glyphicon-menu-up");
 					$("#iconoflip2").addClass("glyphicon-menu-down");
@@ -38,7 +38,7 @@ window.onload=function(){
 					$("#iconoflip2").removeClass("glyphicon-menu-down");
 					$("#iconoflip2").addClass("glyphicon-menu-up");
 					si=true;
-				}
+				}*/
 			}
 		);
 	});
@@ -50,6 +50,7 @@ window.onload=function(){
 	});
 	
 	$("#panel1").hide();
+	$("#panel2").hide();
 	ocultaLoading();
 }
 
@@ -138,7 +139,14 @@ window.onload=function(){
                         <p id="intercambios"></p>
                     </div>
                 </div>
-                
+                <div class="row">
+                    <div class="col-md-12">
+                    	<h3 class="datospers">Tu historial de peso</h3>
+                        <div id="caja">
+                            <div id="grafica"></div>
+                        </div>
+                    </div>
+                </div>
                 <div class="row">
                 	<div class="col-md-12">
                         <h3 class="datospers"><span id="flip1" style="cursor: pointer;"><span id="iconoflip1" class="glyphicon glyphicon-menu-down"></span> Datos Personales </span></h3>
@@ -158,6 +166,10 @@ window.onload=function(){
                                 </div>
                             </div>
                             <div class="row">
+                            	<div class="col-sm-3">
+                                    <p><b>Teléfono</b></p>
+                                    <p><span id="telefono"><?php echo $_SESSION["telefono"] ?></span> <button type="button" class="btn btn-info btn-xs" data-toggle="modal" data-target="#modalTelefono"><span class="glyphicon glyphicon-edit"></span></button></p>
+                                </div>
                                 <div class="col-sm-3">
                                     <p><b>Altura</b></p>
                                     <p><span id="altura" ng-model="angaltura"><?php echo $_SESSION["altura"] ?></span> cm. <button type="button" class="btn btn-info btn-xs" data-toggle="modal" data-target="#modalAltura"><span class="glyphicon glyphicon-edit"></span></button></p>
@@ -166,15 +178,16 @@ window.onload=function(){
                                     <p><b>Tu peso actual</b></p>
                                     <p><span id="peso"><?php echo $_SESSION["peso"] ?></span> Kg. <button type="button" class="btn btn-info btn-xs" data-toggle="modal" data-target="#modalPeso"><span class="glyphicon glyphicon-edit"></span></button></p>
                                 </div>
+                                
+                            </div>
+                            <div class="row">
+                            	<div class="col-sm-3">
+                                	<p><b>Tu gasto energético total</b></p>
+                                    <p><span id="geet"><?php echo $_SESSION["geet"] ?></span> Kcal/día</p>
+                                </div>
                                 <div class="col-sm-3">
                                     <p><b>Tu peso deseable</b></p>
                                     <p><span id="pesodeseable"><?php echo $_SESSION["pesodeseable"] ?></span> Kg.</p>
-                                </div>
-                            </div>
-                            <div class="row">
-                            	<div class="col-sm-9">
-                                	<p><b>Tu gasto energético total</b></p>
-                                    <p><span id="geet"><?php echo $_SESSION["geet"] ?></span> Kcal/día</p>
                                 </div>
                             </div>
                         </div>
@@ -182,11 +195,9 @@ window.onload=function(){
                 </div>
                 <div class="row">
                 	<div class="col-md-12">
-                        <h3 class="datospers"><span id="flip2" style="cursor: pointer;"> <span id="iconoflip2" class="glyphicon glyphicon-menu-up"></span> Tu historial de peso</span></h3>
+                        <h3 class="datospers"><span id="flip2" style="cursor: pointer;"> <span id="iconoflip2" class="glyphicon glyphicon-menu-down"></span> Tus patologías o situación fisiológica</span> <button type="button" class="btn btn-info btn-xs" data-toggle="modal" data-target="#modalPatologias"><span class="glyphicon glyphicon-edit"></span></button></h3>
                         <div id="panel2">
-                        	<div id="caja">
-                            	<div id="grafica"></div>
-                            </div>
+                        	<p id="patologias"></p>
                         </div>
                     </div>
                 </div>
@@ -238,7 +249,7 @@ window.onload=function(){
                 <span class="error" id="actaltura2"></span>
               </div>
               <div class="modal-footer">
-                <button type="button" id="buttomactaltura" class="btn btn-success" data-dismiss="modal" disabled="true" onClick="actualizarAltura(<?php echo $_SESSION["id"] ?>);"><span class="glyphicon glyphicon-check"></span> Aceptar</button>
+                <button type="submit" id="buttomactaltura" class="btn btn-success" data-dismiss="modal" disabled="true" onClick="actualizarAltura(<?php echo $_SESSION["id"] ?>);"><span class="glyphicon glyphicon-check"></span> Aceptar</button>
                 <button type="button" class="btn btn-danger btn-default" data-dismiss="modal"><span class="glyphicon glyphicon-remove"></span> Cancelar</button>
               </form>
           </div>
@@ -265,7 +276,7 @@ window.onload=function(){
                 <span class="error" id="actpeso2"></span>
               </div>
               <div class="modal-footer">
-                <button type="button" id="buttomactpeso" class="btn btn-success" data-dismiss="modal" disabled="true" onClick="actualizarPeso();"><span class="glyphicon glyphicon-check"></span> Aceptar</button>
+                <button type="submit" id="buttomactpeso" class="btn btn-success" data-dismiss="modal" disabled="true" onClick="actualizarPeso();"><span class="glyphicon glyphicon-check"></span> Aceptar</button>
                 <button type="button" class="btn btn-danger btn-default" data-dismiss="modal"><span class="glyphicon glyphicon-remove"></span> Cancelar</button>
               </form>
           </div>
@@ -275,11 +286,65 @@ window.onload=function(){
     </div>
     <!-- Fin Modal Actualizar Peso -->
     
+    <!-- Modal Actualizar Telefono -->
+    <div id="modalTelefono" class="modal fade" role="dialog">
+      <div class="modal-dialog">
+    
+        <!-- Modal content-->
+        <div class="modal-content">
+          <div class="modal-header">
+            <button type="button" class="close" data-dismiss="modal">&times;</button>
+            <h4 class="modal-title">Actualiza tu teléfono</h4>
+          </div>
+          <div class="modal-body">
+              <form role="form" name="formacttelefono" method="post">
+                <label for="acttelefono">Nuevo teléfono</label>
+                <input type="tel" class="form-control" id="acttelefono" name="acttelefono" onKeyPress="return validaTelefono(event);" required maxlength="9" onpaste="return false;" onKeyUp="actCompruebaTelefono();" onChange="actCompruebaTelefono();" />
+                <span class="error" id="acttelefono2"></span>
+              </div>
+              <div class="modal-footer">
+                <button type="submit" id="buttomacttelefono" class="btn btn-success" data-dismiss="modal" disabled="true" onClick="actualizarTelefono();"><span class="glyphicon glyphicon-check"></span> Aceptar</button>
+                <button type="button" class="btn btn-danger btn-default" data-dismiss="modal"><span class="glyphicon glyphicon-remove"></span> Cancelar</button>
+              </form>
+          </div>
+        </div>
+    
+      </div>
+    </div>
+    <!-- Fin Modal Actualizar Teléfono -->
+    
+    <!-- Modal Actualizar Patologías -->
+    <div id="modalPatologias" class="modal fade" role="dialog">
+      <div class="modal-dialog">
+    
+        <!-- Modal content-->
+        <div class="modal-content">
+          <div class="modal-header">
+            <button type="button" class="close" data-dismiss="modal">&times;</button>
+            <h4 class="modal-title">Actualiza tus patologías o situación fisiológica</h4>
+          </div>
+          <div class="modal-body">
+              <form role="form" name="formactpatologias" method="post">
+                <span id="patologias2"></span>
+              </div>
+              <div class="modal-footer">
+                <button type="submit" id="buttomacttelefono" class="btn btn-success" data-dismiss="modal" onClick="actualizarPatologias(<?php echo $_SESSION["id"] ?>);"><span class="glyphicon glyphicon-check"></span> Aceptar</button>
+                <button type="button" class="btn btn-danger btn-default" data-dismiss="modal"><span class="glyphicon glyphicon-remove"></span> Cancelar</button>
+              </form>
+          </div>
+        </div>
+    
+      </div>
+    </div>
+    <!-- Fin Modal Actualizar Patologías -->
+    
     
     <script>
+	cargaPatologiasCliente(<?php echo $_SESSION["id"] ?>);
 	graficaPeso(<?php echo $_SESSION["id"] ?>);
 	cargarIntercambios(<?php echo $_SESSION["id"] ?>);
 	datosEmpresa();
+	muestraTodasPatologiasAct("<?php echo $_SESSION["sexo"] ?>");
 	</script>
 </body>
 </html>

@@ -1,6 +1,125 @@
 // JavaScript Document
+var patologiascliente = [];
 
 //Actualizar
+function muestraTodasPatologiasAct(sexo)
+{
+	$.get("../servidor/consulta_patologia.php", function(data, status){
+				var objeto = JSON.parse(data);
+				var texto="<div class='row'>";
+				
+				if(sexo=="h")
+				{
+					var valor=1;
+				}
+				else
+				{
+					var valor=0;
+				}
+				
+				for(i=valor;i<objeto.length;i++)
+				{
+					if(patologiascliente.indexOf(objeto[i].id)>-1)
+					{
+						
+						texto+="<div class='col-sm-4'><label><input type='checkbox' name='"+objeto[i].nombre+"' value='"+objeto[i].id+"' checked /> "+objeto[i].nombre+"</label></div>";
+					}
+					else
+					{
+						
+						texto+="<div class='col-sm-4'><label><input type='checkbox' name='"+objeto[i].nombre+"' value='"+objeto[i].id+"' /> "+objeto[i].nombre+"</label></div>";
+					}
+					if(i%3==0 && i!=0)
+					{
+						texto+="</div><div class='row'>";
+					}
+				}
+				texto+="</div>";
+				$("#patologias2").html(texto);
+			});
+}
+
+function actualizarPatologias(id)
+{
+	var checkbox="";
+	$("input:checkbox:checked").each(function(){
+		//cada elemento seleccionado
+		checkbox+=$(this).val()+",";
+	});
+
+	checkbox=checkbox.substring(0,checkbox.length-1);
+	
+	if(checkbox=="")
+	{
+		checkbox=="ninguna";
+	}
+	
+	$.post("../servidor/actualiza_patologias.php",{
+			patologias: checkbox
+							},
+							function(datos, estado)
+							{
+								if(datos=='s')
+								{
+									cargaPatologiasCliente(id);
+								}
+								else
+								{
+									alert("No se ha podido actualizar. Intentalo de nuevo más tarde");
+								}
+							});
+}
+
+function actualizarTelefono(id)
+{
+	$.post("../servidor/actualiza_telefono.php",{
+			acttelefono: $("#acttelefono").val()
+							},
+							function(datos, estado)
+							{
+								if(datos=='s')
+								{
+									cargaTelefono();
+									$("#acttelefono").val("");
+									$("#buttomacttelefono").attr("disabled",true);
+								}
+								else
+								{
+									alert("Ha ocurrido un error. Intentalo de nuevo más tarde.");
+								}
+							});
+}
+
+function cargaTelefono()
+{
+	$.get("../servidor/consulta_telefono.php", function(data, status){
+				var objeto = JSON.parse(data);
+				$("#telefono").html(objeto[0].telefono);
+			});
+}
+
+function actCompruebaTelefono()
+{
+	if($("#acttelefono").val()=="")
+	{
+		$("#acttelefono2").html("No puede estar vacío");
+		$("#buttomacttelefono").attr("disabled",true);
+	}
+	else
+	{
+		if($("#acttelefono").val().length==9)
+		{
+			$("#acttelefono2").html("");
+			$("#buttomacttelefono").attr("disabled",false);
+		}
+		else
+		{
+			$("#acttelefono2").html("Debe contener 9 dígitos.");
+			$("#buttomacttelefono").attr("disabled",true);
+		}
+	}
+}
+
 function actualizarAltura(id)
 {
 	$.post("../servidor/actualiza_altura.php",{
@@ -12,6 +131,8 @@ function actualizarAltura(id)
 								{
 									cargarIntercambios(id);
 									cargaAlturaPesoDes();
+									$("#actaltura").val("");
+									$("#buttomactaltura").attr("disabled",true);
 								}
 								else
 								{
@@ -32,7 +153,7 @@ function cargaAlturaPesoDes()
 
 function actCompruebaAltura()
 {
-		if($("#actaltura").val()=="")
+	if($("#actaltura").val()=="")
 	{
 		$("#actaltura2").html("No puede estar vacío");
 		$("#buttomactaltura").attr("disabled",true);
@@ -64,7 +185,9 @@ function actualizarPeso(id)
 								{
 									cargarIntercambios(id);
 									cargaPeso();
-									graficaPeso(id)
+									graficaPeso(id);
+									$("#actpeso").val("");
+									$("#buttomactpeso").attr("disabled",true);
 								}
 								else
 								{
@@ -105,6 +228,30 @@ function actCompruebaPeso()
 }
 
 //Fin Actualizar
+
+function cargaPatologiasCliente(idcliente)
+{
+	$.post("../servidor/consulta_cliente_patologias.php",{
+			idcliente: idcliente
+							},
+							function(data, estado)
+							{
+								$("#patologias").html("");
+								var objeto = JSON.parse(data);
+								var texto="<div class='row'>";
+								for(var i=0;i<objeto.length;i++)
+								{
+									patologiascliente.push(objeto[i].id);
+									texto+="<div class='col-sm-3'>"+objeto[i].nombre+"</div>";
+									if(i%3==0 && i!=0)
+									{
+										texto+="</div><div class='row'>";
+									}
+								}
+								texto+="</div>";
+								$("#patologias").html(texto);
+							});
+}
 
 
 //Registro
