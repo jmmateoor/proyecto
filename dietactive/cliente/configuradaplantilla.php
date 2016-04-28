@@ -50,11 +50,9 @@ window.onload=function(){
 	});
 	
 	$("#panel1").hide();
-	graficaPeso(<?php echo $_SESSION["id"] ?>);
-	cargarIntercambios(<?php echo $_SESSION["id"] ?>);
-	datosEmpresa();
 	ocultaLoading();
 }
+
 </script>
 </head>
 
@@ -77,10 +75,10 @@ window.onload=function(){
                 </div>
             </div>
         <div class="row cabecera">
-            <div class="col-md-1">
+            <div class="col-md-2">
                 <p align="center"><img src="images/cab.png" class="img-responsive" width="100px" /></p>
             </div>
-            <div class="col-md-11">
+            <div class="col-md-10">
                 <h1>Zona Cliente</h1>
             </div>
         </div>
@@ -90,35 +88,35 @@ window.onload=function(){
                     <ul id="menu">
                     	<li>
                             <a href="#" class="menu">
-                                <div class="col-md-2 colmenu">
+                                <div class="col-sm-1 colmenu seleccionado">
                                     <h2><span class="glyphicon glyphicon-home"></span> Inicio</h2>
                                 </div>
                             </a>
                         </li>
                         <li>
                             <a href="#" class="menu">
-                                <div class="col-md-2 colmenu">
+                                <div class="col-sm-1 colmenu">
                                     <h2><span class="glyphicon glyphicon-calendar"></span> Citas</h2>
                                 </div>
                             </a>
                         </li>
                         <li>
                             <a href="#" class="menu">
-                                <div class="col-md-2 colmenu seleccionado">
+                                <div class="col-sm-2 colmenu">
                                     <h2><span class="glyphicon glyphicon-book"></span> Diario dietético</h2>
                                 </div>
                             </a>
                         </li>
                         <li>
                             <a href="#" class="menu">
-                                <div class="col-md-2 colmenu">
+                                <div class="col-sm-1 colmenu">
                                     <h2><span class="glyphicon glyphicon-heart"></span> Dieta</h2>
                                 </div>
                             </a>
                         </li>
                         <li>
                             <a href="#" class="menu">
-                                <div class="col-md-4 colmenu">
+                                <div class="col-sm-3 colmenu">
                                     <h2><span class="glyphicon glyphicon-list"></span> Alimentos por intercambio</h2>
                                 </div>
                             </a>
@@ -143,7 +141,7 @@ window.onload=function(){
                 
                 <div class="row">
                 	<div class="col-md-12">
-                        <h3 class="datospers"><span id="flip1" style="cursor: pointer;"><span id="iconoflip1" class="glyphicon glyphicon-menu-down"></span> Datos Personales </span><a href="#" class="enlacenormal">[Actualizar]</a></h3>
+                        <h3 class="datospers"><span id="flip1" style="cursor: pointer;"><span id="iconoflip1" class="glyphicon glyphicon-menu-down"></span> Datos Personales </span></h3>
                         <div id="panel1">
                             <div class="row">
                                 <div class="col-sm-3">
@@ -162,15 +160,15 @@ window.onload=function(){
                             <div class="row">
                                 <div class="col-sm-3">
                                     <p><b>Altura</b></p>
-                                    <p><span id="altura"><?php echo $_SESSION["altura"] ?></span> cm.</p>
+                                    <p><span id="altura" ng-model="angaltura"><?php echo $_SESSION["altura"] ?></span> cm. <button type="button" class="btn btn-info btn-xs" data-toggle="modal" data-target="#modalAltura"><span class="glyphicon glyphicon-edit"></span></button></p>
+                                </div>
+                                <div class="col-sm-3">
+                                    <p><b>Tu peso actual</b></p>
+                                    <p><span id="peso"><?php echo $_SESSION["peso"] ?></span> Kg. <button type="button" class="btn btn-info btn-xs" data-toggle="modal" data-target="#modalPeso"><span class="glyphicon glyphicon-edit"></span></button></p>
                                 </div>
                                 <div class="col-sm-3">
                                     <p><b>Tu peso deseable</b></p>
                                     <p><span id="pesodeseable"><?php echo $_SESSION["pesodeseable"] ?></span> Kg.</p>
-                                </div>
-                                <div class="col-sm-3">
-                                    <p><b>Tu peso actual</b></p>
-                                    <p><span id="peso"><?php echo $_SESSION["peso"] ?></span> Kg.</p>
                                 </div>
                             </div>
                             <div class="row">
@@ -220,5 +218,68 @@ window.onload=function(){
             <h5 class="desarrollo">Desarrollado por <span id="dietdesarrollado"></span></h5>
         </div>
     </div>
+    
+    <!-- Modals de actualizar datos -->
+    
+    <!-- Modal Actualizar Altura -->
+    <div id="modalAltura" class="modal fade" role="dialog">
+      <div class="modal-dialog">
+    
+        <!-- Modal content-->
+        <div class="modal-content">
+          <div class="modal-header">
+            <button type="button" class="close" data-dismiss="modal">&times;</button>
+            <h4 class="modal-title">Actualiza tu altura</h4>
+          </div>
+          <div class="modal-body">
+              <form role="form" name="formactaltura" method="post">
+              	<label for="actaltura">Nueva altura en centímetros</label>
+                <input type="number" class="form-control" id="actaltura" name="actaltura" required min="0" max="500" onKeyUp="actCompruebaAltura();" onChange="actCompruebaAltura();" onpaste="return false;" />
+                <span class="error" id="actaltura2"></span>
+              </div>
+              <div class="modal-footer">
+                <button type="button" id="buttomactaltura" class="btn btn-success" data-dismiss="modal" disabled="true" onClick="actualizarAltura(<?php echo $_SESSION["id"] ?>);"><span class="glyphicon glyphicon-check"></span> Aceptar</button>
+                <button type="button" class="btn btn-danger btn-default" data-dismiss="modal"><span class="glyphicon glyphicon-remove"></span> Cancelar</button>
+              </form>
+          </div>
+        </div>
+    
+      </div>
+    </div>
+    <!-- Fin Modal Actualizar Altura -->
+    
+    <!-- Modal Actualizar Peso -->
+    <div id="modalPeso" class="modal fade" role="dialog">
+      <div class="modal-dialog">
+    
+        <!-- Modal content-->
+        <div class="modal-content">
+          <div class="modal-header">
+            <button type="button" class="close" data-dismiss="modal">&times;</button>
+            <h4 class="modal-title">Actualiza tu peso</h4>
+          </div>
+          <div class="modal-body">
+              <form role="form" name="formactpeso" method="post">
+                <label for="actpeso">Nuevo peso en Kg.</label>
+                <input type="number" class="form-control" id="actpeso" name="actpeso" min="0" max="500" step="0.01" onKeyUp="actCompruebaPeso();" onChange="actCompruebaPeso();" required onpaste="return false;" />
+                <span class="error" id="actpeso2"></span>
+              </div>
+              <div class="modal-footer">
+                <button type="button" id="buttomactpeso" class="btn btn-success" data-dismiss="modal" disabled="true" onClick="actualizarPeso();"><span class="glyphicon glyphicon-check"></span> Aceptar</button>
+                <button type="button" class="btn btn-danger btn-default" data-dismiss="modal"><span class="glyphicon glyphicon-remove"></span> Cancelar</button>
+              </form>
+          </div>
+        </div>
+    
+      </div>
+    </div>
+    <!-- Fin Modal Actualizar Peso -->
+    
+    
+    <script>
+	graficaPeso(<?php echo $_SESSION["id"] ?>);
+	cargarIntercambios(<?php echo $_SESSION["id"] ?>);
+	datosEmpresa();
+	</script>
 </body>
 </html>

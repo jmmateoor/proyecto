@@ -7,4 +7,7 @@ $bbdd="dietactive";
 //$c = new MySQLi($servidor,$usuario,$password,$bbdd);
 //$c->set_charset("utf8");
 //Fin Base de Datos
+
+//Enlace de activación por e-mail
+$path="http://localhost/daw/proyecto/dietactive/servidor/activar_cuenta.php";
 ?>

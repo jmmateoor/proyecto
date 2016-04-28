@@ -13,12 +13,12 @@
 <script src="../cliente/funciones.js"></script>
 <script>
 window.onload=function(){
-	datosEmpresa();
+	ocultaLoading();
 }
 </script>
 </head>
 
-<body onLoad="ocultaLoading();">
+<body>
 <div id="loading"></div>
         <div id="imgLoading">
             <img src="../cliente/images/loading.gif" alt="loading" title="loading" />
@@ -26,10 +26,10 @@ window.onload=function(){
 	<script>muestraLoading();</script>
     <div class="container-fluid">
         <div class="row cabecera">
-            <div class="col-md-1">
-                <img src="../cliente/images/cab.png" class="img-responsive" width="100px" />
+            <div class="col-md-2">
+                <p align="center"><img src="../cliente/images/cab.png" class="img-responsive" width="100px" /></p>
             </div>
-            <div class="col-md-11">
+            <div class="col-md-10">
                 <h1>Zona Cliente</h1>
             </div>
         </div>
@@ -92,5 +92,8 @@ if (isset($_GET['id']))
             <h5 class="desarrollo">Desarrollado por <span id="dietdesarrollado"></span></h5>
         </div>
     </div>
+    <script>
+	datosEmpresa();
+	</script>
 </body>
 </html>

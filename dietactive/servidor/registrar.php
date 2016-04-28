@@ -56,7 +56,6 @@
 		crearIntercambios($idcliente);
 		pesoHistorico($idcliente);
 		
-		$path="http://localhost/daw/proyecto/dietactive/servidor/activar_cuenta.php";
 		$link=$path."?id=".$id."&codigo=".$codigo."";
 		
 		

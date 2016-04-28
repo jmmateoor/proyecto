@@ -16,7 +16,6 @@ session_start();
 <script src="funciones.js"></script>
 <script>
 window.onload=function(){
-	datosEmpresa();
 	ocultaLoading();
 }
 
@@ -63,10 +62,10 @@ function clienteLogin()
 	<script>muestraLoading();</script>
     <div class="container-fluid">
         <div class="row cabecera">
-        	<div class="col-md-1">
-                <img src="images/cab.png" class="img-responsive" width="100px" />
+        	<div class="col-md-2">
+                <p align="center"><img src="images/cab.png" class="img-responsive" width="100px" /></p>
             </div>
-            <div class="col-md-11">
+            <div class="col-md-10">
                 <h1>Zona Cliente</h1>
             </div>
         </div>
@@ -119,5 +118,8 @@ function clienteLogin()
             <h5 class="desarrollo">Desarrollado por <span id="dietdesarrollado"></span></h5>
         </div>
     </div>
+    <script>
+	datosEmpresa();
+	</script>
 </body>
 </html>

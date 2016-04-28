@@ -1,5 +1,112 @@
 // JavaScript Document
 
+//Actualizar
+function actualizarAltura(id)
+{
+	$.post("../servidor/actualiza_altura.php",{
+			actaltura: $("#actaltura").val()
+							},
+							function(datos, estado)
+							{
+								if(datos=='s')
+								{
+									cargarIntercambios(id);
+									cargaAlturaPesoDes();
+								}
+								else
+								{
+									alert("Ha ocurrido un error. Intentalo de nuevo más tarde.");
+								}
+							});
+}
+
+function cargaAlturaPesoDes()
+{
+	$.get("../servidor/consulta_altura_pdes.php", function(data, status){
+				var objeto = JSON.parse(data);
+				$("#altura").html(objeto[0].altura);
+				$("#pesodeseable").html(objeto[0].pesodeseable);
+				$("#geet").html(objeto[0].geet);
+			});
+}
+
+function actCompruebaAltura()
+{
+		if($("#actaltura").val()=="")
+	{
+		$("#actaltura2").html("No puede estar vacío");
+		$("#buttomactaltura").attr("disabled",true);
+	}
+	else
+	{
+		if($("#actaltura").val()>0)
+		{
+			$("#actaltura2").html("");
+			$("#buttomactaltura").attr("disabled",false);
+		}
+		else
+		{
+			$("#actaltura2").html("No puede ser 0 o menor");
+			$("#buttomactaltura").attr("disabled",true);
+		}
+	}
+
+}
+
+function actualizarPeso(id)
+{
+	$.post("../servidor/actualiza_peso.php",{
+			actpeso: $("#actpeso").val()
+							},
+							function(datos, estado)
+							{
+								if(datos=='s')
+								{
+									cargarIntercambios(id);
+									cargaPeso();
+									graficaPeso(id)
+								}
+								else
+								{
+									alert("Ha ocurrido un error. Intentalo de nuevo más tarde.");
+								}
+							});
+}
+
+function cargaPeso()
+{
+	$.get("../servidor/consulta_actpeso.php", function(data, status){
+				var objeto = JSON.parse(data);
+				$("#peso").html(objeto[0].peso);
+				$("#geet").html(objeto[0].geet);
+			});
+}
+
+function actCompruebaPeso()
+{
+	if($("#actpeso").val()=="")
+	{
+		$("#actpeso2").html("No puede estar vacío");
+		$("#buttomactpeso").attr("disabled",true);
+	}
+	else
+	{
+		if($("#actpeso").val()>0)
+		{
+			$("#actpeso2").html("");
+			$("#buttomactpeso").attr("disabled",false);
+		}
+		else
+		{
+			$("#actpeso2").html("No puede ser 0 o menor");
+			$("#buttomactpeso").attr("disabled",true);
+		}
+	}
+}
+
+//Fin Actualizar
+
+
 //Registro
 
 	function validaEmail()
@@ -538,6 +645,7 @@ function graficaPeso(idcliente)
 										data: pesos
 									}]
 								});
+								
 						});
 };
 

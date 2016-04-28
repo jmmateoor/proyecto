@@ -50,7 +50,7 @@ a.cerrarsesion:hover{
 }
 
 h2{
-	font-size:20px !important;
+	font-size:16px !important;
 }
 
 .cabecera{
@@ -101,17 +101,18 @@ ul#menu {
     padding: 0;
 }
 
-.colmenu{
-	border:1px solid #fff;
-}
-
-@media screen and (max-width: 1000px) {
+/* Menú para movil pequeño */
+@media screen and (max-width: 767px) {
     .colmenu{
-	/*border-bottom:2px solid #fff;*/
-	margin:0;
-	padding-top:10px;
-	text-align:left !important;
-}
+		/*border-bottom:2px solid #fff;*/
+		margin:0;
+		padding-top:10px;
+		text-align:left !important;
+		border:1px solid #fff;
+	}
+	.cabecera{
+		text-align:center;
+	}
 }
 
 .inicio{

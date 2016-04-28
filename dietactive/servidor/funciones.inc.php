@@ -31,6 +31,18 @@ function pesoDeseable($altura,$sexo)
 	return $pesodeseable;
 }
 
+function borrarIntercambios($idcliente)
+{
+	include("config.inc.php");
+	$c = new MySQLi($servidor,$usuario,$password,$bbdd);
+	$c->set_charset("utf8");
+	
+	$insertar = $c->prepare("delete from tablaintercambio where idcliente = ?");
+	$insertar->bind_param("i",$idcliente);
+	$insertar->execute();
+	$c->close();
+}
+
 function crearIntercambios($idcliente)
 {
 	include("config.inc.php");
