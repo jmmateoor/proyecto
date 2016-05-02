@@ -149,7 +149,7 @@ window.onload=function(){
                 </div>
                 <div class="row">
                 	<div class="col-md-12">
-                        <h3 class="datospers"><span id="flip1" style="cursor: pointer;"><span id="iconoflip1" class="glyphicon glyphicon-menu-down"></span> Datos Personales </span></h3>
+                        <h3 class="datospers"><span data-toggle="tooltip" data-placement="top" title="Mostrar / Ocultar" id="flip1" style="cursor: pointer;"><span id="iconoflip1" class="glyphicon glyphicon-menu-down"></span> Datos Personales </span></h3>
                         <div id="panel1">
                             <div class="row">
                                 <div class="col-sm-3">
@@ -167,22 +167,22 @@ window.onload=function(){
                             </div>
                             <div class="row">
                             	<div class="col-sm-3">
-                                    <p><b>Teléfono</b></p>
-                                    <p><span id="telefono"><?php echo $_SESSION["telefono"] ?></span> <button type="button" class="btn btn-info btn-xs" data-toggle="modal" data-target="#modalTelefono"><span class="glyphicon glyphicon-edit"></span></button></p>
+                                    <p><b>Teléfono</b> <span data-toggle="tooltip" data-placement="top" title="Actualizar"><button type="button" class="btn btn-info btn-xs" data-toggle="modal" data-target="#modalTelefono"><span class="glyphicon glyphicon-edit"></span></button></span></p>
+                                    <p><span id="telefono"><?php echo $_SESSION["telefono"] ?></span></p>
                                 </div>
                                 <div class="col-sm-3">
-                                    <p><b>Altura</b></p>
-                                    <p><span id="altura" ng-model="angaltura"><?php echo $_SESSION["altura"] ?></span> cm. <button type="button" class="btn btn-info btn-xs" data-toggle="modal" data-target="#modalAltura"><span class="glyphicon glyphicon-edit"></span></button></p>
+                                    <p><b>Altura</b> <span data-toggle="tooltip" data-placement="top" title="Actualizar"><button type="button" class="btn btn-info btn-xs" data-toggle="modal" data-target="#modalAltura"><span class="glyphicon glyphicon-edit"></span></button></span></p>
+                                    <p><span id="altura" ng-model="angaltura"><?php echo $_SESSION["altura"] ?></span> cm.</p>
                                 </div>
                                 <div class="col-sm-3">
-                                    <p><b>Tu peso actual</b></p>
-                                    <p><span id="peso"><?php echo $_SESSION["peso"] ?></span> Kg. <button type="button" class="btn btn-info btn-xs" data-toggle="modal" data-target="#modalPeso"><span class="glyphicon glyphicon-edit"></span></button></p>
+                                    <p><b>Tu peso</b> <span data-toggle="tooltip" data-placement="top" title="Actualizar"><button type="button" class="btn btn-info btn-xs" data-toggle="modal" data-target="#modalPeso"><span class="glyphicon glyphicon-edit"></span></button></span></p>
+                                    <p><span id="peso"><?php echo $_SESSION["peso"] ?></span> Kg.</p>
                                 </div>
                                 
                             </div>
                             <div class="row">
                             	<div class="col-sm-3">
-                                	<p><b>Tu gasto energético total</b></p>
+                                	<p><b>Consumo ideal de calorías</b></p>
                                     <p><span id="geet"><?php echo $_SESSION["geet"] ?></span> Kcal/día</p>
                                 </div>
                                 <div class="col-sm-3">
@@ -195,7 +195,7 @@ window.onload=function(){
                 </div>
                 <div class="row">
                 	<div class="col-md-12">
-                        <h3 class="datospers"><span id="flip2" style="cursor: pointer;"> <span id="iconoflip2" class="glyphicon glyphicon-menu-down"></span> Tus patologías o situación fisiológica</span> <button type="button" class="btn btn-info btn-xs" data-toggle="modal" data-target="#modalPatologias"><span class="glyphicon glyphicon-edit"></span></button></h3>
+                        <h3 class="datospers"><span data-toggle="tooltip" data-placement="top" title="Mostrar / Ocultar" id="flip2" style="cursor: pointer;"> <span id="iconoflip2" class="glyphicon glyphicon-menu-down"></span> Tus patologías o situación fisiológica</span> <span data-toggle="tooltip" data-placement="top" title="Actualizar"><button type="button" class="btn btn-info btn-xs" data-toggle="modal" data-target="#modalPatologias"><span class="glyphicon glyphicon-edit"></span></button></span></h3>
                         <div id="panel2">
                         	<p id="patologias"></p>
                         </div>
@@ -276,7 +276,7 @@ window.onload=function(){
                 <span class="error" id="actpeso2"></span>
               </div>
               <div class="modal-footer">
-                <button type="submit" id="buttomactpeso" class="btn btn-success" data-dismiss="modal" disabled="true" onClick="actualizarPeso();"><span class="glyphicon glyphicon-check"></span> Aceptar</button>
+                <button type="submit" id="buttomactpeso" class="btn btn-success" data-dismiss="modal" disabled="true" onClick="actualizarPeso(<?php echo $_SESSION["id"] ?>);"><span class="glyphicon glyphicon-check"></span> Aceptar</button>
                 <button type="button" class="btn btn-danger btn-default" data-dismiss="modal"><span class="glyphicon glyphicon-remove"></span> Cancelar</button>
               </form>
           </div>
@@ -345,6 +345,7 @@ window.onload=function(){
 	cargarIntercambios(<?php echo $_SESSION["id"] ?>);
 	datosEmpresa();
 	muestraTodasPatologiasAct("<?php echo $_SESSION["sexo"] ?>");
+	$('[data-toggle="tooltip"]').tooltip();
 	</script>
 </body>
 </html>

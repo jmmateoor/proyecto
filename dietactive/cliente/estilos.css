@@ -122,6 +122,8 @@ ul#menu {
 	background-color:RGB(3,90,0);
 	border-top:#777674 solid 2px;
 	font-size:18px;
+	background-image:url(images/fondomenu.png);
+	background-repeat:repeat;
 }
 a.enlaceinicio{
 	color:#d3d1ce;
