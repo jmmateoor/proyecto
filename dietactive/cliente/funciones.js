@@ -228,6 +228,17 @@ function actCompruebaPeso()
 }
 
 //Fin Actualizar
+function cargaActividadFisica()
+{
+	$.post("../servidor/consulta_cliente_patologias.php",{
+			idcliente: idcliente
+							},
+							function(data, estado)
+							{
+								
+							});
+}
+
 
 function cargaPatologiasCliente(idcliente)
 {
