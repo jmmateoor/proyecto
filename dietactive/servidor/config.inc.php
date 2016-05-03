@@ -10,4 +10,6 @@ $bbdd="dietactive";
 
 //Enlace de activación por e-mail
 $path="http://localhost/daw/proyecto/dietactive/servidor/activar_cuenta.php";
+
+$emailempresa="josem.daw2@gmail.com";
 ?>

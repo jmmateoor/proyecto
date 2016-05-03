@@ -65,11 +65,14 @@ window.onload=function(){
 	<script>muestraLoading();</script>
     <div class="container-fluid">
     	<div class="row barrasuperior">
-            	<div class="col-md-6">
+            	<div class="col-md-5">
                 	
                 </div>
-                <div class="col-md-4">
+                <div class="col-md-3">
                 	<span class="glyphicon glyphicon-user"></span> <span id="email"><?php echo $_SESSION['email'] ?></span>
+                </div>
+                <div class="col-md-2">
+                	<a class="cerrarsesion" data-toggle="modal" data-target="#modalEmail" style="cursor: pointer;"><span class="glyphicon glyphicon-comment"></span> Enviar consulta</a>
                 </div>
                 <div class="col-md-2">
                 	<a class="cerrarsesion" href="cerrar_sesion_cliente.php"><span class="glyphicon glyphicon-off"></span> Cerrar sesión</a>
@@ -338,6 +341,32 @@ window.onload=function(){
     </div>
     <!-- Fin Modal Actualizar Patologías -->
     
+    <!-- Modal Enviar Email -->
+    <div id="modalEmail" class="modal fade" role="dialog">
+      <div class="modal-dialog">
+    
+        <!-- Modal content-->
+        <div class="modal-content">
+          <div class="modal-header">
+            <button type="button" class="close" data-dismiss="modal">&times;</button>
+            <h4 class="modal-title">Enviar consulta</h4>
+          </div>
+          <div class="modal-body">
+              <form role="form" name="formEnviarEmail" method="post">
+              Escribe tu consulta. Se te enviará una contestación a tu correo electrónico en la máxima brevedad posible.
+              <textarea id="mensajeEmail" class="form-control" rows="4" cols="50" onKeyUp="compruebaMensajeEmail();" onChange="compruebaMensajeEmail();"></textarea>
+              <span id="mensajeEmail2"></span>
+              </div>
+              <div class="modal-footer">
+                <button type="submit" id="buttommensajeEmail" class="btn btn-success" data-dismiss="modal" disabled="true" onClick="enviarEmail('<?php echo $_SESSION["nombre"] ?>','<?php echo $_SESSION["apellidos"] ?>','<?php echo $_SESSION["email"] ?>');"><span class="glyphicon glyphicon-check"></span> Aceptar</button>
+                <button type="button" class="btn btn-danger btn-default" data-dismiss="modal"><span class="glyphicon glyphicon-remove"></span> Cancelar</button>
+              </form>
+          </div>
+        </div>
+    
+      </div>
+    </div>
+    <!-- Fin Modal Enviar Email -->
     
     <script>
 	cargaPatologiasCliente(<?php echo $_SESSION["id"] ?>);

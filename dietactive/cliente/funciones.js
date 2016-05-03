@@ -1,6 +1,44 @@
 // JavaScript Document
 var patologiascliente = [];
 
+function compruebaMensajeEmail()
+{
+	if($("#mensajeEmail").val()=="")
+	{
+		$("#mensajeEmail2").html("No puede estar vacío");
+		$("#buttommensajeEmail").attr("disabled",true);
+	}
+	else
+	{
+		$("#mensajeEmail2").html("");
+		$("#buttommensajeEmail").attr("disabled",false);
+	}
+}
+
+
+function enviarEmail(nombre, apellidos, email)
+{
+	mensaje=$("#mensajeEmail").val();
+	$.post("../servidor/enviar_email.php",{
+			nombre: nombre,
+			apellidos: apellidos,
+			email: email,
+			mensaje: mensaje
+							},
+							function(datos, estado)
+							{
+								if(datos=='s')
+								{
+									$("#mensajeEmail").val("");
+								}
+								else
+								{
+									alert("No se ha enviar la consulta. Intentalo de nuevo más tarde");
+								}
+							});
+}
+
+
 //Actualizar
 function muestraTodasPatologiasAct(sexo)
 {
