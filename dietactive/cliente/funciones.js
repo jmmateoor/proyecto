@@ -1,6 +1,69 @@
 // JavaScript Document
 var patologiascliente = [];
 
+function actualizaPassword()
+{
+	//password
+	$.post("../servidor/actualiza_password.php",{
+			password: $("#password").val()
+							},
+							function(datos, estado)
+							{
+								if(datos=='s')
+								{
+									borrarPass();
+									alert("Contraseña actualizada correctamente.");
+								}
+								else
+								{
+									alert("Ha ocurrido un error. Intentalo de nuevo más tarde.");
+								}
+							});
+}
+
+
+function activaBotonPass()
+{
+	if($("#errorpassword1").html()=="" && $("#errorpassword2").html()=="" && $("#compruebapassword").html()=="" && $("#password").val()!="" && $("#password2").val()!="")
+	{
+		$("#buttomPass").attr("disabled",false);
+	}
+	else
+	{
+		$("#buttomPass").attr("disabled",true);
+	}
+}
+
+function borrarPass()
+{
+	$("#password").val("");
+	$("#password2").val("");
+	$("#errorpassword1").html("");
+	$("#errorpassword2").html("");
+	$("#compruebapassword").html("");
+	$("#buttomPass").attr("disabled",true);
+}
+
+function actualizaActividad(id)
+{
+	$.post("../servidor/actualiza_actividadf.php",{
+			idactividad: $("#actividadf").val()
+							},
+							function(datos, estado)
+							{
+								if(datos=='s')
+								{
+									cargaActividadCliente();
+									cargarIntercambios(id);
+									cargaAlturaPesoDes();
+								}
+								else
+								{
+									alert("Ha ocurrido un error. Intentalo de nuevo más tarde.");
+								}
+							});
+}
+
 function compruebaMensajeEmail()
 {
 	if($("#mensajeEmail").val()=="")
@@ -266,14 +329,14 @@ function actCompruebaPeso()
 }
 
 //Fin Actualizar
-function cargaActividadFisica()
+function cargaActividadCliente()
 {
-	$.post("../servidor/consulta_cliente_patologias.php",{
-			idcliente: idcliente
-							},
+	$.post("../servidor/consulta_cliente_actividad.php",
 							function(data, estado)
 							{
-								
+								datos=JSON.parse(data);
+								$("#actf").html(datos[0].nombre);
+								$("#descactf").html(datos[0].descripcion);
 							});
 }
 
@@ -568,20 +631,28 @@ function cargaPatologiasCliente(idcliente)
 			$("#embarazo").attr("disabled",true);
 		}
 	}
-	
+	var descripcionopciones=[];
 	function cargarActividadFisica()
 	{
     	$.get("../servidor/consulta_actividadf.php", function(data, status){
 				var objeto = JSON.parse(data);
-				var texto="<select class='form-control' name='actividadf' id='actividadf'>";
+				var texto="<select class='form-control' name='actividadf' id='actividadf' onChange='muestraDescripcion(this.value);'>";
 				for(var i=0;i<objeto.length;i++)
 				{
 					texto+="<option value='"+objeto[i].id+"'>"+objeto[i].nombre+"</option>";
+					descripcionopciones.push(objeto[i].descripcion);
 				}
 				texto+="</select>";
 				$("#opciones").html(texto);
+				$("#descopciones").html(descripcionopciones[0]);
 			});
 	}
+	
+	function muestraDescripcion(indice)
+	{
+		$("#descopciones").html(descripcionopciones[indice-1]);
+	}
+	
 	function cargarPatologias()
 	{
 		$.get("../servidor/consulta_patologia.php", function(data, status){

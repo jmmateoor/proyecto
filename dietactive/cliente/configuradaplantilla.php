@@ -65,25 +65,31 @@ window.onload=function(){
 	<script>muestraLoading();</script>
     <div class="container-fluid">
     	<div class="row barrasuperior">
-            	<div class="col-md-5">
+            	<div class="col-md-8">
                 	
                 </div>
-                <div class="col-md-3">
-                	<span class="glyphicon glyphicon-user"></span> <span id="email"><?php echo $_SESSION['email'] ?></span>
-                </div>
-                <div class="col-md-2">
-                	<a class="cerrarsesion" data-toggle="modal" data-target="#modalEmail" style="cursor: pointer;"><span class="glyphicon glyphicon-comment"></span> Enviar consulta</a>
-                </div>
-                <div class="col-md-2">
-                	<a class="cerrarsesion" href="cerrar_sesion_cliente.php"><span class="glyphicon glyphicon-off"></span> Cerrar sesión</a>
+                <div class="col-md-4">
+                	<div class="dropdown">
+                        <button class="btn btn-primary dropdown-toggle" id="menu1" type="button" data-toggle="dropdown"><span class="glyphicon glyphicon-user"></span> <span id="email"><?php echo $_SESSION['email'] ?></span>
+                        <span class="caret"></span></button>
+                        <ul class="dropdown-menu" role="menu" aria-labelledby="menu1">
+                          <li role="presentation"><a data-toggle="modal" data-target="#modalPass" style="cursor: pointer;"><span class="glyphicon glyphicon-refresh"></span> Cambiar contraseña</a></li>
+                          <li role="presentation"><a data-toggle="modal" data-target="#modalEmail" style="cursor: pointer;"><span class="glyphicon glyphicon-comment"></span> Enviar consulta</a></li>
+                          <li role="presentation"></li>
+                          <li role="presentation" class="divider"></li>
+                          <li role="presentation"><a href="cerrar_sesion_cliente.php" style="cursor: pointer;"><span class="glyphicon glyphicon-off"></span> Cerrar sesión</a></li>    
+                        </ul>
+                  	</div>
                 </div>
             </div>
         <div class="row cabecera">
-            <div class="col-md-2">
+            <div class="col-md-12">
                 <p align="center"><img src="images/cab.png" class="img-responsive" width="100px" /></p>
             </div>
-            <div class="col-md-10">
-                <h1>Zona Cliente</h1>
+        </div>
+        <div class="row cabecera">
+        	<div class="col-md-12">
+                <h1>Área Cliente</h1>
             </div>
         </div>
         <div class="row cabecera">
@@ -92,15 +98,15 @@ window.onload=function(){
                     <ul id="menu">
                     	<li>
                             <a href="#" class="menu">
-                                <div class="col-sm-1 colmenu seleccionado">
+                                <div class="col-sm-2 colmenu seleccionado">
                                     <h2><span class="glyphicon glyphicon-home"></span> Inicio</h2>
                                 </div>
                             </a>
                         </li>
                         <li>
                             <a href="#" class="menu">
-                                <div class="col-sm-1 colmenu">
-                                    <h2><span class="glyphicon glyphicon-calendar"></span> Citas</h2>
+                                <div class="col-sm-2 colmenu">
+                                    <h2><span class="glyphicon glyphicon-calendar"></span> Coger cita</h2>
                                 </div>
                             </a>
                         </li>
@@ -113,14 +119,14 @@ window.onload=function(){
                         </li>
                         <li>
                             <a href="#" class="menu">
-                                <div class="col-sm-1 colmenu">
-                                    <h2><span class="glyphicon glyphicon-heart"></span> Dieta</h2>
+                                <div class="col-sm-2 colmenu">
+                                    <h2><span class="glyphicon glyphicon-heart"></span> Tu Dieta</h2>
                                 </div>
                             </a>
                         </li>
                         <li>
                             <a href="#" class="menu">
-                                <div class="col-sm-3 colmenu">
+                                <div class="col-sm-4 colmenu">
                                     <h2><span class="glyphicon glyphicon-list"></span> Alimentos por intercambio</h2>
                                 </div>
                             </a>
@@ -138,69 +144,86 @@ window.onload=function(){
             <div class="col-md-5">
             	<div class="row">
                 	<div class="col-md-12">
-                        <h3 class="datospers">Tus intercambios</h3>
-                        <p id="intercambios"></p>
+                    	<div class="muestraIntercambios">
+                            <h3 class="datospers">Tus intercambios</h3>
+                            <p id="intercambios"></p>
+                        </div>
                     </div>
                 </div>
                 <div class="row">
                     <div class="col-md-12">
-                    	<h3 class="datospers">Tu historial de peso</h3>
-                        <div id="caja">
-                            <div id="grafica"></div>
+                        <div class="muestraHistorial">
+                            <h3 class="datospers">Tu historial de peso</h3>
+                            <div id="caja">
+                                <div id="grafica"></div>
+                            </div>
                         </div>
                     </div>
                 </div>
                 <div class="row">
                 	<div class="col-md-12">
-                        <h3 class="datospers"><span data-toggle="tooltip" data-placement="top" title="Mostrar / Ocultar" id="flip1" style="cursor: pointer;"><span id="iconoflip1" class="glyphicon glyphicon-menu-down"></span> Datos Personales </span></h3>
-                        <div id="panel1">
-                            <div class="row">
-                                <div class="col-sm-3">
-                                    <p><b>Nombre completo</b></p>
-                                    <p id="nombre"><?php echo $_SESSION["nombre"]." ".$_SESSION["apellidos"] ?></p>
+                        <div class="muestraDatosPers">
+                            <h3 class="datospers"><span data-toggle="tooltip" data-placement="top" title="Mostrar / Ocultar" id="flip1" style="cursor: pointer;"><span id="iconoflip1" class="glyphicon glyphicon-menu-down"></span> Datos Personales </span></h3>
+                            <div id="panel1">
+                                <div class="row">
+                                    <div class="col-sm-4">
+                                        <p><b>Nombre completo</b></p>
+                                        <p id="nombre"><?php echo $_SESSION["nombre"]." ".$_SESSION["apellidos"] ?></p>
+                                    </div>
+                                    <div class="col-sm-4">
+                                        <p><b>Sexo</b></p>
+                                        <p id="sexo"><?php if($_SESSION["sexo"]=="h"){echo "Hombre";} else {echo "Mujer";} ?></p>
+                                    </div>
+                                    <div class="col-sm-4">
+                                        <p><b>Tu edad</b></p>
+                                        <p id="edad"><?php echo edad($_SESSION["fechanac"]) ?></p>
+                                    </div>
                                 </div>
-                                <div class="col-sm-3">
-                                    <p><b>Sexo</b></p>
-                                    <p id="sexo"><?php if($_SESSION["sexo"]=="h"){echo "Hombre";} else {echo "Mujer";} ?></p>
+                                <div class="row">
+                                    <div class="col-sm-4">
+                                        <p><b>Teléfono</b> <span data-toggle="tooltip" data-placement="top" title="Actualizar"><button type="button" class="btn btn-info btn-xs" data-toggle="modal" data-target="#modalTelefono"><span class="glyphicon glyphicon-edit"></span></button></span></p>
+                                        <p><span id="telefono"><?php echo $_SESSION["telefono"] ?></span></p>
+                                    </div>
+                                    <div class="col-sm-4">
+                                        <p><b>Altura</b> <span data-toggle="tooltip" data-placement="top" title="Actualizar"><button type="button" class="btn btn-info btn-xs" data-toggle="modal" data-target="#modalAltura"><span class="glyphicon glyphicon-edit"></span></button></span></p>
+                                        <p><span id="altura" ng-model="angaltura"><?php echo $_SESSION["altura"] ?></span> cm.</p>
+                                    </div>
+                                    <div class="col-sm-4">
+                                        <p><b>Tu peso</b> <span data-toggle="tooltip" data-placement="top" title="Actualizar"><button type="button" class="btn btn-info btn-xs" data-toggle="modal" data-target="#modalPeso"><span class="glyphicon glyphicon-edit"></span></button></span></p>
+                                        <p><span id="peso"><?php echo $_SESSION["peso"] ?></span> Kg.</p>
+                                    </div>
+                                    
                                 </div>
-                                <div class="col-sm-3">
-                                    <p><b>Tu edad</b></p>
-                                    <p id="edad"><?php echo edad($_SESSION["fechanac"]) ?></p>
+                                <div class="row">
+                                    <div class="col-sm-12">
+                                        <p><b>Tu actividad física</b> <span data-toggle="tooltip" data-placement="top" title="Actualizar"><button type="button" class="btn btn-info btn-xs" data-toggle="modal" data-target="#modalActividad"><span class="glyphicon glyphicon-edit"></span></button></span></p>
+                                        <p><span id="actf"></span> (<span id="descactf"></span>)</p>
+                                    </div>
                                 </div>
-                            </div>
-                            <div class="row">
-                            	<div class="col-sm-3">
-                                    <p><b>Teléfono</b> <span data-toggle="tooltip" data-placement="top" title="Actualizar"><button type="button" class="btn btn-info btn-xs" data-toggle="modal" data-target="#modalTelefono"><span class="glyphicon glyphicon-edit"></span></button></span></p>
-                                    <p><span id="telefono"><?php echo $_SESSION["telefono"] ?></span></p>
+                                <div class="row">
+                                    <div class="col-sm-12">
+                                        <p><b>Tu peso deseable</b></p>
+                                        <p><span id="pesodeseable"><?php echo $_SESSION["pesodeseable"] ?></span> Kg.</p>
+                                    </div>
                                 </div>
-                                <div class="col-sm-3">
-                                    <p><b>Altura</b> <span data-toggle="tooltip" data-placement="top" title="Actualizar"><button type="button" class="btn btn-info btn-xs" data-toggle="modal" data-target="#modalAltura"><span class="glyphicon glyphicon-edit"></span></button></span></p>
-                                    <p><span id="altura" ng-model="angaltura"><?php echo $_SESSION["altura"] ?></span> cm.</p>
-                                </div>
-                                <div class="col-sm-3">
-                                    <p><b>Tu peso</b> <span data-toggle="tooltip" data-placement="top" title="Actualizar"><button type="button" class="btn btn-info btn-xs" data-toggle="modal" data-target="#modalPeso"><span class="glyphicon glyphicon-edit"></span></button></span></p>
-                                    <p><span id="peso"><?php echo $_SESSION["peso"] ?></span> Kg.</p>
+                                <div class="row">
+                                    <div class="col-sm-12">
+                                        <p><b>Consumo ideal de calorías</b></p>
+                                        <p><span id="geet"><?php echo $_SESSION["geet"] ?></span> Kcal/día</p>
+                                    </div>
                                 </div>
                                 
-                            </div>
-                            <div class="row">
-                            	<div class="col-sm-3">
-                                	<p><b>Consumo ideal de calorías</b></p>
-                                    <p><span id="geet"><?php echo $_SESSION["geet"] ?></span> Kcal/día</p>
-                                </div>
-                                <div class="col-sm-3">
-                                    <p><b>Tu peso deseable</b></p>
-                                    <p><span id="pesodeseable"><?php echo $_SESSION["pesodeseable"] ?></span> Kg.</p>
                                 </div>
                             </div>
-                        </div>
                 	</div>
                 </div>
                 <div class="row">
                 	<div class="col-md-12">
-                        <h3 class="datospers"><span data-toggle="tooltip" data-placement="top" title="Mostrar / Ocultar" id="flip2" style="cursor: pointer;"> <span id="iconoflip2" class="glyphicon glyphicon-menu-down"></span> Tus patologías o situación fisiológica</span> <span data-toggle="tooltip" data-placement="top" title="Actualizar"><button type="button" class="btn btn-info btn-xs" data-toggle="modal" data-target="#modalPatologias"><span class="glyphicon glyphicon-edit"></span></button></span></h3>
-                        <div id="panel2">
-                        	<p id="patologias"></p>
+                        <div class="muestraPatologias">
+                            <h3 class="datospers"><span data-toggle="tooltip" data-placement="top" title="Mostrar / Ocultar" id="flip2" style="cursor: pointer;"> <span id="iconoflip2" class="glyphicon glyphicon-menu-down"></span> Patologías / Situación fisiológica</span> <span data-toggle="tooltip" data-placement="top" title="Actualizar"><button type="button" class="btn btn-info btn-xs" data-toggle="modal" data-target="#modalPatologias"><span class="glyphicon glyphicon-edit"></span></button></span></h3>
+                            <div id="panel2">
+                                <p id="patologias"></p>
+                            </div>
                         </div>
                     </div>
                 </div>
@@ -358,7 +381,7 @@ window.onload=function(){
               <span id="mensajeEmail2"></span>
               </div>
               <div class="modal-footer">
-                <button type="submit" id="buttommensajeEmail" class="btn btn-success" data-dismiss="modal" disabled="true" onClick="enviarEmail('<?php echo $_SESSION["nombre"] ?>','<?php echo $_SESSION["apellidos"] ?>','<?php echo $_SESSION["email"] ?>');"><span class="glyphicon glyphicon-check"></span> Aceptar</button>
+                <button type="submit" id="buttommensajeEmail" class="btn btn-success" data-dismiss="modal" disabled="true" onClick="enviarEmail('<?php echo $_SESSION["nombre"] ?>','<?php echo $_SESSION["apellidos"] ?>','<?php echo $_SESSION["email"] ?>');"><span class="glyphicon glyphicon-check"></span> Enviar</button>
                 <button type="button" class="btn btn-danger btn-default" data-dismiss="modal"><span class="glyphicon glyphicon-remove"></span> Cancelar</button>
               </form>
           </div>
@@ -368,7 +391,70 @@ window.onload=function(){
     </div>
     <!-- Fin Modal Enviar Email -->
     
+    <!-- Modal Actualizar Actividad -->
+    <div id="modalActividad" class="modal fade" role="dialog">
+      <div class="modal-dialog">
+    
+        <!-- Modal content-->
+        <div class="modal-content">
+          <div class="modal-header">
+            <button type="button" class="close" data-dismiss="modal">&times;</button>
+            <h4 class="modal-title">Actualiza tu actividad física</h4>
+          </div>
+          <div class="modal-body">
+              <form role="form" name="formActividad" method="post">
+              <span id="opciones"></span>
+              <span id="descopciones"></span>
+              </div>
+              <div class="modal-footer">
+                <button type="submit" id="buttomActividad" class="btn btn-success" data-dismiss="modal" onClick="actualizaActividad(<?php echo $_SESSION["id"] ?>)"><span class="glyphicon glyphicon-check"></span> Aceptar</button>
+                <button type="button" class="btn btn-danger btn-default" data-dismiss="modal"><span class="glyphicon glyphicon-remove"></span> Cancelar</button>
+              </form>
+          </div>
+        </div>
+    
+      </div>
+    </div>
+    <!-- Fin Modal Actualizar Actividad -->
+    
+    <!-- Modal Actualizar Password -->
+    <div id="modalPass" class="modal fade" role="dialog">
+      <div class="modal-dialog">
+    
+        <!-- Modal content-->
+        <div class="modal-content">
+          <div class="modal-header">
+            <button type="button" class="close" data-dismiss="modal">&times;</button>
+            <h4 class="modal-title">Cambiar contraseña</h4>
+          </div>
+          <div class="modal-body">
+              <form role="form" name="formPass" method="post">
+              		<div class="form-group">
+                        <label for="password">Contraseña (requerido)</label>
+                        <input type="password" class="form-control" id="password" name="password" required maxlength="30" onKeyUp="validaPassword(); activaBotonPass();" />
+                        <span class="error" id="errorpassword1"></span>
+                    </div>
+                    <div class="form-group">
+                        <label for="password2">Repite contraseña</label>
+                        <input type="password" class="form-control" id="password2" name="password2" required maxlength="30" onKeyUp="validaPassword(); activaBotonPass();" />
+                        <span class="error" id="compruebapassword"></span>
+                        <span class="error" id="errorpassword2"></span>
+                    </div>
+              </div>
+              <div class="modal-footer">
+                <button type="submit" id="buttomPass" class="btn btn-success" data-dismiss="modal" disabled="true" onClick="actualizaPassword();"><span class="glyphicon glyphicon-check"></span> Aceptar</button>
+                <button type="button" id="buttomCancelarPass"  onClick="borrarPass();" class="btn btn-danger btn-default" data-dismiss="modal"><span class="glyphicon glyphicon-remove"></span> Cancelar</button>
+              </form>
+          </div>
+        </div>
+    
+      </div>
+    </div>
+    <!-- Fin Modal Actualizar Password -->
+    
     <script>
+	cargarActividadFisica();
+	cargaActividadCliente();
 	cargaPatologiasCliente(<?php echo $_SESSION["id"] ?>);
 	graficaPeso(<?php echo $_SESSION["id"] ?>);
 	cargarIntercambios(<?php echo $_SESSION["id"] ?>);

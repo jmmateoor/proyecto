@@ -6,7 +6,33 @@ h1,h2,h3,h4,h5,h6{
 
 h1{
 	color:#d3d1ce;
-	font-size:54px;
+	font-size:24px;
+	margin:0;
+}
+
+.muestraIntercambios, .muestraDatosPers,.muestraHistorial, .muestraPatologias{
+	border-radius:6px;
+	border: 1px solid #777674;
+	padding: 8px;
+	margin-bottom:6px;
+}
+
+
+.muestraIntercambios{
+	background-color:#81c784;
+}
+
+.muestraHistorial{
+	background-color:#c5e1a5;
+	
+}
+
+.muestraDatosPers{
+	background-color:#8bc34a;
+}
+
+.muestraPatologias{
+	background-color:#81c784;
 }
 
 .error{
@@ -24,7 +50,7 @@ body{
 	color:#d3d1ce;
 	border-bottom:#777674 solid 2px;
 	text-align:center;
-	font-size:16px;
+	font-size:12px;
 	background-image:url(images/fondosuperior.png);
 	background-repeat:repeat;
 }
