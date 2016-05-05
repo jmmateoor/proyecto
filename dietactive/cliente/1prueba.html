@@ -4,50 +4,92 @@
 <meta charset="utf-8">
 <title>Documento sin título</title>
 <script src="https://ajax.googleapis.com/ajax/libs/jquery/1.12.0/jquery.min.js"></script>
-<script src="https://code.highcharts.com/highcharts.js"></script>
-<script src="https://code.highcharts.com/modules/exporting.js"></script>
+
 
 <script type="text/javascript">
-window.onload=graficaPeso;
+var removeButton = $("<input type=\"button\" class=\"remove\" value=\"-\" />");
+        removeButton.click(function() {
+            $(this).parent().remove();
+        });
 
+var tipo=-1;
 
-function graficaPeso() {
-	var fechas=['Jan'];
-	var pesos=[7.0];
-	var pesodeseable=[20.5,20.5,20.5,20.5,20.5,20.5,20.5,20.5,20.5,20.5,20.5,20.5];
-    $('#container').highcharts({
-        chart: {
-            type: 'line'
-        },
-        title: {
-            text: 'Tu historial de peso'
-        },
-        xAxis: {
-            categories: fechas
-        },
-        yAxis: {
-            title: {
-                text: 'Peso (Kg.)'
-            }
-        },
-        plotOptions: {
-            line: {
-                dataLabels: {
-                    enabled: true
-                },
-                enableMouseTracking: false
-            }
-        },
-        series: [{
-            name: 'Peso',
-            data: pesos
-        }]
-    });
-};
+function cargarTiposAlimentos()
+{
+	tipo++;
+	$.get("../servidor/consulta_tipos_alimentos.php",function(data, status)
+		{		
+			if(status=="success")
+			{
+				datos=JSON.parse(data);
+				var salida="<div id='d"+tipo+"'><select class='form-control' id='"+tipo+"' name='"+tipo+"' onChange='cargarAlimentos(this.value, this.id)'><option value='0'>-- Selecciona --</option>";
+				
+				for(var i=0;i<datos.length;i++)
+				{
+					salida+="<option value='"+datos[i].id+"'>"+datos[i].nombre+"</option>";
+				}
+				salida+="</select> <select class='form-control' id='"+tipo+"a' name='"+tipo+"a' ></select> <input type='text' id='"+tipo+"b' /> <input type='button' onClick='borrarCampos("+tipo+");' value='X' /></div>";
+				
+				$("#test").append(salida);
+			}
+		});
+}
+
+function cargarAlimentos(idtipoalimento, idselect)
+{
+	$.post("../servidor/consulta_alimentos.php",{idtipoalimento:idtipoalimento},function(data, status, xhr)
+	{	
+		//var salida="";
+		var datos=JSON.parse(data);
+		
+		var nombre=idselect+"a";
+		var selectalimentos=document.getElementById(nombre);
+		
+		$('#'+nombre)
+    	.find('option')
+    	.remove()
+    	.end();
+		
+		for(var i=0;i<datos.length;i++)
+		{
+			var option=document.createElement("option"); 
+			option.value=datos[i].id;
+			option.text=datos[i].alimento; 
+			selectalimentos.appendChild(option);
+			//salida+="<option value='"+datos[i].id+"'>"+datos[i].alimento+"</option>";
+		}
+	});
+}
+
+function insertarCampos()
+{
+	tipo++;
+	$("#test").html($("#test").html()+"<br/><span='stipo"+tipo+"'></span>");
+	cargarTiposAlimentos();
+}
+
+function borrarCampos(campo)
+{
+	var parent = document.getElementById("test");
+	var child = document.getElementById("d"+campo);
+	parent.removeChild(child);
+}
+
+function recorrerTest()
+{
+	var total=document.getElementById("test").childNodes.length;
+	alert(total);
+}
+
 </script>
 </head>
 
 <body>
-<div id="container"></div>
+<input type="button" value="Agregar alimento" onClick="cargarTiposAlimentos();" />
+<form name="testdias">
+<div id="test">
+</div>
+</form>
+<input type="button" value="Aceptar" onClick="recorrerTest();" />
 </body>
 </html>
