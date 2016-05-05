@@ -28,7 +28,7 @@ function cargarTiposAlimentos()
 				{
 					salida+="<option value='"+datos[i].id+"'>"+datos[i].nombre+"</option>";
 				}
-				salida+="</select> <select class='form-control' id='"+tipo+"a' name='"+tipo+"a' ></select> <input type='text' id='"+tipo+"b' /> <input type='button' onClick='borrarCampos("+tipo+");' value='X' /></div>";
+				salida+="</select> <select class='form-control' id='"+tipo+"a' name='"+tipo+"a' ><option value='0'>-- Selecciona --</option></select> <input type='text' id='"+tipo+"b' /> <input type='button' onClick='borrarCampos("+tipo+");' value='X' /></div>";
 				
 				$("#test").append(salida);
 			}
@@ -49,6 +49,11 @@ function cargarAlimentos(idtipoalimento, idselect)
     	.find('option')
     	.remove()
     	.end();
+		
+		var option=document.createElement("option"); 
+			option.value=0;
+			option.text="-- Selecciona --"; 
+			selectalimentos.appendChild(option);
 		
 		for(var i=0;i<datos.length;i++)
 		{
@@ -75,11 +80,41 @@ function borrarCampos(campo)
 	parent.removeChild(child);
 }
 
+var alimentos=[];
+var cantidad=[];
+var validado=true;
+
 function recorrerTest()
 {
-	var total=document.getElementById("test").childNodes.length;
-	alert(total);
+	alimentos=[];
+	cantidad=[];
+	validado=true;
+	var x = document.getElementById("test").getElementsByTagName("div");
+	for(var i=0;i<x.length;i++)
+	{
+		if(x[i].getElementsByTagName("select")[1].value==0 || x[i].getElementsByTagName("input")[0].value=="")
+		{
+			validado=false;
+		}
+	}
+	
+	if(validado)
+	{
+		for(var i=0;i<x.length;i++)
+		{
+			alimentos.push(x[i].getElementsByTagName("select")[1].value);
+			cantidad.push(x[i].getElementsByTagName("input")[0].value);
+		}
+		alert(alimentos);
+		alert(cantidad);
+	}
+	else
+	{
+		alert("Faltan campos");
+	}
 }
+
+
 
 </script>
 </head>
