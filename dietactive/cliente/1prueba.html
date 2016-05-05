@@ -83,6 +83,7 @@ function borrarCampos(campo)
 var alimentos=[];
 var cantidad=[];
 var validado=true;
+var listaobjetos=[];
 
 function recorrerTest()
 {
@@ -105,8 +106,16 @@ function recorrerTest()
 			alimentos.push(x[i].getElementsByTagName("select")[1].value);
 			cantidad.push(x[i].getElementsByTagName("input")[0].value);
 		}
-		alert(alimentos);
-		alert(cantidad);
+		$.post("../servidor/1pruebas.php",{
+			alimentos: alimentos,
+			cantidad: cantidad
+							},
+							function(datos, estado)
+							{
+								alert(datos);
+							});
+		
+		
 	}
 	else
 	{

@@ -1,24 +1,9 @@
 <?php
-session_start();
+$alimentos=$_POST["alimentos"];
+$cantidad=$_POST["cantidad"];
 
-$_SESSION["nombre"]="Jose";
+for($i=0;$i<count($alimentos);$i++)
+{
+	echo $alimentos[$i]." ".$cantidad[$i];
+}
 ?>
-<!DOCTYPE HTML>
-<html>
-<head>
-<meta charset="utf-8">
-<title>Documento sin título</title>
-</head>
-
-<body>
-
-
-<?php
-	
-$_SESSION["nombre"]="<script>document.write('Laura');</script>";
-?>
-
-<a href="2pruebas.php">Ir a</a>
-
-</body>
-</html>
