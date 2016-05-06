@@ -6,8 +6,9 @@ h1,h2,h3,h4,h5,h6{
 
 h1{
 	color:#d3d1ce;
-	font-size:24px;
+	font-size:28px;
 	margin:0;
+	margin-bottom:6px;
 }
 
 .muestraIntercambios, .muestraDatosPers,.muestraHistorial, .muestraPatologias{
@@ -47,18 +48,56 @@ body{
 	background-color:#040404;
 	padding-top:10px;
 	padding-bottom:10px;
+	padding-right:18px;
+	text-align:right;
 	color:#d3d1ce;
 	border-bottom:#777674 solid 2px;
-	text-align:center;
-	font-size:12px;
+	font-size:18px;
 	background-image:url(images/fondosuperior.png);
 	background-repeat:repeat;
 }
 
+.navbar-brand{
+	padding:5px 15px !important;
+}
+
+.navbar{
+	margin-bottom:0px !important;
+	font-family: 'Comfortaa', cursive;;
+}
+
+.navbar-inverse{
+	border-color:transparent !important;
+}
+
+.menuinicio{
+	background-image:url(images/fondomenu.png);
+	background-repeat:repeat;
+}
+
+.navbar-inverse .navbar-nav>li>a {
+    color: #d3d1ce !important;
+}
+
+.navbar-inverse .navbar-nav>li>a:hover {
+    color: white !important;
+}
+
+.navbar-inverse .navbar-nav>.active>a, .navbar-inverse .navbar-nav>.active>a:focus, .navbar-inverse .navbar-nav>.active>a:hover {
+    color: #fff !important;
+	background-color: #080808;
+	/*080808   1b5e20*/
+}
+
+.botondesplegable{
+	background-color:transparent;
+	border:0px;
+}
 
 a.cerrarsesion{
 	color:#d3d1ce;
 	margin:auto;
+	font-size:18px;
 }
 
 a.cerrarsesion:link{

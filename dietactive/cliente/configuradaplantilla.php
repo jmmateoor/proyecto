@@ -65,26 +65,21 @@ window.onload=function(){
 	<script>muestraLoading();</script>
     <div class="container-fluid">
     	<div class="row barrasuperior">
-            	<div class="col-md-8">
-                	
-                </div>
-                <div class="col-md-4">
-                	<div class="dropdown">
-                        <button class="btn btn-primary dropdown-toggle" id="menu1" type="button" data-toggle="dropdown"><span class="glyphicon glyphicon-user"></span> <span id="email"><?php echo $_SESSION['email'] ?></span>
-                        <span class="caret"></span></button>
-                        <ul class="dropdown-menu" role="menu" aria-labelledby="menu1">
-                          <li role="presentation"><a data-toggle="modal" data-target="#modalPass" style="cursor: pointer;"><span class="glyphicon glyphicon-refresh"></span> Cambiar contraseña</a></li>
-                          <li role="presentation"><a data-toggle="modal" data-target="#modalEmail" style="cursor: pointer;"><span class="glyphicon glyphicon-comment"></span> Enviar consulta</a></li>
-                          <li role="presentation"></li>
-                          <li role="presentation" class="divider"></li>
-                          <li role="presentation"><a href="cerrar_sesion_cliente.php" style="cursor: pointer;"><span class="glyphicon glyphicon-off"></span> Cerrar sesión</a></li>    
-                        </ul>
-                  	</div>
-                </div>
+            <div class="dropdown">
+                <button class="botondesplegable cerrarsesion dropdown-toggle" style="cursor: pointer;" id="menucuenta" data-toggle="dropdown"><span class="glyphicon glyphicon-user"></span> <span id="email"><?php echo $_SESSION['email'] ?></span>
+                <span class="caret"></span></button>
+                <ul class="dropdown-menu dropdown-menu-right" role="menu" aria-labelledby="menucuenta">
+                  <li role="presentation"><a role="menuitem" data-toggle="modal" data-target="#modalPass" style="cursor: pointer;"><span class="glyphicon glyphicon-refresh"></span> Cambiar contraseña</a></li>
+                  <li role="presentation"><a role="menuitem" data-toggle="modal" data-target="#modalEmail" style="cursor: pointer;"><span class="glyphicon glyphicon-comment"></span> Enviar consulta</a></li>
+                  <li role="presentation"></li>
+                  <li class="divider"></li>
+                  <li role="presentation"><a role="menuitem" href="cerrar_sesion_cliente.php" style="cursor: pointer;"><span class="glyphicon glyphicon-off"></span> Cerrar sesión</a></li>    
+                </ul>
             </div>
+        </div>
         <div class="row cabecera">
             <div class="col-md-12">
-                <p align="center"><img src="images/cab.png" class="img-responsive" width="100px" /></p>
+                <p align="center"><img src="images/cab.png" class="img-responsive" width="100px" alt="DietActive" /></p>
             </div>
         </div>
         <div class="row cabecera">
@@ -92,9 +87,49 @@ window.onload=function(){
                 <h1>Área Cliente</h1>
             </div>
         </div>
-        <div class="row cabecera">
+        <div class="row inicio">
             <div class="col-md-12">
-                <div class="row inicio">
+            	
+            
+            <nav class="navbar navbar-inverse menuinicio" role="navigation">
+                  <!-- El logotipo y el icono que despliega el menú se agrupan
+                       para mostrarlos mejor en los dispositivos móviles -->
+                  <div class="navbar-header">
+                    <button type="button" class="navbar-toggle" data-toggle="collapse"
+                            data-target=".navbar-ex1-collapse">
+                      <span class="sr-only">Desplegar navegación</span>
+                      <span class="icon-bar"></span>
+                      <span class="icon-bar"></span>
+                      <span class="icon-bar"></span>
+                    </button>
+                    <a href="#" class="navbar-brand" data-toggle="tooltip" data-placement="top" title="Ir a Inicio"><img src="images/logomenu.png" class="img-responsive" width="40px" alt="Ir a Inicio" /></a>
+                  </div>
+                 
+                  <!-- Agrupar los enlaces de navegación, los formularios y cualquier
+                       otro elemento que se pueda ocultar al minimizar la barra -->
+                  <div class="collapse navbar-collapse navbar-ex1-collapse">
+                    <ul class="nav navbar-nav">
+                      <li class="active"><a href="#"><span class="glyphicon glyphicon-calendar"></span> Citas</a></li>
+                      <li><a href="#"><span class="glyphicon glyphicon-heart"></span> Tu Dieta</a></li>
+                      <li class="dropdown">
+                        <a href="#" class="dropdown-toggle" data-toggle="dropdown">
+                          <span class="glyphicon glyphicon-book"></span> Diario dietético <b class="caret"></b>
+                        </a>
+                        <ul class="dropdown-menu">
+                          <li><a href="#">Día 1</a></li>
+                          <li class="divider"></li>
+                          <li><a href="#">Día 2</a></li>
+                          <li class="divider"></li>
+                          <li><a href="#">Día 3</a></li>
+                        </ul>
+                      </li>
+                      <li><a href="#"><span class="glyphicon glyphicon-list"></span> Alimentos por intercambio</a></li>
+                    </ul>
+                  </div>
+                </nav>
+                
+            
+                <!--<div class="row inicio">
                     <ul id="menu">
                     	<li>
                             <a href="#" class="menu">
@@ -106,7 +141,9 @@ window.onload=function(){
                         <li>
                             <a href="#" class="menu">
                                 <div class="col-sm-2 colmenu">
-                                    <h2><span class="glyphicon glyphicon-calendar"></span> Coger cita</h2>
+                                	
+                                    	<h2><span class="glyphicon glyphicon-calendar"></span> Coger cita</h2>
+                                    
                                 </div>
                             </a>
                         </li>
@@ -132,10 +169,21 @@ window.onload=function(){
                             </a>
                         </li>
                     </ul>
-                </div>
+                </div>-->
+                
+                
+                
+                
+                
             </div>
         </div>
         <div class="row cuerpo">
+        
+        
+        
+                
+                
+                
         	<div class="col-md-7">
             	<h3 class="datospers">Contenidos</h3><!-- CONTENIDO DE LA WEB -->
                 <p id="contenidos"><br/><br/><br/><br/><br/><br/><br/><br/><br/><br/><br/><br/><br/><br/><br/><br/><br/><br/><br/><br/><br/><br/><br/><br/><br/></p>
@@ -163,7 +211,7 @@ window.onload=function(){
                 <div class="row">
                 	<div class="col-md-12">
                         <div class="muestraDatosPers">
-                            <h3 class="datospers"><span data-toggle="tooltip" data-placement="top" title="Mostrar / Ocultar" id="flip1" style="cursor: pointer;"><span id="iconoflip1" class="glyphicon glyphicon-menu-down"></span> Datos Personales </span></h3>
+                            <h3 class="datospers"><button class="botondesplegable" data-toggle="tooltip" data-placement="top" title="Mostrar / Ocultar" id="flip1" style="cursor: pointer;"><span id="iconoflip1" class="glyphicon glyphicon-menu-down"></span> Datos Personales </button></h3>
                             <div id="panel1">
                                 <div class="row">
                                     <div class="col-sm-4">
@@ -220,7 +268,7 @@ window.onload=function(){
                 <div class="row">
                 	<div class="col-md-12">
                         <div class="muestraPatologias">
-                            <h3 class="datospers"><span data-toggle="tooltip" data-placement="top" title="Mostrar / Ocultar" id="flip2" style="cursor: pointer;"> <span id="iconoflip2" class="glyphicon glyphicon-menu-down"></span> Patologías / Situación fisiológica</span> <span data-toggle="tooltip" data-placement="top" title="Actualizar"><button type="button" class="btn btn-info btn-xs" data-toggle="modal" data-target="#modalPatologias"><span class="glyphicon glyphicon-edit"></span></button></span></h3>
+                            <h3 class="datospers"><button class="botondesplegable" data-toggle="tooltip" data-placement="top" title="Mostrar / Ocultar" id="flip2" style="cursor: pointer;"> <span id="iconoflip2" class="glyphicon glyphicon-menu-down"></span> Patologías / Situación fisiológica</button> <span data-toggle="tooltip" data-placement="top" title="Actualizar"><button type="button" class="btn btn-info btn-xs" data-toggle="modal" data-target="#modalPatologias"><span class="glyphicon glyphicon-edit"></span></button></span></h3>
                             <div id="panel2">
                                 <p id="patologias"></p>
                             </div>

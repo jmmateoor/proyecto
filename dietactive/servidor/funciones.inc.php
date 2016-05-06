@@ -143,12 +143,23 @@ function crearIntercambios($idcliente)
 		case 4: $ga=$tmbr*$tipo4; break;
 	}
 	
-	//Cálculo de la Energía Términa de los Alimentos, eta
+	//Cálculo de la Energía Térmica de los Alimentos, eta
 	$eta=($tmbr+$ga)*0.1;
 	
 	//Cálculo del Gasto Energético Total, geet
-	//Se le resta 640 para que se pueda adelgazar
-	$geet=($tmbr+$ga+$eta)-640; //Kcal/dia
+	
+	$geet=($tmbr+$ga+$eta);
+	
+	if($peso>$pesodeseable)
+	{
+		//Se le resta 640 para que se pueda adelgazar
+		$geet=$geet-640; //Kcal/dia
+	}
+	else
+	{
+		//Se le suma 640 para que se pueda conseguir peso
+		$geet=$geet+640; //Kcal/dia
+	}
 	
 	$insertar = $c->prepare("update cliente set geet = ? where id = ?");
 	$insertar->bind_param("di",$geet,$idcliente);
