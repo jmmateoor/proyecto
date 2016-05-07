@@ -3,7 +3,7 @@
 -- http://www.phpmyadmin.net
 --
 -- Servidor: 127.0.0.1
--- Tiempo de generación: 27-04-2016 a las 20:32:36
+-- Tiempo de generación: 07-05-2016 a las 19:14:47
 -- Versión del servidor: 5.6.26
 -- Versión de PHP: 5.6.12
 
@@ -39,10 +39,10 @@ CREATE TABLE IF NOT EXISTS `actividadfisica` (
 --
 
 INSERT INTO `actividadfisica` (`id`, `nombre`, `descripcion`) VALUES
-(1, 'Muy ligera', ''),
-(2, 'Ligera', ''),
-(3, 'Moderada', ''),
-(4, 'Intensa', '');
+(1, 'Muy ligera', 'Descripción 1'),
+(2, 'Ligera', 'Descripción 2'),
+(3, 'Moderada', 'Descripción 3'),
+(4, 'Intensa', 'Descripción 4');
 
 -- --------------------------------------------------------
 
@@ -427,7 +427,7 @@ CREATE TABLE IF NOT EXISTS `cliente` (
 --
 
 INSERT INTO `cliente` (`id`, `codigo_activacion`, `activado`, `password`, `nombre`, `apellidos`, `telefono`, `email`, `sexo`, `peso`, `altura`, `fechanac`, `idactividad`, `pesodeseable`, `dieta`, `geet`, `fechaingreso`) VALUES
-(17, 'a1d41c14c1d0aa9b9cc1', 's', '81dc9bdb52d04dc20036dbd8313ed055', 'Jose Maria', 'Mateo Ortega', '666010101', 'josem.mateo.ortega@gmail.com', 'h', '82.20', 176, '1989-07-11', 1, '69.57', NULL, '1869.61', '2016-04-26');
+(17, 'a1d41c14c1d0aa9b9cc1', 's', '81dc9bdb52d04dc20036dbd8313ed055', 'Jose Maria', 'Mateo Ortega', '666010101', 'josem.mateo.ortega@gmail.com', 'h', '75.00', 176, '1989-07-11', 2, '69.50', NULL, '1937.17', '2016-04-26');
 
 -- --------------------------------------------------------
 
@@ -514,7 +514,22 @@ CREATE TABLE IF NOT EXISTS `historicopeso` (
 INSERT INTO `historicopeso` (`fecha`, `idcliente`, `peso`) VALUES
 ('2016-04-11 13:34:34', 17, '85.00'),
 ('2016-04-20 06:17:21', 17, '83.00'),
-('2016-04-26 16:17:00', 17, '82.20');
+('2016-04-26 16:17:00', 17, '82.20'),
+('2016-04-28 13:42:35', 17, '81.00'),
+('2016-04-28 13:43:29', 17, '80.00'),
+('2016-04-28 13:45:53', 17, '79.00'),
+('2016-04-28 13:46:28', 17, '78.00'),
+('2016-04-28 13:46:53', 17, '77.00'),
+('2016-04-28 14:06:15', 17, '77.70'),
+('2016-05-02 09:48:37', 17, '76.00'),
+('2016-05-02 10:07:29', 17, '74.00'),
+('2016-05-02 10:07:49', 17, '77.00'),
+('2016-05-02 10:16:22', 17, '78.00'),
+('2016-05-07 09:35:59', 17, '77.00'),
+('2016-05-07 09:36:18', 17, '70.00'),
+('2016-05-07 09:36:42', 17, '66.00'),
+('2016-05-07 09:36:59', 17, '77.00'),
+('2016-05-07 09:52:19', 17, '75.00');
 
 -- --------------------------------------------------------
 
@@ -592,9 +607,9 @@ INSERT INTO `tablaintercambio` (`idcliente`, `idgrupo`, `valor`) VALUES
 (17, 1, '2.5'),
 (17, 2, '5.5'),
 (17, 3, '2.0'),
-(17, 4, '15.5'),
-(17, 5, '5.5'),
-(17, 6, '4.0');
+(17, 4, '16.0'),
+(17, 5, '6.0'),
+(17, 6, '4.5');
 
 -- --------------------------------------------------------
 
@@ -604,11 +619,30 @@ INSERT INTO `tablaintercambio` (`idcliente`, `idgrupo`, `valor`) VALUES
 
 CREATE TABLE IF NOT EXISTS `testdias` (
   `id` int(11) NOT NULL,
+  `dia` int(11) NOT NULL,
+  `momento` varchar(10) COLLATE utf8_spanish_ci NOT NULL,
   `idcliente` int(11) NOT NULL,
   `idalimento` int(11) NOT NULL,
-  `cantidad` decimal(10,2) NOT NULL,
-  `momentodia` varchar(10) COLLATE utf8_spanish_ci NOT NULL
-) ENGINE=InnoDB DEFAULT CHARSET=utf8 COLLATE=utf8_spanish_ci;
+  `cantidad` decimal(10,2) NOT NULL
+) ENGINE=InnoDB AUTO_INCREMENT=33 DEFAULT CHARSET=utf8 COLLATE=utf8_spanish_ci;
+
+--
+-- Volcado de datos para la tabla `testdias`
+--
+
+INSERT INTO `testdias` (`id`, `dia`, `momento`, `idcliente`, `idalimento`, `cantidad`) VALUES
+(17, 1, 'merienda', 17, 129, '500.00'),
+(18, 1, 'merienda', 17, 3, '300.00'),
+(19, 1, 'cena', 17, 3, '600.00'),
+(20, 1, 'cena', 17, 173, '300.00'),
+(23, 2, 'almuerzo', 17, 173, '2313.00'),
+(24, 2, 'almuerzo', 17, 68, '123123.00'),
+(25, 2, 'merienda', 17, 130, '23443.00'),
+(28, 2, 'cena', 17, 105, '233.00'),
+(29, 2, 'desayuno', 17, 68, '4546.00'),
+(30, 2, 'desayuno', 17, 68, '436.00'),
+(31, 3, 'desayuno', 17, 67, '435.00'),
+(32, 3, 'desayuno', 17, 102, '435.00');
 
 -- --------------------------------------------------------
 
@@ -779,7 +813,7 @@ ALTER TABLE `patologia`
 -- AUTO_INCREMENT de la tabla `testdias`
 --
 ALTER TABLE `testdias`
-  MODIFY `id` int(11) NOT NULL AUTO_INCREMENT;
+  MODIFY `id` int(11) NOT NULL AUTO_INCREMENT,AUTO_INCREMENT=33;
 --
 -- AUTO_INCREMENT de la tabla `tipoalimento`
 --

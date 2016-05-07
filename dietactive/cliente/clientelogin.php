@@ -40,7 +40,7 @@ function clienteLogin()
 							{
 								if(data=="s")
 								{
-									location.href="configuradaplantilla.php";
+									location.href="cliente_inicio.php";
 									
 								}
 								else
@@ -62,11 +62,14 @@ function clienteLogin()
 	<script>muestraLoading();</script>
     <div class="container-fluid">
         <div class="row cabecera">
-        	<div class="col-md-2">
-                <p align="center"><img src="images/cab.png" class="img-responsive" width="100px" /></p>
+        	<div class="col-md-12">
+                <p align="center" style="margin-bottom:0px;"><img src="images/cab.png" class="img-responsive" width="580px" alt="DietActive" /></p>
+                <p align="center" class="slogan">Tu Dieta Equilibrada Personalizada</p>
             </div>
-            <div class="col-md-10">
-                <h1>Zona Cliente</h1>
+        </div>
+        <div class="row cabecera">
+        	<div class="col-md-12">
+                <h1>Área Cliente</h1>
             </div>
         </div>
         <div class="row cuerpo">

@@ -1,4 +1,238 @@
 // JavaScript Document
+
+//test
+function cancelarTest(dia,momento)
+{
+	if(confirm("Vas a cancelar el test. Todos los datos se perderán. ¿Quieres continuar?"))
+	{
+		$("#"+momento).html("");
+		$.post("../servidor/borrar_test.php",{
+			dia: dia,
+			momento: momento
+					},
+					function(data, estado)
+					{
+						if(data=="s")
+						{
+							var boton="boton"+momento;
+							var aceptar="aceptar"+momento;
+							
+							$("#"+boton).html("");
+							$("#"+aceptar).html("");
+							cargarTestAntiguo(dia,momento);
+						}
+						else
+						{
+							alert("Ha ocurrido un error. Intentalo de nuevo más tarde.");
+						}
+					});
+	}
+}
+
+
+function empezarTest(dia,momento)
+{
+	if(confirm("Vas a empezar el test. Los antiguos datos se borraran. ¿Quieres continuar?"))
+	{
+		$("#"+momento).html("");
+		$.post("../servidor/borrar_test.php",{
+			dia: dia,
+			momento: momento
+					},
+					function(data, estado)
+					{
+						if(data=="s")
+						{
+							var boton="boton"+momento;
+							var aceptar="aceptar"+momento;
+							
+							$("#"+boton).html("<input type='button' class='btn btn-default' value='Agregar alimento' onClick='cargarTiposAlimentos(\""+momento+"\");' />");
+							$("#"+aceptar).html("<input class='btn btn-success' type='button' value='Aceptar' onClick='recorrerTest("+dia+",\""+momento+"\");' /> <input class='btn btn-warning' type='button' value='Cancelar' onClick='cancelarTest("+dia+",\""+momento+"\");' />");
+						}
+						else
+						{
+							alert("Ha ocurrido un error. Intentalo de nuevo más tarde.");
+						}
+					});
+	}
+}
+
+
+
+
+
+
+var removeButton = $("<input type=\"button\" class=\"remove\" value=\"-\" />");
+        removeButton.click(function() {
+            $(this).parent().remove();
+        });
+
+var tipo=-1;
+
+function cargarTiposAlimentos(momento)
+{
+	tipo++;
+	$.get("../servidor/consulta_tipos_alimentos.php",function(data, status)
+		{		
+			if(status=="success")
+			{
+				
+				datos=JSON.parse(data);
+				var salida="<div id='d"+tipo+"'><select class='form-control selecttest' id='"+tipo+"' name='"+tipo+"' onChange='cargarAlimentos(this.value, this.id)'><option value='0'>-- Selecciona --</option>";
+				
+				for(var i=0;i<datos.length;i++)
+				{
+					salida+="<option value='"+datos[i].id+"'>"+datos[i].nombre+"</option>";
+				}
+				salida+="</select> <select class='form-control selecttest' id='"+tipo+"a' name='"+tipo+"a' ><option value='0'>-- Selecciona --</option></select> <input type='number' id='"+tipo+"b' min='0' step='0.01' class='form-control numerotest' onpaste='return false;' /> <input type='button' class='btn btn-danger btn-sm' onClick='borrarCampos("+tipo+",\""+momento+"\");' value='X' /></div>";
+				
+				$("#"+momento).append(salida);
+				
+			}
+		});
+}
+
+function cargarAlimentos(idtipoalimento, idselect)
+{
+	$.post("../servidor/consulta_alimentos.php",{idtipoalimento:idtipoalimento},function(data, status, xhr)
+	{	
+		//var salida="";
+		var datos=JSON.parse(data);
+		
+		var nombre=idselect+"a";
+		var selectalimentos=document.getElementById(nombre);
+		
+		$('#'+nombre)
+    	.find('option')
+    	.remove()
+    	.end();
+		
+		var option=document.createElement("option"); 
+			option.value=0;
+			option.text="-- Selecciona --"; 
+			selectalimentos.appendChild(option);
+		
+		for(var i=0;i<datos.length;i++)
+		{
+			var option=document.createElement("option"); 
+			option.value=datos[i].id;
+			option.text=datos[i].alimento; 
+			selectalimentos.appendChild(option);
+			//salida+="<option value='"+datos[i].id+"'>"+datos[i].alimento+"</option>";
+		}
+	});
+}
+
+function insertarCampos()
+{
+	tipo++;
+	$("#test").html($("#test").html()+"<br/><span='stipo"+tipo+"'></span>");
+	cargarTiposAlimentos();
+}
+
+function borrarCampos(campo,momento)
+{
+	var parent = document.getElementById(momento);
+	var child = document.getElementById("d"+campo);
+	parent.removeChild(child);
+}
+
+var alimentos=[];
+var cantidad=[];
+var validado=true;
+var listaobjetos=[];
+
+function recorrerTest(dia,momento)
+{
+	alimentos=[];
+	cantidad=[];
+	validado=true;
+	var x = document.getElementById(momento).getElementsByTagName("div");
+	if(x.length>0)
+	{
+		for(var i=0;i<x.length;i++)
+		{
+			if(x[i].getElementsByTagName("select")[1].value==0 || x[i].getElementsByTagName("input")[0].value=="")
+			{
+				validado=false;
+			}
+		}
+		
+		if(validado)
+		{
+			for(var i=0;i<x.length;i++)
+			{
+				alimentos.push(x[i].getElementsByTagName("select")[1].value);
+				cantidad.push(x[i].getElementsByTagName("input")[0].value);
+			}
+			$.post("../servidor/insertar_test.php",{
+				dia: dia,
+				momento: momento,
+				alimentos: alimentos,
+				cantidad: cantidad
+								},
+								function(datos, estado)
+								{
+									if(datos=="s")
+									{
+										var boton="boton"+momento;
+										var aceptar="aceptar"+momento;
+										$("#"+boton).html("");
+										$("#"+aceptar).html("");
+										
+										cargarTestAntiguo(dia,momento);
+									}
+								});
+			
+			
+		}
+		else
+		{
+			alert("Faltan campos por rellenar");
+		}
+	}
+	else
+	{
+		alert("No has añadido ningún alimento");
+	}
+}
+
+
+
+//Fin test
+
+
+function cargarTestAntiguo(dia, momento)
+{
+	$.post("../servidor/consulta_test.php",{
+			dia: dia,
+			momento: momento
+					},
+					function(data, estado)
+					{
+						if(data=="]")
+						{
+							$("#"+momento).html("No has hecho este test todavía.");
+						}
+						else
+						{
+							datos=JSON.parse(data);
+							
+							var salida="";
+							for(var i=0;i<datos.length;i++)
+							{
+								salida+="<div class='row'><div class='col-xs-5'>"+datos[i].alimento+"</div><div class='col-xs-4'>"+datos[i].cantidad+" gr.</div></div>";
+								salida+="<div class='row'><div class='col-xs-5 alimentostest'></div><div class='col-xs-3 alimentostest'></div><div class='col-xs-4'></div></div>";
+							}
+							
+							$("#"+momento).html(salida);
+						}
+					});
+}
+
+
+
+
 var patologiascliente = [];
 
 function actualizaPassword()
@@ -816,7 +1050,7 @@ function cargarIntercambios(idcliente)
 										}
 									}
 									var tabla="<div class='table-responsive'><table class='table table-condensed'>";
-									tabla+="<tr><thead><td></td><th>Lácteos</th><th>Proteínas</th><th>Verduras</th><th>H. de Carbono</th><th>Frutas</th><th>Grasas</th></thead></tr><tbody>";
+									tabla+="<tr><thead><td></td><th><a href='cliente_alimentos_intercambio.php#lacteos'>Lácteos</a></th><th><a href='cliente_alimentos_intercambio.php#proteinas'>Proteínas</a></th><th><a href='cliente_alimentos_intercambio.php#verduras'>Verduras</a></th><th><a href='cliente_alimentos_intercambio.php#hidratoscarbono'>H. de Carbono</a></th><th><a href='cliente_alimentos_intercambio.php#frutas'>Frutas</a></th><th><a href='cliente_alimentos_intercambio.php#grasas'>Grasas</a></th></thead></tr><tbody>";
 									tabla+="<tr class='tablanum'><td class='titulo'><b>Desayuno</b></td><td>"+lacteodesayuno+"</td><td>"+proteinadesayuno+"</td><td> </td><td>"+hdcdesayuno+"</td><td>"+frutadesayuno+"</td><td>"+grasasdesayuno+"</td></tr>";
 									tabla+="<tr class='tablanum'><td class='titulo'><b>Almuerzo</b></td><td> </td><td>"+proteinaalmuerzo+"</td><td>"+verduraalmuerzo+"</td><td>"+hdcalmuerzo+"</td><td>"+frutaalmuerzo+"</td><td>"+grasasalmuerzo+"</td></tr>";
 									tabla+="<tr class='tablanum'><td class='titulo'><b>Merienda</b></td><td>"+lacteomerienda+" </td><td> "+proteinamerienda+" </td><td> </td><td>"+hdcmerienda+"</td><td>  </td><td>"+grasasmerienda+"</td></tr>";

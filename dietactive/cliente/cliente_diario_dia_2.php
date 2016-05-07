@@ -10,7 +10,7 @@
 <html>
 <head>
 <meta charset="utf-8">
-<title>Plantilla</title>
+<title>Día 2 Diario dietético - DietActive</title>
 <link rel="shortcut icon" href="images/fav.png">
 <link rel="stylesheet" href="http://maxcdn.bootstrapcdn.com/bootstrap/3.3.6/css/bootstrap.min.css">
 <script src="https://ajax.googleapis.com/ajax/libs/jquery/1.12.0/jquery.min.js"></script>
@@ -110,9 +110,9 @@ window.onload=function(){
                        otro elemento que se pueda ocultar al minimizar la barra -->
                   <div class="collapse navbar-collapse navbar-ex1-collapse">
                     <ul class="nav navbar-nav">
-                      <li class="active"><a href="cliente_citas.php"><span class="glyphicon glyphicon-calendar"></span> Citas</a></li>
+                      <li><a href="cliente_citas.php"><span class="glyphicon glyphicon-calendar"></span> Citas</a></li>
                       <li><a href="cliente_dieta.php"><span class="glyphicon glyphicon-heart"></span> Tu Dieta</a></li>
-                      <li class="dropdown">
+                      <li class="dropdown active">
                         <a href="#" class="dropdown-toggle" data-toggle="dropdown">
                           <span class="glyphicon glyphicon-book"></span> Diario dietético <b class="caret"></b>
                         </a>
@@ -186,8 +186,26 @@ window.onload=function(){
                 
                 
         	<div class="col-md-7">
-            	<h2 class="datospers">Contenidos</h2><!-- CONTENIDO DE LA WEB -->
-                <div id="contenidos"><br/><br/><br/><br/><br/><br/><br/><br/><br/><br/><br/><br/><br/><br/><br/><br/><br/><br/><br/><br/><br/><br/><br/><br/><br/></div>
+            	<h2 class="datospers">Diario Dietético - Día 2</h2><!-- CONTENIDO DE LA WEB -->
+                <div id="contenidos">
+                	<h3>Desayuno <button class="btn btn-primary btn-sm" onClick="empezarTest(2,'desayuno');" >Empezar</button></h3>
+                    <div id="botondesayuno"></div>
+                    <div id="desayuno"></div>
+                    <div id="aceptardesayuno"></div>
+                    <h3>Almuerzo <button class="btn btn-primary btn-sm" onClick="empezarTest(2,'almuerzo');" >Empezar</button></h3>
+                    <div id="botonalmuerzo"></div>
+                    <div id="almuerzo"></div>
+                    <div id="aceptaralmuerzo"></div>
+                    <h3>Merienda <button class="btn btn-primary btn-sm" onClick="empezarTest(2,'merienda');" >Empezar</button></h3>
+                    <div id="botonmerienda"></div>
+                    <div id="merienda"></div>
+                    <div id="aceptarmerienda"></div>
+                    
+                    <h3>Cena <button class="btn btn-primary btn-sm" onClick="empezarTest(2,'cena');" >Empezar</button></h3>
+                    <div id="botoncena"></div>
+                    <div id="cena"></div>
+                    <div id="aceptarcena"></div>
+                </div>
             </div>
             
             <div class="col-md-5">
@@ -502,6 +520,11 @@ window.onload=function(){
     <!-- Fin Modal Actualizar Password -->
     
     <script>
+	//              dia, momento
+	cargarTestAntiguo(2,"desayuno");
+	cargarTestAntiguo(2,"almuerzo");
+	cargarTestAntiguo(2,"merienda");
+	cargarTestAntiguo(2,"cena");
 	cargarActividadFisica();
 	cargaActividadCliente();
 	cargaPatologiasCliente(<?php echo $_SESSION["id"] ?>);

@@ -4,11 +4,45 @@ h1,h2,h3,h4,h5,h6{
 	font-family: 'Comfortaa', cursive;
 }
 
+.alimentostest{
+	margin-bottom:16px;
+	border-bottom:1px solid #333;
+}
+
+.selecttest{
+	width:25%;
+	display:inline;
+}
+
+.numerotest{
+	width:35%;
+	display:inline;
+}
+
 h1{
-	color:#d3d1ce;
+	color:white;
 	font-size:28px;
 	margin:0;
 	margin-bottom:6px;
+}
+
+h2{
+	font-size:22px !important;
+}
+
+h3{
+	font-size:16px !important;
+}
+
+div#contenidos p{
+	text-align:justify !important;
+}
+
+.slogan{
+	font-family: 'Comfortaa', cursive;
+	color:white;
+	font-variant:small-caps;
+	font-size:24px;
 }
 
 .muestraIntercambios, .muestraDatosPers,.muestraHistorial, .muestraPatologias{
@@ -52,7 +86,6 @@ body{
 	text-align:right;
 	color:#d3d1ce;
 	border-bottom:#777674 solid 2px;
-	font-size:18px;
 	background-image:url(images/fondosuperior.png);
 	background-repeat:repeat;
 }
@@ -92,31 +125,42 @@ body{
 .botondesplegable{
 	background-color:transparent;
 	border:0px;
+	padding:0px;
 }
 
-a.cerrarsesion{
+.botondesplegablesub{
+	color:#333;
+	padding-left::12px;
+	padding-right:12px;
+	margin-left:6px;
+	text-align:left;
+}
+
+.botondesplegablesub:hover{
+	background-color:#f5f5f5;
+}
+
+.cerrarsesion{
 	color:#d3d1ce;
 	margin:auto;
-	font-size:18px;
+	font-size:14px;
 }
 
-a.cerrarsesion:link{
+.cerrarsesion:link{
 	text-decoration:none;
 }
 
-a.cerrarsesion:visited{
+.cerrarsesion:visited{
 	color:#d3d1ce;
 	text-decoration:none;
 }
 
-a.cerrarsesion:hover{
+.cerrarsesion:hover{
 	color:#fff;
 	text-decoration:none;
 }
 
-h2{
-	font-size:16px !important;
-}
+
 
 .cabecera{
 	background-color:RGB(3,90,0);
