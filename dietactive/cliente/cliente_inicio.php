@@ -186,8 +186,10 @@ window.onload=function(){
                 
                 
         	<div class="col-md-7">
-            	<h2 class="datospers">Contenidos</h2><!-- CONTENIDO DE LA WEB -->
-                <div id="contenidos"><br/><br/><br/><br/><br/><br/><br/><br/><br/><br/><br/><br/><br/><br/><br/><br/><br/><br/><br/><br/><br/><br/><br/><br/><br/></div>
+            	<h2 class="datospers">Bienvenido</h2><!-- CONTENIDO DE LA WEB -->
+                <div id="contenidos">
+                	<p>Aquí puedes encontrar muchas cosas</p>
+                </div>
             </div>
             
             <div class="col-md-5">

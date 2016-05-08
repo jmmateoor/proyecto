@@ -46,7 +46,7 @@ function empezarTest(dia,momento)
 							var boton="boton"+momento;
 							var aceptar="aceptar"+momento;
 							
-							$("#"+boton).html("<input type='button' class='btn btn-default' value='Agregar alimento' onClick='cargarTiposAlimentos(\""+momento+"\");' />");
+							$("#"+boton).html("<input type='button' class='btn btn-info alimentostest' value='Agregar alimento' onClick='cargarTiposAlimentos(\""+momento+"\");' />");
 							$("#"+aceptar).html("<input class='btn btn-success' type='button' value='Aceptar' onClick='recorrerTest("+dia+",\""+momento+"\");' /> <input class='btn btn-warning' type='button' value='Cancelar' onClick='cancelarTest("+dia+",\""+momento+"\");' />");
 						}
 						else
@@ -78,7 +78,7 @@ function cargarTiposAlimentos(momento)
 			{
 				
 				datos=JSON.parse(data);
-				var salida="<div id='d"+tipo+"'><select class='form-control selecttest' id='"+tipo+"' name='"+tipo+"' onChange='cargarAlimentos(this.value, this.id)'><option value='0'>-- Selecciona --</option>";
+				var salida="<div id='d"+tipo+"' class='alimentostest'><select class='form-control selecttest' id='"+tipo+"' name='"+tipo+"' onChange='cargarAlimentos(this.value, this.id)'><option value='0'>-- Selecciona --</option>";
 				
 				for(var i=0;i<datos.length;i++)
 				{
@@ -222,7 +222,11 @@ function cargarTestAntiguo(dia, momento)
 							for(var i=0;i<datos.length;i++)
 							{
 								salida+="<div class='row'><div class='col-xs-5'>"+datos[i].alimento+"</div><div class='col-xs-4'>"+datos[i].cantidad+" gr.</div></div>";
-								salida+="<div class='row'><div class='col-xs-5 alimentostest'></div><div class='col-xs-3 alimentostest'></div><div class='col-xs-4'></div></div>";
+								//salida+="<div class='row'><div class='col-xs-5 '></div><div class='col-xs-3'></div><div class='col-xs-4'></div></div>";
+								if(i!=datos.length-1)
+								{
+									salida+="<hr />";
+								}
 							}
 							
 							$("#"+momento).html(salida);

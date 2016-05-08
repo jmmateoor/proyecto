@@ -189,22 +189,29 @@ window.onload=function(){
             	<h2 class="datospers">Diario Dietético - Día 3</h2><!-- CONTENIDO DE LA WEB -->
                 <div id="contenidos">
                 	<h3>Desayuno <button class="btn btn-primary btn-sm" onClick="empezarTest(3,'desayuno');" >Empezar</button></h3>
-                    <div id="botondesayuno"></div>
-                    <div id="desayuno"></div>
-                    <div id="aceptardesayuno"></div>
+                    <div class="test">
+                        <div id="botondesayuno"></div>
+                        <div id="desayuno"></div>
+                        <div id="aceptardesayuno"></div>
+                    </div>
                     <h3>Almuerzo <button class="btn btn-primary btn-sm" onClick="empezarTest(3,'almuerzo');" >Empezar</button></h3>
-                    <div id="botonalmuerzo"></div>
-                    <div id="almuerzo"></div>
-                    <div id="aceptaralmuerzo"></div>
+                    <div class="test">
+                        <div id="botonalmuerzo"></div>
+                        <div id="almuerzo"></div>
+                        <div id="aceptaralmuerzo"></div>
+                    </div>
                     <h3>Merienda <button class="btn btn-primary btn-sm" onClick="empezarTest(3,'merienda');" >Empezar</button></h3>
-                    <div id="botonmerienda"></div>
-                    <div id="merienda"></div>
-                    <div id="aceptarmerienda"></div>
-                    
+                    <div class="test">
+                        <div id="botonmerienda"></div>
+                        <div id="merienda"></div>
+                        <div id="aceptarmerienda"></div>
+                    </div>
                     <h3>Cena <button class="btn btn-primary btn-sm" onClick="empezarTest(3,'cena');" >Empezar</button></h3>
-                    <div id="botoncena"></div>
-                    <div id="cena"></div>
-                    <div id="aceptarcena"></div>
+                    <div class="test">
+                        <div id="botoncena"></div>
+                        <div id="cena"></div>
+                        <div id="aceptarcena"></div>
+                    </div>
                 </div>
             </div>
             

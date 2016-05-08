@@ -4,9 +4,24 @@ h1,h2,h3,h4,h5,h6{
 	font-family: 'Comfortaa', cursive;
 }
 
+.test{
+	margin-bottom:40px;
+	background-color:white;
+	border-radius:6px;
+	border: 1px solid #777674;
+	padding:6px;
+	padding-top:16px;
+	padding-bottom:16px;
+}
+
 .alimentostest{
-	margin-bottom:16px;
-	border-bottom:1px solid #333;
+	margin-bottom:12px;
+	
+}
+
+hr{
+	background-color:#777674;
+	height:1px;
 }
 
 .selecttest{
