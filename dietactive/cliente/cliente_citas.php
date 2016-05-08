@@ -186,8 +186,9 @@ window.onload=function(){
                 
                 
         	<div class="col-md-7">
-            	<h2 class="datospers">Contenidos</h2><!-- CONTENIDO DE LA WEB -->
-                <div id="contenidos"><br/><br/><br/><br/><br/><br/><br/><br/><br/><br/><br/><br/><br/><br/><br/><br/><br/><br/><br/><br/><br/><br/><br/><br/><br/></div>
+            	<h2 class="datospers">Citas</h2><!-- CONTENIDO DE LA WEB -->
+                <div id="contenidos">
+                </div>
             </div>
             
             <div class="col-md-5">
@@ -502,6 +503,7 @@ window.onload=function(){
     <!-- Fin Modal Actualizar Password -->
     
     <script>
+	consultaCitaAsignada();
 	cargarActividadFisica();
 	cargaActividadCliente();
 	cargaPatologiasCliente(<?php echo $_SESSION["id"] ?>);

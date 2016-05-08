@@ -1,5 +1,38 @@
 // JavaScript Document
 
+//Citas
+function consultaCitaAsignada()
+{
+	
+	$.post("../servidor/consulta_cita_asignada.php",
+							function(data, estado)
+							{
+								if(data==']')
+								{
+									mostrarConsultasDisponibles();
+									
+								}
+								else
+								{
+									datos=JSON.parse(data);
+									
+									var dia=poneFecha((datos[0].cita.split(" "))[0]);
+									
+									var hora=(datos[0].cita.split(" "))[1];
+									var dietista=datos[0].nombredietista + " " + datos[0].apellidosdietista;
+									
+									var texto="Fecha: "+dia+"<br/>Hora: "+hora+"<br/>Especialista: "+ dietista;
+									$("#contenidos").html(texto);
+								}
+							});
+}
+
+function mostrarConsultasDisponibles()
+{
+	alert("Muestra citas");
+}
+//Fin Citas
+
 //test
 function cancelarTest(dia,momento)
 {
