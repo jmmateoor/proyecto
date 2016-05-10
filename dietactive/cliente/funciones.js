@@ -230,11 +230,6 @@ function recorrerTest(dia,momento)
 	}
 }
 
-
-
-//Fin test
-
-
 function cargarTestAntiguo(dia, momento)
 {
 	$.post("../servidor/consulta_test.php",{
@@ -266,6 +261,9 @@ function cargarTestAntiguo(dia, momento)
 						}
 					});
 }
+
+
+//Fin test
 
 
 
@@ -315,26 +313,6 @@ function borrarPass()
 	$("#buttomPass").attr("disabled",true);
 }
 
-function actualizaActividad(id)
-{
-	$.post("../servidor/actualiza_actividadf.php",{
-			idactividad: $("#actividadf").val()
-							},
-							function(datos, estado)
-							{
-								if(datos=='s')
-								{
-									cargaActividadCliente();
-									cargarIntercambios(id);
-									cargaAlturaPesoDes();
-								}
-								else
-								{
-									alert("Ha ocurrido un error. Intentalo de nuevo más tarde.");
-								}
-							});
-}
-
 function compruebaMensajeEmail()
 {
 	if($("#mensajeEmail").val()=="")
@@ -374,6 +352,34 @@ function enviarEmail(nombre, apellidos, email)
 
 
 //Actualizar
+function actualizaActividad(id)
+{
+	$.post("../servidor/actualiza_actividadf.php",{
+			idactividad: $("#actividadf").val()
+							},
+							function(datos, estado)
+							{
+								if(datos=='s')
+								{
+									$("#intercambios").addClass("efecto");
+									variable = setTimeout(efecto,2100,"intercambios");
+									
+									
+									$("#actf").css("border-radius","6px");
+									$("#actf").addClass("efecto");
+									variable5 = setTimeout(efecto,2100,"actf");
+									
+									cargaActividadCliente();
+									cargarIntercambios(id);
+									cargaGeet();
+								}
+								else
+								{
+									alert("Ha ocurrido un error. Intentalo de nuevo más tarde.");
+								}
+							});
+}
+
 function muestraTodasPatologiasAct(sexo)
 {
 	$.get("../servidor/consulta_patologia.php", function(data, status){
@@ -433,6 +439,9 @@ function actualizarPatologias(id)
 							{
 								if(datos=='s')
 								{
+									$("#patologias").css("border-radius","6px");
+									$("#patologias").addClass("efecto");
+									variable = setTimeout(efecto,2100,"patologias");
 									cargaPatologiasCliente(id);
 								}
 								else
@@ -466,8 +475,16 @@ function cargaTelefono()
 {
 	$.get("../servidor/consulta_telefono.php", function(data, status){
 				var objeto = JSON.parse(data);
+				$("#telefono").css("border-radius","6px");
+				$("#telefono").addClass("efecto");
+				variable = setTimeout(efecto,2100,"telefono");
 				$("#telefono").html(objeto[0].telefono);
 			});
+}
+
+function efecto(id)
+{
+	$("#"+id).removeClass("efecto");
 }
 
 function actCompruebaTelefono()
@@ -492,6 +509,64 @@ function actCompruebaTelefono()
 	}
 }
 
+
+function cargaCp()
+{
+	$.get("../servidor/consulta_cp.php", function(data, status){
+				var objeto = JSON.parse(data);
+				$("#cp").css("border-radius","6px");
+				$("#cp").addClass("efecto");
+				variable = setTimeout(efecto,2100,"telefono");
+				$("#cp").html(objeto[0].cp);
+			});
+}
+
+
+
+function actualizarCp(id)
+{
+	$.post("../servidor/actualiza_cp.php",{
+			actcp: $("#actcp").val()
+							},
+							function(datos, estado)
+							{
+								if(datos=='s')
+								{
+									cargaCp();
+									$("#actcp").val("");
+									$("#buttomactcp").attr("disabled",true);
+								}
+								else
+								{
+									alert("Ha ocurrido un error. Intentalo de nuevo más tarde.");
+								}
+							});
+}
+
+
+
+function actCompruebaCp()
+{
+	if($("#actcp").val()=="")
+	{
+		$("#actcp2").html("No puede estar vacío");
+		$("#buttomactcp").attr("disabled",true);
+	}
+	else
+	{
+		if($("#actcp").val().length==5)
+		{
+			$("#actcp2").html("");
+			$("#buttomactcp").attr("disabled",false);
+		}
+		else
+		{
+			$("#actcp2").html("Debe contener 5 dígitos.");
+			$("#buttomactcp").attr("disabled",true);
+		}
+	}
+}
+
 function actualizarAltura(id)
 {
 	$.post("../servidor/actualiza_altura.php",{
@@ -501,6 +576,9 @@ function actualizarAltura(id)
 							{
 								if(datos=='s')
 								{
+									
+									$("#intercambios").addClass("efecto");
+									variable = setTimeout(efecto,2100,"intercambios");
 									cargarIntercambios(id);
 									cargaAlturaPesoDes();
 									$("#actaltura").val("");
@@ -517,11 +595,42 @@ function cargaAlturaPesoDes()
 {
 	$.get("../servidor/consulta_altura_pdes.php", function(data, status){
 				var objeto = JSON.parse(data);
+				
+				$("#altura").css("border-radius","6px");
+				$("#altura").addClass("efecto");
+				variable = setTimeout(efecto,2100,"altura");
+				
+				$("#pesodeseable").css("border-radius","6px");
+				$("#pesodeseable").addClass("efecto");
+				variable2 = setTimeout(efecto,2100,"pesodeseable");
+				
+				
+				$("#geet").css("border-radius","6px");
+				$("#geet").addClass("efecto");
+				variable3 = setTimeout(efecto,2100,"geet");
+				
+				
+				
 				$("#altura").html(objeto[0].altura);
 				$("#pesodeseable").html(objeto[0].pesodeseable);
 				$("#geet").html(objeto[0].geet);
 			});
 }
+
+function cargaGeet()
+{
+	$.get("../servidor/consulta_altura_pdes.php", function(data, status){
+				var objeto = JSON.parse(data);
+				
+				
+				$("#geet").css("border-radius","6px");
+				$("#geet").addClass("efecto");
+				variable3 = setTimeout(efecto,2100,"geet");
+				
+				$("#geet").html(objeto[0].geet);
+			});
+}
+
 
 function actCompruebaAltura()
 {
@@ -555,6 +664,8 @@ function actualizarPeso(id)
 							{
 								if(datos=='s')
 								{
+									$("#intercambios").addClass("efecto");
+									variable = setTimeout(efecto,2100,"intercambios");
 									cargarIntercambios(id);
 									cargaPeso();
 									graficaPeso(id);
@@ -572,6 +683,16 @@ function cargaPeso()
 {
 	$.get("../servidor/consulta_actpeso.php", function(data, status){
 				var objeto = JSON.parse(data);
+				
+				$("#peso").css("border-radius","6px");
+				$("#peso").addClass("efecto");
+				variable = setTimeout(efecto,2100,"peso");
+				
+				$("#geet").css("border-radius","6px");
+				$("#geet").addClass("efecto");
+				variable2 = setTimeout(efecto,2100,"geet");
+				
+				
 				$("#peso").html(objeto[0].peso);
 				$("#geet").html(objeto[0].geet);
 			});
@@ -752,6 +873,18 @@ function cargaPatologiasCliente(idcliente)
 			$("#telefono2").html("");
 		}
 		
+		if($("#cp").val()=="")
+		{
+			$("#cp").focus();
+			$("#cp2").html("Requerido");
+			return false;
+			
+		}
+		else
+		{
+			$("#cp2").html("");
+		}
+		
 		
 		if($("#email").val()=="")
 		{
@@ -866,6 +999,7 @@ function cargaPatologiasCliente(idcliente)
 			nombre: $("#nombre").val(), 
 			apellidos: $("#apellidos").val(),
 			telefono: $("#telefono").val(),
+			cp: $("#cp").val(),
 			email: $("#email").val(),
 			sexo: $("input:radio[name=sexo]:checked").val(),
 			peso: $("#peso").val(),
@@ -1200,6 +1334,13 @@ function datosEmpresa()
 				
 				$("#dietmovil1").attr("href","tel:"+objeto[0].telefono2);
 				$("#dietmovil2").html(objeto[0].telefono2);
+				
+				
+				/*$("#dietfijo11").attr("href","tel:"+objeto[0].telefono1);
+				$("#dietfijo12").html(objeto[0].telefono1);
+				
+				$("#dietmovil11").attr("href","tel:"+objeto[0].telefono2);
+				$("#dietmovil12").html(objeto[0].telefono2);*/
 				
 				$("#dietdireccion").html(objeto[0].direccion);
 				$("#dietdirecciondatos").html(objeto[0].provincia+", "+objeto[0].localidad+" "+objeto[0].codigopostal);

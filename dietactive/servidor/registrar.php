@@ -11,6 +11,7 @@
 	$nombre=$_POST['nombre'];
 	$apellidos=$_POST['apellidos'];
 	$telefono=$_POST['telefono'];
+	$cp=$_POST['cp'];
 	$email=$_POST['email'];
 	$sexo=$_POST['sexo'];
 	$peso=$_POST['peso'];
@@ -23,9 +24,9 @@
 	
 	$fechaingreso=date("Y-m-d");
 	
-	$preparada = $c->prepare("insert into cliente(codigo_activacion, activado, password, nombre, apellidos, telefono, email, sexo, peso, altura, fechanac, idactividad, pesodeseable, fechaingreso) values (?, ?, ?, ?, ?, ?, ?, ?, ?, ?, ?, ?, ?, ?)");
+	$preparada = $c->prepare("insert into cliente(codigo_activacion, activado, password, nombre, apellidos, telefono, email, sexo, peso, altura, fechanac, idactividad, pesodeseable, fechaingreso, cp) values (?, ?, ?, ?, ?, ?, ?, ?, ?, ?, ?, ?, ?, ?, ?)");
 	
-	$preparada->bind_param("ssssssssdisids",$codigo,$activado, $password,$nombre, $apellidos, $telefono, $email, $sexo, $peso, $altura, $fechanac, $actividadf, $pesodeseable, $fechaingreso);
+	$preparada->bind_param("ssssssssdisidss",$codigo,$activado, $password,$nombre, $apellidos, $telefono, $email, $sexo, $peso, $altura, $fechanac, $actividadf, $pesodeseable, $fechaingreso, $cp);
 	
 	if($preparada->execute())
 	{

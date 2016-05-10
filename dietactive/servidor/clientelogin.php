@@ -10,10 +10,10 @@
 	$password=md5($_POST['password']);
 	$email=$_POST['email'];
 	$activado="s";
-	$consulta = $c->prepare("select id, nombre, apellidos, email, peso, pesodeseable, sexo, fechanac, altura, dieta, geet, telefono from cliente where email = ? and password = ? and activado = ?");
+	$consulta = $c->prepare("select id, nombre, apellidos, email, peso, pesodeseable, sexo, fechanac, altura, dieta, geet, telefono, cp from cliente where email = ? and password = ? and activado = ?");
 	$consulta->bind_param("sss",$email, $password, $activado);
 	$consulta->execute();
-	$consulta->bind_result($id,$nombre, $apellidos, $email, $peso, $pesodeseable, $sexo, $fechanac, $altura, $dieta, $geet, $telefono);
+	$consulta->bind_result($id,$nombre, $apellidos, $email, $peso, $pesodeseable, $sexo, $fechanac, $altura, $dieta, $geet, $telefono, $cp);
 	$consulta->store_result();
 	if($consulta->num_rows>0)
 	{
@@ -33,6 +33,7 @@
 			$_SESSION["dieta"]=$dieta;
 			$_SESSION["geet"]=$geet;
 			$_SESSION["telefono"]=$telefono;
+			$_SESSION["cp"]=$cp;
 		}
 		$salida="s";
 	}

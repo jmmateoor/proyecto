@@ -4,6 +4,38 @@ h1,h2,h3,h4,h5,h6{
 	font-family: 'Comfortaa', cursive;
 }
 
+@keyframes actualizar {
+    0%   {background-color: transparent;}
+    50%  {background-color: #fff;}
+    100% {background-color: transparent;}
+}
+
+.textocab{
+	color:white !important;
+	
+}
+
+a.cabenlace{
+	color:white;
+}
+a.cabenlace:link{
+	text-decoration:none;
+}
+a.cabenlace:hover{
+	color:#fff;
+	text-decoration:none;
+}
+a.cabenlace:visited{
+	color:white;
+	text-decoration:none;
+}
+
+.efecto{
+	animation-name: actualizar;
+    animation-duration: 2s;
+	background-color:transparent;
+}
+
 .test{
 	margin-bottom:40px;
 	background-color:white;
@@ -38,7 +70,6 @@ h1{
 	color:white;
 	font-size:28px;
 	margin:0;
-	margin-bottom:6px;
 }
 
 h2{

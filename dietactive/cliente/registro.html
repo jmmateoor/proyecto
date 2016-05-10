@@ -72,6 +72,13 @@
                             <input type="tel" class="form-control" id="telefono" name="telefono" onKeyPress="return validaTelefono(event);" required maxlength="9" onpaste="return false;" />
                             <span class="error" id="telefono2"></span>
                         </div>
+                        
+                        <div class="form-group">
+                            <label for="cp">Código Postal (requerido)</label>
+                            <input type="text" class="form-control" id="cp" name="cp" onKeyPress="return validaTelefono(event);" required maxlength="5" onpaste="return false;" />
+                            <span class="error" id="cp2"></span>
+                        </div>
+                        
                         <div class="form-group">
                             <label for="email">Correo electrónico (requerido)</label>
                             <input type="email" class="form-control" id="email" name="email" required maxlength="100" onKeyUp="validaEmail();return compruebaEmail();" onChange="validaEmail();return compruebaEmail();" />

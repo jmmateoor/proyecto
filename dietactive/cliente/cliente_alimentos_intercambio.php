@@ -78,13 +78,13 @@ window.onload=function(){
             </div>
         </div>
         <div class="row cabecera">
-            <div class="col-md-12">
-                <p align="center" style="margin-bottom:0px;"><img src="images/cab.png" class="img-responsive" width="580px" alt="DietActive" /></p>
+            <div class="col-md-10">
+                <p align="center" style="margin-bottom:0px;"><img src="images/cab.png" class="img-responsive" width="510px" alt="DietActive" /></p>
                 <p align="center" class="slogan">Tu Dieta Equilibrada Personalizada</p>
             </div>
         </div>
         <div class="row cabecera">
-        	<div class="col-md-12">
+        	<div class="col-md-10 areacliente">
                 <h1>Área Cliente</h1>
             </div>
         </div>
@@ -241,13 +241,25 @@ window.onload=function(){
                 <div class="row">
                 	<div class="col-md-12">
                         <div class="muestraDatosPers">
-                            <h2 class="datospers"><button class="botondesplegable" data-toggle="tooltip" data-placement="top" title="Mostrar / Ocultar" id="flip1" style="cursor: pointer;"><span id="iconoflip1" class="glyphicon glyphicon-menu-down"></span> Datos Personales </button></h2>
+                            <h2 class="datospers"><button class="botondesplegable" data-toggle="tooltip" data-placement="top" title="Mostrar / Ocultar" id="flip1" style="cursor: pointer;"><span id="iconoflip1" class="glyphicon glyphicon-menu-down"></span> Perfil </button></h2>
                             <div id="panel1">
                                 <div class="row">
                                     <div class="col-sm-4">
                                         <p><b>Nombre completo</b></p>
                                         <p id="nombre"><?php echo $_SESSION["nombre"]." ".$_SESSION["apellidos"] ?></p>
                                     </div>
+                                    <div class="col-sm-4">
+                                    	<p><b>Teléfono</b> <span data-toggle="tooltip" data-placement="top" title="Actualizar"><button type="button" class="btn btn-info btn-xs" data-toggle="modal" data-target="#modalTelefono"><span class="glyphicon glyphicon-edit"></span></button></span></p>
+                                        <p><span id="telefono"><?php echo $_SESSION["telefono"] ?></span></p>
+                                        
+                                    </div>
+                                    <div class="col-sm-4">
+                                    	<p><b>Código Postal</b> <span data-toggle="tooltip" data-placement="top" title="Actualizar"><button type="button" class="btn btn-info btn-xs" data-toggle="modal" data-target="#modalCp"><span class="glyphicon glyphicon-edit"></span></button></span></p>
+                                        <p><span id="cp"><?php echo $_SESSION["cp"] ?></span></p>
+                                        
+                                    </div>
+                                </div>
+                                <div class="row">
                                     <div class="col-sm-4">
                                         <p><b>Sexo</b></p>
                                         <p id="sexo"><?php if($_SESSION["sexo"]=="h"){echo "Hombre";} else {echo "Mujer";} ?></p>
@@ -256,21 +268,20 @@ window.onload=function(){
                                         <p><b>Tu edad</b></p>
                                         <p id="edad"><?php echo edad($_SESSION["fechanac"]) ?></p>
                                     </div>
-                                </div>
-                                <div class="row">
-                                    <div class="col-sm-4">
-                                        <p><b>Teléfono</b> <span data-toggle="tooltip" data-placement="top" title="Actualizar"><button type="button" class="btn btn-info btn-xs" data-toggle="modal" data-target="#modalTelefono"><span class="glyphicon glyphicon-edit"></span></button></span></p>
-                                        <p><span id="telefono"><?php echo $_SESSION["telefono"] ?></span></p>
-                                    </div>
                                     <div class="col-sm-4">
                                         <p><b>Altura</b> <span data-toggle="tooltip" data-placement="top" title="Actualizar"><button type="button" class="btn btn-info btn-xs" data-toggle="modal" data-target="#modalAltura"><span class="glyphicon glyphicon-edit"></span></button></span></p>
                                         <p><span id="altura" ng-model="angaltura"><?php echo $_SESSION["altura"] ?></span> cm.</p>
-                                    </div>
+                                    </div>    
+                                </div>
+                                <div class="row">
                                     <div class="col-sm-4">
                                         <p><b>Tu peso</b> <span data-toggle="tooltip" data-placement="top" title="Actualizar"><button type="button" class="btn btn-info btn-xs" data-toggle="modal" data-target="#modalPeso"><span class="glyphicon glyphicon-edit"></span></button></span></p>
                                         <p><span id="peso"><?php echo $_SESSION["peso"] ?></span> Kg.</p>
                                     </div>
-                                    
+                                    <div class="col-sm-8">
+                                        <p><b>Tu peso deseable</b></p>
+                                        <p><span id="pesodeseable"><?php echo $_SESSION["pesodeseable"] ?></span> Kg.</p>
+                                    </div>
                                 </div>
                                 <div class="row">
                                     <div class="col-sm-12">
@@ -279,10 +290,7 @@ window.onload=function(){
                                     </div>
                                 </div>
                                 <div class="row">
-                                    <div class="col-sm-12">
-                                        <p><b>Tu peso deseable</b></p>
-                                        <p><span id="pesodeseable"><?php echo $_SESSION["pesodeseable"] ?></span> Kg.</p>
-                                    </div>
+                                    
                                 </div>
                                 <div class="row">
                                     <div class="col-sm-12">
@@ -529,6 +537,33 @@ window.onload=function(){
       </div>
     </div>
     <!-- Fin Modal Actualizar Password -->
+    
+    <!-- Modal Actualizar Código Postal -->
+    <div id="modalCp" class="modal fade" role="dialog">
+      <div class="modal-dialog">
+    
+        <!-- Modal content-->
+        <div class="modal-content">
+          <div class="modal-header">
+            <button type="button" class="close" data-dismiss="modal">&times;</button>
+            <h4 class="modal-title">Actualiza tu código postal</h4>
+          </div>
+          <div class="modal-body">
+              <form role="form" name="formactcp" method="post">
+                <label for="actcp">Nuevo código postal</label>
+                <input type="tel" class="form-control" id="actcp" name="actcp" onKeyPress="return validaTelefono(event);" required maxlength="5" onpaste="return false;" onKeyUp="actCompruebaCp();" onChange="actCompruebaCp();" />
+                <span class="error" id="actcp2"></span>
+              </div>
+              <div class="modal-footer">
+                <button type="submit" id="buttomactcp" class="btn btn-success" data-dismiss="modal" disabled="true" onClick="actualizarCp();"><span class="glyphicon glyphicon-check"></span> Aceptar</button>
+                <button type="button" class="btn btn-danger btn-default" data-dismiss="modal"><span class="glyphicon glyphicon-remove"></span> Cancelar</button>
+              </form>
+          </div>
+        </div>
+    
+      </div>
+    </div>
+    <!-- Fin Modal Actualizar Código Postal -->
     
     <script>
 	cargarActividadFisica();
