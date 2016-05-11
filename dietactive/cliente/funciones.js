@@ -1,6 +1,14 @@
 // JavaScript Document
 
 //Citas
+function eliminarCita(iddietista)
+{
+	var codigocita= $("#dia").html()+" "+$("#hora").html();
+	codigocita=codigocita.replace("/","-");
+	codigocita=codigocita.replace("/","-");
+	alert(codigocita);
+}
+
 function consultaCitaAsignada()
 {
 	
@@ -9,6 +17,7 @@ function consultaCitaAsignada()
 							{
 								if(data==']')
 								{
+									consultaDietistas();
 									mostrarConsultasDisponibles();
 									
 								}
@@ -19,17 +28,58 @@ function consultaCitaAsignada()
 									var dia=poneFecha((datos[0].cita.split(" "))[0]);
 									
 									var hora=(datos[0].cita.split(" "))[1];
+									var iddietista=datos[0].iddietista;
+									var tipocita=datos[0].tipocita;
 									var dietista=datos[0].nombredietista + " " + datos[0].apellidosdietista;
 									
-									var texto="Fecha: "+dia+"<br/>Hora: "+hora+"<br/>Especialista: "+ dietista;
-									$("#contenidos").html(texto);
+									
+									var texto="<div class='panel panel-primary'><div class='panel-heading'>Tu Cita</div><div class='panel-body'><b>Fecha:</b> <span id='dia'>"+dia+"</span><br/><hr/><b>Hora:</b> <span id='hora'>"+hora+"</span><br/><hr/><b>Tipo de cita:</b> "+tipocita+"<br/><hr/><b>Especialista:</b> "+ dietista+"</div><div class='panel-footer'><p align='right'><button class='btn btn-danger' onClick='eliminarCita("+iddietista+");'><span class='glyphicon glyphicon-remove'></span> Eliminar cita</button></p></div></div></div>";
+									$("#contenidocitas").html(texto);
 								}
 							});
 }
 
 function mostrarConsultasDisponibles()
 {
-	alert("Muestra citas");
+	$.get("../servidor/consultar_citas_disponibles.php",function(data, status)
+		{		
+			if(status=="success")
+			{
+				datos=JSON.parse(data);
+				
+				var salida="<h3>Citas disponibles</h3>";
+				for(var i=0;i<datos.length;i++)
+				{
+					var dia=poneFecha((datos[i].fechahora.split(" "))[0]);
+					var hora=(datos[i].fechahora.split(" "))[1];
+					
+					for(var j=0;j<dietistas.length;j++)
+					{
+						if(dietistas[j].id==datos[i].id)
+						{
+							var nombre=dietistas[j].nombre;
+						}
+					}
+					
+					salida+=dia+", a las  "+hora+" con el especialista "+nombre+"<br/>";
+				}
+				$("#contenidocitas").html(salida);
+			}
+		});
+}
+
+var dietistas=[];
+
+function consultaDietistas()
+{
+	
+	$.get("../servidor/consulta_dietistas.php",function(data, status)
+		{		
+			if(status=="success")
+			{
+				dietistas=JSON.parse(data);
+			}
+		});
 }
 //Fin Citas
 

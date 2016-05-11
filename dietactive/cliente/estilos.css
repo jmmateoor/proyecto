@@ -46,6 +46,18 @@ a.cabenlace:visited{
 	padding-bottom:16px;
 }
 
+.contenidocitas{
+	margin-bottom:40px;
+	background-color:white;
+	border-radius:6px;
+	border: 1px solid #777674;
+	padding:6px;
+	padding-top:16px;
+	padding-bottom:16px;
+	width:50%;
+}
+
+
 .alimentostest{
 	margin-bottom:12px;
 	

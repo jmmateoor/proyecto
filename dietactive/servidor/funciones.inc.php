@@ -1,5 +1,94 @@
 <?php
 //Funciones
+
+function escribeCitas($fecha)
+{
+	include("config.inc.php");
+	$c = new MySQLi($servidor,$usuario,$password,$bbdd);
+	$c->set_charset("utf8");
+	$cadena="";
+	
+	
+	$horario = $c->prepare("select inicio1, fin1 from datosempresa");
+	$horario->execute();
+	$horario->bind_result($horainicio,$horafin);
+	$horario->fetch();
+	
+	$horainicio=explode(":",$horainicio);
+	$inicio=$horainicio[0];
+	
+	$horafin=explode(":",$horafin);
+	$fin=$horafin[0];
+	//$sql="SELECT * FROM citas WHERE CITA='$fechahora'";
+	
+	$fechaactual=date("Y-m-d");
+	
+	$c->close();
+	
+	$connect = new MySQLi($servidor,$usuario,$password,$bbdd);
+	$connect->set_charset("utf8");
+	
+	$arraydietista;
+	$j=0;
+	$dietista = $connect->prepare("select id from dietista");
+	$dietista->execute();
+	$dietista->bind_result($iddietista);
+	while($dietista->fetch())
+	{
+		$arraydietista[$j]=$iddietista;
+		$j++;
+	}
+	
+	
+	$connect->close();
+	
+	
+	
+	
+	$con = new MySQLi($servidor,$usuario,$password,$bbdd);
+	$con->set_charset("utf8");
+	
+	$fechahora=date("Y-m-d");
+	
+	$citas = $con->prepare("select cita, iddietista from cita where cita = ? and cita >= ? and iddietista = ?");
+	$citas->bind_param("ssi",$fechahora, $fechaactual,$id);
+	
+	for($i=$inicio;$i<$fin;$i++)
+	{
+		$fechahora="";
+		$fechahora=$fecha." ".$i.":00";
+		
+		//$sql="SELECT * FROM cita WHERE CITA='$fechahora' AND CITA>=$fechaactual";
+		for($j=0;$j<count($arraydietista);$j++)
+		{
+			$id=$arraydietista[$j];
+			$citas->execute();
+			
+			$citas->store_result();
+			
+			if ($citas->num_rows == 0) {
+				$cadena.="{";
+				$cadena.="\"id\" : \"".$id."\",";
+				$cadena.="\"fechahora\" : \"".$fechahora."\"";
+				$cadena.="},";
+			}
+		}
+		
+		
+	}
+	$con->close();
+	return $cadena;
+}
+
+function sumaDias($fecha)
+{
+	$nuevafecha = strtotime ( '+1 day' , strtotime($fecha));
+	$nuevafecha = date ( 'Y-m-j' , $nuevafecha);
+	return $nuevafecha;
+}
+
+
+
 function genera_random($longitud)
 {  
     $exp_reg="[^A-Z0-9]";  

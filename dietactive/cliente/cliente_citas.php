@@ -188,6 +188,12 @@ window.onload=function(){
         	<div class="col-md-7">
             	<h2 class="datospers">Citas</h2><!-- CONTENIDO DE LA WEB -->
                 <div id="contenidos">
+                	<div class="row">
+                    	<div class="col-lg-9">
+                        	<div id="contenidocitas"></div>
+                        </div>
+                    </div>
+                	
                 </div>
             </div>
             
