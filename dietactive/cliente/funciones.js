@@ -18,7 +18,7 @@ function consultaCitaAsignada()
 								if(data==']')
 								{
 									consultaDietistas();
-									mostrarConsultasDisponibles();
+									//mostrarConsultasDisponibles();
 									
 								}
 								else
@@ -79,60 +79,65 @@ function cargarDias(iddietista)
 	}
 	else
 	{
-		var salida="";
-		
-		$('#hora')
-			.find('option')
-			.remove()
-			.end();
-		var selectdia=document.getElementById("hora");
-		var option=document.createElement("option"); 
-			option.value=0;
-			option.text="-- Selecciona --";
-			selectdia.appendChild(option);
-		
-		var diaaux=poneFecha((citasdisponibles[0].fechahora.split(" "))[0]);
-		
-		$('#dia')
-			.find('option')
-			.remove()
-			.end();
-		var selectdia=document.getElementById("dia");
-		var option=document.createElement("option"); 
-			option.value=0;
-			option.text="-- Selecciona --";
-			selectdia.appendChild(option);
-			
-		var option=document.createElement("option"); 
-			option.value=(citasdisponibles[0].fechahora.split(" "))[0];
-			option.text=diaaux;
-			selectdia.appendChild(option);
-			
-			
-		
-		for(var i=0;i<citasdisponibles.length;i++)
-		{
-			if(citasdisponibles[i].id==iddietista)
-			{
-				var dia=poneFecha((citasdisponibles[i].fechahora.split(" "))[0]);
-				var hora=(citasdisponibles[i].fechahora.split(" "))[1];
-				
-				
-				if(dia!=diaaux)
-				{
-					diaaux=dia;
-					var option=document.createElement("option"); 
-					option.value=(citasdisponibles[i].fechahora.split(" "))[0];
-					option.text=dia; 
-					selectdia.appendChild(option);
-				}
-				
-				
-				//salida+="<option value='"+datos[i].id+"'>"+datos[i].alimento+"</option>";
-			
-			}
-		}
-		$("#dia").attr("onChange","cargarHoras("+iddietista+",this.value);");
+		$.post("../servidor/consulta_dias.php",{
+			iddietista: iddietista
+					},
+					function(data, estado)
+					{
+						citasdisponibles=JSON.parse(data);
+						$('#hora')
+							.find('option')
+							.remove()
+							.end();
+						var selectdia=document.getElementById("hora");
+						var option=document.createElement("option"); 
+							option.value=0;
+							option.text="-- Selecciona --";
+							selectdia.appendChild(option);
+						
+						var diaaux=poneFecha((citasdisponibles[0].fechahora.split(" "))[0]);
+						
+						$('#dia')
+							.find('option')
+							.remove()
+							.end();
+						var selectdia=document.getElementById("dia");
+						var option=document.createElement("option"); 
+							option.value=0;
+							option.text="-- Selecciona --";
+							selectdia.appendChild(option);
+							
+						var option=document.createElement("option"); 
+							option.value=(citasdisponibles[0].fechahora.split(" "))[0];
+							option.text=diaaux;
+							selectdia.appendChild(option);
+							
+							
+						
+						for(var i=0;i<citasdisponibles.length;i++)
+						{
+							if(citasdisponibles[i].id==iddietista)
+							{
+								var dia=poneFecha((citasdisponibles[i].fechahora.split(" "))[0]);
+								var hora=(citasdisponibles[i].fechahora.split(" "))[1];
+								
+								
+								if(dia!=diaaux)
+								{
+									diaaux=dia;
+									var option=document.createElement("option"); 
+									option.value=(citasdisponibles[i].fechahora.split(" "))[0];
+									option.text=dia; 
+									selectdia.appendChild(option);
+								}
+								
+								
+								//salida+="<option value='"+datos[i].id+"'>"+datos[i].alimento+"</option>";
+							
+							}
+						}
+						$("#dia").attr("onChange","cargarHoras("+iddietista+",this.value);");
+					});
 	}
 }
 
@@ -152,39 +157,44 @@ function cargarHoras(iddietista,diaseleccionado)
 	}
 	else
 	{
-		
-		$('#hora')
-			.find('option')
-			.remove()
-			.end();
-		var selectdia=document.getElementById("hora");
-		var option=document.createElement("option"); 
-			option.value=0;
-			option.text="-- Selecciona --";
-			selectdia.appendChild(option);
-			
-			
-		
-		for(var i=0;i<citasdisponibles.length;i++)
-		{
-			var dia=(citasdisponibles[i].fechahora.split(" "))[0];
-			var hora=(citasdisponibles[i].fechahora.split(" "))[1];
-			
-			
-			if(citasdisponibles[i].id==iddietista && dia==diaseleccionado)
-			{
-					
-					var option=document.createElement("option"); 
-					option.value=hora;
-					option.text=hora; 
-					selectdia.appendChild(option);
-				
-				
-				//salida+="<option value='"+datos[i].id+"'>"+datos[i].alimento+"</option>";
-			
-			}
-		}
-		//$("#dia").attr("onChange","cargarHoras("+iddietista+",this.value);");
+		$.post("../servidor/consulta_dias.php",{
+			iddietista: iddietista
+					},
+					function(data, estado)
+					{
+						$('#hora')
+							.find('option')
+							.remove()
+							.end();
+						var selectdia=document.getElementById("hora");
+						var option=document.createElement("option"); 
+							option.value=0;
+							option.text="-- Selecciona --";
+							selectdia.appendChild(option);
+							
+							
+						
+						for(var i=0;i<citasdisponibles.length;i++)
+						{
+							var dia=(citasdisponibles[i].fechahora.split(" "))[0];
+							var hora=(citasdisponibles[i].fechahora.split(" "))[1];
+							
+							
+							if(citasdisponibles[i].id==iddietista && dia==diaseleccionado)
+							{
+									
+									var option=document.createElement("option"); 
+									option.value=hora;
+									option.text=hora; 
+									selectdia.appendChild(option);
+								
+								
+								//salida+="<option value='"+datos[i].id+"'>"+datos[i].alimento+"</option>";
+							
+							}
+						}
+						//$("#dia").attr("onChange","cargarHoras("+iddietista+",this.value);");
+					});
 	}
 }
 

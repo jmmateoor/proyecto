@@ -7,7 +7,7 @@
 	include("../servidor/funciones.inc.php");
 ?>
 <!DOCTYPE HTML>
-<html lang="es">
+<html>
 <head>
 <meta charset="utf-8">
 <meta http-equiv="Content-Language" content="es"/>

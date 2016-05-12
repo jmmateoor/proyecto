@@ -1,7 +1,7 @@
 <?php
 //Funciones
 
-function escribeCitas($fecha)
+function escribeCitas($fecha,$id)
 {
 	include("config.inc.php");
 	$c = new MySQLi($servidor,$usuario,$password,$bbdd);
@@ -25,26 +25,6 @@ function escribeCitas($fecha)
 	
 	$c->close();
 	
-	$connect = new MySQLi($servidor,$usuario,$password,$bbdd);
-	$connect->set_charset("utf8");
-	
-	$arraydietista;
-	$j=0;
-	$dietista = $connect->prepare("select id from dietista");
-	$dietista->execute();
-	$dietista->bind_result($iddietista);
-	while($dietista->fetch())
-	{
-		$arraydietista[$j]=$iddietista;
-		$j++;
-	}
-	
-	
-	$connect->close();
-	
-	
-	
-	
 	$con = new MySQLi($servidor,$usuario,$password,$bbdd);
 	$con->set_charset("utf8");
 	
@@ -59,21 +39,17 @@ function escribeCitas($fecha)
 		$fechahora=$fecha." ".$i.":00";
 		
 		//$sql="SELECT * FROM cita WHERE CITA='$fechahora' AND CITA>=$fechaactual";
-		for($j=0;$j<count($arraydietista);$j++)
-		{
-			$id=$arraydietista[$j];
-			$citas->execute();
-			
-			$citas->store_result();
-			
-			if ($citas->num_rows == 0) {
-				$cadena.="{";
-				$cadena.="\"id\" : \"".$id."\",";
-				$cadena.="\"fechahora\" : \"".$fechahora."\"";
-				$cadena.="},";
-			}
-		}
 		
+		$citas->execute();
+		
+		$citas->store_result();
+		
+		if ($citas->num_rows == 0) {
+			$cadena.="{";
+			$cadena.="\"id\" : \"".$id."\",";
+			$cadena.="\"fechahora\" : \"".$fechahora."\"";
+			$cadena.="},";
+		}
 		
 	}
 	$con->close();
