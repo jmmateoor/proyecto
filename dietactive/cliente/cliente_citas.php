@@ -7,9 +7,10 @@
 	include("../servidor/funciones.inc.php");
 ?>
 <!DOCTYPE HTML>
-<html>
+<html lang="es">
 <head>
 <meta charset="utf-8">
+<meta http-equiv="Content-Language" content="es"/>
 <title>Citas - DietActive</title>
 <link rel="shortcut icon" href="images/fav.png">
 <link rel="stylesheet" href="http://maxcdn.bootstrapcdn.com/bootstrap/3.3.6/css/bootstrap.min.css">
@@ -185,11 +186,11 @@ window.onload=function(){
                 
                 
                 
-        	<div class="col-md-7">
+        	<div class="col-lg-7">
             	<h2 class="datospers">Citas</h2><!-- CONTENIDO DE LA WEB -->
                 <div id="contenidos">
                 	<div class="row">
-                    	<div class="col-lg-9">
+                    	<div class="col-lg-12">
                         	<div id="contenidocitas"></div>
                         </div>
                     </div>

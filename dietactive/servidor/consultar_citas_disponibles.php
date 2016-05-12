@@ -13,17 +13,32 @@
 	$nuevafecha=sumaDias($fechahoy);
 	$dia=date('l',strtotime($nuevafecha));
 	
+	
+	
 	$lista="[";
-	for($i=0;$i<=1;$i++)
+	for($i=0;$i<=7;$i++)
 	{
-		if($dia!="Sunday")
+		$dia=date('l',strtotime($nuevafecha));
+		if($dia!="Sunday" && $dia!="Saturday")
 		{
 			$lista.=escribeCitas($nuevafecha);
 		}
 		else
 		{
 			$nuevafecha=sumaDias($nuevafecha);
-			$lista.=escribeCitas($nuevafecha);
+			$dia=date('l',strtotime($nuevafecha));
+			if($dia!="Sunday" && $dia!="Saturday")
+			{
+				$lista.=escribeCitas($nuevafecha);
+			}
+			else
+			{
+				$nuevafecha=sumaDias($nuevafecha);
+				$dia=date('l',strtotime($nuevafecha));
+				
+				
+				$lista.=escribeCitas($nuevafecha);
+			}
 		}
 		$nuevafecha=sumaDias($nuevafecha);
 	}
