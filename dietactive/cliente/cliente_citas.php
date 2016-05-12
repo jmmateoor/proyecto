@@ -543,10 +543,11 @@ window.onload=function(){
     </div>
     <!-- Fin Modal Actualizar Código Postal -->
     <script>
+	cargaPatologiasCliente(<?php echo $_SESSION["id"] ?>);
 	consultaCitaAsignada();
 	cargarActividadFisica();
 	cargaActividadCliente();
-	cargaPatologiasCliente(<?php echo $_SESSION["id"] ?>);
+	
 	graficaPeso(<?php echo $_SESSION["id"] ?>);
 	cargarIntercambios(<?php echo $_SESSION["id"] ?>);
 	datosEmpresa();

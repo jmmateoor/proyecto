@@ -566,9 +566,10 @@ window.onload=function(){
     <!-- Fin Modal Actualizar Código Postal -->
     
     <script>
+	cargaPatologiasCliente(<?php echo $_SESSION["id"] ?>);
 	cargarActividadFisica();
 	cargaActividadCliente();
-	cargaPatologiasCliente(<?php echo $_SESSION["id"] ?>);
+	
 	graficaPeso(<?php echo $_SESSION["id"] ?>);
 	cargarIntercambios(<?php echo $_SESSION["id"] ?>);
 	datosEmpresa();

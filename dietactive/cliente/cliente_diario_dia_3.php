@@ -563,6 +563,7 @@ window.onload=function(){
     
     
     <script>
+	cargaPatologiasCliente(<?php echo $_SESSION["id"] ?>);
 	//              dia, momento
 	cargarTestAntiguo(3,"desayuno");
 	cargarTestAntiguo(3,"almuerzo");
@@ -570,7 +571,7 @@ window.onload=function(){
 	cargarTestAntiguo(3,"cena");
 	cargarActividadFisica();
 	cargaActividadCliente();
-	cargaPatologiasCliente(<?php echo $_SESSION["id"] ?>);
+	
 	graficaPeso(<?php echo $_SESSION["id"] ?>);
 	cargarIntercambios(<?php echo $_SESSION["id"] ?>);
 	datosEmpresa();

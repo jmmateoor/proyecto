@@ -561,6 +561,7 @@ window.onload=function(){
     </div>
     <!-- Fin Modal Actualizar Código Postal -->
     <script>
+	cargaPatologiasCliente(<?php echo $_SESSION["id"] ?>);
 	//              dia, momento
 	cargarTestAntiguo(1,"desayuno");
 	cargarTestAntiguo(1,"almuerzo");
@@ -568,7 +569,7 @@ window.onload=function(){
 	cargarTestAntiguo(1,"cena");
 	cargarActividadFisica();
 	cargaActividadCliente();
-	cargaPatologiasCliente(<?php echo $_SESSION["id"] ?>);
+	
 	graficaPeso(<?php echo $_SESSION["id"] ?>);
 	cargarIntercambios(<?php echo $_SESSION["id"] ?>);
 	datosEmpresa();
