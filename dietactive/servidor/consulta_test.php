@@ -14,11 +14,11 @@
 	while($preparada->fetch())
 	{
 		$salida.="{";
-		$salida.="\"dia\" : \"".$dia."\",";
-		$salida.="\"momento\" : \"".$momento."\",";
-		$salida.="\"idalimento\" : \"".$idalimento."\",";
-		$salida.="\"cantidad\" : \"".$cantidad."\",";
-		$salida.="\"alimento\" : \"".$alimento."\"";
+		$salida.="\"dia\": \"".$dia."\",";
+		$salida.="\"momento\": \"".$momento."\",";
+		$salida.="\"idalimento\": \"".$idalimento."\",";
+		$salida.="\"cantidad\": \"".$cantidad."\",";
+		$salida.="\"alimento\": \"".$alimento."\"";
 		$salida.="},";
 	}
 	$salida=substr($salida,0,-1);

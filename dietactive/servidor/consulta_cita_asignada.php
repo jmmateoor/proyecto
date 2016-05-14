@@ -14,11 +14,11 @@
 	while($preparada->fetch())
 	{
 		$salida.="{";
-		$salida.="\"cita\" : \"".$cita."\",";
-		$salida.="\"tipocita\" : \"".$tipocita."\",";
-		$salida.="\"iddietista\" : \"".$iddietista."\",";
-		$salida.="\"nombredietista\" : \"".$nombredietista."\",";
-		$salida.="\"apellidosdietista\" : \"".$apellidosdietista."\"";
+		$salida.="\"cita\": \"".$cita."\",";
+		$salida.="\"tipocita\": \"".$tipocita."\",";
+		$salida.="\"iddietista\": \"".$iddietista."\",";
+		$salida.="\"nombredietista\": \"".$nombredietista."\",";
+		$salida.="\"apellidosdietista\": \"".$apellidosdietista."\"";
 		$salida.="},";
 	}
 	$salida=substr($salida,0,-1);

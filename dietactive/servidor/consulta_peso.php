@@ -13,8 +13,8 @@
 	while($preparada->fetch())
 	{
 		$salida.="{";
-		$salida.="\"fecha\" : \"".$fecha."\",";
-		$salida.="\"peso\" : \"".$peso."\"";
+		$salida.="\"fecha\": \"".$fecha."\",";
+		$salida.="\"peso\": \"".$peso."\"";
 		$salida.="},";
 	}
 	$salida=substr($salida,0,-1);

@@ -45,5 +45,6 @@
 	}
 	$lista=substr($lista,0,-1);
 	$lista.="]";
+	$lista = preg_replace('/\x{feff}$/u', '', $lista);
 	echo $lista;
 ?>

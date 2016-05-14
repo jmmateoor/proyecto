@@ -12,7 +12,7 @@
 	while($preparada->fetch())
 	{
 		$salida.="{";
-		$salida.="\"cp\" : \"".$cp."\"";
+		$salida.="\"cp\": \"".$cp."\"";
 		$salida.="},";
 	}
 	$salida=substr($salida,0,-1);

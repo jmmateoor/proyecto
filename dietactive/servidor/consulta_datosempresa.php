@@ -10,15 +10,15 @@
 	while($preparada->fetch())
 	{
 		$salida.="{";
-		$salida.="\"nombre\" : \"".$nombre."\",";
-		$salida.="\"provincia\" : \"".$provincia."\",";
-		$salida.="\"localidad\" : \"".$localidad."\",";
-		$salida.="\"codigopostal\" : \"".$codigopostal."\",";
-		$salida.="\"direccion\" : \"".$direccion."\",";
-		$salida.="\"telefono1\" : \"".$telefono1."\",";
-		$salida.="\"telefono2\" : \"".$telefono2."\",";
-		$salida.="\"email\" : \"".$email."\",";
-		$salida.="\"desarrollado\" : \"".$desarrollado."\"";
+		$salida.="\"nombre\": \"".$nombre."\",";
+		$salida.="\"provincia\": \"".$provincia."\",";
+		$salida.="\"localidad\": \"".$localidad."\",";
+		$salida.="\"codigopostal\": \"".$codigopostal."\",";
+		$salida.="\"direccion\": \"".$direccion."\",";
+		$salida.="\"telefono1\": \"".$telefono1."\",";
+		$salida.="\"telefono2\": \"".$telefono2."\",";
+		$salida.="\"email\": \"".$email."\",";
+		$salida.="\"desarrollado\": \"".$desarrollado."\"";
 		$salida.="},";
 	}
 	$salida=substr($salida,0,-1);

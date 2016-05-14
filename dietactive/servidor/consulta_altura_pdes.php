@@ -12,9 +12,9 @@
 	while($preparada->fetch())
 	{
 		$salida.="{";
-		$salida.="\"altura\" : \"".$altura."\",";
-		$salida.="\"geet\" : \"".$geet."\",";
-		$salida.="\"pesodeseable\" : \"".$pesodeseable."\"";
+		$salida.="\"altura\": \"".$altura."\",";
+		$salida.="\"geet\": \"".$geet."\",";
+		$salida.="\"pesodeseable\": \"".$pesodeseable."\"";
 		$salida.="},";
 		$_SESSION["geet"]=$geet;
 	}

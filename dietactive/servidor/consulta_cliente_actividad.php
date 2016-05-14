@@ -13,9 +13,9 @@ $salida="[";
 while($preparada->fetch())
 {
 	$salida.="{";
-	$salida.="\"idactividad\" : \"".$idactividad."\",";
-	$salida.="\"nombre\" : \"".$nombre."\",";
-	$salida.="\"descripcion\" : \"".$descripcion."\"";
+	$salida.="\"idactividad\": \"".$idactividad."\",";
+	$salida.="\"nombre\": \"".$nombre."\",";
+	$salida.="\"descripcion\": \"".$descripcion."\"";
 	$salida.="},";
 }
 $salida=substr($salida,0,-1);

@@ -12,8 +12,8 @@ $salida="[";
 while($preparada->fetch())
 {
 	$salida.="{";
-	$salida.="\"idgrupo\" : \"".$idgrupo."\",";
-	$salida.="\"valor\" : \"".$valor."\"";
+	$salida.="\"idgrupo\": \"".$idgrupo."\",";
+	$salida.="\"valor\": \"".$valor."\"";
 	$salida.="},";
 }
 $salida=substr($salida,0,-1);

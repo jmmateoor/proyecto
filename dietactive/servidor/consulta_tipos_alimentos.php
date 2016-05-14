@@ -10,8 +10,8 @@
 	while($preparada->fetch())
 	{
 		$salida.="{";
-		$salida.="\"id\" : \"".$id."\",";
-		$salida.="\"nombre\" : \"".$nombre."\"";
+		$salida.="\"id\": \"".$id."\",";
+		$salida.="\"nombre\": \"".$nombre."\"";
 		$salida.="},";
 	}
 	$salida=substr($salida,0,-1);

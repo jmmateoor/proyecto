@@ -46,8 +46,8 @@ function escribeCitas($fecha,$id)
 		
 		if ($citas->num_rows == 0) {
 			$cadena.="{";
-			$cadena.="\"id\" : \"".$id."\",";
-			$cadena.="\"fechahora\" : \"".$fechahora."\"";
+			$cadena.="\"id\": \"".$id."\",";
+			$cadena.="\"fechahora\": \"".$fechahora."\"";
 			$cadena.="},";
 		}
 		

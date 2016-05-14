@@ -12,8 +12,8 @@
 	while($preparada->fetch())
 	{
 		$salida.="{";
-		$salida.="\"peso\" : \"".$peso."\",";
-		$salida.="\"geet\" : \"".$geet."\"";
+		$salida.="\"peso\": \"".$peso."\",";
+		$salida.="\"geet\": \"".$geet."\"";
 		$salida.="},";
 		$_SESSION["geet"]=$geet;
 	}

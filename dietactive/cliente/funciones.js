@@ -3,10 +3,38 @@
 //Citas
 function eliminarCita(iddietista)
 {
-	var codigocita= $("#dia").html()+" "+$("#hora").html();
-	codigocita=codigocita.replace("/","-");
-	codigocita=codigocita.replace("/","-");
-	alert(codigocita);
+	if(confirm("¿Deseas borrar tu cita?"))
+	{
+		diaarray=$("#dia").html().split("/");
+		dia=diaarray[2]+"-"+diaarray[1]+"-"+diaarray[0];
+		var codigocita= dia+" "+$("#hora").html();
+		$.post("../servidor/borrar_cita.php",{
+							cita: codigocita,
+							dietista: iddietista
+									},
+									function(data, estado)
+									{
+										if(data=="s")
+										{
+											consultaCitaAsignada();
+										}
+										else
+										{
+											alert("Ha ocurrido un error. Intentalo de nuevo más tarde.");
+										}
+									});
+	}
+}
+
+function poneFechaBonita(f)
+{
+	
+	var meses = new Array ("Enero","Febrero","Marzo","Abril","Mayo","Junio","Julio","Agosto","Septiembre","Octubre","Noviembre","Diciembre");
+	var diasSemana = new Array("Domingo","Lunes","Martes","Miércoles","Jueves","Viernes","Sábado");
+	var f=new Date(f);
+	salida=diasSemana[f.getDay()] + ", " + f.getDate() + " de " + meses[f.getMonth()] + " de " + f.getFullYear();
+	
+	return salida;
 }
 
 function consultaCitaAsignada()
@@ -84,7 +112,20 @@ function cargarDias(iddietista)
 					},
 					function(data, estado)
 					{
-						citasdisponibles=JSON.parse(data);
+						
+						data = data.replace(/\\n/g, "\\n")  
+								   .replace(/\\'/g, "\\'")
+								   .replace(/\\"/g, '\\"')
+								   .replace(/\\&/g, "\\&")
+								   .replace(/\\r/g, "\\r")
+								   .replace(/\\t/g, "\\t")
+								   .replace(/\\b/g, "\\b")
+								   .replace(/\\f/g, "\\f");
+						// remove non-printable and other non-valid JSON chars
+						data = data.replace(/[\u0000-\u0019]+/g,"");
+						data=data.replace(/[\u200B-\u200D\uFEFF]/g, '');
+						datos=JSON.parse((data.toString()));
+						
 						$('#hora')
 							.find('option')
 							.remove()
@@ -95,7 +136,7 @@ function cargarDias(iddietista)
 							option.text="-- Selecciona --";
 							selectdia.appendChild(option);
 						
-						var diaaux=poneFecha((citasdisponibles[0].fechahora.split(" "))[0]);
+						var diaaux=poneFecha((datos[0].fechahora.split(" "))[0]);
 						
 						$('#dia')
 							.find('option')
@@ -108,26 +149,26 @@ function cargarDias(iddietista)
 							selectdia.appendChild(option);
 							
 						var option=document.createElement("option"); 
-							option.value=(citasdisponibles[0].fechahora.split(" "))[0];
-							option.text=diaaux;
+							option.value=(datos[0].fechahora.split(" "))[0];
+							option.text=poneFechaBonita((datos[0].fechahora.split(" "))[0]);
 							selectdia.appendChild(option);
 							
 							
 						
-						for(var i=0;i<citasdisponibles.length;i++)
+						for(var i=0;i<datos.length;i++)
 						{
-							if(citasdisponibles[i].id==iddietista)
+							if(datos[i].id==iddietista)
 							{
-								var dia=poneFecha((citasdisponibles[i].fechahora.split(" "))[0]);
-								var hora=(citasdisponibles[i].fechahora.split(" "))[1];
+								var dia=poneFecha((datos[i].fechahora.split(" "))[0]);
+								var hora=(datos[i].fechahora.split(" "))[1];
 								
 								
 								if(dia!=diaaux)
 								{
 									diaaux=dia;
 									var option=document.createElement("option"); 
-									option.value=(citasdisponibles[i].fechahora.split(" "))[0];
-									option.text=dia; 
+									option.value=(datos[i].fechahora.split(" "))[0];
+									option.text=poneFechaBonita((datos[i].fechahora.split(" "))[0]); 
 									selectdia.appendChild(option);
 								}
 								
@@ -162,6 +203,18 @@ function cargarHoras(iddietista,diaseleccionado)
 					},
 					function(data, estado)
 					{
+						data = data.replace(/\\n/g, "\\n")  
+								   .replace(/\\'/g, "\\'")
+								   .replace(/\\"/g, '\\"')
+								   .replace(/\\&/g, "\\&")
+								   .replace(/\\r/g, "\\r")
+								   .replace(/\\t/g, "\\t")
+								   .replace(/\\b/g, "\\b")
+								   .replace(/\\f/g, "\\f");
+						// remove non-printable and other non-valid JSON chars
+						data = data.replace(/[\u0000-\u0019]+/g,"");
+						data=data.replace(/[\u200B-\u200D\uFEFF]/g, '');
+						datos=JSON.parse(data);
 						$('#hora')
 							.find('option')
 							.remove()
@@ -174,13 +227,13 @@ function cargarHoras(iddietista,diaseleccionado)
 							
 							
 						
-						for(var i=0;i<citasdisponibles.length;i++)
+						for(var i=0;i<datos.length;i++)
 						{
-							var dia=(citasdisponibles[i].fechahora.split(" "))[0];
-							var hora=(citasdisponibles[i].fechahora.split(" "))[1];
+							var dia=(datos[i].fechahora.split(" "))[0];
+							var hora=(datos[i].fechahora.split(" "))[1];
 							
 							
-							if(citasdisponibles[i].id==iddietista && dia==diaseleccionado)
+							if(datos[i].id==iddietista && dia==diaseleccionado)
 							{
 									
 									var option=document.createElement("option"); 
@@ -207,7 +260,7 @@ function consultaDietistas()
 			{
 				dietistas=JSON.parse(data);
 				
-				var salida="<h3>Solicita tu cita</h3><div class='form-group'><label for='dietista'>Dietista</label><select class='form-control' id='dietista' name='dietista' onChange='cargarDias(this.value)'><option value='0'>-- Selecciona --</option>";
+				var salida="<h3>Solicita tu cita</h3><div class='form-group'><label for='dietista'>Especialista</label><select class='form-control' id='dietista' name='dietista' onChange='cargarDias(this.value)'><option value='0'>-- Selecciona --</option>";
 				
 				for(var i=0;i<dietistas.length;i++)
 				{
@@ -221,35 +274,43 @@ function consultaDietistas()
 
 function asignarCita()
 {
-	cita=$("#dia").val()+" "+$("#hora").val();
-	alert(cita);
-	dietista=$("#dietista").val();
-	alert(dietista);
-	tipo=$("#tipo").val();
-	alert(tipo);
-	
-	
-	
-	/*$.post("../servidor/asignar_cita.php",{
-			dia: dia,
-			momento: momento
-					},
-					function(data, estado)
-					{
-						if(data=="s")
-						{
-							var boton="boton"+momento;
-							var aceptar="aceptar"+momento;
-							
-							$("#"+boton).html("");
-							$("#"+aceptar).html("");
-							cargarTestAntiguo(dia,momento);
-						}
-						else
-						{
-							alert("Ha ocurrido un error. Intentalo de nuevo más tarde.");
-						}
-					});*/
+	if($("#dietista").val()!=0)
+	{
+		if($("#dia").val()!=0)
+		{
+			if($("#hora").val()!=0)
+			{
+				$.post("../servidor/asignar_cita.php",{
+						cita: $("#dia").val()+" "+$("#hora").val(),
+						dietista: $("#dietista").val(),
+						tipo: $("#tipo").val()
+								},
+								function(data, estado)
+								{
+									if(data=="s")
+									{
+										consultaCitaAsignada();
+									}
+									else
+									{
+										alert("Ha ocurrido un error. Intentalo de nuevo más tarde.");
+									}
+								});
+			}
+			else
+			{
+				alert("Por favor, elige una hora.");
+			}
+		}
+		else
+		{
+			alert("Por favor, elige un día.");
+		}
+	}
+	else
+	{
+		alert("Por favor, selecciona a un especialista.");
+	}
 }
 
 
@@ -621,6 +682,17 @@ function actualizaActividad(id)
 							},
 							function(datos, estado)
 							{
+								datos = datos.replace(/\\n/g, "\\n")  
+								   .replace(/\\'/g, "\\'")
+								   .replace(/\\"/g, '\\"')
+								   .replace(/\\&/g, "\\&")
+								   .replace(/\\r/g, "\\r")
+								   .replace(/\\t/g, "\\t")
+								   .replace(/\\b/g, "\\b")
+								   .replace(/\\f/g, "\\f");
+								// remove non-printable and other non-valid JSON chars
+								datos = datos.replace(/[\u0000-\u0019]+/g,"");
+								datos=datos.replace(/[\u200B-\u200D\uFEFF]/g, '');
 								if(datos=='s')
 								{
 									$("#intercambios").addClass("efecto");
@@ -836,6 +908,17 @@ function actualizarAltura(id)
 							},
 							function(datos, estado)
 							{
+								datos = datos.replace(/\\n/g, "\\n")  
+								   .replace(/\\'/g, "\\'")
+								   .replace(/\\"/g, '\\"')
+								   .replace(/\\&/g, "\\&")
+								   .replace(/\\r/g, "\\r")
+								   .replace(/\\t/g, "\\t")
+								   .replace(/\\b/g, "\\b")
+								   .replace(/\\f/g, "\\f");
+								// remove non-printable and other non-valid JSON chars
+								datos = datos.replace(/[\u0000-\u0019]+/g,"");
+								datos=datos.replace(/[\u200B-\u200D\uFEFF]/g, '');
 								if(datos=='s')
 								{
 									
@@ -924,6 +1007,17 @@ function actualizarPeso(id)
 							},
 							function(datos, estado)
 							{
+								datos = datos.replace(/\\n/g, "\\n")  
+								   .replace(/\\'/g, "\\'")
+								   .replace(/\\"/g, '\\"')
+								   .replace(/\\&/g, "\\&")
+								   .replace(/\\r/g, "\\r")
+								   .replace(/\\t/g, "\\t")
+								   .replace(/\\b/g, "\\b")
+								   .replace(/\\f/g, "\\f");
+								// remove non-printable and other non-valid JSON chars
+								datos = datos.replace(/[\u0000-\u0019]+/g,"");
+								datos=datos.replace(/[\u200B-\u200D\uFEFF]/g, '');
 								if(datos=='s')
 								{
 									$("#intercambios").addClass("efecto");
