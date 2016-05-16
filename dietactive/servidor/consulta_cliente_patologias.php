@@ -4,8 +4,9 @@
 	include("funciones.inc.php");
 	$c = new MySQLi($servidor,$usuario,$password,$bbdd);
 	$c->set_charset("utf8");
+	$idcliente=$_POST["idcliente"];
 	$preparada = $c->prepare("SELECT patologia.id, patologia.nombre FROM patologiacliente JOIN patologia ON patologiacliente.idpatologia=patologia.id WHERE idcliente = ?");
-	$preparada->bind_param("i",$_SESSION["id"]);
+	$preparada->bind_param("i",$idcliente);
 	$preparada->execute();
 	$preparada->bind_result($id,$nombre);
 	$salida="[";

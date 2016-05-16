@@ -12,7 +12,7 @@ h1,h2,h3,h4,h5,h6{
 
 .textocab{
 	color:white !important;
-	
+	text-align:right end;
 }
 
 a.cabenlace{
@@ -81,7 +81,6 @@ hr{
 h1{
 	color:white;
 	font-size:28px;
-	margin:0;
 }
 
 h2{
@@ -269,9 +268,9 @@ ul#menu {
 }
 
 /* Menú para movil pequeño */
-@media screen and (max-width: 767px) {
+/*@media screen and (max-width: 767px) {
     .colmenu{
-		/*border-bottom:2px solid #fff;*/
+		
 		margin:0;
 		padding-top:10px;
 		text-align:left !important;
@@ -283,7 +282,7 @@ ul#menu {
 	.cuerpo{
 		padding:10px !important;
 	}
-}
+}*/
 
 .inicio{
 	background-color:RGB(3,90,0);

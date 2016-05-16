@@ -1181,7 +1181,7 @@ function cargaPatologiasCliente(idcliente)
 	function validaTelefono(e)
 	{
 		tecla = (document.all) ? e.keyCode : e.which; 
-		if (tecla==8) return true;
+		if (tecla==8 || tecla==13) return true;
 		patron = /\d/;
 		te = String.fromCharCode(tecla);
 		return patron.test(te);
@@ -1577,19 +1577,55 @@ function cargarIntercambios(idcliente)
 										}
 									}
 									var tabla="<div class='table-responsive'><table class='table table-condensed'>";
-									tabla+="<tr><thead><td></td><th><a href='cliente_alimentos_intercambio.php#lacteos'>Lácteos</a></th><th><a href='cliente_alimentos_intercambio.php#proteinas'>Proteínas</a></th><th><a href='cliente_alimentos_intercambio.php#verduras'>Verduras</a></th><th><a href='cliente_alimentos_intercambio.php#hidratoscarbono'>H. de Carbono</a></th><th><a href='cliente_alimentos_intercambio.php#frutas'>Frutas</a></th><th><a href='cliente_alimentos_intercambio.php#grasas'>Grasas</a></th></thead></tr><tbody>";
+									tabla+="<tr><thead><td></td><th><a id='lacteos1' href='cliente_alimentos_intercambio.php#lacteos'>Lácteos</a></th><th><a id='proteinas1' href='cliente_alimentos_intercambio.php#proteinas'>Proteínas</a></th><th><a id='verduras1' href='cliente_alimentos_intercambio.php#verduras'>Verduras</a></th><th><a id='hidratoscarbono1' href='cliente_alimentos_intercambio.php#hidratoscarbono'>H. de Carbono</a></th><th><a id='frutas1' href='cliente_alimentos_intercambio.php#frutas'>Frutas</a></th><th><a id='grasas1' href='cliente_alimentos_intercambio.php#grasas'>Grasas</a></th></thead></tr><tbody>";
 									tabla+="<tr class='tablanum'><td class='titulo'><b>Desayuno</b></td><td>"+lacteodesayuno+"</td><td>"+proteinadesayuno+"</td><td> </td><td>"+hdcdesayuno+"</td><td>"+frutadesayuno+"</td><td>"+grasasdesayuno+"</td></tr>";
 									tabla+="<tr class='tablanum'><td class='titulo'><b>Almuerzo</b></td><td> </td><td>"+proteinaalmuerzo+"</td><td>"+verduraalmuerzo+"</td><td>"+hdcalmuerzo+"</td><td>"+frutaalmuerzo+"</td><td>"+grasasalmuerzo+"</td></tr>";
 									tabla+="<tr class='tablanum'><td class='titulo'><b>Merienda</b></td><td>"+lacteomerienda+" </td><td> "+proteinamerienda+" </td><td> </td><td>"+hdcmerienda+"</td><td>  </td><td>"+grasasmerienda+"</td></tr>";
 									tabla+="<tr class='tablanum'><td class='titulo'><b>Cena</b></td><td> </td><td>"+proteinacena+" </td><td>"+verduracena+" </td><td>"+hdccena+"</td><td>"+frutacena+"</td><td>"+grasascena+"</td></tr>";
 									tabla+="</tbody></table></div>";
 									$("#intercambios").html(tabla);
+									
+									
+									nombrepaginacompleta=document.location.toString();
+									nombrepaginacompleta=nombrepaginacompleta.split("/");
+									nombrepagina=nombrepaginacompleta[nombrepaginacompleta.length-1];
+									
+									if(nombrepagina=="cliente_alimentos_intercambio.php" || nombrepagina=="cliente_alimentos_intercambio.php#proteinas" || nombrepagina=="cliente_alimentos_intercambio.php#lacteos"|| nombrepagina=="cliente_alimentos_intercambio.php#verduras" || nombrepagina=="cliente_alimentos_intercambio.php#frutas" || nombrepagina=="cliente_alimentos_intercambio.php#grasas"|| nombrepagina=="cliente_alimentos_intercambio.php#hidratoscarbono")
+									{
+										cambiarEventoEnlacesIntercambios("proteinas1");
+										cambiarEventoEnlacesIntercambios("lacteos1");
+										cambiarEventoEnlacesIntercambios("verduras1");
+										cambiarEventoEnlacesIntercambios("frutas1");
+										cambiarEventoEnlacesIntercambios("grasas1");
+										cambiarEventoEnlacesIntercambios("hidratoscarbono1");
+									}
+									
 								}
 								else
 								{
 									$("#contenido").html("No se han podido cargar tus intercambios.");
 								}
 							});
+}
+
+function ir_a(elemento){
+    var posicion = $(elemento).position().top+350;
+    $('html,body').animate({scrollTop: posicion}, 800);
+    return;
+}
+
+function cambiarEventoEnlacesIntercambios(id)
+{
+	
+	
+	$("#"+id).removeAttr("href");
+	$("#"+id).css("cursor","pointer");
+	
+	nombreAncla=id.substring(0,id.length-1);
+	$("#"+id).attr("onClick","ir_a('#"+nombreAncla+"');");
+	
+	
+	
 }
 
 function redondeo(alimento)
@@ -1692,11 +1728,11 @@ function datosEmpresa()
 				$("#dietmovil2").html(objeto[0].telefono2);
 				
 				
-				/*$("#dietfijo11").attr("href","tel:"+objeto[0].telefono1);
+				$("#dietfijo11").attr("href","tel:"+objeto[0].telefono1);
 				$("#dietfijo12").html(objeto[0].telefono1);
 				
 				$("#dietmovil11").attr("href","tel:"+objeto[0].telefono2);
-				$("#dietmovil12").html(objeto[0].telefono2);*/
+				$("#dietmovil12").html(objeto[0].telefono2);
 				
 				$("#dietdireccion").html(objeto[0].direccion);
 				$("#dietdirecciondatos").html(objeto[0].provincia+", "+objeto[0].localidad+" "+objeto[0].codigopostal);

@@ -13,15 +13,18 @@
 <title>Alimentos por intercambio - DietActive</title>
 <link rel="shortcut icon" href="images/fav.png">
 <link rel="stylesheet" href="http://maxcdn.bootstrapcdn.com/bootstrap/3.3.6/css/bootstrap.min.css">
-<script src="https://ajax.googleapis.com/ajax/libs/jquery/1.12.0/jquery.min.js"></script>
+<script src="//ajax.googleapis.com/ajax/libs/jquery/2.2.0/jquery.min.js"></script>
 <script src="http://maxcdn.bootstrapcdn.com/bootstrap/3.3.6/js/bootstrap.min.js"></script>
 <script src="https://code.highcharts.com/highcharts.js"></script>
 <script src="https://code.highcharts.com/modules/exporting.js"></script>
 <meta name="viewport" content="width=device-width, initial-scale=1">
 <link rel="stylesheet" type="text/css" href="estilos.css">
 
+
+
 <script src="funciones.js"></script>
 <script>
+
 window.onload=function(){
 	var si=true;
 	$("#flip2").click(function(){
@@ -51,6 +54,9 @@ window.onload=function(){
 	
 	$("#panel1").hide();
 	$("#panel2").hide();
+	
+	
+	 
 	ocultaLoading();
 }
 
@@ -82,10 +88,17 @@ window.onload=function(){
                 <p align="center" style="margin-bottom:0px;"><img src="images/cab.png" class="img-responsive" width="510px" alt="DietActive" /></p>
                 <p align="center" class="slogan">Tu Dieta Equilibrada Personalizada</p>
             </div>
+            
         </div>
         <div class="row cabecera">
         	<div class="col-md-10 areacliente">
                 <h1>Área Cliente</h1>
+                
+            </div>
+            <div class="col-md-2">
+            	<h4 class="textocab">Contacto</h4>
+                <span class="textocab"><a id="dietfijo11" class="cabenlace" href=""><span id="dietfijo12"></span></a> / </span>
+                <span class="textocab"><a id="dietmovil11" class="cabenlace" href=""><span id="dietmovil12"></span></a></span>
             </div>
         </div>
         <div class="row inicio">
@@ -190,29 +203,29 @@ window.onload=function(){
                 <div id="contenidos">
                 	<p>Lorem ipsum dolor sit amet, consectetur adipiscing elit. Vestibulum pretium neque odio, non consequat libero eleifend in. Lorem ipsum dolor sit amet, consectetur adipiscing elit. Praesent purus justo, eleifend vel turpis vitae, viverra posuere nisi. Pellentesque vel magna posuere, faucibus ante in, pharetra enim. Pellentesque habitant morbi tristique senectus et netus et malesuada fames ac turpis egestas. Nunc vulputate augue eros. Sed feugiat maximus est, id blandit libero ultrices non. Nulla facilisi.</p>
                     <p>Vestibulum mollis velit non ipsum rhoncus porttitor. Praesent vel urna nec urna commodo mattis convallis ac metus. Etiam eget enim ut velit commodo gravida eget non neque. Class aptent taciti sociosqu ad litora torquent per conubia nostra, per inceptos himenaeos. Sed interdum, ex ac egestas elementum, lacus orci aliquam ante, quis porta nunc purus at lorem. Donec ullamcorper finibus suscipit. Aliquam et libero eros. Sed condimentum ligula eu nunc condimentum efficitur. Donec luctus, dolor vitae interdum cursus, tortor metus tincidunt diam, ac euismod eros nulla eu nibh.</p>
-                	<a name="lacteos"></a><h3>Lácteos</h3>
+                	<div id="lacteos"></div><h3>Lácteos</h3>
                     <p>Lorem ipsum dolor sit amet, consectetur adipiscing elit. Vestibulum pretium neque odio, non consequat libero eleifend in. Lorem ipsum dolor sit amet, consectetur adipiscing elit. Praesent purus justo, eleifend vel turpis vitae, viverra posuere nisi. Pellentesque vel magna posuere, faucibus ante in, pharetra enim. Pellentesque habitant morbi tristique senectus et netus et malesuada fames ac turpis egestas. Nunc vulputate augue eros. Sed feugiat maximus est, id blandit libero ultrices non. Nulla facilisi.</p>
                     <p>Vestibulum mollis velit non ipsum rhoncus porttitor. Praesent vel urna nec urna commodo mattis convallis ac metus. Etiam eget enim ut velit commodo gravida eget non neque. Class aptent taciti sociosqu ad litora torquent per conubia nostra, per inceptos himenaeos. Sed interdum, ex ac egestas elementum, lacus orci aliquam ante, quis porta nunc purus at lorem. Donec ullamcorper finibus suscipit. Aliquam et libero eros. Sed condimentum ligula eu nunc condimentum efficitur. Donec luctus, dolor vitae interdum cursus, tortor metus tincidunt diam, ac euismod eros nulla eu nibh.</p>
                     <p>Donec accumsan sem dapibus ligula sodales, non sagittis nulla rutrum. Vivamus quis porta odio. Fusce convallis libero leo. Vivamus pretium, ex non tempus tempus, orci metus vulputate purus, ut volutpat ante orci quis ex. Praesent erat arcu, ultrices vitae scelerisque id, scelerisque vitae felis. Fusce bibendum nisi et justo pellentesque, sed rutrum elit laoreet. Morbi vestibulum quam efficitur, varius quam vel, euismod ex. Donec imperdiet blandit mi, sed congue nibh rutrum et. Pellentesque imperdiet in leo sed tempus.</p>
                     <p>Aliquam sit amet metus ut sem sodales viverra. Integer hendrerit in risus a venenatis. Sed rutrum malesuada sagittis. Donec sapien odio, imperdiet vel placerat eu, porta posuere turpis. Vivamus libero sem, luctus at nisi sed, finibus mollis nibh. Etiam auctor tortor sed nisl sodales, ut scelerisque erat commodo. Quisque a neque ac mauris tincidunt tincidunt. Curabitur convallis neque nec eros convallis, ac placerat sapien faucibus. Donec in felis tellus. Integer lacinia faucibus ipsum, id hendrerit arcu feugiat quis. Proin ut tortor feugiat, porttitor est nec, porta leo.</p>
                     <p>Nunc luctus velit felis, et iaculis dui egestas non. Suspendisse id pretium tortor, quis luctus erat. Fusce non enim non erat semper tincidunt. Donec eu tellus eu ex imperdiet aliquet. Ut libero leo, tristique non auctor at, luctus sit amet risus. Duis dictum, erat ut semper convallis, justo tortor mattis quam, eu finibus augue risus quis neque. Aenean condimentum placerat leo vel faucibus. Vivamus tincidunt at urna quis tempus. Sed nec sem iaculis, euismod tellus non, mollis enim. Integer varius lorem id mollis volutpat. In laoreet eleifend odio, sed congue nisl.</p>
-                    <a name="proteinas"></a><h3>Proteínas</h3>
+                    <div id="proteinas"></div><h3>Proteínas</h3>
                     <p>Lorem ipsum dolor sit amet, consectetur adipiscing elit. Vestibulum pretium neque odio, non consequat libero eleifend in. Lorem ipsum dolor sit amet, consectetur adipiscing elit. Praesent purus justo, eleifend vel turpis vitae, viverra posuere nisi. Pellentesque vel magna posuere, faucibus ante in, pharetra enim. Pellentesque habitant morbi tristique senectus et netus et malesuada fames ac turpis egestas. Nunc vulputate augue eros. Sed feugiat maximus est, id blandit libero ultrices non. Nulla facilisi.</p>
                     <p>Vestibulum mollis velit non ipsum rhoncus porttitor. Praesent vel urna nec urna commodo mattis convallis ac metus. Etiam eget enim ut velit commodo gravida eget non neque. Class aptent taciti sociosqu ad litora torquent per conubia nostra, per inceptos himenaeos. Sed interdum, ex ac egestas elementum, lacus orci aliquam ante, quis porta nunc purus at lorem. Donec ullamcorper finibus suscipit. Aliquam et libero eros. Sed condimentum ligula eu nunc condimentum efficitur. Donec luctus, dolor vitae interdum cursus, tortor metus tincidunt diam, ac euismod eros nulla eu nibh.</p>
                     <p>Donec accumsan sem dapibus ligula sodales, non sagittis nulla rutrum. Vivamus quis porta odio. Fusce convallis libero leo. Vivamus pretium, ex non tempus tempus, orci metus vulputate purus, ut volutpat ante orci quis ex. Praesent erat arcu, ultrices vitae scelerisque id, scelerisque vitae felis. Fusce bibendum nisi et justo pellentesque, sed rutrum elit laoreet. Morbi vestibulum quam efficitur, varius quam vel, euismod ex. Donec imperdiet blandit mi, sed congue nibh rutrum et. Pellentesque imperdiet in leo sed tempus.</p>
-                    <a name="verduras"></a><h3>Verduras</h3>
+                    <div id="verduras"></div><h3>Verduras</h3>
                     <p>Lorem ipsum dolor sit amet, consectetur adipiscing elit. Vestibulum pretium neque odio, non consequat libero eleifend in. Lorem ipsum dolor sit amet, consectetur adipiscing elit. Praesent purus justo, eleifend vel turpis vitae, viverra posuere nisi. Pellentesque vel magna posuere, faucibus ante in, pharetra enim. Pellentesque habitant morbi tristique senectus et netus et malesuada fames ac turpis egestas. Nunc vulputate augue eros. Sed feugiat maximus est, id blandit libero ultrices non. Nulla facilisi.</p>
                     <p>Vestibulum mollis velit non ipsum rhoncus porttitor. Praesent vel urna nec urna commodo mattis convallis ac metus. Etiam eget enim ut velit commodo gravida eget non neque. Class aptent taciti sociosqu ad litora torquent per conubia nostra, per inceptos himenaeos. Sed interdum, ex ac egestas elementum, lacus orci aliquam ante, quis porta nunc purus at lorem. Donec ullamcorper finibus suscipit. Aliquam et libero eros. Sed condimentum ligula eu nunc condimentum efficitur. Donec luctus, dolor vitae interdum cursus, tortor metus tincidunt diam, ac euismod eros nulla eu nibh.</p>
                     <p>Donec accumsan sem dapibus ligula sodales, non sagittis nulla rutrum. Vivamus quis porta odio. Fusce convallis libero leo. Vivamus pretium, ex non tempus tempus, orci metus vulputate purus, ut volutpat ante orci quis ex. Praesent erat arcu, ultrices vitae scelerisque id, scelerisque vitae felis. Fusce bibendum nisi et justo pellentesque, sed rutrum elit laoreet. Morbi vestibulum quam efficitur, varius quam vel, euismod ex. Donec imperdiet blandit mi, sed congue nibh rutrum et. Pellentesque imperdiet in leo sed tempus.</p>
-                    <a name="hidratoscarbono"></a><h3>Hidratos de Carbono</h3>
+                    <div id="hidratoscarbono"></div><h3>Hidratos de Carbono</h3>
                     <p>Lorem ipsum dolor sit amet, consectetur adipiscing elit. Vestibulum pretium neque odio, non consequat libero eleifend in. Lorem ipsum dolor sit amet, consectetur adipiscing elit. Praesent purus justo, eleifend vel turpis vitae, viverra posuere nisi. Pellentesque vel magna posuere, faucibus ante in, pharetra enim. Pellentesque habitant morbi tristique senectus et netus et malesuada fames ac turpis egestas. Nunc vulputate augue eros. Sed feugiat maximus est, id blandit libero ultrices non. Nulla facilisi.</p>
                     <p>Vestibulum mollis velit non ipsum rhoncus porttitor. Praesent vel urna nec urna commodo mattis convallis ac metus. Etiam eget enim ut velit commodo gravida eget non neque. Class aptent taciti sociosqu ad litora torquent per conubia nostra, per inceptos himenaeos. Sed interdum, ex ac egestas elementum, lacus orci aliquam ante, quis porta nunc purus at lorem. Donec ullamcorper finibus suscipit. Aliquam et libero eros. Sed condimentum ligula eu nunc condimentum efficitur. Donec luctus, dolor vitae interdum cursus, tortor metus tincidunt diam, ac euismod eros nulla eu nibh.</p>
                     <p>Donec accumsan sem dapibus ligula sodales, non sagittis nulla rutrum. Vivamus quis porta odio. Fusce convallis libero leo. Vivamus pretium, ex non tempus tempus, orci metus vulputate purus, ut volutpat ante orci quis ex. Praesent erat arcu, ultrices vitae scelerisque id, scelerisque vitae felis. Fusce bibendum nisi et justo pellentesque, sed rutrum elit laoreet. Morbi vestibulum quam efficitur, varius quam vel, euismod ex. Donec imperdiet blandit mi, sed congue nibh rutrum et. Pellentesque imperdiet in leo sed tempus.</p>
-                    <a name="frutas"></a><h3>Frutas</h3>
+                    <div id="frutas"></div><h3>Frutas</h3>
                     <p>Lorem ipsum dolor sit amet, consectetur adipiscing elit. Vestibulum pretium neque odio, non consequat libero eleifend in. Lorem ipsum dolor sit amet, consectetur adipiscing elit. Praesent purus justo, eleifend vel turpis vitae, viverra posuere nisi. Pellentesque vel magna posuere, faucibus ante in, pharetra enim. Pellentesque habitant morbi tristique senectus et netus et malesuada fames ac turpis egestas. Nunc vulputate augue eros. Sed feugiat maximus est, id blandit libero ultrices non. Nulla facilisi.</p>
                     <p>Vestibulum mollis velit non ipsum rhoncus porttitor. Praesent vel urna nec urna commodo mattis convallis ac metus. Etiam eget enim ut velit commodo gravida eget non neque. Class aptent taciti sociosqu ad litora torquent per conubia nostra, per inceptos himenaeos. Sed interdum, ex ac egestas elementum, lacus orci aliquam ante, quis porta nunc purus at lorem. Donec ullamcorper finibus suscipit. Aliquam et libero eros. Sed condimentum ligula eu nunc condimentum efficitur. Donec luctus, dolor vitae interdum cursus, tortor metus tincidunt diam, ac euismod eros nulla eu nibh.</p>
                     <p>Donec accumsan sem dapibus ligula sodales, non sagittis nulla rutrum. Vivamus quis porta odio. Fusce convallis libero leo. Vivamus pretium, ex non tempus tempus, orci metus vulputate purus, ut volutpat ante orci quis ex. Praesent erat arcu, ultrices vitae scelerisque id, scelerisque vitae felis. Fusce bibendum nisi et justo pellentesque, sed rutrum elit laoreet. Morbi vestibulum quam efficitur, varius quam vel, euismod ex. Donec imperdiet blandit mi, sed congue nibh rutrum et. Pellentesque imperdiet in leo sed tempus.</p>
-                    <a name="grasas"></a><h3>Grasas</h3>
+                    <div id="grasas"></div><h3>Grasas</h3>
                     <p>Lorem ipsum dolor sit amet, consectetur adipiscing elit. Vestibulum pretium neque odio, non consequat libero eleifend in. Lorem ipsum dolor sit amet, consectetur adipiscing elit. Praesent purus justo, eleifend vel turpis vitae, viverra posuere nisi. Pellentesque vel magna posuere, faucibus ante in, pharetra enim. Pellentesque habitant morbi tristique senectus et netus et malesuada fames ac turpis egestas. Nunc vulputate augue eros. Sed feugiat maximus est, id blandit libero ultrices non. Nulla facilisi.</p>
                     <p>Vestibulum mollis velit non ipsum rhoncus porttitor. Praesent vel urna nec urna commodo mattis convallis ac metus. Etiam eget enim ut velit commodo gravida eget non neque. Class aptent taciti sociosqu ad litora torquent per conubia nostra, per inceptos himenaeos. Sed interdum, ex ac egestas elementum, lacus orci aliquam ante, quis porta nunc purus at lorem. Donec ullamcorper finibus suscipit. Aliquam et libero eros. Sed condimentum ligula eu nunc condimentum efficitur. Donec luctus, dolor vitae interdum cursus, tortor metus tincidunt diam, ac euismod eros nulla eu nibh.</p>
                     <p>Donec accumsan sem dapibus ligula sodales, non sagittis nulla rutrum. Vivamus quis porta odio. Fusce convallis libero leo. Vivamus pretium, ex non tempus tempus, orci metus vulputate purus, ut volutpat ante orci quis ex. Praesent erat arcu, ultrices vitae scelerisque id, scelerisque vitae felis. Fusce bibendum nisi et justo pellentesque, sed rutrum elit laoreet. Morbi vestibulum quam efficitur, varius quam vel, euismod ex. Donec imperdiet blandit mi, sed congue nibh rutrum et. Pellentesque imperdiet in leo sed tempus.</p>
@@ -574,7 +587,10 @@ window.onload=function(){
 	cargarIntercambios(<?php echo $_SESSION["id"] ?>);
 	datosEmpresa();
 	muestraTodasPatologiasAct("<?php echo $_SESSION["sexo"] ?>");
+	
+	
 	$('[data-toggle="tooltip"]').tooltip();
+	
 	</script>
 </body>
 </html>
