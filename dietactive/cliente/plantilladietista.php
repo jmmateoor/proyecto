@@ -182,15 +182,49 @@ window.onload=function(){
             </div>
             
             <div class="col-md-7">
-            	
-                <h2 class="datospers">Datos Cliente</h2><!-- CONTENIDO DE LA WEB -->
-                <div id="cliente"></div>
-                <h3 class="datospers">Patologías</h3>
-                <div id="patologias"></div>
-                <h3 class="datospers">Intercambios</h3>
-                <div id="intercambios"></div>
-                <h3 class="datospers">Historial de Peso</h3>
-                <div id="grafica"></div>
+            	<div class="row">
+                    <h2 class="datospers">Datos Cliente</h2><!-- CONTENIDO DE LA WEB -->
+                    <div id="cliente"></div>
+                </div>
+                <div class="row">
+                    <h3 class="datospers">Patologías</h3>
+                    <div id="patologias"></div>
+                </div>
+                <div class="row">
+                    <h3 class="datospers">Intercambios</h3>
+                    <div id="intercambios"></div>
+                </div>
+                <div class="row">
+                    <h3 class="datospers">Historial de Peso</h3>
+                    <div id="grafica"></div>
+                </div>
+                <div class="row">
+                    <h3 class="datospers">Diario dietético</h3>
+                    <div id="alimentosconsumidos"></div>
+                </div>
+                <div class="row">
+                    <div class="col-md-6">
+                    	<div id="kcal"></div>
+                    </div>
+                    <div class="col-md-6">
+                    	<div id="perfillipidico"></div>
+                    </div>
+                </div>
+                <div class="row">
+                	<div class="col-md-12">
+                		<div id="colesterolfibra"></div>
+                    </div>
+                </div>
+                <div class="row">
+                	<div class="col-md-12">
+                		<div id="minerales"></div>
+                    </div>
+                </div>
+                <div class="row">
+                	<div class="col-md-12">
+                		<div id="vitaminas"></div>
+                    </div>
+                </div>
             </div>
         </div>
         <footer>
