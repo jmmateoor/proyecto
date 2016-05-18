@@ -92,7 +92,7 @@ window.onload=function(){
         </div>
         <div class="row cabecera">
         	<div class="col-md-10 areacliente">
-                <h1>Área Cliente</h1>
+                <h1 id="ancla">Área Cliente</h1>
                 
             </div>
             <div class="col-md-2">
@@ -203,32 +203,181 @@ window.onload=function(){
                 <div id="contenidos">
                 	<p>Lorem ipsum dolor sit amet, consectetur adipiscing elit. Vestibulum pretium neque odio, non consequat libero eleifend in. Lorem ipsum dolor sit amet, consectetur adipiscing elit. Praesent purus justo, eleifend vel turpis vitae, viverra posuere nisi. Pellentesque vel magna posuere, faucibus ante in, pharetra enim. Pellentesque habitant morbi tristique senectus et netus et malesuada fames ac turpis egestas. Nunc vulputate augue eros. Sed feugiat maximus est, id blandit libero ultrices non. Nulla facilisi.</p>
                     <p>Vestibulum mollis velit non ipsum rhoncus porttitor. Praesent vel urna nec urna commodo mattis convallis ac metus. Etiam eget enim ut velit commodo gravida eget non neque. Class aptent taciti sociosqu ad litora torquent per conubia nostra, per inceptos himenaeos. Sed interdum, ex ac egestas elementum, lacus orci aliquam ante, quis porta nunc purus at lorem. Donec ullamcorper finibus suscipit. Aliquam et libero eros. Sed condimentum ligula eu nunc condimentum efficitur. Donec luctus, dolor vitae interdum cursus, tortor metus tincidunt diam, ac euismod eros nulla eu nibh.</p>
-                	<div id="lacteos"></div><h3>Lácteos</h3>
-                    <p>Lorem ipsum dolor sit amet, consectetur adipiscing elit. Vestibulum pretium neque odio, non consequat libero eleifend in. Lorem ipsum dolor sit amet, consectetur adipiscing elit. Praesent purus justo, eleifend vel turpis vitae, viverra posuere nisi. Pellentesque vel magna posuere, faucibus ante in, pharetra enim. Pellentesque habitant morbi tristique senectus et netus et malesuada fames ac turpis egestas. Nunc vulputate augue eros. Sed feugiat maximus est, id blandit libero ultrices non. Nulla facilisi.</p>
-                    <p>Vestibulum mollis velit non ipsum rhoncus porttitor. Praesent vel urna nec urna commodo mattis convallis ac metus. Etiam eget enim ut velit commodo gravida eget non neque. Class aptent taciti sociosqu ad litora torquent per conubia nostra, per inceptos himenaeos. Sed interdum, ex ac egestas elementum, lacus orci aliquam ante, quis porta nunc purus at lorem. Donec ullamcorper finibus suscipit. Aliquam et libero eros. Sed condimentum ligula eu nunc condimentum efficitur. Donec luctus, dolor vitae interdum cursus, tortor metus tincidunt diam, ac euismod eros nulla eu nibh.</p>
-                    <p>Donec accumsan sem dapibus ligula sodales, non sagittis nulla rutrum. Vivamus quis porta odio. Fusce convallis libero leo. Vivamus pretium, ex non tempus tempus, orci metus vulputate purus, ut volutpat ante orci quis ex. Praesent erat arcu, ultrices vitae scelerisque id, scelerisque vitae felis. Fusce bibendum nisi et justo pellentesque, sed rutrum elit laoreet. Morbi vestibulum quam efficitur, varius quam vel, euismod ex. Donec imperdiet blandit mi, sed congue nibh rutrum et. Pellentesque imperdiet in leo sed tempus.</p>
-                    <p>Aliquam sit amet metus ut sem sodales viverra. Integer hendrerit in risus a venenatis. Sed rutrum malesuada sagittis. Donec sapien odio, imperdiet vel placerat eu, porta posuere turpis. Vivamus libero sem, luctus at nisi sed, finibus mollis nibh. Etiam auctor tortor sed nisl sodales, ut scelerisque erat commodo. Quisque a neque ac mauris tincidunt tincidunt. Curabitur convallis neque nec eros convallis, ac placerat sapien faucibus. Donec in felis tellus. Integer lacinia faucibus ipsum, id hendrerit arcu feugiat quis. Proin ut tortor feugiat, porttitor est nec, porta leo.</p>
-                    <p>Nunc luctus velit felis, et iaculis dui egestas non. Suspendisse id pretium tortor, quis luctus erat. Fusce non enim non erat semper tincidunt. Donec eu tellus eu ex imperdiet aliquet. Ut libero leo, tristique non auctor at, luctus sit amet risus. Duis dictum, erat ut semper convallis, justo tortor mattis quam, eu finibus augue risus quis neque. Aenean condimentum placerat leo vel faucibus. Vivamus tincidunt at urna quis tempus. Sed nec sem iaculis, euismod tellus non, mollis enim. Integer varius lorem id mollis volutpat. In laoreet eleifend odio, sed congue nisl.</p>
-                    <div id="proteinas"></div><h3>Proteínas</h3>
-                    <p>Lorem ipsum dolor sit amet, consectetur adipiscing elit. Vestibulum pretium neque odio, non consequat libero eleifend in. Lorem ipsum dolor sit amet, consectetur adipiscing elit. Praesent purus justo, eleifend vel turpis vitae, viverra posuere nisi. Pellentesque vel magna posuere, faucibus ante in, pharetra enim. Pellentesque habitant morbi tristique senectus et netus et malesuada fames ac turpis egestas. Nunc vulputate augue eros. Sed feugiat maximus est, id blandit libero ultrices non. Nulla facilisi.</p>
-                    <p>Vestibulum mollis velit non ipsum rhoncus porttitor. Praesent vel urna nec urna commodo mattis convallis ac metus. Etiam eget enim ut velit commodo gravida eget non neque. Class aptent taciti sociosqu ad litora torquent per conubia nostra, per inceptos himenaeos. Sed interdum, ex ac egestas elementum, lacus orci aliquam ante, quis porta nunc purus at lorem. Donec ullamcorper finibus suscipit. Aliquam et libero eros. Sed condimentum ligula eu nunc condimentum efficitur. Donec luctus, dolor vitae interdum cursus, tortor metus tincidunt diam, ac euismod eros nulla eu nibh.</p>
-                    <p>Donec accumsan sem dapibus ligula sodales, non sagittis nulla rutrum. Vivamus quis porta odio. Fusce convallis libero leo. Vivamus pretium, ex non tempus tempus, orci metus vulputate purus, ut volutpat ante orci quis ex. Praesent erat arcu, ultrices vitae scelerisque id, scelerisque vitae felis. Fusce bibendum nisi et justo pellentesque, sed rutrum elit laoreet. Morbi vestibulum quam efficitur, varius quam vel, euismod ex. Donec imperdiet blandit mi, sed congue nibh rutrum et. Pellentesque imperdiet in leo sed tempus.</p>
-                    <div id="verduras"></div><h3>Verduras</h3>
-                    <p>Lorem ipsum dolor sit amet, consectetur adipiscing elit. Vestibulum pretium neque odio, non consequat libero eleifend in. Lorem ipsum dolor sit amet, consectetur adipiscing elit. Praesent purus justo, eleifend vel turpis vitae, viverra posuere nisi. Pellentesque vel magna posuere, faucibus ante in, pharetra enim. Pellentesque habitant morbi tristique senectus et netus et malesuada fames ac turpis egestas. Nunc vulputate augue eros. Sed feugiat maximus est, id blandit libero ultrices non. Nulla facilisi.</p>
-                    <p>Vestibulum mollis velit non ipsum rhoncus porttitor. Praesent vel urna nec urna commodo mattis convallis ac metus. Etiam eget enim ut velit commodo gravida eget non neque. Class aptent taciti sociosqu ad litora torquent per conubia nostra, per inceptos himenaeos. Sed interdum, ex ac egestas elementum, lacus orci aliquam ante, quis porta nunc purus at lorem. Donec ullamcorper finibus suscipit. Aliquam et libero eros. Sed condimentum ligula eu nunc condimentum efficitur. Donec luctus, dolor vitae interdum cursus, tortor metus tincidunt diam, ac euismod eros nulla eu nibh.</p>
-                    <p>Donec accumsan sem dapibus ligula sodales, non sagittis nulla rutrum. Vivamus quis porta odio. Fusce convallis libero leo. Vivamus pretium, ex non tempus tempus, orci metus vulputate purus, ut volutpat ante orci quis ex. Praesent erat arcu, ultrices vitae scelerisque id, scelerisque vitae felis. Fusce bibendum nisi et justo pellentesque, sed rutrum elit laoreet. Morbi vestibulum quam efficitur, varius quam vel, euismod ex. Donec imperdiet blandit mi, sed congue nibh rutrum et. Pellentesque imperdiet in leo sed tempus.</p>
-                    <div id="hidratoscarbono"></div><h3>Hidratos de Carbono</h3>
-                    <p>Lorem ipsum dolor sit amet, consectetur adipiscing elit. Vestibulum pretium neque odio, non consequat libero eleifend in. Lorem ipsum dolor sit amet, consectetur adipiscing elit. Praesent purus justo, eleifend vel turpis vitae, viverra posuere nisi. Pellentesque vel magna posuere, faucibus ante in, pharetra enim. Pellentesque habitant morbi tristique senectus et netus et malesuada fames ac turpis egestas. Nunc vulputate augue eros. Sed feugiat maximus est, id blandit libero ultrices non. Nulla facilisi.</p>
-                    <p>Vestibulum mollis velit non ipsum rhoncus porttitor. Praesent vel urna nec urna commodo mattis convallis ac metus. Etiam eget enim ut velit commodo gravida eget non neque. Class aptent taciti sociosqu ad litora torquent per conubia nostra, per inceptos himenaeos. Sed interdum, ex ac egestas elementum, lacus orci aliquam ante, quis porta nunc purus at lorem. Donec ullamcorper finibus suscipit. Aliquam et libero eros. Sed condimentum ligula eu nunc condimentum efficitur. Donec luctus, dolor vitae interdum cursus, tortor metus tincidunt diam, ac euismod eros nulla eu nibh.</p>
-                    <p>Donec accumsan sem dapibus ligula sodales, non sagittis nulla rutrum. Vivamus quis porta odio. Fusce convallis libero leo. Vivamus pretium, ex non tempus tempus, orci metus vulputate purus, ut volutpat ante orci quis ex. Praesent erat arcu, ultrices vitae scelerisque id, scelerisque vitae felis. Fusce bibendum nisi et justo pellentesque, sed rutrum elit laoreet. Morbi vestibulum quam efficitur, varius quam vel, euismod ex. Donec imperdiet blandit mi, sed congue nibh rutrum et. Pellentesque imperdiet in leo sed tempus.</p>
-                    <div id="frutas"></div><h3>Frutas</h3>
-                    <p>Lorem ipsum dolor sit amet, consectetur adipiscing elit. Vestibulum pretium neque odio, non consequat libero eleifend in. Lorem ipsum dolor sit amet, consectetur adipiscing elit. Praesent purus justo, eleifend vel turpis vitae, viverra posuere nisi. Pellentesque vel magna posuere, faucibus ante in, pharetra enim. Pellentesque habitant morbi tristique senectus et netus et malesuada fames ac turpis egestas. Nunc vulputate augue eros. Sed feugiat maximus est, id blandit libero ultrices non. Nulla facilisi.</p>
-                    <p>Vestibulum mollis velit non ipsum rhoncus porttitor. Praesent vel urna nec urna commodo mattis convallis ac metus. Etiam eget enim ut velit commodo gravida eget non neque. Class aptent taciti sociosqu ad litora torquent per conubia nostra, per inceptos himenaeos. Sed interdum, ex ac egestas elementum, lacus orci aliquam ante, quis porta nunc purus at lorem. Donec ullamcorper finibus suscipit. Aliquam et libero eros. Sed condimentum ligula eu nunc condimentum efficitur. Donec luctus, dolor vitae interdum cursus, tortor metus tincidunt diam, ac euismod eros nulla eu nibh.</p>
-                    <p>Donec accumsan sem dapibus ligula sodales, non sagittis nulla rutrum. Vivamus quis porta odio. Fusce convallis libero leo. Vivamus pretium, ex non tempus tempus, orci metus vulputate purus, ut volutpat ante orci quis ex. Praesent erat arcu, ultrices vitae scelerisque id, scelerisque vitae felis. Fusce bibendum nisi et justo pellentesque, sed rutrum elit laoreet. Morbi vestibulum quam efficitur, varius quam vel, euismod ex. Donec imperdiet blandit mi, sed congue nibh rutrum et. Pellentesque imperdiet in leo sed tempus.</p>
-                    <div id="grasas"></div><h3>Grasas</h3>
-                    <p>Lorem ipsum dolor sit amet, consectetur adipiscing elit. Vestibulum pretium neque odio, non consequat libero eleifend in. Lorem ipsum dolor sit amet, consectetur adipiscing elit. Praesent purus justo, eleifend vel turpis vitae, viverra posuere nisi. Pellentesque vel magna posuere, faucibus ante in, pharetra enim. Pellentesque habitant morbi tristique senectus et netus et malesuada fames ac turpis egestas. Nunc vulputate augue eros. Sed feugiat maximus est, id blandit libero ultrices non. Nulla facilisi.</p>
-                    <p>Vestibulum mollis velit non ipsum rhoncus porttitor. Praesent vel urna nec urna commodo mattis convallis ac metus. Etiam eget enim ut velit commodo gravida eget non neque. Class aptent taciti sociosqu ad litora torquent per conubia nostra, per inceptos himenaeos. Sed interdum, ex ac egestas elementum, lacus orci aliquam ante, quis porta nunc purus at lorem. Donec ullamcorper finibus suscipit. Aliquam et libero eros. Sed condimentum ligula eu nunc condimentum efficitur. Donec luctus, dolor vitae interdum cursus, tortor metus tincidunt diam, ac euismod eros nulla eu nibh.</p>
-                    <p>Donec accumsan sem dapibus ligula sodales, non sagittis nulla rutrum. Vivamus quis porta odio. Fusce convallis libero leo. Vivamus pretium, ex non tempus tempus, orci metus vulputate purus, ut volutpat ante orci quis ex. Praesent erat arcu, ultrices vitae scelerisque id, scelerisque vitae felis. Fusce bibendum nisi et justo pellentesque, sed rutrum elit laoreet. Morbi vestibulum quam efficitur, varius quam vel, euismod ex. Donec imperdiet blandit mi, sed congue nibh rutrum et. Pellentesque imperdiet in leo sed tempus.</p>
+                	
+                    <div id="hidratoscarbono"><h3 style="display:inline;;">Hidratos de Carbono</h3> <a style="cursor: pointer;" onClick="ir_a('#ancla');"> <span class="glyphicon glyphicon-menu-up"></span> Ir arriba</a></div>
+                    <p>Pan y productos de trigo y maíz:</p>
+                    <p><div class='table-responsive fondotabla'>
+                    <table class='table table-condensed'>
+                    <thead><tr><th>Alimento</th><th>Cantidad</th><th>Peso (crudo)</th></tr></thead>
+                    <tbody>
+                    <tr><td>Bollo sencillo</td><td>1 pequeño </td><td>30g</td></tr>
+                    <tr><td>Bollo para hamburguesa</td><td>1/2 pieza</td><td>35g</td></tr>
+                    <tr><td>Medianoche</td><td>1/2 pieza</td><td>30g</td></tr>
+                    <tr><td>Pan</td><td>2 dedos</td><td></td></tr>
+                    <tr><td>Tostada de pan de molde pequeña</td><td>1 pieza</td><td>20g</td></tr>
+                    <tr><td>Picos</td><td>2 piezas</td><td>25g</td></tr>
+                    <tr><td>Cereal con fibra (all bran, bran flakes,etc)</td><td>3/4 taza</td><td>30g</td></tr>
+                    <tr><td>Cereal para el desayuno sin azúcar</td><td>1/2 taza</td><td>30g</td></tr>
+                    <tr><td>Cereal para el desayuno azucarado</td><td>3/4 taza</td><td>25g</td></tr>
+                    <tr><td>Galletas tipo "María"</td><td>2 piezas</td><td>15g</td></tr>
+                    <tr><td>Tortas de arroz o de maíz</td><td>2 piezas</td><td>15g</td></tr>
+                    </tbody>
+                    </table>
+                    </div>
+                    </p>
+                    <p>Arroz, maíz, pastas, patatas, legumbres (cocidos):</p>
+                    <p><div class='table-responsive fondotabla'>
+                    <table class='table table-condensed'>
+                    <thead><tr><th>Alimento</th><th>Cantidad</th><th>Peso (crudo)</th></tr></thead>
+                    <tbody>
+                    <tr><td>Arroz</td><td>1/2 taza</td><td>90g</td></tr>
+                    <tr><td>Palomitas de maíz (sin grasa)</td><td>3 tazas</td><td>20g</td></tr>
+                    <tr><td>Pasta cocida (espagueti, fideo, etc.)</td><td>1/2 taza</td><td>50g</td></tr>
+                    <tr><td>Pastas rellenas (ravioles)</td><td>6 piezas</td><td>25g</td></tr>
+                    <tr><td>Papa horneadao hervida</td><td>1 pieza chica</td><td>100g</td></tr>
+                    <tr><td>Puré de papa</td><td>1/2 taza</td><td>100g</td></tr>
+                    <tr><td>Alubias, garbanzo, haba, lenteja, soja</td><td>1/2 taza</td><td>35g</td></tr>
+                    </tbody>
+                    </table>
+                    </div>
+                    </p>
+                    
+                    <p>Ocasionales:</p>
+                    <p><div class='table-responsive fondotabla'>
+                    <table class='table table-condensed'>
+                    <thead><tr><th>Alimento</th><th>Cantidad</th></tr></thead>
+                    <tbody>
+                    <tr><td>Azúcar, mermelada o miel</td><td>1 cucharada</td></tr>
+                    <tr><td>Chocolate</td><td>2 onzas</td></tr>
+                    <tr><td>Magdalena</td><td>1/2 pieza</td></tr>
+                    <tr><td>Croissant</td><td>3/4 pieza</td></tr>
+                    </tbody>
+                    </table>
+                    </div>
+                    </p>
+                    
+                    
+                    <div id="lacteos"><h3 style="display:inline;;">Lácteos</h3> <a style="cursor: pointer;" onClick="ir_a('#ancla');"> <span class="glyphicon glyphicon-menu-up"></span> Ir arriba</a></div>
+                    <p><div class='table-responsive fondotabla'>
+                    <table class='table table-condensed'>
+                    <thead><tr><th>Alimento</th><th>Cantidad</th><th>Peso (crudo)</th></tr></thead>
+                    <tbody>
+                    <tr><td>Leche semidesnatada o desnatada, entera, sin Lactosa, de soja o de avena</td><td>1 Vaso</td><td>220ml</td></tr>
+                    <tr><td>Yogures naturales o desnatados (incluidos de sabores)</td><td>2 unidades</td><td></td></tr>
+                    <tr><td>Activia desnatados o Densia</td><td>2 unidades</td><td></td></tr>
+                    <tr><td>Yogur azucarado o de sabores</td><td>1 unidades</td><td></td></tr>
+                    <tr><td>Actimel o Danacol desnatados o sabores</td><td>2unidades</td><td></td></tr>
+                    <tr><td>Queso de burgos</td><td>Tarrina pequeña</td><td>75g</td></tr>
+                    <tr><td>Helado</td><td>2 bolas</td><td>80g</td></tr>
+                    </tbody>
+                    </table>
+                    </div>
+                    </p>
+                    
+                    <div id="verduras"><h3 style="display:inline;;">Verduras</h3> <a style="cursor: pointer;" onClick="ir_a('#ancla');"> <span class="glyphicon glyphicon-menu-up"></span> Ir arriba</a></div>
+                    <p><div class='table-responsive fondotabla'>
+                    <table class='table table-condensed'>
+                    <thead><tr><th>Alimento</th><th>Cantidad</th><th>Peso (crudo)</th></tr></thead>
+                    <tbody>
+                    <tr><td>Acelgas, apio, berenjena,champiñones, col, coliflor, espinacas, grelos, lechuga, setas, tomates, brócoli, calabacín, canónigos,endivias, escarola, espárragos, pepinos, pimiento verde o rábano.</td><td>1 Plato hondo lleno</td><td>300g</td></tr>
+                    <tr><td>Berros, cardos, judías verdes, lombarda, nabos, pimiento rojo o puerros.</td><td>1 Plato hondo lleno</td><td>200g</td></tr>
+                    <tr><td>2 alcachofas, 5 coles de bruselas, 3 zanahorias, 1 cebolla, 1 cebolleta, 1 remolacha, 1/4 calabaza.
+</td><td>1 Plato hondo lleno</td><td>100g</td></tr>
+                    </tbody>
+                    </table>
+                    </div>
+                    </p>
+                    
+                    
+                    <div id="frutas"><h3 style="display:inline;;">Frutas</h3> <a style="cursor: pointer;" onClick="ir_a('#ancla');"> <span class="glyphicon glyphicon-menu-up"></span> Ir arriba</a></div>
+                    <p><div class='table-responsive fondotabla'>
+                    <table class='table table-condensed'>
+                    <thead><tr><th>Alimento</th><th>Cantidad</th><th>Peso (crudo)</th></tr></thead>
+                    <tbody>
+                    <tr><td>Arándanos, frambuesas, grosellas, mora</td><td>1 Bol</td><td>150g</td></tr>
+                    <tr><td>Aguacate</td><td>Media pieza</td><td>75g</td></tr>
+                    <tr><td>Guayaba, lima, pomelo</td><td>1 Pieza grande</td><td>150g</td></tr>
+                    <tr><td>Melón, sandía</td><td>1 Rodaja grande</td><td>150g</td></tr>
+                    <tr><td>Fresas</td><td>6-8 unidades</td><td>100g</td></tr>
+                    <tr><td>Fresones</td><td>3-4 unidades</td><td>100g</td></tr>
+                    <tr><td>Albaricoques, ciruelas, mandarinas</td><td>2 Piezas</td><td>100g</td></tr>
+                    <tr><td>Piña</td><td>2 Rodajas</td><td>100g</td></tr>
+                    <tr><td>Manzana, pera, melocotón, naranja, papaya, kiwi, nectarina, granada, limón, maracuyá, membrillo</td><td>1 Pieza</td><td>100g</td></tr>
+                    <tr><td>Zumo</td><td>Medio vaso </td><td>100ml</td></tr>
+                    <tr><td>Higo, níspero</td><td>1 Pieza pequeña</td><td>50g</td></tr>
+                    <tr><td>Plátano, chirimoya, caqui, tamarindo</td><td>Media pieza</td><td>50g</td></tr>
+                    <tr><td>Mango</td><td>Un cuarto de  pieza</td><td>50g</td></tr>
+                    <tr><td>Cerezas</td><td>6 unidades</td><td>50g</td></tr>
+                    <tr><td>Uvas</td><td>8 unidades</td><td>50g</td></tr>
+                    </tbody>
+                    </table>
+                    </div>
+                    </p>
+                    
+                    <div id="proteinas"><h3 style="display:inline;;">Proteínas</h3> <a style="cursor: pointer;" onClick="ir_a('#ancla');"> <span class="glyphicon glyphicon-menu-up"></span> Ir arriba</a></div>
+                    <p>Carnes y embutidos:</p>
+                    <p><div class='table-responsive fondotabla'>
+                    <table class='table table-condensed'>
+                    <thead><tr><th>Alimento</th><th>Cantidad</th><th>Peso (crudo)</th></tr></thead>
+                    <tbody>
+                    <tr><td>Jamón cocido o pavo</td><td>2 Lonchas</td><td>60g</td></tr>
+                    <tr><td>Jamón serrano o ibérico </td><td>1 loncha mediana</td><td>30g</td></tr>
+                    <tr><td>Huevo</td><td>1 entero o 2 claras de huevo</td><td>60g</td></tr>
+                    <tr><td>Bacón, lomo, lacón, chorizo</td><td>1 loncha</td><td>20g</td></tr>
+                    <tr><td>Pollo, pavo, ternera, buey, conejo</td><td>Medo filete pequeño</td><td>50g</td></tr>
+                    <tr><td>Cinta de lomo</td><td>1 pequeñas</td><td>50g</td></tr>
+                    </tbody>
+                    </table>
+                    </div>
+                    </p>
+                    
+
+					<p>Pescados y mariscos:</p>
+                    <p><div class='table-responsive fondotabla'>
+                    <table class='table table-condensed'>
+                    <thead><tr><th>Alimento</th><th>Cantidad</th><th>Peso (crudo)</th></tr></thead>
+                    <tbody>
+                    <tr><td>Gambas o langostinos, palitos de cangrejo</td><td>3-5 unidades</td><td>50g</td></tr>
+                    <tr><td>Almejas o berberechos </td><td>1 cuenco</td><td>100g</td></tr>
+                    <tr><td>Mejillones</td><td>5 unidades</td><td>100g</td></tr>
+                    <tr><td>Atún</td><td>Lata pequeña</td><td>v</td></tr>
+                    <tr><td>Pescado blanco merluza, pescadilla, gallo, bacalao, lubina, dorada, lenguado, mero, gulas</td><td>Media rodaja mediana</td><td>75g</td></tr>
+                    <tr><td>Pulpo, sepia, calamares, cangrejo</td><td>Media ración</td><td>  </td></tr>
+                    </tbody>
+                    </table>
+                    </div>
+                    </p>
+                    
+                    <p>Otros:</p>
+                    <p><div class='table-responsive fondotabla'>
+                    <table class='table table-condensed'>
+                    <thead><tr><th>Alimento</th><th>Cantidad</th><th>Peso (crudo)</th></tr></thead>
+                    <tbody>
+                    <tr><td>Tofu o seitan</td><td>1 Ración pequeña</td><td>75g</td></tr>
+                    <tr><td>Nueces</td><td>8 unidades</td><td>30g</td></tr>
+                    <tr><td>Almendras</td><td>15 unidades</td><td>30g</td></tr>
+                    </tbody>
+                    </table>
+                    </div>
+                    </p>
+
+                    
+                    <div id="grasas"><h3 style="display:inline;;">Grasas</h3> <a style="cursor: pointer;" onClick="ir_a('#ancla');"> <span class="glyphicon glyphicon-menu-up"></span> Ir arriba</a></div>
+                    <p></p>
+                    <p><div class='table-responsive fondotabla'>
+                    <table class='table table-condensed'>
+                    <thead><tr><th>Alimento</th><th>Cantidad</th><th>Peso (crudo)</th></tr></thead>
+                    <tbody>
+                    <tr><td>Aceite de oliva</td><td>1 Cucharada sopera</td><td>10ml</td></tr>
+                    <tr><td>Aceite de girasol</td><td>1 Cucharada sopera</td><td>10ml</td></tr>
+                    <tr><td>Aceitunas</td><td>Un puñado</td><td>40g</td></tr>
+                    <tr><td>Mantequilla o margarina</td><td>1 Cucharada sopera</td><td>10g</td></tr>
+                    <tr><td>Mayonesa</td><td>1 Cucharada sopera</td><td>110g</td></tr>
+                    </tbody>
+                    </table>
+                    </div>
+                    </p>
+                    
                 </div>
             </div>
             

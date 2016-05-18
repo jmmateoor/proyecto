@@ -4,6 +4,12 @@ h1,h2,h3,h4,h5,h6{
 	font-family: 'Comfortaa', cursive;
 }
 
+.fondotabla{
+	background-color:#f6f6f6;
+	border-radius:4px;
+	border: 1px solid #777674;
+}
+
 @keyframes actualizar {
     0%   {background-color: transparent;}
     50%  {background-color: #fff;}
@@ -22,7 +28,7 @@ a.cabenlace:link{
 	text-decoration:none;
 }
 a.cabenlace:hover{
-	color:#fff;
+	color:#57A5FB;
 	text-decoration:none;
 }
 a.cabenlace:visited{
@@ -103,7 +109,7 @@ div#contenidos p{
 }
 
 .muestraIntercambios, .muestraDatosPers,.muestraHistorial, .muestraPatologias{
-	border-radius:6px;
+	border-radius:4px;
 	border: 1px solid #777674;
 	padding: 8px;
 	margin-bottom:6px;
