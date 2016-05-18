@@ -398,6 +398,6 @@ div#imgLoading {
 	width: 100% !important;
 }
 
-#mensajeEmail{
+#mensajeEmail, #textodieta{
 	resize:vertical;
 }

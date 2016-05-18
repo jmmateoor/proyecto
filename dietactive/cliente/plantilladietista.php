@@ -361,7 +361,7 @@ window.onload=function(){
       </div>
     </div>
     <!-- Fin Modal Actualizar Patologías -->
-    
+    <div id="ventanadieta"></div>
     <!-- Modal Enviar Email -->
     <div id="modalEmail" class="modal fade" role="dialog">
       <div class="modal-dialog">

@@ -22,6 +22,7 @@ function datosClienteBuscado(idcliente)
 										
 										salida="";
 										datos=JSON.parse(data);
+										
 										salida+="<div class='row'>";
 										salida+="<div class='col-sm-4'><p><b>Nombre completo</b></p><p>"+datos[0].nombre+" "+datos[0].apellidos+"</p></div>";
 										salida+="<div class='col-sm-4'><p><b>Código Postal</b></p><p>"+datos[0].cp+"</p></div>";
@@ -42,7 +43,7 @@ function datosClienteBuscado(idcliente)
 										salida+="<div class='row'>";
 										salida+="<div class='col-sm-4'><p><b>Edad</b></p><p>"+datos[0].fechanac+"</p></div>";
 										salida+="<div class='col-sm-4'><p><b>Peso deseable</b></p><p>"+datos[0].pesodeseable+"</p></div>";
-										salida+="<div class='col-sm-4'><p><b>Dieta</b> X</p><p>"+datos[0].dieta+"</p></div>";
+										salida+="<div class='col-sm-4'><p><b>Dieta</b> <span data-toggle='tooltip' data-placement='top' title='Actualizar'><button type='button' class='btn btn-info btn-xs' data-toggle='modal' data-target='#modalDieta'><span class='glyphicon glyphicon-edit'></span></button></span></p><p id='ladieta'>"+datos[0].dieta+"</p></div>";
 										salida+="</div>";
 										
 										salida+="<div class='row'>";
@@ -58,8 +59,73 @@ function datosClienteBuscado(idcliente)
 										cargarIntercambios(idcliente);
 										graficaPeso(idcliente);
 										cargaPatologiasCliente(idcliente);
-										cargarAlimentosCantidadesTest(idcliente)
+										
+										
+										var modaldieta="";
+										
+										modaldieta+= "<div id='modalDieta' class='modal fade' role='dialog'>";
+										modaldieta+="  <div class='modal-dialog'>";
+											<!-- Modal content-->
+										modaldieta+="	<div class='modal-content'>";
+										modaldieta+="	  <div class='modal-header'>";
+										modaldieta+="		<button type='button' class='close' data-dismiss='modal'>&times;</button>";
+										modaldieta+="		<h4 class='modal-title'>Actualizar dieta</h4>";
+										modaldieta+="	  </div>";
+										modaldieta+="	  <div class='modal-body'>";
+										modaldieta+="		  <form role='form' name='formActualizarDieta' method='post'>";
+										modaldieta+="		  <textarea id='textodieta' class='form-control' rows='4' cols='50' onKeyUp='compruebaDieta();' onChange='compruebaDieta();'>"+datos[0].dieta+"</textarea>";
+										modaldieta+="		  <span id='textodieta2'></span>";
+										modaldieta+="		  </div>";
+										modaldieta+="		  <div class='modal-footer'>";
+										modaldieta+="			<button type='submit' id='buttomdieta' class='btn btn-success' data-dismiss='modal' disabled='true' onClick='actualizaDieta("+idcliente+");'><span class='glyphicon glyphicon-check'></span> Enviar</button>";
+										
+										modaldieta+="			<button type='button' class='btn btn-danger btn-default' data-dismiss='modal'><span class='glyphicon glyphicon-remove'></span> Cancelar</button>";
+										modaldieta+="		  </form>";
+										modaldieta+="	  </div>";
+										modaldieta+="	</div>";
+										
+										modaldieta+="  </div>";
+										modaldieta+="</div>";
+										<!-- Fin Modal Enviar Email -->;
+										$("#ventanadieta").html(modaldieta);
+										cargarAlimentosCantidadesTest(idcliente);
+										compruebaDieta();
 									});
+}
+
+function actualizaDieta(idcliente)
+{
+	dieta=$("#textodieta").val();
+	$.post("../servidor/actualizar_dieta.php",{
+			idcliente: idcliente,
+			dieta: dieta
+							},
+							function(datos, estado)
+							{
+								if(datos=='s')
+								{
+									$("#textodieta").val("");
+									$("#ladieta").html(dieta);
+								}
+								else
+								{
+									alert("No se ha podido actualizar. Intentalo de nuevo más tarde");
+								}
+							});
+}
+
+function compruebaDieta()
+{
+	if($("#textodieta").val()=="")
+	{
+		$("#textodieta2").html("No puede estar vacío");
+		$("#buttomdieta").attr("disabled",true);
+	}
+	else
+	{
+		$("#textodieta2").html("");
+		$("#buttomdieta").attr("disabled",false);
+	}
 }
 
 function cargarAlimentosCantidadesTest(idcliente)
@@ -146,8 +212,10 @@ function cargarAlimentosCantidadesTest(idcliente)
 							e=e+(comestible*(parseFloat(datos[i].e))/100);
 							
 						}
-						salida+="</tbody></table></div>";
+						
 						energia=(energia/3);
+						
+						salida+="</tbody></table></div><b>Energía:</b> "+energia.toFixed(2)+" KCal/día<br/>";
 						
 						proteinas=proteinas/3;
 						
@@ -229,7 +297,10 @@ function cargarAlimentosCantidadesTest(idcliente)
 						
 						graficaMinerales(sodio, potasio, calcio, fosforo, magnesio, hierro, zinc, yodo);
 						
-						graficaVitaminas(b1, b2, b6, b12, b9, b3, c, a, d, e)
+						graficaVitaminas(b1, b2, b6, b12, b9, b3, c, a, d, e);
+						
+						
+						
 						
 						$("#alimentosconsumidos").html(salida);
 						
@@ -355,10 +426,10 @@ function graficaColesterolFibra(colesterol, fibra)
             }
         },
         series: [{
-            name: 'Colesterol',
+            name: '% Colesterol',
             data: [0,colesterol]
         }, {
-            name: 'Fibra',
+            name: '% Fibra',
             data: [fibra,0]
         }]
     });
@@ -391,7 +462,7 @@ function graficaMinerales(sodio, potasio, calcio, fosforo, magnesio, hierro, zin
         tooltip: {
             headerFormat: '<span style="font-size:10px">{point.key}</span><table>',
             pointFormat: '<tr><td style="color:{series.color};padding:0">{series.name}: </td>' +
-                '<td style="padding:0"><b>{point.y:.1f} mg</b></td></tr>',
+                '<td style="padding:0"><b>{point.y:.1f} %</b></td></tr>',
             footerFormat: '</table>',
             shared: true,
             useHTML: true
@@ -465,7 +536,7 @@ function graficaVitaminas(b1, b2, b6, b12, b9, b3, c, a, d, e)
         tooltip: {
             headerFormat: '<span style="font-size:10px">{point.key}</span><table>',
             pointFormat: '<tr><td style="color:{series.color};padding:0">{series.name}: </td>' +
-                '<td style="padding:0"><b>{point.y:.1f} mg</b></td></tr>',
+                '<td style="padding:0"><b>{point.y:.1f} %</b></td></tr>',
             footerFormat: '</table>',
             shared: true,
             useHTML: true
@@ -519,39 +590,3 @@ function graficaVitaminas(b1, b2, b6, b12, b9, b3, c, a, d, e)
         }]
     });
 }
-/*
-$salida.="{";
-		$salida.="\"idalimento\": \"".$idalimento."\",";
-		$salida.="\"alimento\": \"".$alimento."\",";
-		$salida.="\"cantidad\": \"".$cantidad."\",";
-		$salida.="\"momento\": \"".$momento."\",";
-		$salida.="\"comestible\": \"".$comestible."\",";
-		$salida.="\"energia\": \"".$energia."\",";
-		$salida.="\"proteinas\": \"".$proteinas."\",";
-		$salida.="\"lipidos\": \"".$lipidos."\",";
-		$salida.="\"ags\": \"".$ags."\",";
-		$salida.="\"agm\": \"".$agm."\",";
-		$salida.="\"agp\": \"".$agp."\",";
-		$salida.="\"colesterol\": \"".$colesterol."\",";
-		$salida.="\"glucidos\": \"".$glucidos."\",";
-		$salida.="\"fibra\": \"".$fibra."\",";
-		$salida.="\"sodio\": \"".$sodio."\",";
-		$salida.="\"potasio\": \"".$potasio."\",";
-		$salida.="\"calcio\": \"".$calcio."\",";
-		$salida.="\"magnesio\": \"".$magnesio."\",";
-		$salida.="\"fosforo\": \"".$fosforo."\",";
-		$salida.="\"hierro\": \"".$hierro."\",";
-		$salida.="\"zinc\": \"".$zinc."\",";
-		$salida.="\"yodo\": \"".$yodo."\",";
-		$salida.="\"b1\": \"".$b1."\",";
-		$salida.="\"b2\": \"".$b2."\",";
-		$salida.="\"b6\": \"".$b6."\",";
-		$salida.="\"b12\": \"".$b12."\",";
-		$salida.="\"b9\": \"".$b9."\",";
-		$salida.="\"b3\": \"".$b3."\",";
-		$salida.="\"c\": \"".$c."\",";
-		$salida.="\"a\": \"".$a."\",";
-		$salida.="\"d\": \"".$d."\",";
-		$salida.="\"e\": \"".$e."\"";
-		$salida.="},";
-*/
