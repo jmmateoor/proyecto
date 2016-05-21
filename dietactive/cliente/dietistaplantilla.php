@@ -440,7 +440,7 @@ window.onload=function(){
                     </div>
               </div>
               <div class="modal-footer">
-                <button type="submit" id="buttomPass" class="btn btn-success" data-dismiss="modal" disabled="true" onClick="actualizaPassword();"><span class="glyphicon glyphicon-check"></span> Aceptar</button>
+                <button type="submit" id="buttomPass" class="btn btn-success" data-dismiss="modal" disabled="true" onClick="actualizaPasswordDietista();"><span class="glyphicon glyphicon-check"></span> Aceptar</button>
                 <button type="button" id="buttomCancelarPass"  onClick="borrarPass();" class="btn btn-danger btn-default" data-dismiss="modal"><span class="glyphicon glyphicon-remove"></span> Cancelar</button>
               </form>
           </div>

@@ -40,7 +40,7 @@ function dietistaLogin()
 							{
 								if(data=="s")
 								{
-									location.href="plantilladietista.php";
+									location.href="dietista_citas.php";
 									
 								}
 								else

@@ -340,7 +340,7 @@ window.onload=function(){
                     <tr><td>Gambas o langostinos, palitos de cangrejo</td><td>3-5 unidades</td><td>50g</td></tr>
                     <tr><td>Almejas o berberechos </td><td>1 cuenco</td><td>100g</td></tr>
                     <tr><td>Mejillones</td><td>5 unidades</td><td>100g</td></tr>
-                    <tr><td>Atún</td><td>Lata pequeña</td><td>v</td></tr>
+                    <tr><td>Atún</td><td>Lata pequeña</td><td>60g</td></tr>
                     <tr><td>Pescado blanco merluza, pescadilla, gallo, bacalao, lubina, dorada, lenguado, mero, gulas</td><td>Media rodaja mediana</td><td>75g</td></tr>
                     <tr><td>Pulpo, sepia, calamares, cangrejo</td><td>Media ración</td><td>  </td></tr>
                     </tbody>

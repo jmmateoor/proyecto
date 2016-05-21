@@ -1599,6 +1599,22 @@ function cargarIntercambios(idcliente)
 										cambiarEventoEnlacesIntercambios("grasas1");
 										cambiarEventoEnlacesIntercambios("hidratoscarbono1");
 									}
+									if(nombrepagina=="dietista_citas.php" || nombrepagina=="dietista_clientes.php")
+									{
+										$("#proteinas1").removeAttr("href");
+										$("#lacteos1").removeAttr("href");
+										$("#verduras1").removeAttr("href");
+										$("#frutas1").removeAttr("href");
+										$("#grasas1").removeAttr("href");
+										$("#hidratoscarbono1").removeAttr("href");
+										
+										$("#proteinas1").css("text-decoration","none");
+										$("#lacteos1").css("text-decoration","none");
+										$("#verduras1").css("text-decoration","none");
+										$("#frutas1").css("text-decoration","none");
+										$("#grasas1").css("text-decoration","none");
+										$("#hidratoscarbono1").css("text-decoration","none");
+									}
 									
 								}
 								else
@@ -1610,7 +1626,7 @@ function cargarIntercambios(idcliente)
 
 function ir_a(elemento){
     var posicion = $(elemento).position().top+350;
-    $('html,body').animate({scrollTop: posicion}, 800);
+    $('html,body').animate({scrollTop: posicion}, 1000);
     return;
 }
 

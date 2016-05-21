@@ -3,8 +3,7 @@
 	include("funciones.inc.php");
 	$conn = new MySQLi($servidor,$usuario,$password,$bbdd);
 	$conn->set_charset("utf8");
-	//$_POST["idcliente"];
-	$idcliente=17;
+	$idcliente=$_POST["idcliente"];
 	$preparada = $conn->prepare("select testdias.idalimento, alimento.alimento, testdias.cantidad, testdias.momento, alimento.comestible, alimento.energia, alimento.proteinas, alimento.lipidos, alimento.ags, alimento.agm, alimento.agp, alimento.colesterol, alimento.glucidos, alimento.fibra, alimento.sodio, alimento.potasio, alimento.calcio, alimento.magnesio, alimento.fosforo, alimento.hierro, alimento.zinc, alimento.yodo, alimento.b1, alimento.b2, alimento.b6, alimento.b12, alimento.b9, alimento.b3, alimento.c, alimento.a, alimento.d, alimento.e from testdias join alimento on testdias.idalimento = alimento.id where testdias.idcliente=?");
 	$preparada->bind_param("i",$idcliente);
 	$preparada->execute();

@@ -1,13 +1,148 @@
 ﻿//Funciones dietista
+function buscarClientes()
+{
+	$.post("../servidor/dietista_buscar_clientes.php",{
+			texto: $("#buscarcliente").val()
+							},
+							function(data, estado)
+							{
+								if(data!="]")
+								{
+									datos=JSON.parse(data);
+									salida="";
+									for(var i=0;i<datos.length;i++)
+									{
+										salida+="<div class='row fondoclientes'><div class='col-sm-2'><button class='btn btn-info' onClick='datosClienteBuscado("+datos[i].id+");'><span class='glyphicon glyphicon-eye-open'></span></button></div><div class='col-lg-5'>"+datos[i].nombre+"</div><div class='col-lg-5'>"+datos[i].email+"</div></div>";
+										
+									}
+									$("#buscador").html(salida);
+								}
+								else
+								{
+									salida="<div class='row fondoclientes'>No hay resultados.</div>";
+									$("#buscador").html(salida);
+								}
+							});
+}
+
+function dietistaEliminarCita(idcliente, cita, email)
+{
+	if(confirm("¿Deseas eliminar la cita? Se enviará un mensaje al cliente informandole de la cancelación."))
+	{
+		$.post("../servidor/dietista_eliminar_cita.php",{
+			idcliente: idcliente,
+			cita: cita,
+			email: email
+							},
+							function(datos, estado)
+							{
+								if(datos=='s')
+								{
+									cargarCitasDietista();
+									alert("Cita borrada correctamente.");
+								}
+								else
+								{
+									alert("Ha ocurrido un error. Intentalo de nuevo más tarde.");
+								}
+							});
+	}
+}
+
+
+function cargarCitasDietista()
+{
+	var porNombre=document.getElementsByName("consultaDias");
+	for(var i=0;i<porNombre.length;i++)
+        {
+            if(porNombre[i].checked)
+                dias=porNombre[i].value;
+        }
+		
+	$.post("../servidor/dietista_consulta_citas.php",{
+			dias: dias
+							},
+							function(data, estado)
+							{
+								data = data.replace(/\\n/g, "\\n")  
+												   .replace(/\\'/g, "\\'")
+												   .replace(/\\"/g, '\\"')
+												   .replace(/\\&/g, "\\&")
+												   .replace(/\\r/g, "\\r")
+												   .replace(/\\t/g, "\\t")
+												   .replace(/\\b/g, "\\b")
+												   .replace(/\\f/g, "\\f");
+										// remove non-printable and other non-valid JSON chars
+										data = data.replace(/[\u0000-\u0019]+/g,"");
+										data=data.replace(/[\u200B-\u200D\uFEFF]/g, '');
+										
+								if(data!=']')
+								{
+									datos=JSON.parse(data);
+									salida="<div>";
+									for(var i=0;i<datos.length;i++)
+									{
+										var dia=poneFecha((datos[i].cita.split(" "))[0]);
+										var hora=(datos[i].cita.split(" "))[1];
+										salida+="<div class='row citas'>";
+										salida+="<div class='row'><div class='col-sm-2'><button class='btn btn-info' onClick='datosClienteBuscado("+datos[i].idcliente+")' > <span class='glyphicon glyphicon-eye-open'></span> </button></div><div class='col-sm-8'> </div><div class='col-sm-2'><button class='btn btn-danger' onClick='dietistaEliminarCita("+datos[i].idcliente+",\""+datos[i].cita+"\",\""+datos[i].email+"\")'> <span class='glyphicon glyphicon-remove-sign' ></span> </button></div></div><div class='row'><div class='col-md-12'><b>"+dia+" "+hora+"</b></div></div><div class='row'><div class='col-md-12'>"+datos[i].nombre+"</div></div><div class='row'><div class='col-md-12'>"+datos[i].tipocita+"</div></div>";
+										salida+="</div>";
+										//salida+="<hr />";
+									}
+									
+									salida+="</div>";
+									$("#citas").html(salida);
+								}
+								else
+								{
+									$("#citas").html("");
+								}
+							});
+}
+
+
+
+
+function actualizaPasswordDietista()
+{
+	//password
+	$.post("../servidor/dietista_actualiza_password.php",{
+			password: $("#password").val()
+							},
+							function(datos, estado)
+							{
+								if(datos=='s')
+								{
+									borrarPass();
+									alert("Contraseña actualizada correctamente.");
+								}
+								else
+								{
+									alert("Ha ocurrido un error. Intentalo de nuevo más tarde.");
+								}
+							});
+}
+
+
+
 function datosClienteBuscado(idcliente)
 {
-	idcliente=17;
-	
 	$.post("../servidor/dietista_cliente.php",{
 							idcliente: idcliente
 									},
 									function(data, estado)
 									{
+										$("#cliente").html("");
+										$("#patologias").html("");
+										$("#intercambios").html("");
+										$("#grafica").html("");
+										$("#alimentosconsumidos").html("");
+										$("#kcal").html("");
+										$("#perfillipidico").html("");
+										$("#colesterolfibra").html("");
+										$("#minerales").html("");
+										$("#vitaminas").html("");
+										
 										data = data.replace(/\\n/g, "\\n")  
 												   .replace(/\\'/g, "\\'")
 												   .replace(/\\"/g, '\\"')
@@ -22,6 +157,7 @@ function datosClienteBuscado(idcliente)
 										
 										salida="";
 										datos=JSON.parse(data);
+										
 										
 										salida+="<div class='row'>";
 										salida+="<div class='col-sm-4'><p><b>Nombre completo</b></p><p>"+datos[0].nombre+" "+datos[0].apellidos+"</p></div>";
@@ -88,7 +224,9 @@ function datosClienteBuscado(idcliente)
 										modaldieta+="</div>";
 										<!-- Fin Modal Enviar Email -->;
 										$("#ventanadieta").html(modaldieta);
+										
 										cargarAlimentosCantidadesTest(idcliente);
+										
 										compruebaDieta();
 									});
 }
@@ -135,6 +273,8 @@ function cargarAlimentosCantidadesTest(idcliente)
 					},
 					function(data, estado)
 					{
+						if(data!="]")
+						{
 						data = data.replace(/\\n/g, "\\n")  
 								   .replace(/\\'/g, "\\'")
 								   .replace(/\\"/g, '\\"')
@@ -182,7 +322,7 @@ function cargarAlimentosCantidadesTest(idcliente)
 						{
 							salida+="<tr><td>"+datos[i].momento+"</td><td>"+datos[i].alimento+"</td><td>"+datos[i].cantidad+"</td></tr>";
 							
-							var comestible=parseFloat(datos[i].cantidad)+parseFloat(datos[i].comestible);
+							var comestible=parseFloat(datos[i].cantidad)*parseFloat(datos[i].comestible)/100;
 							energia=energia+(comestible*(parseFloat(datos[i].energia))/100);
 							proteinas=proteinas+(comestible*(parseFloat(datos[i].proteinas))/100);
 							lipidos=lipidos+(comestible*(parseFloat(datos[i].lipidos))/100);
@@ -213,13 +353,14 @@ function cargarAlimentosCantidadesTest(idcliente)
 							
 						}
 						
+						
 						energia=(energia/3);
 						
 						salida+="</tbody></table></div><b>Energía:</b> "+energia.toFixed(2)+" KCal/día<br/>";
 						
-						proteinas=proteinas/3;
+						proteinas=(proteinas*4)/3;
 						
-						lipidos=lipidos/3;
+						lipidos=(lipidos*9)/3;
 						
 						ags=ags/3;
 						
@@ -230,7 +371,8 @@ function cargarAlimentosCantidadesTest(idcliente)
 						colesterol=(colesterol/3)*100;
 						colesterol=colesterol/300;
 						
-						glucidos=glucidos/3;
+						glucidos=(glucidos*4)/3;
+						
 						
 						fibra=(fibra/3)*100;
 						fibra=fibra/25;
@@ -303,7 +445,11 @@ function cargarAlimentosCantidadesTest(idcliente)
 						
 						
 						$("#alimentosconsumidos").html(salida);
-						
+						}
+						else
+						{
+							$("#alimentosconsumidos").html("No hay resultados.");
+						}
 					});
 }
 

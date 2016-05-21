@@ -3,8 +3,7 @@
 	include("funciones.inc.php");
 	$c = new MySQLi($servidor,$usuario,$password,$bbdd);
 	$c->set_charset("utf8");
-	//$_POST["idcliente"];
-	$idcliente=17;
+	$idcliente=$_POST["idcliente"];
 	$preparada = $c->prepare("select cliente.id, cliente.nombre, cliente.apellidos, cliente.telefono, cliente.email, cliente.sexo, cliente.peso, cliente.altura, cliente.fechanac, cliente.pesodeseable, cliente.dieta, cliente.geet, cliente.cp, actividadfisica.nombre, actividadfisica.descripcion from cliente join actividadfisica on cliente.idactividad = actividadfisica.id where cliente.id=?");
 	$preparada->bind_param("i",$idcliente);
 	$preparada->execute();
