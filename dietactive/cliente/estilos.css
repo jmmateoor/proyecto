@@ -36,6 +36,11 @@ h1,h2,h3,h4,h5,h6{
 	padding:4px;
 }
 
+.volver{
+	text-align:right !important;
+	display:block;
+}
+
 .citas{
 	background-color:#fff;
 	margin-bottom:8px;
@@ -213,15 +218,15 @@ body{
 }
 
 .navbar-inverse .navbar-nav>li>a {
-    color: #d3d1ce !important;
+    color: #d3d1ce;
 }
 
 .navbar-inverse .navbar-nav>li>a:hover {
-    color: white !important;
+    color: white;
 }
 
 .navbar-inverse .navbar-nav>.active>a, .navbar-inverse .navbar-nav>.active>a:focus, .navbar-inverse .navbar-nav>.active>a:hover {
-    color: #fff !important;
+    color: #fff;
 	background-color: #080808;
 	/*080808   1b5e20*/
 }
@@ -264,7 +269,13 @@ body{
 	text-decoration:none;
 }
 
-
+.cabeceradiet{
+	background-color:RGB(3,90,0);
+	background-image:url(images/fondodietista.png);
+	/*#0f520a*/
+	background-repeat:repeat;
+	padding-top:10px;
+}
 
 .cabecera{
 	background-color:RGB(3,90,0);

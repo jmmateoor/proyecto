@@ -80,13 +80,13 @@ window.onload=function(){
                 </ul>
             </div>
         </div>
-        <div class="row cabecera">
+        <div class="row cabeceradiet">
             <div class="col-md-12">
                 <p align="center" style="margin-bottom:0px;"><img src="images/cab.png" class="img-responsive" width="580px" alt="DietActive" /></p>
                 <p align="center" class="slogan">Tu Dieta Equilibrada Personalizada</p>
             </div>
         </div>
-        <div class="row cabecera">
+        <div class="row cabeceradiet">
         	<div class="col-md-12">
                 <h1>Área Dietista</h1>
             </div>
