@@ -1625,8 +1625,8 @@ function cargarIntercambios(idcliente)
 }
 
 function ir_a(elemento){
-    var posicion = $(elemento).position().top+350;
-    $('html,body').animate({scrollTop: posicion}, 1000);
+    var posicion = $(elemento).offset().top-120;
+    $('html,body').animate({scrollTop: posicion}, 1300);
     return;
 }
 
