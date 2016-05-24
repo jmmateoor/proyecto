@@ -185,7 +185,50 @@ window.onload=function(){
             </div>
             
             <div class="col-md-7">
-            	
+            	<h2 class="datospers">Insertar alimentos</h2>
+            	<form role='form' name='formActualizarAlimento' method='post'>
+                <div class='form-group'><label for='inalimento'>Nombre</label><input id='inalimento' name='inalimento' class='form-control' required maxlength="100" /></div>
+            	<span id="ponertiposalimentos"></span>
+                <div class='row'><div class='col-md-4'><div class='form-group'><label for='incomestible'>Comestible</label><input type='number' required min='0'  id='incomestible' name='incomestible' class='form-control' /></div></div><div class='col-md-4'><div class='form-group'><label for='inenergia'>Energía</label><input type='number' required min='0' id='inenergia' name='inenergia' class='form-control' /></div></div><div class='col-md-4'><div class='form-group'><label for='inproteinas'>Proteínas</label><input type='number' required min='0' step='0.01' id='inproteinas' name='inproteinas' class='form-control' /></div></div></div>
+                
+                
+               
+                
+                <div class='row'><div class='col-md-4'><div class='form-group'><label for='inlipidos'>Lípidos</label><input type='number' required min='0'  id='inlipidos' name='inlipidos' class='form-control' /></div></div><div class='col-md-4'><div class='form-group'><label for='inags'>AGS</label><input type='number' required min='0' id='inags' name='inags' class='form-control' /></div></div><div class='col-md-4'><div class='form-group'><label for='inagm'>AGM</label><input type='number' required min='0' step='0.01' id='inagm' name='inagm' class='form-control' /></div></div></div>
+                
+                
+                
+                <div class='row'><div class='col-md-4'><div class='form-group'><label for='inagp'>AGP</label><input type='number' required min='0'  id='inagp' name='inagp' class='form-control' /></div></div><div class='col-md-4'><div class='form-group'><label for='incolesterol'>Colesterol</label><input type='number' required min='0' id='incolesterol' name='incolesterol' class='form-control' /></div></div><div class='col-md-4'><div class='form-group'><label for='inglucidos'>Glúcidos</label><input type='number' required min='0' step='0.01' id='inglucidos' name='inglucidos' class='form-control' /></div></div></div>
+                
+                
+                <div class='row'><div class='col-md-4'><div class='form-group'><label for='infibra'>Fibra</label><input type='number' required min='0'  id='infibra' name='infibra' class='form-control' /></div></div><div class='col-md-4'><div class='form-group'><label for='insodio'>Sodio</label><input type='number' required min='0' id='insodio' name='insodio' class='form-control' /></div></div><div class='col-md-4'><div class='form-group'><label for='inpotasio'>Potasio</label><input type='number' required min='0' step='0.01' id='inpotasio' name='inpotasio' class='form-control' /></div></div></div>
+                
+                
+                
+                <div class='row'><div class='col-md-4'><div class='form-group'><label for='incalcio'>Calcio</label><input type='number' required min='0'  id='incalcio' name='incalcio' class='form-control' /></div></div><div class='col-md-4'><div class='form-group'><label for='inmagnesio'>Magnesio</label><input type='number' required min='0' id='inmagnesio' name='inmagnesio' class='form-control' /></div></div><div class='col-md-4'><div class='form-group'><label for='infosforo'>Fósforo</label><input type='number' required min='0' step='0.01' id='infosforo' name='infosforo' class='form-control' /></div></div></div>
+                
+                
+                
+                <div class='row'><div class='col-md-4'><div class='form-group'><label for='inhierro'>Hierro</label><input type='number' required min='0'  id='inhierro' name='inhierro' class='form-control' /></div></div><div class='col-md-4'><div class='form-group'><label for='inzinc'>Zinc</label><input type='number' required min='0' id='inzinc' name='inzinc' class='form-control'/></div></div><div class='col-md-4'><div class='form-group'><label for='inyodo'>Yodo</label><input type='number' required min='0' step='0.01' id='inyodo' name='inyodo' class='form-control' /></div></div></div>
+                
+                
+                
+                
+                <div class='row'><div class='col-md-4'><div class='form-group'><label for='inb1'>B1</label><input type='number' required min='0'  id='inb1' name='inb1' class='form-control' /></div></div><div class='col-md-4'><div class='form-group'><label for='inb2'>B2</label><input type='number' required min='0' id='inb2' name='inb2' class='form-control' /></div></div><div class='col-md-4'><div class='form-group'><label for='inb6'>B6</label><input type='number' required min='0' step='0.01' id='inb6' name='inb6' class='form-control' /></div></div></div>
+                
+                
+                
+                <div class='row'><div class='col-md-4'><div class='form-group'><label for='inb12'>B12</label><input type='number' required min='0'  id='inb12' name='inb12' class='form-control' /></div></div><div class='col-md-4'><div class='form-group'><label for='inb9'>B9</label><input type='number' required min='0' id='inb9' name='inb9' class='form-control' /></div></div><div class='col-md-4'><div class='form-group'><label for='inb3'>B3</label><input type='number' required min='0' step='0.01' id='inb3' name='inb3' class='form-control' /></div></div></div>
+                
+                
+                
+                <div class='row'><div class='col-md-4'><div class='form-group'><label for='inc'>C</label><input type='number' required min='0'  id='inc' name='inc' class='form-control' /></div></div><div class='col-md-4'><div class='form-group'><label for='ina'>A</label><input type='number' required min='0' id='ina' name='ina' class='form-control' /></div></div><div class='col-md-4'><div class='form-group'><label for='ind'>D</label><input type='number' required min='0' step='0.01' id='ind' name='ind' class='form-control' /></div></div></div>
+                
+                
+                <div class='row'><div class='col-md-4'><div class='form-group'><label for='ine'>E</label><input type='number' required min='0'  id='ine' name='ine' class='form-control' /></div></div></div>
+                
+                <div class='row'><button type='button' id='buttomInsertar' class='btn btn-success' onClick='insertarAlimento();'><span class='glyphicon glyphicon-check'></span> Insertar</button> <button type='reset' class='btn btn-default'><span class='glyphicon glyphicon-erase'></span> Limpiar</button></div>
+                </form>
             </div>
         </div>
         <footer>
@@ -256,6 +299,7 @@ window.onload=function(){
 	muestraAlimentos();
 	datosEmpresa();
 	
+	cargarTiposAlimentosInsertar();
 	$('[data-toggle="tooltip"]').tooltip();
 	</script>
 </body>

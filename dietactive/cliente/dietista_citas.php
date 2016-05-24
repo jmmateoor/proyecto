@@ -180,7 +180,7 @@ window.onload=function(){
         	<div class="col-md-5">
             	<h2 class="datospers">Citas</h2><!-- CONTENIDO DE LA WEB -->
                 <div><label><input type="radio" name="consultaDias" onClick="cargarCitasDietista();" value="1" checked="checked" /> Citas del día</label> <label><input type="radio" name="consultaDias" onClick="cargarCitasDietista();" value="2" /> Todas las citas</label></div>
-                <div id="citas" class="dietistacuerpo"></div>
+                <div id="citas" class="dietistacuerpo fondocitas listado"></div>
             </div>
             
             <div class="col-md-7">

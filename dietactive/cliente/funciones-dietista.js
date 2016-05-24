@@ -1,4 +1,95 @@
 ﻿//Funciones dietista
+function insertarAlimento()
+{
+	if($("#inalimento").val()=="" || $("#incomestible").val()=="" || $("#inenergia").val()=="" || $("#inproteinas").val()=="" || $("#inlipidos").val()=="" || $("#inags").val()=="" || $("#inagm").val()=="" || $("#inagp").val()=="" || $("#incolesterol").val()=="" || $("#inglucidos").val()=="" || $("#infibra").val()=="" || $("#insodio").val()=="" || $("#inpotasio").val()=="" || $("#incalcio").val()=="" || $("#inmagnesio").val()=="" || $("#infosforo").val()=="" || $("#inhierro").val()=="" || $("#inzinc").val()=="" || $("#inyodo").val()=="" || $("#inb1").val()=="" || $("#inb2").val()=="" || $("#inb6").val()=="" || $("#inb12").val()=="" || $("#inb9").val()=="" || $("#inb3").val()=="" || $("#inc").val()=="" || $("#ina").val()=="" || $("#ind").val()=="" || $("#ine").val()=="")
+	{
+		
+		alert("Hay algún campo vacío o con error. Por favor, rellena todos los campos correctamene.");
+		
+	}
+	else
+	{
+		$.post("../servidor/dietista_insertar_alimento.php",{
+			idtipoalimento: $("#intiposalimentos").val(),
+			alimento: $("#inalimento").val(),
+			comestible: $("#incomestible").val(),
+			energia: $("#inenergia").val(),
+			proteinas: $("#inproteinas").val(),
+			lipidos: $("#inlipidos").val(),
+			ags: $("#inags").val(),
+			agm: $("#inagm").val(),
+			agp: $("#inagp").val(),
+			colesterol: $("#incolesterol").val(),
+			glucidos: $("#inglucidos").val(),
+			fibra: $("#infibra").val(),
+			sodio: $("#insodio").val(),
+			potasio: $("#inpotasio").val(),
+			calcio: $("#incalcio").val(),
+			magnesio: $("#inmagnesio").val(),
+			fosforo: $("#infosforo").val(),
+			hierro: $("#inhierro").val(),
+			zinc: $("#inzinc").val(),
+			yodo: $("#inyodo").val(),
+			b1: $("#inb1").val(),
+			b2: $("#inb2").val(),
+			b6: $("#inb6").val(),
+			b12: $("#inb12").val(),
+			b9: $("#inb9").val(),
+			b3: $("#inb3").val(),
+			c: $("#inc").val(),
+			a: $("#ina").val(),
+			d: $("#ind").val(),
+			e: $("#ine").val()
+							},
+							function(data, estado)
+							{
+								if(data=="s")
+								{
+									$("#inalimento").val("");
+									$("#incomestible").val("");
+									$("#inenergia").val("");
+									$("#inproteinas").val("");
+									$("#inlipidos").val("");
+									$("#inags").val("");
+									$("#inagm").val("");
+									$("#inagp").val("");
+									$("#incolesterol").val("");
+									$("#inglucidos").val("");
+									$("#infibra").val("");
+									$("#insodio").val("");
+									$("#inpotasio").val("");
+									$("#incalcio").val("");
+									$("#inmagnesio").val("");
+									$("#infosforo").val("");
+									$("#inhierro").val("");
+									$("#inzinc").val("");
+									$("#inyodo").val("");
+									$("#inb1").val("");
+									$("#inb2").val("");
+									$("#inb6").val("");
+									$("#inb12").val("");
+									$("#inb9").val("");
+									$("#inb3").val("");
+									$("#inc").val("");
+									$("#ina").val("");
+									$("#ind").val("");
+									$("#ine").val("");
+									muestraAlimentos();
+									alert("Insertado correctamente");
+									
+								}
+								else
+								{
+									alert(data);
+									alert("Ha ocurrido un error. Intentalo de nuevo más tarde.");
+									
+								}
+								
+							});
+	}
+}
+
+
 function actualizaAlimento(idalimento)
 {
 	if($("#alimento").val()=="" || $("#comestible").val()=="" || $("#energia").val()=="" || $("#proteinas").val()=="" || $("#lipidos").val()=="" || $("#ags").val()=="" || $("#agm").val()=="" || $("#agp").val()=="" || $("#colesterol").val()=="" || $("#glucidos").val()=="" || $("#fibra").val()=="" || $("#sodio").val()=="" || $("#potasio").val()=="" || $("#calcio").val()=="" || $("#magnesio").val()=="" || $("#fosforo").val()=="" || $("#hierro").val()=="" || $("#zinc").val()=="" || $("#yodo").val()=="" || $("#b1").val()=="" || $("#b2").val()=="" || $("#b6").val()=="" || $("#b12").val()=="" || $("#b9").val()=="" || $("#b3").val()=="" || $("#c").val()=="" || $("#a").val()=="" || $("#d").val()=="" || $("#e").val()=="")
@@ -60,6 +151,30 @@ function actualizaAlimento(idalimento)
 	}
 }
 
+function cargarTiposAlimentosInsertar()
+{
+	$.get("../servidor/consulta_tipos_alimentos.php",function(data, status)
+								{		
+									if(status=="success")
+									{
+										
+										tiposalimentos=JSON.parse(data);
+										var salida="<div class='form-group'><label>Tipo de alimento:</label><select class='form-control' id='intiposalimentos' name='tiposalimentos'>";
+										
+										for(var i=0;i<tiposalimentos.length;i++)
+										{
+											
+												salida+="<option value='"+tiposalimentos[i].id+"'>"+tiposalimentos[i].nombre+"</option>";
+											
+										}
+										salida+="</select></div>";
+										
+										$("#ponertiposalimentos").html(salida);
+										
+									}
+								});
+}
+
 function muestraModal(idalimento)
 {
 	$.post("../servidor/dietista_mostrar_alimento.php",{
@@ -107,7 +222,7 @@ function muestraModal(idalimento)
 										
 										modalAlimento+="		  <div class='row'><div class='col-md-4'><div class='form-group'><label for='comestible'>Comestible</label><input type='number' required min='0'  id='comestible' name='comestible' class='form-control' value='"+datos[0].comestible+"' /></div></div><div class='col-md-4'><div class='form-group'><label for='energia'>Energía</label><input type='number' required min='0' id='energia' name='energia' class='form-control' value='"+datos[0].energia+"' /></div></div><div class='col-md-4'><div class='form-group'><label for='proteinas'>Proteínas</label><input type='number' required min='0' step='0.01' id='proteinas' name='proteinas' class='form-control' value='"+datos[0].proteinas+"' /></div></div></div>";
 										
-										modalAlimento+="		  <div class='row'><div class='col-md-4'><div class='form-group'><label for='lipidos'>lipidos</label><input type='number' required min='0'  id='lipidos' name='lipidos' class='form-control' value='"+datos[0].lipidos+"' /></div></div><div class='col-md-4'><div class='form-group'><label for='ags'>AGS</label><input type='number' required min='0' id='ags' name='ags' class='form-control' value='"+datos[0].ags+"' /></div></div><div class='col-md-4'><div class='form-group'><label for='agm'>AGM</label><input type='number' required min='0' step='0.01' id='agm' name='agm' class='form-control' value='"+datos[0].agm+"' /></div></div></div>";
+										modalAlimento+="		  <div class='row'><div class='col-md-4'><div class='form-group'><label for='lipidos'>Lípidos</label><input type='number' required min='0'  id='lipidos' name='lipidos' class='form-control' value='"+datos[0].lipidos+"' /></div></div><div class='col-md-4'><div class='form-group'><label for='ags'>AGS</label><input type='number' required min='0' id='ags' name='ags' class='form-control' value='"+datos[0].ags+"' /></div></div><div class='col-md-4'><div class='form-group'><label for='agm'>AGM</label><input type='number' required min='0' step='0.01' id='agm' name='agm' class='form-control' value='"+datos[0].agm+"' /></div></div></div>";
 										
 										modalAlimento+="		  <div class='row'><div class='col-md-4'><div class='form-group'><label for='agp'>AGP</label><input type='number' required min='0'  id='agp' name='agp' class='form-control' value='"+datos[0].agp+"' /></div></div><div class='col-md-4'><div class='form-group'><label for='colesterol'>Colesterol</label><input type='number' required min='0' id='colesterol' name='colesterol' class='form-control' value='"+datos[0].colesterol+"' /></div></div><div class='col-md-4'><div class='form-group'><label for='glucidos'>Glúcidos</label><input type='number' required min='0' step='0.01' id='glucidos' name='glucidos' class='form-control' value='"+datos[0].glucidos+"' /></div></div></div>";
 										
@@ -154,13 +269,14 @@ function borrarAlimento(idalimento)
 	if(confirm("¿Deseas borrar este alimento?"))
 	{
 		$.post("../servidor/dietista_borrar_alimento.php",{
-			texto: $("#buscaralimento").val()
+			idalimento: idalimento
 							},
 							function(data, estado)
 							{
 								if(data=="s")
 								{
 									alert("Borrado correctamente.");
+									muestraAlimentos();
 								}
 							});
 	}
@@ -282,7 +398,7 @@ function cargarCitasDietista()
 										var dia=poneFecha((datos[i].cita.split(" "))[0]);
 										var hora=(datos[i].cita.split(" "))[1];
 										salida+="<div class='row citas'>";
-										salida+="<div class='row'><div class='col-sm-2'><button class='btn btn-info' onClick='datosClienteBuscado("+datos[i].idcliente+")' > <span class='glyphicon glyphicon-eye-open'></span> </button></div><div class='col-sm-8'> </div><div class='col-sm-2'><button class='btn btn-danger' onClick='dietistaEliminarCita("+datos[i].idcliente+",\""+datos[i].cita+"\",\""+datos[i].email+"\")'> <span class='glyphicon glyphicon-remove-sign' ></span> </button></div></div><div class='row'><div class='col-md-12'><b>"+dia+" "+hora+"</b></div></div><div class='row'><div class='col-md-12'>"+datos[i].nombre+"</div></div><div class='row oculto'><div class='col-md-12'>"+datos[i].tipocita+"</div></div>";
+										salida+="<div class='row'><div class='col-sm-2'><button class='btn btn-info' onClick='datosClienteBuscado("+datos[i].idcliente+")' > <span class='glyphicon glyphicon-eye-open'></span> </button></div><div class='col-sm-7'> </div><div class='col-sm-2'><button class='btn btn-danger' onClick='dietistaEliminarCita("+datos[i].idcliente+",\""+datos[i].cita+"\",\""+datos[i].email+"\")'> <span class='glyphicon glyphicon-remove-sign' ></span> </button></div></div><div class='row'><div class='col-md-11'><b>"+dia+" "+hora+"</b></div></div><div class='row'><div class='col-md-12'>"+datos[i].nombre+"</div></div><div class='row oculto'><div class='col-md-11'>"+datos[i].tipocita+"</div></div>";
 										salida+="</div>";
 										//salida+="<hr />";
 									}

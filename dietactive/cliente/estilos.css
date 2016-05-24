@@ -7,7 +7,7 @@ h1,h2,h3,h4,h5,h6{
 .listado{
 	overflow:scroll;
 	height:auto;
-	max-height:400px;
+	max-height:500px;
 	background-color:#84BCFB;
 	margin-top:6px;
 	border-radius:4px;
@@ -69,11 +69,13 @@ h1,h2,h3,h4,h5,h6{
 
 .citas{
 	background-color:#fff;
-	margin-bottom:8px;
+	margin-bottom:8px !important;
 	border: 1px solid #777674;
 	padding:4px;
 	border-radius:4px;
 	text-align:center;
+	margin:auto;
+	width:95%;
 }
 
 .fondotabla{
