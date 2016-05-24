@@ -1,4 +1,106 @@
 ﻿//Funciones dietista
+function actualizaAlimento(idalimento)
+{
+	
+}
+
+function muestraModal(idalimento)
+{
+	$.post("../servidor/dietista_mostrar_alimento.php",{
+			idalimento: idalimento
+							},
+							function(data, estado)
+							{
+								datos=JSON.parse(data);
+								
+								$.get("../servidor/consulta_tipos_alimentos.php",function(data, status)
+								{		
+									if(status=="success")
+									{
+										
+										tiposalimentos=JSON.parse(data);
+										var salida="<select class='form-control' id='tiposalimentos' name='tiposalimentos'>";
+										
+										for(var i=0;i<tiposalimentos.length;i++)
+										{
+											if(tiposalimentos[i].id==datos[0].idtipoalimento)
+											{
+												salida+="<option selected='selected' value='"+tiposalimentos[i].id+"'>"+tiposalimentos[i].nombre+"</option>";
+											}
+											else
+											{
+												salida+="<option value='"+tiposalimentos[i].id+"'>"+tiposalimentos[i].nombre+"</option>";
+											}
+										}
+										salida+="</select>";
+										
+										var modalAlimento="";
+										
+										modalAlimento+= "<div id='modalAlimento' class='modal fade' role='dialog'>";
+										modalAlimento+="  <div class='modal-dialog'>";
+											<!-- Modal content-->
+										modalAlimento+="	<div class='modal-content'>";
+										modalAlimento+="	  <div class='modal-header'>";
+										modalAlimento+="		<button type='button' class='close' data-dismiss='modal'>&times;</button>";
+										modalAlimento+="		<h4 class='modal-title'>Alimento</h4>";
+										modalAlimento+="	  </div>";
+										modalAlimento+="	  <div class='modal-body'>";
+										modalAlimento+="		  <form role='form' name='formActualizarAlimento' method='post'>";
+										modalAlimento+="		  <input id='alimento' class='form-control' value='"+datos[0].alimento+"' />"; //IMPORTANTE
+										modalAlimento+=salida;
+										modalAlimento+="		  </div>";
+										modalAlimento+="		  <div class='modal-footer'>";
+										modalAlimento+="			<button type='submit' id='buttomdieta' class='btn btn-success' data-dismiss='modal' disabled='true' onClick='actualizaAlimento("+idalimento+");'><span class='glyphicon glyphicon-check'></span> Enviar</button>";
+										
+										modalAlimento+="			<button type='button' class='btn btn-danger btn-default' data-dismiss='modal'><span class='glyphicon glyphicon-remove'></span> Cancelar</button>";
+										modalAlimento+="		  </form>";
+										modalAlimento+="	  </div>";
+										modalAlimento+="	</div>";
+										
+										modalAlimento+="  </div>";
+										modalAlimento+="</div>";
+										$("#modalAlimentos").html(modalAlimento);
+										$("#modalAlimento").modal("show");
+										
+										
+									}
+								});
+								
+								
+								
+							});
+}
+
+
+
+function muestraAlimentos()
+{
+	$.post("../servidor/dietista_buscar_alimentos.php",{
+			texto: $("#buscaralimento").val()
+							},
+							function(data, estado)
+							{
+								if(data!="]")
+								{
+									datos=JSON.parse(data);
+									salida="";
+									for(var i=0;i<datos.length;i++)
+									{
+										salida+="<div class='row fondoalimentos'><div class='col-sm-3'><button class='btn btn-info' onClick='muestraModal("+datos[i].id+");'><span class='glyphicon glyphicon-eye-open'></span></button></div><div class='col-lg-9'>"+datos[i].alimento+"</div></div>";
+										
+									}
+									$("#buscador").html(salida);
+								}
+								else
+								{
+									salida="<div class='row fondoclientes'>No hay resultados.</div>";
+									$("#buscador").html(salida);
+								}
+							});
+	
+}
+
+
 function buscarClientes()
 {
 	$.post("../servidor/dietista_buscar_clientes.php",{
@@ -85,7 +187,7 @@ function cargarCitasDietista()
 										var dia=poneFecha((datos[i].cita.split(" "))[0]);
 										var hora=(datos[i].cita.split(" "))[1];
 										salida+="<div class='row citas'>";
-										salida+="<div class='row'><div class='col-sm-2'><button class='btn btn-info' onClick='datosClienteBuscado("+datos[i].idcliente+")' > <span class='glyphicon glyphicon-eye-open'></span> </button></div><div class='col-sm-8'> </div><div class='col-sm-2'><button class='btn btn-danger' onClick='dietistaEliminarCita("+datos[i].idcliente+",\""+datos[i].cita+"\",\""+datos[i].email+"\")'> <span class='glyphicon glyphicon-remove-sign' ></span> </button></div></div><div class='row'><div class='col-md-12'><b>"+dia+" "+hora+"</b></div></div><div class='row'><div class='col-md-12'>"+datos[i].nombre+"</div></div><div class='row'><div class='col-md-12'>"+datos[i].tipocita+"</div></div>";
+										salida+="<div class='row'><div class='col-sm-2'><button class='btn btn-info' onClick='datosClienteBuscado("+datos[i].idcliente+")' > <span class='glyphicon glyphicon-eye-open'></span> </button></div><div class='col-sm-8'> </div><div class='col-sm-2'><button class='btn btn-danger' onClick='dietistaEliminarCita("+datos[i].idcliente+",\""+datos[i].cita+"\",\""+datos[i].email+"\")'> <span class='glyphicon glyphicon-remove-sign' ></span> </button></div></div><div class='row'><div class='col-md-12'><b>"+dia+" "+hora+"</b></div></div><div class='row'><div class='col-md-12'>"+datos[i].nombre+"</div></div><div class='row oculto'><div class='col-md-12'>"+datos[i].tipocita+"</div></div>";
 										salida+="</div>";
 										//salida+="<hr />";
 									}

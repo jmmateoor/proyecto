@@ -61,7 +61,7 @@ function consultaCitaAsignada()
 									var dietista=datos[0].nombredietista + " " + datos[0].apellidosdietista;
 									
 									
-									var texto="<div class='panel panel-primary'><div class='panel-heading'>Tu Cita</div><div class='panel-body'><b>Fecha:</b> <span id='dia'>"+dia+"</span><br/><hr/><b>Hora:</b> <span id='hora'>"+hora+"</span><br/><hr/><b>Tipo de cita:</b> "+tipocita+"<br/><hr/><b>Especialista:</b> "+ dietista+"</div><div class='panel-footer'><p align='right'><button class='btn btn-danger' onClick='eliminarCita("+iddietista+");'><span class='glyphicon glyphicon-remove'></span> Eliminar cita</button></p></div></div></div>";
+									var texto="<div class='panel panel-primary'><div class='panel-heading'>Tu Cita</div><div class='panel-body'><b>Fecha:</b> <span id='dia'>"+dia+"</span><br/><hr/><b>Hora:</b> <span id='hora'>"+hora+"</span><br/><hr/><b>Especialista:</b> "+ dietista+"</div><div class='panel-footer'><p align='right'><button class='btn btn-danger' onClick='eliminarCita("+iddietista+");'><span class='glyphicon glyphicon-remove'></span> Eliminar cita</button></p></div></div></div>";
 									$("#contenidocitas").html(texto);
 								}
 							});
@@ -266,7 +266,7 @@ function consultaDietistas()
 				{
 					salida+="<option value='"+dietistas[i].id+"'>"+dietistas[i].nombre+"</option>";
 				}
-				salida+="</select></div><div class='form-group'><label for='dia'>Día</label><select class='form-control' id='dia' name='dia' ><option value='0'>-- Selecciona --</option></select></div><div class='form-group'><label for='hora'>Hora</label><select class='form-control' id='hora' name='hora' ><option value='0'>-- Selecciona --</option></select></div><div class='form-group'><label for='tipo'>Tipo de cita</label><select class='form-control' id='tipo' name='tipo' ><option value='Presencial'>Presencial</option><option value='Skype'>Skype</option></select></div><button class='btn btn-success' onClick='asignarCita();'>Aceptar</button>";
+				salida+="</select></div><div class='form-group'><label for='dia'>Día</label><select class='form-control' id='dia' name='dia' ><option value='0'>-- Selecciona --</option></select></div><div class='form-group'><label for='hora'>Hora</label><select class='form-control' id='hora' name='hora' ><option value='0'>-- Selecciona --</option></select></div><div class='form-group oculto'><label for='tipo'>Tipo de cita</label><select class='form-control' id='tipo' name='tipo' ><option value='Presencial'>Presencial</option><option value='Skype'>Skype</option></select></div><button class='btn btn-success' onClick='asignarCita();'>Aceptar</button>";
 				$("#contenidocitas").html(salida);
 			}
 		});
@@ -696,12 +696,12 @@ function actualizaActividad(id)
 								if(datos=='s')
 								{
 									$("#intercambios").addClass("efecto");
-									variable = setTimeout(efecto,2100,"intercambios");
+									variable = setTimeout(efecto,4100,"intercambios");
 									
 									
 									$("#actf").css("border-radius","6px");
 									$("#actf").addClass("efecto");
-									variable5 = setTimeout(efecto,2100,"actf");
+									variable5 = setTimeout(efecto,4100,"actf");
 									
 									cargaActividadCliente();
 									cargarIntercambios(id);
@@ -775,7 +775,7 @@ function actualizarPatologias(id)
 								{
 									$("#patologias").css("border-radius","6px");
 									$("#patologias").addClass("efecto");
-									variable = setTimeout(efecto,2100,"patologias");
+									variable = setTimeout(efecto,4100,"patologias");
 									cargaPatologiasCliente(id);
 								}
 								else
@@ -811,7 +811,7 @@ function cargaTelefono()
 				var objeto = JSON.parse(data);
 				$("#telefono").css("border-radius","6px");
 				$("#telefono").addClass("efecto");
-				variable = setTimeout(efecto,2100,"telefono");
+				variable = setTimeout(efecto,4100,"telefono");
 				$("#telefono").html(objeto[0].telefono);
 			});
 }
@@ -850,7 +850,7 @@ function cargaCp()
 				var objeto = JSON.parse(data);
 				$("#cp").css("border-radius","6px");
 				$("#cp").addClass("efecto");
-				variable = setTimeout(efecto,2100,"telefono");
+				variable = setTimeout(efecto,4100,"telefono");
 				$("#cp").html(objeto[0].cp);
 			});
 }
@@ -923,7 +923,7 @@ function actualizarAltura(id)
 								{
 									
 									$("#intercambios").addClass("efecto");
-									variable = setTimeout(efecto,2100,"intercambios");
+									variable = setTimeout(efecto,4100,"intercambios");
 									cargarIntercambios(id);
 									cargaAlturaPesoDes();
 									$("#actaltura").val("");
@@ -943,16 +943,16 @@ function cargaAlturaPesoDes()
 				
 				$("#altura").css("border-radius","6px");
 				$("#altura").addClass("efecto");
-				variable = setTimeout(efecto,2100,"altura");
+				variable = setTimeout(efecto,4100,"altura");
 				
 				$("#pesodeseable").css("border-radius","6px");
 				$("#pesodeseable").addClass("efecto");
-				variable2 = setTimeout(efecto,2100,"pesodeseable");
+				variable2 = setTimeout(efecto,4100,"pesodeseable");
 				
 				
 				$("#geet").css("border-radius","6px");
 				$("#geet").addClass("efecto");
-				variable3 = setTimeout(efecto,2100,"geet");
+				variable3 = setTimeout(efecto,4100,"geet");
 				
 				
 				
@@ -970,7 +970,7 @@ function cargaGeet()
 				
 				$("#geet").css("border-radius","6px");
 				$("#geet").addClass("efecto");
-				variable3 = setTimeout(efecto,2100,"geet");
+				variable3 = setTimeout(efecto,4100,"geet");
 				
 				$("#geet").html(objeto[0].geet);
 			});
@@ -1021,7 +1021,7 @@ function actualizarPeso(id)
 								if(datos=='s')
 								{
 									$("#intercambios").addClass("efecto");
-									variable = setTimeout(efecto,2100,"intercambios");
+									variable = setTimeout(efecto,4100,"intercambios");
 									cargarIntercambios(id);
 									cargaPeso();
 									graficaPeso(id);
@@ -1042,11 +1042,11 @@ function cargaPeso()
 				
 				$("#peso").css("border-radius","6px");
 				$("#peso").addClass("efecto");
-				variable = setTimeout(efecto,2100,"peso");
+				variable = setTimeout(efecto,4100,"peso");
 				
 				$("#geet").css("border-radius","6px");
 				$("#geet").addClass("efecto");
-				variable2 = setTimeout(efecto,2100,"geet");
+				variable2 = setTimeout(efecto,4100,"geet");
 				
 				
 				$("#peso").html(objeto[0].peso);
@@ -1625,7 +1625,7 @@ function cargarIntercambios(idcliente)
 }
 
 function ir_a(elemento){
-    var posicion = $(elemento).offset().top-120;
+    var posicion = $(elemento).offset().top-150;
     $('html,body').animate({scrollTop: posicion}, 1300);
     return;
 }
