@@ -115,7 +115,8 @@ window.onload=function(){
                     <ul class="nav navbar-nav">
                       <li><a href="dietista_citas.php"><span class="glyphicon glyphicon-calendar"></span> Citas</a></li>
                       <li class="active"><a href="dietista_clientes.php"><span class="glyphicon glyphicon-filter"></span> Clientes</a></li>
-                      <li><a href="#"><span class="glyphicon glyphicon-list"></span> Alimentos por intercambio</a></li>
+                      <li><a href="dietista_alimentos.php"><span class="glyphicon glyphicon-list"></span> Alimentos</a></li>
+                      <li><a href="dietista_blog.php"><span class="glyphicon glyphicon-cloud"></span> Blog</a></li>
                     </ul>
                   </div>
                 </nav>
@@ -180,7 +181,7 @@ window.onload=function(){
             	<h2 class="datospers">Clientes</h2><!-- CONTENIDO DE LA WEB -->
                 <h3>Buscar clientes (nombre y/o apellidos):</h3>
                 <div class="inner-addon left-addon"><i class="glyphicon glyphicon-search"></i> <input class="form-control buscadordeclientes" type="text" id="buscarcliente" onKeyUp="buscarClientes()" /></div>
-                <div id="buscador" class="dietistacuerpo"></div>
+                <div id="buscador" class="dietistacuerpo listado"></div>
             </div>
             
             <div class="col-md-7">

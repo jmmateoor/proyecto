@@ -114,8 +114,9 @@ window.onload=function(){
                   <div class="collapse navbar-collapse navbar-ex1-collapse">
                     <ul class="nav navbar-nav">
                       <li><a href="dietista_citas.php"><span class="glyphicon glyphicon-calendar"></span> Citas</a></li>
-                      <li class="active"><a href="dietista_clientes.php"><span class="glyphicon glyphicon-filter"></span> Clientes</a></li>
-                      <li><a href="#"><span class="glyphicon glyphicon-list"></span> Alimentos por intercambio</a></li>
+                      <li><a href="dietista_clientes.php"><span class="glyphicon glyphicon-filter"></span> Clientes</a></li>
+                      <li class="active"><a href="dietista_alimentos.php"><span class="glyphicon glyphicon-list"></span> Alimentos</a></li>
+                      <li><a href="dietista_blog.php"><span class="glyphicon glyphicon-cloud"></span> Blog</a></li>
                     </ul>
                   </div>
                 </nav>

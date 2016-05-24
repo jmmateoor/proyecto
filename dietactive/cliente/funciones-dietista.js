@@ -1,7 +1,63 @@
 ﻿//Funciones dietista
 function actualizaAlimento(idalimento)
 {
-	
+	if($("#alimento").val()=="" || $("#comestible").val()=="" || $("#energia").val()=="" || $("#proteinas").val()=="" || $("#lipidos").val()=="" || $("#ags").val()=="" || $("#agm").val()=="" || $("#agp").val()=="" || $("#colesterol").val()=="" || $("#glucidos").val()=="" || $("#fibra").val()=="" || $("#sodio").val()=="" || $("#potasio").val()=="" || $("#calcio").val()=="" || $("#magnesio").val()=="" || $("#fosforo").val()=="" || $("#hierro").val()=="" || $("#zinc").val()=="" || $("#yodo").val()=="" || $("#b1").val()=="" || $("#b2").val()=="" || $("#b6").val()=="" || $("#b12").val()=="" || $("#b9").val()=="" || $("#b3").val()=="" || $("#c").val()=="" || $("#a").val()=="" || $("#d").val()=="" || $("#e").val()=="")
+	{
+		alert("Hay algún campo vacío o con error. Por favor, rellena todos los campos correctamene.");
+		
+	}
+	else
+	{
+		$.post("../servidor/dietista_actualizar_alimento.php",{
+			idalimento: idalimento,
+			idtipoalimento: $("#tiposalimentos").val(),
+			alimento: $("#alimento").val(),
+			comestible: $("#comestible").val(),
+			energia: $("#energia").val(),
+			proteinas: $("#proteinas").val(),
+			lipidos: $("#lipidos").val(),
+			ags: $("#ags").val(),
+			agm: $("#agm").val(),
+			agp: $("#agp").val(),
+			colesterol: $("#colesterol").val(),
+			glucidos: $("#glucidos").val(),
+			fibra: $("#fibra").val(),
+			sodio: $("#sodio").val(),
+			potasio: $("#potasio").val(),
+			calcio: $("#calcio").val(),
+			magnesio: $("#magnesio").val(),
+			fosforo: $("#fosforo").val(),
+			hierro: $("#hierro").val(),
+			zinc: $("#zinc").val(),
+			yodo: $("#yodo").val(),
+			b1: $("#b1").val(),
+			b2: $("#b2").val(),
+			b6: $("#b6").val(),
+			b12: $("#b12").val(),
+			b9: $("#b9").val(),
+			b3: $("#b3").val(),
+			c: $("#c").val(),
+			a: $("#a").val(),
+			d: $("#d").val(),
+			e: $("#e").val()
+							},
+							function(data, estado)
+							{
+								if(data=="s")
+								{
+									$("#modalAlimento").modal("hide");
+									alert("Actualizado correctamente");
+									
+								}
+								else
+								{
+									$("#modalAlimento").modal("hide");
+									alert("Ha ocurrido un error. Intentalo de nuevo más tarde.");
+									
+								}
+								
+							});
+	}
 }
 
 function muestraModal(idalimento)
@@ -19,7 +75,7 @@ function muestraModal(idalimento)
 									{
 										
 										tiposalimentos=JSON.parse(data);
-										var salida="<select class='form-control' id='tiposalimentos' name='tiposalimentos'>";
+										var salida="<div class='form-group'><label>Tipo de alimento:</label><select class='form-control' id='tiposalimentos' name='tiposalimentos'>";
 										
 										for(var i=0;i<tiposalimentos.length;i++)
 										{
@@ -32,7 +88,7 @@ function muestraModal(idalimento)
 												salida+="<option value='"+tiposalimentos[i].id+"'>"+tiposalimentos[i].nombre+"</option>";
 											}
 										}
-										salida+="</select>";
+										salida+="</select></div>";
 										
 										var modalAlimento="";
 										
@@ -46,11 +102,34 @@ function muestraModal(idalimento)
 										modalAlimento+="	  </div>";
 										modalAlimento+="	  <div class='modal-body'>";
 										modalAlimento+="		  <form role='form' name='formActualizarAlimento' method='post'>";
-										modalAlimento+="		  <input id='alimento' class='form-control' value='"+datos[0].alimento+"' />"; //IMPORTANTE
+										modalAlimento+="		  <div class='form-group'><label for='alimento'>Nombre</label><input id='alimento' name='alimento' class='form-control' value='"+datos[0].alimento+"' /></div>"; //IMPORTANTE
 										modalAlimento+=salida;
+										
+										modalAlimento+="		  <div class='row'><div class='col-md-4'><div class='form-group'><label for='comestible'>Comestible</label><input type='number' required min='0'  id='comestible' name='comestible' class='form-control' value='"+datos[0].comestible+"' /></div></div><div class='col-md-4'><div class='form-group'><label for='energia'>Energía</label><input type='number' required min='0' id='energia' name='energia' class='form-control' value='"+datos[0].energia+"' /></div></div><div class='col-md-4'><div class='form-group'><label for='proteinas'>Proteínas</label><input type='number' required min='0' step='0.01' id='proteinas' name='proteinas' class='form-control' value='"+datos[0].proteinas+"' /></div></div></div>";
+										
+										modalAlimento+="		  <div class='row'><div class='col-md-4'><div class='form-group'><label for='lipidos'>lipidos</label><input type='number' required min='0'  id='lipidos' name='lipidos' class='form-control' value='"+datos[0].lipidos+"' /></div></div><div class='col-md-4'><div class='form-group'><label for='ags'>AGS</label><input type='number' required min='0' id='ags' name='ags' class='form-control' value='"+datos[0].ags+"' /></div></div><div class='col-md-4'><div class='form-group'><label for='agm'>AGM</label><input type='number' required min='0' step='0.01' id='agm' name='agm' class='form-control' value='"+datos[0].agm+"' /></div></div></div>";
+										
+										modalAlimento+="		  <div class='row'><div class='col-md-4'><div class='form-group'><label for='agp'>AGP</label><input type='number' required min='0'  id='agp' name='agp' class='form-control' value='"+datos[0].agp+"' /></div></div><div class='col-md-4'><div class='form-group'><label for='colesterol'>Colesterol</label><input type='number' required min='0' id='colesterol' name='colesterol' class='form-control' value='"+datos[0].colesterol+"' /></div></div><div class='col-md-4'><div class='form-group'><label for='glucidos'>Glúcidos</label><input type='number' required min='0' step='0.01' id='glucidos' name='glucidos' class='form-control' value='"+datos[0].glucidos+"' /></div></div></div>";
+										
+										
+										modalAlimento+="		  <div class='row'><div class='col-md-4'><div class='form-group'><label for='fibra'>Fibra</label><input type='number' required min='0'  id='fibra' name='fibra' class='form-control' value='"+datos[0].fibra+"' /></div></div><div class='col-md-4'><div class='form-group'><label for='sodio'>Sodio</label><input type='number' required min='0' id='sodio' name='sodio' class='form-control' value='"+datos[0].sodio+"' /></div></div><div class='col-md-4'><div class='form-group'><label for='potasio'>Potasio</label><input type='number' required min='0' step='0.01' id='potasio' name='potasio' class='form-control' value='"+datos[0].potasio+"' /></div></div></div>";
+										
+										modalAlimento+="		  <div class='row'><div class='col-md-4'><div class='form-group'><label for='calcio'>Calcio</label><input type='number' required min='0'  id='calcio' name='calcio' class='form-control' value='"+datos[0].calcio+"' /></div></div><div class='col-md-4'><div class='form-group'><label for='magnesio'>Magnesio</label><input type='number' required min='0' id='magnesio' name='magnesio' class='form-control' value='"+datos[0].magnesio+"' /></div></div><div class='col-md-4'><div class='form-group'><label for='fosforo'>Fósforo</label><input type='number' required min='0' step='0.01' id='fosforo' name='fosforo' class='form-control' value='"+datos[0].fosforo+"' /></div></div></div>";
+										
+										modalAlimento+="		  <div class='row'><div class='col-md-4'><div class='form-group'><label for='hierro'>Hierro</label><input type='number' required min='0'  id='hierro' name='hierro' class='form-control' value='"+datos[0].hierro+"' /></div></div><div class='col-md-4'><div class='form-group'><label for='zinc'>Zinc</label><input type='number' required min='0' id='zinc' name='zinc' class='form-control' value='"+datos[0].zinc+"' /></div></div><div class='col-md-4'><div class='form-group'><label for='yodo'>Yodo</label><input type='number' required min='0' step='0.01' id='yodo' name='yodo' class='form-control' value='"+datos[0].yodo+"' /></div></div></div>";
+										
+										modalAlimento+="		  <div class='row'><div class='col-md-4'><div class='form-group'><label for='b1'>B1</label><input type='number' required min='0'  id='b1' name='b1' class='form-control' value='"+datos[0].b1+"' /></div></div><div class='col-md-4'><div class='form-group'><label for='b2'>B2</label><input type='number' required min='0' id='b2' name='b2' class='form-control' value='"+datos[0].b2+"' /></div></div><div class='col-md-4'><div class='form-group'><label for='b6'>B6</label><input type='number' required min='0' step='0.01' id='b6' name='b6' class='form-control' value='"+datos[0].b6+"' /></div></div></div>";
+										
+										modalAlimento+="		  <div class='row'><div class='col-md-4'><div class='form-group'><label for='b12'>B12</label><input type='number' required min='0'  id='b12' name='b12' class='form-control' value='"+datos[0].b12+"' /></div></div><div class='col-md-4'><div class='form-group'><label for='b9'>B9</label><input type='number' required min='0' id='b9' name='b9' class='form-control' value='"+datos[0].b9+"' /></div></div><div class='col-md-4'><div class='form-group'><label for='b3'>B3</label><input type='number' required min='0' step='0.01' id='b3' name='b3' class='form-control' value='"+datos[0].b3+"' /></div></div></div>";
+										
+										modalAlimento+="		  <div class='row'><div class='col-md-4'><div class='form-group'><label for='c'>C</label><input type='number' required min='0'  id='c' name='c' class='form-control' value='"+datos[0].c+"' /></div></div><div class='col-md-4'><div class='form-group'><label for='a'>A</label><input type='number' required min='0' id='a' name='a' class='form-control' value='"+datos[0].a+"' /></div></div><div class='col-md-4'><div class='form-group'><label for='d'>D</label><input type='number' required min='0' step='0.01' id='d' name='d' class='form-control' value='"+datos[0].d+"' /></div></div></div>";
+										
+										modalAlimento+="		  <div class='row'><div class='col-md-4'><div class='form-group'><label for='e'>E</label><input type='number' required min='0'  id='e' name='e' class='form-control' value='"+datos[0].e+"' /></div></div></div>";
+										
+										
 										modalAlimento+="		  </div>";
 										modalAlimento+="		  <div class='modal-footer'>";
-										modalAlimento+="			<button type='submit' id='buttomdieta' class='btn btn-success' data-dismiss='modal' disabled='true' onClick='actualizaAlimento("+idalimento+");'><span class='glyphicon glyphicon-check'></span> Enviar</button>";
+										modalAlimento+="			<button type='submit' id='buttomActualizar' class='btn btn-success' onClick='actualizaAlimento("+idalimento+");'><span class='glyphicon glyphicon-check'></span> Actualizar</button>";
 										
 										modalAlimento+="			<button type='button' class='btn btn-danger btn-default' data-dismiss='modal'><span class='glyphicon glyphicon-remove'></span> Cancelar</button>";
 										modalAlimento+="		  </form>";
@@ -62,13 +141,29 @@ function muestraModal(idalimento)
 										$("#modalAlimentos").html(modalAlimento);
 										$("#modalAlimento").modal("show");
 										
-										
 									}
 								});
 								
 								
 								
 							});
+}
+
+function borrarAlimento(idalimento)
+{
+	if(confirm("¿Deseas borrar este alimento?"))
+	{
+		$.post("../servidor/dietista_borrar_alimento.php",{
+			texto: $("#buscaralimento").val()
+							},
+							function(data, estado)
+							{
+								if(data=="s")
+								{
+									alert("Borrado correctamente.");
+								}
+							});
+	}
 }
 
 
@@ -86,7 +181,7 @@ function muestraAlimentos()
 									salida="";
 									for(var i=0;i<datos.length;i++)
 									{
-										salida+="<div class='row fondoalimentos'><div class='col-sm-3'><button class='btn btn-info' onClick='muestraModal("+datos[i].id+");'><span class='glyphicon glyphicon-eye-open'></span></button></div><div class='col-lg-9'>"+datos[i].alimento+"</div></div>";
+										salida+="<div class='row fondoalimentos'><div class='col-sm-2'><button class='btn btn-info' onClick='muestraModal("+datos[i].id+");'><span class='glyphicon glyphicon-eye-open'></span></button></div><div class='col-lg-8'>"+datos[i].alimento+"</div><div class='col-sm-2'><button class='btn btn-danger' onClick='borrarAlimento("+datos[i].id+")'><span class='glyphicon glyphicon-remove-sign'></span></button></div></div>";
 										
 									}
 									$("#buscador").html(salida);

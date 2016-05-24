@@ -84,6 +84,8 @@ function clienteLogin()
                       <li><a style="cursor:pointer;" class="navegacion" onClick="principal('quienessomos')">Quiénes Somos</a></li>
                       <li><a style="cursor:pointer;" class="navegacion" onClick="principal('servicios')">Servicios</a></li>
                       <li><a style="cursor:pointer;" class="navegacion" onClick="principal('consejos')">Consejos</a></li>
+                      <li><a href="clientelogin.php" class="navegacion">Área cliente</a></li>
+                      <li><a href="dietistalogin.php" class="navegacion">Área dietista</a></li>
                     </ul>
                   </div>
                 </nav>
