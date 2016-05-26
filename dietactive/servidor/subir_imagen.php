@@ -69,7 +69,7 @@ if (isset($_FILES["file"]))
     else
     {
 		$date = date("d-m-Y-H:i:s");
-        $nombreruta=rand(0,9999999999999999).$nombre;
+        $nombreruta=rand(0,99999999).$nombre;
         $src = $carpeta.$nombreruta;
         move_uploaded_file($ruta_provisional, $src);
 		

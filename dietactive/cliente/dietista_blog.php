@@ -71,19 +71,39 @@ $(function(){
                 processData: false,
                 success: function(data)
                 {
-					datos=JSON.parse(data);
-					if(datos[0].ok==1)
-					{
-						$("#respuesta1").html(datos[0].nombre);
-						$("#respuesta2").html("<img width='230px' src='../servidor/imagenes/"+datos[0].ruta+"' />");
-						estadofichero=true;
-						//alert(nombrearchivo[nombrearchivo.length-1]);
-					}
-					else
-					{
-						$("#respuesta2").html(datos[0].error);
+					if (/^[\],:{}\s]*$/.test(data.replace(/\\["\\\/bfnrtu]/g, '@').
+					replace(/"[^"\\\n\r]*"|true|false|null|-?\d+(?:\.\d*)?(?:[eE][+\-]?\d+)?/g, ']').
+					replace(/(?:^|:|,)(?:\s*\[)+/g, ''))) {
+					
+					  //the json is ok
+						  datos=JSON.parse(data);
+						  
+						if(datos[0].ok==1)
+						{
+							
+							$("#respuesta1").html(datos[0].nombre);
+							$("#respuesta2").html("<img width='230px' src='../servidor/imagenes/"+datos[0].ruta+"' />");
+							
+							$("#fichero2").html("");
+							
+							$("#rutaimagen").html(datos[0].ruta);
+							
+							estadofichero=true;
+							//alert(nombrearchivo[nombrearchivo.length-1]);
+						}
+						else
+						{
+							$("#respuesta2").html("El fichero es demasiado grande.");
+							estadofichero=false;
+						}
+					
+					}else{
+						$("#respuesta1").html("");
+					  $("#respuesta2").html("El fichero es demasiado grande.");
 						estadofichero=false;
 					}
+					
+					
                 }
             });
         });
@@ -212,7 +232,7 @@ $(function(){
         	<div class="col-md-5">
             	<h2 class="datospers">Entradas al blog</h2><!-- CONTENIDO DE LA WEB -->
                 <h3>Buscar entrada:</h3>
-                <div class="inner-addon left-addon"><i class="glyphicon glyphicon-search"></i> <input class="form-control " type="text" id=" " onKeyUp=" " /></div>
+                <div class="inner-addon left-addon"><i class="glyphicon glyphicon-search"></i> <input class="form-control " type="text" id="buscadorentradas" onKeyUp="buscarEntradas();" /></div>
                 <div id="buscador" class="dietistacuerpo listado"></div>
             </div>
             
@@ -222,20 +242,23 @@ $(function(){
                 <div class="form-group"><label for="titulo">Título:</label><input type="text" id="titulo" name="titulo" class="form-control" required maxlength="100" /><span id="titulo2" class="error"></span></div>
                 
                 <span id="listacategorias"></span>
-                
+                <span id="categoria2" class="error"></span>
                 <div class="form-group">
                 <label class="btn btn-default btn-file">Seleccionar archivo
                 <input type="file" id="archivo" name="file" style="display: none;">
                 </label>
                 <div id="respuesta1"></div>
   				<div class="cuadroimagen" id="respuesta2"></div>
+                <span id="fichero2" class="error"></span>
                 </div>
                 <div class="form-group"><label for="textoentrada">Texto:</label><textarea type="text" id="textoentrada" name="textoentrada" class="form-control" required maxlength="250" rows="10" cols="50" onKeyUp="cuentaCaracteres();" onChange="cuentaCaracteres();" onMouseUp="cuentaCaracteres();" onBlur="cuentaCaracteres();"></textarea><span id="textoentrada2">0</span>/250</div>
                 
-                <div class="form-group"><label for="enlace">Enlace vídeo de youtube:</label><input type="text" id="enlace" name="enlace" class="form-control" required maxlength="200" /><span id="titulo2" class="error"></span></div>
+                <span id="textoentrada3" class="error"></span>
+                
+                <div class="form-group"><label for="enlace">Enlace vídeo de youtube:</label><input type="text" id="enlace" name="enlace" class="form-control" required maxlength="200" /></div>
                 
                 
-                <div class='row'><button type='button' id='buttomInsertarEntrada' class='btn btn-success' onClick='publicarEntrada();'><span class='glyphicon glyphicon-check'></span> Publicar</button> <button type='reset' class='btn btn-default'><span class='glyphicon glyphicon-erase'></span> Limpiar</button></div>
+                <div class='row'><button type='button' id='buttomInsertarEntrada' class='btn btn-success' onClick='publicarEntrada();'><span class='glyphicon glyphicon-check'></span> Publicar</button> <button id="resetear" type='reset' class='btn btn-default'><span class='glyphicon glyphicon-erase'></span> Limpiar</button></div>
                 </form>
             </div>
         </div>
@@ -302,10 +325,14 @@ $(function(){
       </div>
     </div>
     <!-- Fin Modal Actualizar Password -->
-    <div id="modalAlimentos"></div>
+    <div id="modalEntradas"></div>
+    <div id="rutaimagen" style="display:none;"></div>
     <script>
 	muestraCategorias()
 	datosEmpresa();
+	buscarEntradas();
+	
+	
 	function getTextAreaSelection(textarea) {
     var start = textarea.selectionStart, end = textarea.selectionEnd;
     return {

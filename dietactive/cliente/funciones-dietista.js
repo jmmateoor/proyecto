@@ -1,20 +1,160 @@
 ﻿//Funciones dietista
-
-function publicarEntrada()
+function borrarEntrada(id)
 {
-	if(confirm("¿Quieres publicar esta entrada?"))
-	{
-		$.post("../servidor/insertar_entrada.php",{
-			idalimento: idalimento
+}
+
+
+function consultaEntrada(id)
+{
+	$.post("../servidor/consultar_entradas.php",{
+			id: id
 							},
 							function(data, estado)
 							{
-								if(data=="s")
-								{
-									
-								}
+								
+								datos=JSON.parse(data);
+								
+										var modalEntradas="";
+										
+										modalEntradas+= "<div id='modalEntrada' class='modal fade' role='dialog'>";
+										modalEntradas+="  <div class='modal-dialog'>";
+											<!-- Modal content-->
+										modalEntradas+="	<div class='modal-content'>";
+										modalEntradas+="	  <div class='modal-header'>";
+										modalEntradas+="		<button type='button' class='close' data-dismiss='modal'>&times;</button>";
+										modalEntradas+="		<h4 class='modal-title'>"+datos[0].titulo+"</h4>";
+										modalEntradas+="	  </div>";
+										modalEntradas+="	  <div class='modal-body'>";
+										modalEntradas+="		  <form role='form' name='formBorrarEntrada' method='post'>";
+										
+										
+										modalEntradas+="		  <div class='row'><div class='col-md-6'><b>Fecha:</b> "+datos[0].fecha+"</div><div class='col-md-6'><b>Categoría:</b> "+datos[0].categoria+"</div></div>";
+										
+										modalEntradas+="		  <div class='row'><div class='col-md-12'><img width='230' src='../servidor/imagenes/"+datos[0].imagen+"' /></div></div>";
+										
+										modalEntradas+="		  <div class='row'><div class='col-md-12'><p><b>Entrada:</b></p></div></div>";
+										modalEntradas+="		  <div class='row'><div class='col-md-12'><p>"+datos[0].texto+"</p></div></div>";
+										
+										if(datos[0].video!="")
+										{
+										modalEntradas+="		  <iframe id='videoyoutube' width='100%' height='315' class='embed-responsive-16by9' src='https://www.youtube.com/embed/"+datos[0].video+"?rel=0&wmode=transparent&showinfo=0' scrolling='no'  allowtransparency='true' allowfullscreen='true' frameborder='0' ></iframe>";
+										}
+										
+										modalEntradas+="		  <div class='row'><div class='col-md-12'><p><b>Autor:</b> "+datos[0].dietnombre+" "+datos[0].dietapellidos+"</p></div></div>";
+										
+										modalEntradas+="		  </div>";
+										modalEntradas+="		  <div class='modal-footer'>";
+										modalEntradas+="			<button type='submit' id='buttomBorrarEntrada' class='btn btn-danger' onClick='borrarEntrada("+id+");'><span class='glyphicon glyphicon-check'></span> Borrar</button>";
+										
+										modalEntradas+="			<button type='button' class='btn btn-info btn-default' data-dismiss='modal'><span class='glyphicon glyphicon-remove'></span> Cancelar</button>";
+										modalEntradas+="		  </form>";
+										modalEntradas+="	  </div>";
+										modalEntradas+="	</div>";
+										
+										modalEntradas+="  </div>";
+										modalEntradas+="</div>";
+										
+										
+										
+										
+										$("#modalEntradas").html(modalEntradas);
+										$("#modalEntrada").modal("show");
+								
 							});
+}
+
+function buscarEntradas()
+{
+	$.post("../servidor/buscar_entradas.php",{
+			titulo: $("#buscadorentradas").val()
+							},
+							function(data, estado)
+							{
+								if(data!="]")
+								{
+									datos=JSON.parse(data);
+									salida="";
+										for(var i=0;i<datos.length;i++)
+										{
+											salida+="<div class='row fondoentradas'><div class='col-sm-2'><button class='btn btn-info' onClick='consultaEntrada("+datos[i].id+");'><span class='glyphicon glyphicon-eye-open'></span></button></div><div class='col-lg-7'>"+datos[i].titulo+"</div><div class='col-lg-3'>"+datos[i].fecha+"</div></div>";
+											
+										}
+										$("#buscador").html(salida);
+								}
+								else
+								{
+									salida="<div class='row fondoentradas'>No hay resultados.</div>";
+									$("#buscador").html(salida);
+								}
+								
+							});
+}
+
+
+function publicarEntrada()
+{
+	if($("#titulo").val()!="")
+	{
+		$("#titulo2").html("");
+		if($("#categoria").val()!=0)
+		{
+			$("#categoria2").html("");
+			if(estadofichero)
+			{
+				$("#fichero2").html("");
+				if($("#textoentrada").val()!="")
+				{
+					$("#textoentrada3").html("");
+					if(confirm("¿Quieres publicar esta entrada?"))
+					{
+						video=$("#enlace").val();
+						var enlace=video.split("/watch?v=");
+						
+						var enlacevideo=enlace[enlace.length-1];
+						
+						$.post("../servidor/insertar_entrada.php",{
+							imagen: $("#rutaimagen").html(),
+							idcategoria: $("#categoria").val(),
+							titulo: $("#titulo").val(),
+							texto: $("#textoentrada").val(),
+							video: enlacevideo
+											},
+											function(data, estado)
+											{
+												
+												if(data=="s")
+												{
+													document.getElementById('resetear').click();
+													alert("Entrada publicada correctamente.");
+													cuentaCaracteres();
+												}
+												else
+												{
+													alert("Ocurrió un error. Intentalo de nuevo más tarde.");
+												}
+											});
+					}
+				}
+				else
+				{
+					$("#textoentrada3").html("Debes escribir un texto para el artículo.");
+				}
+			}
+			else
+			{
+				$("#fichero2").html("Debes seleccionar una imagen.");
+			}
+		}
+		else
+		{
+			$("#categoria2").html("Debes elegir una categoría.");
+		}
 	}
+	else
+	{
+		$("#titulo2").html("Debes poner un título.");
+	}
+	
 }
 
 
