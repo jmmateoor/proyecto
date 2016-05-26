@@ -7,133 +7,59 @@
 
 
 <script type="text/javascript">
-var removeButton = $("<input type=\"button\" class=\"remove\" value=\"-\" />");
-        removeButton.click(function() {
-            $(this).parent().remove();
+window.onload=function(){
+var video="https://www.youtube.com/watch?v=qzVBqBosf5w";
+var enlace=video.split("/watch?v=");
+var enlacevideo=enlace[enlace.length-1];
+
+//$("#video").html("<iframe width='560' height='315' class='embed-responsive-16by9' src='https://www.youtube.com/embed/"+enlacevideo+"'></iframe> ");
+}
+
+$(function(){
+        $("input[name='file']").on("change", function(){
+            var formData = new FormData($("#formulario")[0]);
+            var ruta = "../servidor/1pruebas.php";
+            $.ajax({
+                url: ruta,
+                type: "POST",
+                data: formData,
+                contentType: false,
+                processData: false,
+                success: function(data)
+                {
+					datos=JSON.parse(data);
+					if(datos[0]==1)
+					{
+						$("#respuesta1").html(datos[0].nombre);
+						$("#respuesta2").html("<img width='250px' src='../servidor/imagenes/"+datos[0].ruta+"' />");
+						estadofichero=true;
+						//alert(nombrearchivo[nombrearchivo.length-1]);
+					}
+					else
+					{
+						alert(datos[0].error);
+						estadofichero=false;
+					}
+                }
+            });
         });
-
-var tipo=-1;
-
-function cargarTiposAlimentos()
-{
-	tipo++;
-	$.get("../servidor/consulta_tipos_alimentos.php",function(data, status)
-		{		
-			if(status=="success")
-			{
-				datos=JSON.parse(data);
-				var salida="<div id='d"+tipo+"'><select class='form-control' id='"+tipo+"' name='"+tipo+"' onChange='cargarAlimentos(this.value, this.id)'><option value='0'>-- Selecciona --</option>";
-				
-				for(var i=0;i<datos.length;i++)
-				{
-					salida+="<option value='"+datos[i].id+"'>"+datos[i].nombre+"</option>";
-				}
-				salida+="</select> <select class='form-control' id='"+tipo+"a' name='"+tipo+"a' ><option value='0'>-- Selecciona --</option></select> <input type='text' id='"+tipo+"b' /> <input type='button' onClick='borrarCampos("+tipo+");' value='X' /></div>";
-				
-				$("#test").append(salida);
-			}
-		});
-}
-
-function cargarAlimentos(idtipoalimento, idselect)
-{
-	$.post("../servidor/consulta_alimentos.php",{idtipoalimento:idtipoalimento},function(data, status, xhr)
-	{	
-		//var salida="";
-		var datos=JSON.parse(data);
-		
-		var nombre=idselect+"a";
-		var selectalimentos=document.getElementById(nombre);
-		
-		$('#'+nombre)
-    	.find('option')
-    	.remove()
-    	.end();
-		
-		var option=document.createElement("option"); 
-			option.value=0;
-			option.text="-- Selecciona --"; 
-			selectalimentos.appendChild(option);
-		
-		for(var i=0;i<datos.length;i++)
-		{
-			var option=document.createElement("option"); 
-			option.value=datos[i].id;
-			option.text=datos[i].alimento; 
-			selectalimentos.appendChild(option);
-			//salida+="<option value='"+datos[i].id+"'>"+datos[i].alimento+"</option>";
-		}
-	});
-}
-
-function insertarCampos()
-{
-	tipo++;
-	$("#test").html($("#test").html()+"<br/><span='stipo"+tipo+"'></span>");
-	cargarTiposAlimentos();
-}
-
-function borrarCampos(campo)
-{
-	var parent = document.getElementById("test");
-	var child = document.getElementById("d"+campo);
-	parent.removeChild(child);
-}
-
-var alimentos=[];
-var cantidad=[];
-var validado=true;
-var listaobjetos=[];
-
-function recorrerTest()
-{
-	alimentos=[];
-	cantidad=[];
-	validado=true;
-	var x = document.getElementById("test").getElementsByTagName("div");
-	for(var i=0;i<x.length;i++)
-	{
-		if(x[i].getElementsByTagName("select")[1].value==0 || x[i].getElementsByTagName("input")[0].value=="")
-		{
-			validado=false;
-		}
-	}
-	
-	if(validado)
-	{
-		for(var i=0;i<x.length;i++)
-		{
-			alimentos.push(x[i].getElementsByTagName("select")[1].value);
-			cantidad.push(x[i].getElementsByTagName("input")[0].value);
-		}
-		$.post("../servidor/1pruebas.php",{
-			alimentos: alimentos,
-			cantidad: cantidad
-							},
-							function(datos, estado)
-							{
-								alert(datos);
-							});
-		
-		
-	}
-	else
-	{
-		alert("Faltan campos");
-	}
-}
-
-
+     });
 
 </script>
+
+
 </head>
 
 <body>
-<input type="button" value="Agregar alimento" onClick="cargarTiposAlimentos();" />
-<form name="testdias">
-<div id="test">
-</div>
-</form>
-<input type="button" value="Aceptar" onClick="recorrerTest();" />
+<form method="post" id="formulario" enctype="multipart/form-data">
+    Subir imagen: <input type="file" id="archivo" name="file">
+ </form>
+  <div id="respuesta1" style="display: none;"></div>
+  <div id="respuesta2" style="width: 20%;"></div>
+ 
+
+
+<div id="video"></div>
+
 </body>
 </html>

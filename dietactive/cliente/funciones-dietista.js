@@ -1,4 +1,53 @@
 ﻿//Funciones dietista
+
+function publicarEntrada()
+{
+	if(confirm("¿Quieres publicar esta entrada?"))
+	{
+		$.post("../servidor/insertar_entrada.php",{
+			idalimento: idalimento
+							},
+							function(data, estado)
+							{
+								if(data=="s")
+								{
+									
+								}
+							});
+	}
+}
+
+
+function cuentaCaracteres()
+{
+	$("#textoentrada2").html($("#textoentrada").val().length);
+}
+
+function muestraCategorias()
+{
+	$.get("../servidor/consulta_categorias.php",function(data, status)
+								{		
+									if(status=="success")
+									{
+										
+										categoria=JSON.parse(data);
+										var salida="<div class='form-group'><label>Categoría:</label><select class='form-control' id='categoria' name='categoria'>";
+										salida+="<option value='0'>-- Selecciona --</option>";
+										for(var i=0;i<categoria.length;i++)
+										{
+											
+												salida+="<option value='"+categoria[i].id+"'>"+categoria[i].nombre+"</option>";
+											
+										}
+										salida+="</select></div>";
+										
+										$("#listacategorias").html(salida);
+										
+									}
+								});
+}
+
+
 function insertarAlimento()
 {
 	if($("#inalimento").val()=="" || $("#incomestible").val()=="" || $("#inenergia").val()=="" || $("#inproteinas").val()=="" || $("#inlipidos").val()=="" || $("#inags").val()=="" || $("#inagm").val()=="" || $("#inagp").val()=="" || $("#incolesterol").val()=="" || $("#inglucidos").val()=="" || $("#infibra").val()=="" || $("#insodio").val()=="" || $("#inpotasio").val()=="" || $("#incalcio").val()=="" || $("#inmagnesio").val()=="" || $("#infosforo").val()=="" || $("#inhierro").val()=="" || $("#inzinc").val()=="" || $("#inyodo").val()=="" || $("#inb1").val()=="" || $("#inb2").val()=="" || $("#inb6").val()=="" || $("#inb12").val()=="" || $("#inb9").val()=="" || $("#inb3").val()=="" || $("#inc").val()=="" || $("#ina").val()=="" || $("#ind").val()=="" || $("#ine").val()=="")

@@ -4,6 +4,12 @@ h1,h2,h3,h4,h5,h6{
 	font-family: 'Comfortaa', cursive;
 }
 
+.cuadroimagen{
+	margin-top:10px !important;
+	margin-bottom:10px !important;
+	margin:auto;
+}
+
 .listado{
 	overflow:scroll;
 	height:auto;
@@ -486,6 +492,6 @@ div#imgLoading {
 	width: 100% !important;
 }
 
-#mensajeEmail, #textodieta{
+#mensajeEmail, #textodieta, #textoentrada{
 	resize:vertical;
 }

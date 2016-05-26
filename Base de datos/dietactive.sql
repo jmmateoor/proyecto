@@ -3,7 +3,7 @@
 -- http://www.phpmyadmin.net
 --
 -- Servidor: 127.0.0.1
--- Tiempo de generación: 11-05-2016 a las 22:50:20
+-- Tiempo de generación: 26-05-2016 a las 16:43:40
 -- Versión del servidor: 5.6.26
 -- Versión de PHP: 5.6.12
 
@@ -387,6 +387,25 @@ INSERT INTO `alimento` (`id`, `idtipoalimento`, `alimento`, `comestible`, `energ
 -- --------------------------------------------------------
 
 --
+-- Estructura de tabla para la tabla `categoria`
+--
+
+CREATE TABLE IF NOT EXISTS `categoria` (
+  `id` int(11) NOT NULL,
+  `nombre` varchar(100) COLLATE utf8_spanish_ci NOT NULL
+) ENGINE=InnoDB AUTO_INCREMENT=3 DEFAULT CHARSET=utf8 COLLATE=utf8_spanish_ci;
+
+--
+-- Volcado de datos para la tabla `categoria`
+--
+
+INSERT INTO `categoria` (`id`, `nombre`) VALUES
+(1, 'Consejos'),
+(2, 'Curiosidades');
+
+-- --------------------------------------------------------
+
+--
 -- Estructura de tabla para la tabla `cita`
 --
 
@@ -402,7 +421,13 @@ CREATE TABLE IF NOT EXISTS `cita` (
 --
 
 INSERT INTO `cita` (`cita`, `iddietista`, `idcliente`, `tipocita`) VALUES
-('2016-05-12 14:00:00', 2, 19, 'skype');
+('2016-05-12 14:00:00', 2, 19, 'skype'),
+('2016-05-16 11:00:00', 1, 19, 'Presencial'),
+('2016-05-16 12:00:00', 1, 19, 'Skype'),
+('2016-05-21 19:00:00', 1, 17, 'Presencial'),
+('2016-05-22 14:00:00', 1, 19, 'Presencial'),
+('2016-05-24 12:00:00', 1, 19, 'Skype'),
+('2016-05-30 10:00:00', 2, 17, 'Presencial');
 
 -- --------------------------------------------------------
 
@@ -436,8 +461,8 @@ CREATE TABLE IF NOT EXISTS `cliente` (
 --
 
 INSERT INTO `cliente` (`id`, `codigo_activacion`, `activado`, `password`, `nombre`, `apellidos`, `telefono`, `email`, `sexo`, `peso`, `altura`, `fechanac`, `idactividad`, `pesodeseable`, `dieta`, `geet`, `cp`, `fechaingreso`) VALUES
-(17, 'a1d41c14c1d0aa9b9cc1', 's', '81dc9bdb52d04dc20036dbd8313ed055', 'Jose Maria', 'Mateo Ortega', '555555555', 'josem.mateo.ortega@gmail.com', 'h', '72.50', 176, '1989-07-11', 1, '69.50', NULL, '1693.56', '11002', '2016-04-26'),
-(19, 'acf1bc432008d31f4a55', 's', '81dc9bdb52d04dc20036dbd8313ed055', 'Laura', 'Ja', '123131231', 'jose_sin_rostro@hotmail.com', 'm', '52.00', 162, '1989-09-19', 2, '56.00', NULL, '2541.36', '11130', '2016-05-10');
+(17, 'a1d41c14c1d0aa9b9cc1', 's', '81dc9bdb52d04dc20036dbd8313ed055', 'Jose Maria', 'Mateo Ortega', '601013254', 'josem.mateo.ortega@gmail.com', 'h', '72.00', 176, '1989-07-11', 1, '69.50', 'Comida sana', '1684.48', '11002', '2016-04-26'),
+(19, 'acf1bc432008d31f4a55', 's', '81dc9bdb52d04dc20036dbd8313ed055', 'Laura', 'Ja', '123131231', 'jose_sin_rostro@hotmail.com', 'm', '52.00', 162, '1989-09-19', 2, '56.00', 'Comida más sana todavía', '2541.36', '11130', '2016-05-10');
 
 -- --------------------------------------------------------
 
@@ -475,7 +500,7 @@ INSERT INTO `datosempresa` (`id`, `nombre`, `provincia`, `localidad`, `codigopos
 
 CREATE TABLE IF NOT EXISTS `dietista` (
   `id` int(11) NOT NULL,
-  `password` varchar(30) COLLATE utf8_spanish_ci NOT NULL,
+  `password` varchar(60) COLLATE utf8_spanish_ci NOT NULL,
   `dni` varchar(9) COLLATE utf8_spanish_ci NOT NULL,
   `nombre` varchar(100) COLLATE utf8_spanish_ci NOT NULL,
   `apellidos` varchar(100) COLLATE utf8_spanish_ci NOT NULL,
@@ -489,8 +514,25 @@ CREATE TABLE IF NOT EXISTS `dietista` (
 --
 
 INSERT INTO `dietista` (`id`, `password`, `dni`, `nombre`, `apellidos`, `direccion`, `telefono`, `email`) VALUES
-(1, '1234', '75750489L', 'Laura', 'Ambrosio', 'Calle Dragon', '666001122', 'brujoscuro@hotmail.com'),
-(2, '1234', '75750498L', 'Anabel', 'Damian', 'Calle plaza', '666222111', 'prueba@prueba.com');
+(1, '81dc9bdb52d04dc20036dbd8313ed055', '75750489L', 'Laura', 'Ambrosio', 'Calle Dragon', '666001122', 'brujoscuro@hotmail.com'),
+(2, '81dc9bdb52d04dc20036dbd8313ed055', '75750498L', 'Anabel', 'Damian', 'Calle plaza', '666222111', 'prueba@prueba.com');
+
+-- --------------------------------------------------------
+
+--
+-- Estructura de tabla para la tabla `entrada`
+--
+
+CREATE TABLE IF NOT EXISTS `entrada` (
+  `id` int(11) NOT NULL,
+  `fecha` datetime NOT NULL,
+  `titulo` varchar(100) COLLATE utf8_spanish_ci NOT NULL,
+  `texto` varchar(250) COLLATE utf8_spanish_ci NOT NULL,
+  `imagen` varchar(200) COLLATE utf8_spanish_ci DEFAULT NULL,
+  `video` varchar(200) COLLATE utf8_spanish_ci DEFAULT NULL,
+  `idcategoria` int(11) NOT NULL,
+  `iddietista` int(11) NOT NULL
+) ENGINE=InnoDB DEFAULT CHARSET=utf8 COLLATE=utf8_spanish_ci;
 
 -- --------------------------------------------------------
 
@@ -554,7 +596,8 @@ INSERT INTO `historicopeso` (`fecha`, `idcliente`, `peso`) VALUES
 ('2016-05-10 16:51:39', 17, '88.00'),
 ('2016-05-10 16:53:00', 17, '90.00'),
 ('2016-05-10 17:08:48', 17, '72.50'),
-('2016-05-10 17:26:44', 19, '52.00');
+('2016-05-10 17:26:44', 19, '52.00'),
+('2016-05-23 17:50:24', 17, '72.00');
 
 -- --------------------------------------------------------
 
@@ -630,7 +673,7 @@ CREATE TABLE IF NOT EXISTS `tablaintercambio` (
 
 INSERT INTO `tablaintercambio` (`idcliente`, `idgrupo`, `valor`) VALUES
 (17, 1, '2.5'),
-(17, 2, '5.0'),
+(17, 2, '4.5'),
 (17, 3, '1.5'),
 (17, 4, '14.0'),
 (17, 5, '5.0'),
@@ -655,25 +698,44 @@ CREATE TABLE IF NOT EXISTS `testdias` (
   `idcliente` int(11) NOT NULL,
   `idalimento` int(11) NOT NULL,
   `cantidad` decimal(10,2) NOT NULL
-) ENGINE=InnoDB AUTO_INCREMENT=35 DEFAULT CHARSET=utf8 COLLATE=utf8_spanish_ci;
+) ENGINE=InnoDB AUTO_INCREMENT=69 DEFAULT CHARSET=utf8 COLLATE=utf8_spanish_ci;
 
 --
 -- Volcado de datos para la tabla `testdias`
 --
 
 INSERT INTO `testdias` (`id`, `dia`, `momento`, `idcliente`, `idalimento`, `cantidad`) VALUES
-(17, 1, 'merienda', 17, 129, '500.00'),
-(18, 1, 'merienda', 17, 3, '300.00'),
-(19, 1, 'cena', 17, 3, '600.00'),
-(20, 1, 'cena', 17, 173, '300.00'),
-(23, 2, 'almuerzo', 17, 173, '2313.00'),
-(24, 2, 'almuerzo', 17, 68, '123123.00'),
-(25, 2, 'merienda', 17, 130, '23443.00'),
-(28, 2, 'cena', 17, 105, '233.00'),
-(31, 3, 'desayuno', 17, 67, '435.00'),
-(32, 3, 'desayuno', 17, 102, '435.00'),
-(33, 2, 'desayuno', 17, 92, '400.00'),
-(34, 2, 'desayuno', 17, 110, '100.00');
+(38, 1, 'almuerzo', 17, 123, '60.00'),
+(39, 1, 'almuerzo', 17, 38, '20.00'),
+(40, 1, 'almuerzo', 17, 16, '200.00'),
+(41, 1, 'almuerzo', 17, 214, '100.00'),
+(42, 1, 'almuerzo', 17, 221, '25.00'),
+(43, 1, 'merienda', 17, 76, '80.00'),
+(44, 1, 'merienda', 17, 5, '200.00'),
+(45, 1, 'cena', 17, 126, '30.00'),
+(46, 1, 'cena', 17, 16, '200.00'),
+(47, 1, 'cena', 17, 37, '100.00'),
+(48, 2, 'desayuno', 17, 12, '50.00'),
+(49, 2, 'desayuno', 17, 5, '200.00'),
+(50, 2, 'desayuno', 17, 66, '24.00'),
+(51, 3, 'desayuno', 17, 5, '200.00'),
+(52, 3, 'desayuno', 17, 12, '50.00'),
+(53, 3, 'desayuno', 17, 66, '24.00'),
+(54, 2, 'almuerzo', 17, 149, '100.00'),
+(55, 2, 'almuerzo', 17, 111, '330.00'),
+(56, 2, 'almuerzo', 17, 216, '100.00'),
+(57, 2, 'cena', 17, 91, '80.00'),
+(58, 2, 'cena', 17, 112, '330.00'),
+(59, 3, 'almuerzo', 17, 130, '80.00'),
+(60, 3, 'almuerzo', 17, 231, '20.00'),
+(61, 3, 'almuerzo', 17, 53, '20.00'),
+(62, 3, 'almuerzo', 17, 111, '330.00'),
+(63, 3, 'cena', 17, 240, '200.00'),
+(64, 3, 'cena', 17, 247, '30.00'),
+(65, 3, 'cena', 17, 112, '330.00'),
+(66, 1, 'desayuno', 17, 12, '50.00'),
+(67, 1, 'desayuno', 17, 5, '200.00'),
+(68, 1, 'desayuno', 17, 66, '24.00');
 
 -- --------------------------------------------------------
 
@@ -684,7 +746,7 @@ INSERT INTO `testdias` (`id`, `dia`, `momento`, `idcliente`, `idalimento`, `cant
 CREATE TABLE IF NOT EXISTS `tipoalimento` (
   `id` int(11) NOT NULL,
   `nombre` varchar(200) COLLATE utf8_spanish_ci NOT NULL
-) ENGINE=InnoDB AUTO_INCREMENT=27 DEFAULT CHARSET=utf8 COLLATE=utf8_spanish_ci;
+) ENGINE=InnoDB AUTO_INCREMENT=29 DEFAULT CHARSET=utf8 COLLATE=utf8_spanish_ci;
 
 --
 -- Volcado de datos para la tabla `tipoalimento`
@@ -692,7 +754,7 @@ CREATE TABLE IF NOT EXISTS `tipoalimento` (
 
 INSERT INTO `tipoalimento` (`id`, `nombre`) VALUES
 (1, 'Bebidas lácticas'),
-(2, 'Tipos de leches'),
+(2, 'Leches'),
 (3, 'Añadidos a la leche'),
 (4, 'Zumos'),
 (5, 'Cereales'),
@@ -716,7 +778,9 @@ INSERT INTO `tipoalimento` (`id`, `nombre`) VALUES
 (23, 'Preparados congelados'),
 (24, 'Embutidos'),
 (25, 'Frutas'),
-(26, 'Fruta en conserva');
+(26, 'Fruta en conserva'),
+(27, 'Añadidos'),
+(28, 'Aceites y grasas');
 
 --
 -- Índices para tablas volcadas
@@ -734,6 +798,12 @@ ALTER TABLE `actividadfisica`
 ALTER TABLE `alimento`
   ADD PRIMARY KEY (`id`),
   ADD KEY `idtipoalimento` (`idtipoalimento`);
+
+--
+-- Indices de la tabla `categoria`
+--
+ALTER TABLE `categoria`
+  ADD PRIMARY KEY (`id`);
 
 --
 -- Indices de la tabla `cita`
@@ -762,6 +832,14 @@ ALTER TABLE `datosempresa`
 --
 ALTER TABLE `dietista`
   ADD PRIMARY KEY (`id`);
+
+--
+-- Indices de la tabla `entrada`
+--
+ALTER TABLE `entrada`
+  ADD PRIMARY KEY (`id`),
+  ADD KEY `idcategoria` (`idcategoria`),
+  ADD KEY `iddietista` (`iddietista`);
 
 --
 -- Indices de la tabla `grupointercambio`
@@ -826,6 +904,11 @@ ALTER TABLE `actividadfisica`
 ALTER TABLE `alimento`
   MODIFY `id` int(11) NOT NULL AUTO_INCREMENT,AUTO_INCREMENT=294;
 --
+-- AUTO_INCREMENT de la tabla `categoria`
+--
+ALTER TABLE `categoria`
+  MODIFY `id` int(11) NOT NULL AUTO_INCREMENT,AUTO_INCREMENT=3;
+--
 -- AUTO_INCREMENT de la tabla `cliente`
 --
 ALTER TABLE `cliente`
@@ -836,6 +919,11 @@ ALTER TABLE `cliente`
 ALTER TABLE `dietista`
   MODIFY `id` int(11) NOT NULL AUTO_INCREMENT,AUTO_INCREMENT=3;
 --
+-- AUTO_INCREMENT de la tabla `entrada`
+--
+ALTER TABLE `entrada`
+  MODIFY `id` int(11) NOT NULL AUTO_INCREMENT;
+--
 -- AUTO_INCREMENT de la tabla `patologia`
 --
 ALTER TABLE `patologia`
@@ -844,12 +932,12 @@ ALTER TABLE `patologia`
 -- AUTO_INCREMENT de la tabla `testdias`
 --
 ALTER TABLE `testdias`
-  MODIFY `id` int(11) NOT NULL AUTO_INCREMENT,AUTO_INCREMENT=35;
+  MODIFY `id` int(11) NOT NULL AUTO_INCREMENT,AUTO_INCREMENT=69;
 --
 -- AUTO_INCREMENT de la tabla `tipoalimento`
 --
 ALTER TABLE `tipoalimento`
-  MODIFY `id` int(11) NOT NULL AUTO_INCREMENT,AUTO_INCREMENT=27;
+  MODIFY `id` int(11) NOT NULL AUTO_INCREMENT,AUTO_INCREMENT=29;
 --
 -- Restricciones para tablas volcadas
 --
@@ -872,6 +960,13 @@ ALTER TABLE `cita`
 --
 ALTER TABLE `cliente`
   ADD CONSTRAINT `fk_cliente_actividad` FOREIGN KEY (`idactividad`) REFERENCES `actividadfisica` (`id`) ON DELETE NO ACTION ON UPDATE NO ACTION;
+
+--
+-- Filtros para la tabla `entrada`
+--
+ALTER TABLE `entrada`
+  ADD CONSTRAINT `fk_dietista_entrada` FOREIGN KEY (`iddietista`) REFERENCES `dietista` (`id`),
+  ADD CONSTRAINT `fk_entrada_categoria` FOREIGN KEY (`idcategoria`) REFERENCES `categoria` (`id`) ON DELETE NO ACTION ON UPDATE NO ACTION;
 
 --
 -- Filtros para la tabla `historicopeso`

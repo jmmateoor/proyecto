@@ -1,4 +1,4 @@
-<?php
+﻿<?php
 	session_start();
 	include("config.inc.php");
 	include("funciones.inc.php");
@@ -7,7 +7,7 @@
 	$cita=$_POST["cita"];
 	$iddietista=$_POST["dietista"];
 	$tipo=$_POST["tipo"];
-	$preparada = $c->prepare("insert into cita(cita, iddietista, idcliente, tipocita) values (?, ?, ?, ?)");
+	$preparada = $c->prepare("insert into entrada(fecha, titulo, texto, imagen, video, idcategoria) values (?, ?, ?, ?)");
 	$preparada->bind_param("siis",$cita,$iddietista,$_SESSION["id"],$tipo);
 	if($preparada->execute())
 	{
