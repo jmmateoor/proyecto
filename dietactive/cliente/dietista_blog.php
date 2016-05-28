@@ -230,9 +230,9 @@ $(function(){
                 
                 
         	<div class="col-md-5">
-            	<h2 class="datospers">Entradas al blog</h2><!-- CONTENIDO DE LA WEB -->
-                <h3>Buscar entrada:</h3>
-                <div class="inner-addon left-addon"><i class="glyphicon glyphicon-search"></i> <input class="form-control " type="text" id="buscadorentradas" onKeyUp="buscarEntradas();" /></div>
+            	<h2 class="datospers">Entradas del blog</h2><!-- CONTENIDO DE LA WEB -->
+                <h3><label for="buscadorentradas">Buscar entrada:</label></h3>
+                <div class="inner-addon left-addon"><i class="glyphicon glyphicon-search"></i> <input class="form-control " type="text" id="buscadorentradas" name="buscadorentradas" onKeyUp="buscarEntradas();" /></div>
                 <div id="buscador" class="dietistacuerpo listado"></div>
             </div>
             
@@ -243,15 +243,16 @@ $(function(){
                 
                 <span id="listacategorias"></span>
                 <span id="categoria2" class="error"></span>
+                <label for='archivo'>Imagen:</label>
                 <div class="form-group">
-                <label class="btn btn-default btn-file">Seleccionar archivo
+                <label class="btn btn-default btn-file">Subir archivo
                 <input type="file" id="archivo" name="file" style="display: none;">
                 </label>
                 <div id="respuesta1"></div>
   				<div class="cuadroimagen" id="respuesta2"></div>
                 <span id="fichero2" class="error"></span>
                 </div>
-                <div class="form-group"><label for="textoentrada">Texto:</label><textarea type="text" id="textoentrada" name="textoentrada" class="form-control" required maxlength="250" rows="10" cols="50" onKeyUp="cuentaCaracteres();" onChange="cuentaCaracteres();" onMouseUp="cuentaCaracteres();" onBlur="cuentaCaracteres();"></textarea><span id="textoentrada2">0</span>/250</div>
+                <div class="form-group"><label for="textoentrada">Texto:</label><textarea type="text" id="textoentrada" name="textoentrada" class="form-control" required maxlength="1000" rows="10" cols="50" onKeyUp="cuentaCaracteres();" onChange="cuentaCaracteres();" onMouseUp="cuentaCaracteres();" onBlur="cuentaCaracteres();"></textarea><span id="textoentrada2">0</span>/1000</div>
                 
                 <span id="textoentrada3" class="error"></span>
                 

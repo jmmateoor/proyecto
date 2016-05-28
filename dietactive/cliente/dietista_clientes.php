@@ -179,8 +179,8 @@ window.onload=function(){
                 
         	<div class="col-md-5">
             	<h2 class="datospers">Clientes</h2><!-- CONTENIDO DE LA WEB -->
-                <h3>Buscar clientes (nombre y/o apellidos):</h3>
-                <div class="inner-addon left-addon"><i class="glyphicon glyphicon-search"></i> <input class="form-control buscadordeclientes" type="text" id="buscarcliente" onKeyUp="buscarClientes()" /></div>
+                <h3><label for="buscarcliente">Buscar clientes (nombre y/o apellidos):</label></h3>
+                <div class="inner-addon left-addon"><i class="glyphicon glyphicon-search"></i> <input class="form-control buscadordeclientes" type="text" name="buscarcliente" id="buscarcliente" onKeyUp="buscarClientes()" /></div>
                 <div id="buscador" class="dietistacuerpo listado"></div>
             </div>
             

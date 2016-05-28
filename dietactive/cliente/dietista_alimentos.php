@@ -179,8 +179,8 @@ window.onload=function(){
                 
         	<div class="col-md-5">
             	<h2 class="datospers">Alimentos</h2><!-- CONTENIDO DE LA WEB -->
-                <h3>Buscar alimentos:</h3>
-                <div class="inner-addon left-addon"><i class="glyphicon glyphicon-search"></i> <input class="form-control buscadordeclientes" type="text" id="buscaralimento" onKeyUp="muestraAlimentos()" /></div>
+                <h3><label for="buscaralimento">Buscar alimentos:</label></h3>
+                <div class="inner-addon left-addon"><i class="glyphicon glyphicon-search"></i> <input class="form-control buscadordeclientes" type="text" name="buscaralimento" id="buscaralimento" onKeyUp="muestraAlimentos()" /></div>
                 <div id="buscador" class="dietistacuerpo listado"></div>
             </div>
             

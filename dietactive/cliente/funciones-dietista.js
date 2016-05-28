@@ -1,6 +1,23 @@
 ﻿//Funciones dietista
 function borrarEntrada(id)
 {
+	if(confirm("¿Deseas borrar esta entrada?"))
+	{
+		$.post("../servidor/borrar_entrada.php",{
+			id: id
+							},
+							function(data, estado)
+							{
+								if(data=="s")
+								{
+									alert("Borrado correctamente.");
+									buscarEntradas();
+									$("#modalEntrada").modal("hide");
+									borraModal();
+									
+								}
+							});
+	}
 }
 
 
@@ -46,7 +63,7 @@ function consultaEntrada(id)
 										modalEntradas+="		  <div class='modal-footer'>";
 										modalEntradas+="			<button type='submit' id='buttomBorrarEntrada' class='btn btn-danger' onClick='borrarEntrada("+id+");'><span class='glyphicon glyphicon-check'></span> Borrar</button>";
 										
-										modalEntradas+="			<button type='button' class='btn btn-info btn-default' data-dismiss='modal'><span class='glyphicon glyphicon-remove'></span> Cancelar</button>";
+										modalEntradas+="			<button type='button' class='btn btn-info btn-default' onClick='borraModal();' data-dismiss='modal'><span class='glyphicon glyphicon-remove'></span> Cancelar</button>";
 										modalEntradas+="		  </form>";
 										modalEntradas+="	  </div>";
 										modalEntradas+="	</div>";
@@ -61,6 +78,11 @@ function consultaEntrada(id)
 										$("#modalEntrada").modal("show");
 								
 							});
+}
+
+function borraModal()
+{
+	variable = setTimeout(function () {$("#modalEntradas").html("");},1000);
 }
 
 function buscarEntradas()
@@ -124,9 +146,18 @@ function publicarEntrada()
 												
 												if(data=="s")
 												{
-													document.getElementById('resetear').click();
-													alert("Entrada publicada correctamente.");
+													
 													cuentaCaracteres();
+													$("#respuesta1").html("");
+													$("#respuesta2").html("");
+													$("#fichero2").html("");
+													$("#rutaimagen").html("");
+													
+													estadofichero=false;
+													document.getElementById('resetear').click();
+													buscarEntradas();
+													alert("Entrada publicada correctamente.");
+													
 												}
 												else
 												{

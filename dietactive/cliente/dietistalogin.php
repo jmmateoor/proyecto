@@ -82,9 +82,9 @@ function dietistaLogin()
                        otro elemento que se pueda ocultar al minimizar la barra -->
                   <div class="collapse navbar-collapse navbar-ex1-collapse">
                     <ul class="nav navbar-nav">
-                      <li><a style="cursor:pointer;" class="navegacion" onClick="principal('quienessomos')">Quiénes Somos</a></li>
-                      <li><a style="cursor:pointer;" class="navegacion" onClick="principal('servicios')">Servicios</a></li>
-                      <li><a style="cursor:pointer;" class="navegacion" onClick="principal('consejos')">Consejos</a></li>
+                      <li><a style="cursor:pointer;" class="navegacion" onClick="principal('../index.html#quienessomos')">Quiénes Somos</a></li>
+                      <li><a style="cursor:pointer;" class="navegacion" onClick="principal('../index.html#servicios')">Servicios</a></li>
+                      <li><a style="cursor:pointer;" class="navegacion" onClick="principal('../index.html#consejos')">Consejos</a></li>
                       <li><a href="clientelogin.php" class="navegacion">Área cliente</a></li>
                       <li><a href="dietistalogin.php" class="navegacion">Área dietista</a></li>
                     </ul>

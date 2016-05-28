@@ -12,4 +12,9 @@ $bbdd="dietactive";
 $path="http://localhost/daw/proyecto/dietactive/servidor/activar_cuenta.php";
 
 $emailempresa="josem.daw2@gmail.com";
+
+//Numero de entradas por pagina del blog
+
+$paginacion=3;
+
 ?>
