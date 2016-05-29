@@ -6,7 +6,7 @@
 	$inicio=$_POST["inicio"];
 	$fin=$_POST["fin"];
 	
-	$preparada = $conn->prepare("select entrada.id, entrada.fecha, entrada.titulo, entrada.texto, entrada.imagen, entrada.video, categoria.nombre, dietista.nombre, dietista.apellidos from entrada join categoria on entrada.idcategoria = categoria.id join dietista on entrada.iddietista = dietista.id limit ?, ?");
+	$preparada = $conn->prepare("select entrada.id, entrada.fecha, entrada.titulo, entrada.texto, entrada.imagen, entrada.video, categoria.nombre, dietista.nombre, dietista.apellidos from entrada join categoria on entrada.idcategoria = categoria.id join dietista on entrada.iddietista = dietista.id order by 2 desc limit ?, ?");
 	$preparada->bind_param("ii", $inicio,$fin);
 	$preparada->execute();
 	$preparada->bind_result($id, $fecha, $titulo, $texto,$imagen,$video,$categoria,$dietnombre,$dietapellidos);

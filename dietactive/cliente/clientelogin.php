@@ -95,14 +95,22 @@ function clienteLogin()
 
     <div class="container-fluid">
         <div class="row cabecera">
-        	<div class="col-md-12">
-                <p align="center" style="margin-bottom:0px;"><img src="images/cab.png" class="img-responsive" width="580px" alt="DietActive" /></p>
+            <div class="col-md-12">
+                <p align="center" style="margin-bottom:0px;"><img src="images/cab.png" class="img-responsive" width="800px" alt="DietActive" /></p>
                 <p align="center" class="slogan">Tu Dieta Equilibrada Personalizada</p>
             </div>
+            
+            
         </div>
         <div class="row cabecera">
-        	<div class="col-md-12">
-                <h1>Área Cliente</h1>
+        	<div class="col-md-10 areacliente">
+                <h1 id="ancla">Área Cliente</h1>
+                
+            </div>
+            <div class="col-md-2">
+            	<h4 class="textocab">Contacto</h4>
+                <span class="textocab"><a id="dietfijo11" class="cabenlace" href=""><span id="dietfijo12"></span></a> / </span>
+                <span class="textocab"><a id="dietmovil11" class="cabenlace" href=""><span id="dietmovil12"></span></a></span>
             </div>
         </div>
         <div class="row cuerpo">

@@ -27,10 +27,10 @@
 
 window.onload=function(){
 	var si=true;
-	$("#flip2").click(function(){
+	/*$("#flip2").click(function(){
 	$("#panel2").slideToggle(function(){
 				$("#iconoflip2").toggleClass("glyphicon-menu-up");
-				/*if(si)
+				if(si)
 				{
 					$("#iconoflip2").removeClass("glyphicon-menu-up");
 					$("#iconoflip2").addClass("glyphicon-menu-down");
@@ -41,7 +41,7 @@ window.onload=function(){
 					$("#iconoflip2").removeClass("glyphicon-menu-down");
 					$("#iconoflip2").addClass("glyphicon-menu-up");
 					si=true;
-				}*/
+				}
 			}
 		);
 	});
@@ -53,7 +53,7 @@ window.onload=function(){
 	});
 	
 	$("#panel1").hide();
-	$("#panel2").hide();
+	$("#panel2").hide();*/
 	
 	
 	 
@@ -84,10 +84,11 @@ window.onload=function(){
             </div>
         </div>
         <div class="row cabecera">
-            <div class="col-md-10">
-                <p align="center" style="margin-bottom:0px;"><img src="images/cab.png" class="img-responsive" width="510px" alt="DietActive" /></p>
+            <div class="col-md-12">
+                <p align="center" style="margin-bottom:0px;"><img src="images/cab.png" class="img-responsive" width="800px" alt="DietActive" /></p>
                 <p align="center" class="slogan">Tu Dieta Equilibrada Personalizada</p>
             </div>
+            
             
         </div>
         <div class="row cabecera">
@@ -130,6 +131,8 @@ window.onload=function(){
                           <span class="glyphicon glyphicon-book"></span> Diario dietético <b class="caret"></b>
                         </a>
                         <ul class="dropdown-menu">
+                          <li><a href="cliente_que_es.php">Qué es</a></li>
+                          <li class="divider"></li>
                           <li><a href="cliente_diario_dia_1.php">Día 1</a></li>
                           <li class="divider"></li>
                           <li><a href="cliente_diario_dia_2.php">Día 2</a></li>
@@ -143,49 +146,6 @@ window.onload=function(){
                 </nav>
                 
             
-                <!--<div class="row inicio">
-                    <ul id="menu">
-                    	<li>
-                            <a href="#" class="menu">
-                                <div class="col-sm-2 colmenu seleccionado">
-                                    <h2><span class="glyphicon glyphicon-home"></span> Inicio</h2>
-                                </div>
-                            </a>
-                        </li>
-                        <li>
-                            <a href="#" class="menu">
-                                <div class="col-sm-2 colmenu">
-                                	
-                                    	<h2><span class="glyphicon glyphicon-calendar"></span> Coger cita</h2>
-                                    
-                                </div>
-                            </a>
-                        </li>
-                        <li>
-                            <a href="#" class="menu">
-                                <div class="col-sm-2 colmenu">
-                                    <h2><span class="glyphicon glyphicon-book"></span> Diario dietético</h2>
-                                </div>
-                            </a>
-                        </li>
-                        <li>
-                            <a href="#" class="menu">
-                                <div class="col-sm-2 colmenu">
-                                    <h2><span class="glyphicon glyphicon-heart"></span> Tu Dieta</h2>
-                                </div>
-                            </a>
-                        </li>
-                        <li>
-                            <a href="#" class="menu">
-                                <div class="col-sm-4 colmenu">
-                                    <h2><span class="glyphicon glyphicon-list"></span> Alimentos por intercambio</h2>
-                                </div>
-                            </a>
-                        </li>
-                    </ul>
-                </div>-->
-                
-                
                 
                 
                 
@@ -201,8 +161,130 @@ window.onload=function(){
         	<div class="col-md-7">
             	<h2 class="datospers">Alimentos por Intercambio</h2><!-- CONTENIDO DE LA WEB -->
                 <div id="contenidos">
-                	<p>Lorem ipsum dolor sit amet, consectetur adipiscing elit. Vestibulum pretium neque odio, non consequat libero eleifend in. Lorem ipsum dolor sit amet, consectetur adipiscing elit. Praesent purus justo, eleifend vel turpis vitae, viverra posuere nisi. Pellentesque vel magna posuere, faucibus ante in, pharetra enim. Pellentesque habitant morbi tristique senectus et netus et malesuada fames ac turpis egestas. Nunc vulputate augue eros. Sed feugiat maximus est, id blandit libero ultrices non. Nulla facilisi.</p>
-                    <p>Vestibulum mollis velit non ipsum rhoncus porttitor. Praesent vel urna nec urna commodo mattis convallis ac metus. Etiam eget enim ut velit commodo gravida eget non neque. Class aptent taciti sociosqu ad litora torquent per conubia nostra, per inceptos himenaeos. Sed interdum, ex ac egestas elementum, lacus orci aliquam ante, quis porta nunc purus at lorem. Donec ullamcorper finibus suscipit. Aliquam et libero eros. Sed condimentum ligula eu nunc condimentum efficitur. Donec luctus, dolor vitae interdum cursus, tortor metus tincidunt diam, ac euismod eros nulla eu nibh.</p>
+                	<p>Tenemos que remontarnos unas décadas para hablar del origen de este tipo de dieta. Las doctoras Clotilde Vázquez y Ana I. de Cos desarrollaron este método para ayudar a personas diabéticas en entornos hospitalarios a adquirir hábitos de alimentación adecuados.</p>
+					<p>Por su eficacia decidieron diseñar planes basados en dieta equilibrada para tratar la obesidad y el sobrepeso sin hacer uso de medicamentos ni nada artificial. Después de probarlo con varias personas observaron que consiguieron perder grasa realizando un cambio de hábitos de alimentación que pueden mantener en el tiempo.</p>
+					<p>Esto es debido a que la Dieta por Intercambios consiste en un sistema abierto y flexible que permite a las personas elegir los que comen según sus gustos y sin menús cerrados. Así pues no hay planes rígidos, nada de aburrirse con la comida, por lo que no perdemos la motivación y disminuye las posibilidades de fracaso ante el plan de adelgazamiento.</p>
+
+					<h3>Entonces, ¿Qué es un Intercambio?</h3>
+					<p>En términos técnicos, un intercambio equivale a 10g de nutriente (proteína, grasa o carbohidrato). Es muy útil saber esto cuando se toman alimentos preparados y se observa su etiqueta nutricional.</p>
+					<p>Sin embargo es también valido hablar de intercambio como las cantidades visuales de un determinado tipo de alimento, que cualquier persona puede identificar sin necesidad de pesar la comida. Por ejemplo, un vaso de leche es un Intercambio de Lácteos.</p>
+					<p>Tenemos seis grupos de alimentos que serían:</p>
+                    <ul>
+                        <li><b>Lácteos:</b> Leche y sus derivados.</li>
+                        <li><b>Proteínas:</b> Carnes, aves,  huevos, pescados, mariscos y todos sus derivados.</li>
+                        <li><b>Verduras:</b> Todas las verduras y hortalizas.</li>
+                        <li><b>Hidratos de carbono:</b> Pan, pasta, galletas, azúcar y todos los derivados de los cereales.</li>
+                        <li><b>Frutas:</b> Todos los tipos de fruta.</li>
+                        <li><b>Grasas:</b> Todos los tipos de aceites y mantequillas.</li>
+                    </ul>
+					<h3>¿Cómo se usa?</h3>
+					<p>Una vez realizado el diario dietético y acudido a una cita con el dietista, éste te preparará una dieta con tus Intercambios indicando cantidades y equivalencias de un menú tipo totalmente modificable por ti, siguiendo las normas de los intercambios y con sus debidas revisiones por parte del dietista.</p>
+					<p>Ejemplo:</p>
+					<p>En el menú sugerido por el dietista tenemos lo siguiente:</p>
+					<p><b>Desayuno:</b></p>
+					<p><b>Lácteos:</b> 1,5 Intercambios: 1 Vaso de leche y 1 yogur.</p>
+					<p><b>Proteínas:</b> 0,5 Intercambios: 1 loncha de jamón cocido.</p>
+					<p><b>Hidratos de carbono:</b> 2 Intercambios: 4 dedos de pan de barra.</p>
+					<p><b>Frutas:</b> 1,5 Intercambios: 1 vaso de zumo de naranja y 1 melocotón.</p>
+					<p><b>Grasas:</b> 0,5 Intercambios: Media cucharada de aceite en la tostada.</p>
+					<br/>
+					<p>Utilizando las tablas de intercambios, las cuales están referías a 1 intercambio podemos modificar el menú. </p>
+					<p>Lácteos: 1,5 Intercambios: 1 Vaso de leche y 1 Actimel.</p>
+					<p>Proteínas: 0,5 Intercambios: Los tomo en el almuerzo.</p>
+					<p>Hidratos de carbono: 2 Intercambios: 1 taza de cereales sin azúcar.</p>
+					<p>Frutas: 1,5 Intercambios: 1 plátano y medio vaso de zumo de melocotón.</p>
+					<p>Grasas: 0,5 Intercambios: Los tomo en el almuerzo.</p>
+					<p>Los intercambios pueden cambiarse de momento del día (si son solo 0,5) y lo tomamos en la toma consecutiva a la cual los quitamos. Así podemos adaptar una comida algo mayor de lo normal en el almuerzo bajando lo consumido en el desayuno, aunque solo en el caso de que sea medio intercambio, no más. En el ejemplo dejamos 0,5 de proteínas y 0,5 de grasas para el almuerzo donde debemos sumarlos a los que ya tenemos sugeridos para esa ingesta.</p>
+
+					<p>Ventajas de la dieta por intercambio:</p>
+					<ul>
+                        <li>Permiten comer todo tipo de alimentos, sin las habituales prohibiciones de que suelen establecer otras dietas.</li>
+                        <li>Está pensada para llevar una dieta sana y equilibrada, totalmente personalizada a las necesidades fisiológicas y energéticas de cada persona.</li>
+                        <li>Basada en nutrición, no utiliza pastillas o suplementos de ningún tipo.</li>
+                        <li>Es una dieta flexible y personalizada con tus gustos.</li>
+                        <li>Pérdida de peso real y sostenible, no se producen efecto rebote.</li>
+                        <li>Aprenderás a comer sano, está basada en Dieta Mediterránea.</li>
+					</ul>
+                    
+                    <div id="lacteos"><h3 style="display:inline;;">Lácteos</h3> <a style="cursor: pointer;" onClick="ir_a('#ancla');"> <span class="glyphicon glyphicon-menu-up"></span> Ir arriba</a></div>
+                    <p><div class='table-responsive fondotabla'>
+                    <table class='table table-condensed'>
+                    <thead><tr><th>Alimento</th><th>Cantidad</th><th>Peso (crudo)</th></tr></thead>
+                    <tbody>
+                    <tr><td>Leche semidesnatada o desnatada, entera, sin Lactosa, de soja o de avena</td><td>1 Vaso</td><td>220ml</td></tr>
+                    <tr><td>Yogures naturales o desnatados (incluidos de sabores)</td><td>2 unidades</td><td></td></tr>
+                    <tr><td>Activia desnatados o Densia</td><td>2 unidades</td><td></td></tr>
+                    <tr><td>Yogur azucarado o de sabores</td><td>1 unidades</td><td></td></tr>
+                    <tr><td>Actimel o Danacol desnatados o sabores</td><td>2unidades</td><td></td></tr>
+                    <tr><td>Queso de burgos</td><td>Tarrina pequeña</td><td>75g</td></tr>
+                    <tr><td>Helado</td><td>2 bolas</td><td>80g</td></tr>
+                    </tbody>
+                    </table>
+                    </div>
+                    </p>
+                    
+                    <div id="proteinas"><h3 style="display:inline;;">Proteínas</h3> <a style="cursor: pointer;" onClick="ir_a('#ancla');"> <span class="glyphicon glyphicon-menu-up"></span> Ir arriba</a></div>
+                    <p>Carnes y embutidos:</p>
+                    <p><div class='table-responsive fondotabla'>
+                    <table class='table table-condensed'>
+                    <thead><tr><th>Alimento</th><th>Cantidad</th><th>Peso (crudo)</th></tr></thead>
+                    <tbody>
+                    <tr><td>Jamón cocido o pavo</td><td>2 Lonchas</td><td>60g</td></tr>
+                    <tr><td>Jamón serrano o ibérico </td><td>1 loncha mediana</td><td>30g</td></tr>
+                    <tr><td>Huevo</td><td>1 entero o 2 claras de huevo</td><td>60g</td></tr>
+                    <tr><td>Bacón, lomo, lacón, chorizo</td><td>1 loncha</td><td>20g</td></tr>
+                    <tr><td>Pollo, pavo, ternera, buey, conejo</td><td>Medo filete pequeño</td><td>50g</td></tr>
+                    <tr><td>Cinta de lomo</td><td>1 pequeñas</td><td>50g</td></tr>
+                    </tbody>
+                    </table>
+                    </div>
+                    </p>
+                    
+
+					<p>Pescados y mariscos:</p>
+                    <p><div class='table-responsive fondotabla'>
+                    <table class='table table-condensed'>
+                    <thead><tr><th>Alimento</th><th>Cantidad</th><th>Peso (crudo)</th></tr></thead>
+                    <tbody>
+                    <tr><td>Gambas o langostinos, palitos de cangrejo</td><td>3-5 unidades</td><td>50g</td></tr>
+                    <tr><td>Almejas o berberechos </td><td>1 cuenco</td><td>100g</td></tr>
+                    <tr><td>Mejillones</td><td>5 unidades</td><td>100g</td></tr>
+                    <tr><td>Atún</td><td>Lata pequeña</td><td>60g</td></tr>
+                    <tr><td>Pescado blanco merluza, pescadilla, gallo, bacalao, lubina, dorada, lenguado, mero, gulas</td><td>Media rodaja mediana</td><td>75g</td></tr>
+                    <tr><td>Pulpo, sepia, calamares, cangrejo</td><td>Media ración</td><td>  </td></tr>
+                    </tbody>
+                    </table>
+                    </div>
+                    </p>
+                    
+                    <p>Otros:</p>
+                    <p><div class='table-responsive fondotabla'>
+                    <table class='table table-condensed'>
+                    <thead><tr><th>Alimento</th><th>Cantidad</th><th>Peso (crudo)</th></tr></thead>
+                    <tbody>
+                    <tr><td>Tofu o seitan</td><td>1 Ración pequeña</td><td>75g</td></tr>
+                    <tr><td>Nueces</td><td>8 unidades</td><td>30g</td></tr>
+                    <tr><td>Almendras</td><td>15 unidades</td><td>30g</td></tr>
+                    </tbody>
+                    </table>
+                    </div>
+                    </p>
+                    
+                    
+                    <div id="verduras"><h3 style="display:inline;;">Verduras</h3> <a style="cursor: pointer;" onClick="ir_a('#ancla');"> <span class="glyphicon glyphicon-menu-up"></span> Ir arriba</a></div>
+                    <p><div class='table-responsive fondotabla'>
+                    <table class='table table-condensed'>
+                    <thead><tr><th>Alimento</th><th>Cantidad</th><th>Peso (crudo)</th></tr></thead>
+                    <tbody>
+                    <tr><td>Acelgas, apio, berenjena,champiñones, col, coliflor, espinacas, grelos, lechuga, setas, tomates, brócoli, calabacín, canónigos,endivias, escarola, espárragos, pepinos, pimiento verde o rábano.</td><td>1 Plato hondo lleno</td><td>300g</td></tr>
+                    <tr><td>Berros, cardos, judías verdes, lombarda, nabos, pimiento rojo o puerros.</td><td>1 Plato hondo lleno</td><td>200g</td></tr>
+                    <tr><td>2 alcachofas, 5 coles de bruselas, 3 zanahorias, 1 cebolla, 1 cebolleta, 1 remolacha, 1/4 calabaza.
+</td><td>1 Plato hondo lleno</td><td>100g</td></tr>
+                    </tbody>
+                    </table>
+                    </div>
+                    </p>
+
                 	
                     <div id="hidratoscarbono"><h3 style="display:inline;;">Hidratos de Carbono</h3> <a style="cursor: pointer;" onClick="ir_a('#ancla');"> <span class="glyphicon glyphicon-menu-up"></span> Ir arriba</a></div>
                     <p>Pan y productos de trigo y maíz:</p>
@@ -257,37 +339,6 @@ window.onload=function(){
                     </p>
                     
                     
-                    <div id="lacteos"><h3 style="display:inline;;">Lácteos</h3> <a style="cursor: pointer;" onClick="ir_a('#ancla');"> <span class="glyphicon glyphicon-menu-up"></span> Ir arriba</a></div>
-                    <p><div class='table-responsive fondotabla'>
-                    <table class='table table-condensed'>
-                    <thead><tr><th>Alimento</th><th>Cantidad</th><th>Peso (crudo)</th></tr></thead>
-                    <tbody>
-                    <tr><td>Leche semidesnatada o desnatada, entera, sin Lactosa, de soja o de avena</td><td>1 Vaso</td><td>220ml</td></tr>
-                    <tr><td>Yogures naturales o desnatados (incluidos de sabores)</td><td>2 unidades</td><td></td></tr>
-                    <tr><td>Activia desnatados o Densia</td><td>2 unidades</td><td></td></tr>
-                    <tr><td>Yogur azucarado o de sabores</td><td>1 unidades</td><td></td></tr>
-                    <tr><td>Actimel o Danacol desnatados o sabores</td><td>2unidades</td><td></td></tr>
-                    <tr><td>Queso de burgos</td><td>Tarrina pequeña</td><td>75g</td></tr>
-                    <tr><td>Helado</td><td>2 bolas</td><td>80g</td></tr>
-                    </tbody>
-                    </table>
-                    </div>
-                    </p>
-                    
-                    <div id="verduras"><h3 style="display:inline;;">Verduras</h3> <a style="cursor: pointer;" onClick="ir_a('#ancla');"> <span class="glyphicon glyphicon-menu-up"></span> Ir arriba</a></div>
-                    <p><div class='table-responsive fondotabla'>
-                    <table class='table table-condensed'>
-                    <thead><tr><th>Alimento</th><th>Cantidad</th><th>Peso (crudo)</th></tr></thead>
-                    <tbody>
-                    <tr><td>Acelgas, apio, berenjena,champiñones, col, coliflor, espinacas, grelos, lechuga, setas, tomates, brócoli, calabacín, canónigos,endivias, escarola, espárragos, pepinos, pimiento verde o rábano.</td><td>1 Plato hondo lleno</td><td>300g</td></tr>
-                    <tr><td>Berros, cardos, judías verdes, lombarda, nabos, pimiento rojo o puerros.</td><td>1 Plato hondo lleno</td><td>200g</td></tr>
-                    <tr><td>2 alcachofas, 5 coles de bruselas, 3 zanahorias, 1 cebolla, 1 cebolleta, 1 remolacha, 1/4 calabaza.
-</td><td>1 Plato hondo lleno</td><td>100g</td></tr>
-                    </tbody>
-                    </table>
-                    </div>
-                    </p>
-                    
                     
                     <div id="frutas"><h3 style="display:inline;;">Frutas</h3> <a style="cursor: pointer;" onClick="ir_a('#ancla');"> <span class="glyphicon glyphicon-menu-up"></span> Ir arriba</a></div>
                     <p><div class='table-responsive fondotabla'>
@@ -314,53 +365,7 @@ window.onload=function(){
                     </div>
                     </p>
                     
-                    <div id="proteinas"><h3 style="display:inline;;">Proteínas</h3> <a style="cursor: pointer;" onClick="ir_a('#ancla');"> <span class="glyphicon glyphicon-menu-up"></span> Ir arriba</a></div>
-                    <p>Carnes y embutidos:</p>
-                    <p><div class='table-responsive fondotabla'>
-                    <table class='table table-condensed'>
-                    <thead><tr><th>Alimento</th><th>Cantidad</th><th>Peso (crudo)</th></tr></thead>
-                    <tbody>
-                    <tr><td>Jamón cocido o pavo</td><td>2 Lonchas</td><td>60g</td></tr>
-                    <tr><td>Jamón serrano o ibérico </td><td>1 loncha mediana</td><td>30g</td></tr>
-                    <tr><td>Huevo</td><td>1 entero o 2 claras de huevo</td><td>60g</td></tr>
-                    <tr><td>Bacón, lomo, lacón, chorizo</td><td>1 loncha</td><td>20g</td></tr>
-                    <tr><td>Pollo, pavo, ternera, buey, conejo</td><td>Medo filete pequeño</td><td>50g</td></tr>
-                    <tr><td>Cinta de lomo</td><td>1 pequeñas</td><td>50g</td></tr>
-                    </tbody>
-                    </table>
-                    </div>
-                    </p>
                     
-
-					<p>Pescados y mariscos:</p>
-                    <p><div class='table-responsive fondotabla'>
-                    <table class='table table-condensed'>
-                    <thead><tr><th>Alimento</th><th>Cantidad</th><th>Peso (crudo)</th></tr></thead>
-                    <tbody>
-                    <tr><td>Gambas o langostinos, palitos de cangrejo</td><td>3-5 unidades</td><td>50g</td></tr>
-                    <tr><td>Almejas o berberechos </td><td>1 cuenco</td><td>100g</td></tr>
-                    <tr><td>Mejillones</td><td>5 unidades</td><td>100g</td></tr>
-                    <tr><td>Atún</td><td>Lata pequeña</td><td>60g</td></tr>
-                    <tr><td>Pescado blanco merluza, pescadilla, gallo, bacalao, lubina, dorada, lenguado, mero, gulas</td><td>Media rodaja mediana</td><td>75g</td></tr>
-                    <tr><td>Pulpo, sepia, calamares, cangrejo</td><td>Media ración</td><td>  </td></tr>
-                    </tbody>
-                    </table>
-                    </div>
-                    </p>
-                    
-                    <p>Otros:</p>
-                    <p><div class='table-responsive fondotabla'>
-                    <table class='table table-condensed'>
-                    <thead><tr><th>Alimento</th><th>Cantidad</th><th>Peso (crudo)</th></tr></thead>
-                    <tbody>
-                    <tr><td>Tofu o seitan</td><td>1 Ración pequeña</td><td>75g</td></tr>
-                    <tr><td>Nueces</td><td>8 unidades</td><td>30g</td></tr>
-                    <tr><td>Almendras</td><td>15 unidades</td><td>30g</td></tr>
-                    </tbody>
-                    </table>
-                    </div>
-                    </p>
-
                     
                     <div id="grasas"><h3 style="display:inline;;">Grasas</h3> <a style="cursor: pointer;" onClick="ir_a('#ancla');"> <span class="glyphicon glyphicon-menu-up"></span> Ir arriba</a></div>
                     <p></p>
@@ -368,8 +373,8 @@ window.onload=function(){
                     <table class='table table-condensed'>
                     <thead><tr><th>Alimento</th><th>Cantidad</th><th>Peso (crudo)</th></tr></thead>
                     <tbody>
-                    <tr><td>Aceite de oliva</td><td>1 Cucharada sopera</td><td>10ml</td></tr>
-                    <tr><td>Aceite de girasol</td><td>1 Cucharada sopera</td><td>10ml</td></tr>
+                    <tr><td>Aceite de oliva</td><td>1 Cucharada sopera</td><td>14g</td></tr>
+                    <tr><td>Aceite de girasol</td><td>1 Cucharada sopera</td><td>14g</td></tr>
                     <tr><td>Aceitunas</td><td>Un puñado</td><td>40g</td></tr>
                     <tr><td>Mantequilla o margarina</td><td>1 Cucharada sopera</td><td>10g</td></tr>
                     <tr><td>Mayonesa</td><td>1 Cucharada sopera</td><td>110g</td></tr>
@@ -390,20 +395,11 @@ window.onload=function(){
                         </div>
                     </div>
                 </div>
-                <div class="row">
-                    <div class="col-md-12">
-                        <div class="muestraHistorial">
-                            <h2 class="datospers">Tu historial de peso</h2>
-                            <div id="caja">
-                                <div id="grafica"></div>
-                            </div>
-                        </div>
-                    </div>
-                </div>
+                
                 <div class="row">
                 	<div class="col-md-12">
                         <div class="muestraDatosPers">
-                            <h2 class="datospers"><button class="botondesplegable" data-toggle="tooltip" data-placement="top" title="Mostrar / Ocultar" id="flip1" style="cursor: pointer;"><span id="iconoflip1" class="glyphicon glyphicon-menu-down"></span> Perfil </button></h2>
+                            <h2 class="datospers">Perfil</h2>
                             <div id="panel1">
                                 <div class="row">
                                     <div class="col-sm-4">
@@ -468,9 +464,19 @@ window.onload=function(){
                 <div class="row">
                 	<div class="col-md-12">
                         <div class="muestraPatologias">
-                            <h2 class="datospers"><button class="botondesplegable" data-toggle="tooltip" data-placement="top" title="Mostrar / Ocultar" id="flip2" style="cursor: pointer;"> <span id="iconoflip2" class="glyphicon glyphicon-menu-down"></span> Patologías / Situación fisiológica</button> <span data-toggle="tooltip" data-placement="top" title="Actualizar"><button type="button" class="btn btn-info btn-xs" data-toggle="modal" data-target="#modalPatologias"><span class="glyphicon glyphicon-edit"></span></button></span></h2>
+                            <h2 class="datospers">Patologías / Situación fisiológica <span data-toggle="tooltip" data-placement="top" title="Actualizar"><button type="button" class="btn btn-info btn-xs" data-toggle="modal" data-target="#modalPatologias"><span class="glyphicon glyphicon-edit"></span></button></span></h2>
                             <div id="panel2">
                                 <p id="patologias"></p>
+                            </div>
+                        </div>
+                    </div>
+                </div>
+                <div class="row">
+                    <div class="col-md-12">
+                        <div class="muestraHistorial">
+                            <h2 class="datospers">Tu historial de peso</h2>
+                            <div id="caja">
+                                <div id="grafica"></div>
                             </div>
                         </div>
                     </div>

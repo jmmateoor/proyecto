@@ -25,10 +25,10 @@
 <script>
 window.onload=function(){
 	var si=true;
-	$("#flip2").click(function(){
+	/*$("#flip2").click(function(){
 	$("#panel2").slideToggle(function(){
 				$("#iconoflip2").toggleClass("glyphicon-menu-up");
-				/*if(si)
+				if(si)
 				{
 					$("#iconoflip2").removeClass("glyphicon-menu-up");
 					$("#iconoflip2").addClass("glyphicon-menu-down");
@@ -39,7 +39,7 @@ window.onload=function(){
 					$("#iconoflip2").removeClass("glyphicon-menu-down");
 					$("#iconoflip2").addClass("glyphicon-menu-up");
 					si=true;
-				}*/
+				}
 			}
 		);
 	});
@@ -51,7 +51,7 @@ window.onload=function(){
 	});
 	
 	$("#panel1").hide();
-	$("#panel2").hide();
+	$("#panel2").hide();*/
 	ocultaLoading();
 }
 
@@ -80,13 +80,21 @@ window.onload=function(){
         </div>
         <div class="row cabecera">
             <div class="col-md-12">
-                <p align="center" style="margin-bottom:0px;"><img src="images/cab.png" class="img-responsive" width="580px" alt="DietActive" /></p>
+                <p align="center" style="margin-bottom:0px;"><img src="images/cab.png" class="img-responsive" width="800px" alt="DietActive" /></p>
                 <p align="center" class="slogan">Tu Dieta Equilibrada Personalizada</p>
             </div>
+            
+            
         </div>
         <div class="row cabecera">
-        	<div class="col-md-12">
-                <h1>Área Cliente</h1>
+        	<div class="col-md-10 areacliente">
+                <h1 id="ancla">Área Cliente</h1>
+                
+            </div>
+            <div class="col-md-2">
+            	<h4 class="textocab">Contacto</h4>
+                <span class="textocab"><a id="dietfijo11" class="cabenlace" href=""><span id="dietfijo12"></span></a> / </span>
+                <span class="textocab"><a id="dietmovil11" class="cabenlace" href=""><span id="dietmovil12"></span></a></span>
             </div>
         </div>
         <div class="row inicio">
@@ -118,6 +126,8 @@ window.onload=function(){
                           <span class="glyphicon glyphicon-book"></span> Diario dietético <b class="caret"></b>
                         </a>
                         <ul class="dropdown-menu">
+                          <li><a href="cliente_que_es.php">Qué es</a></li>
+                          <li class="divider"></li>
                           <li><a href="cliente_diario_dia_1.php">Día 1</a></li>
                           <li class="divider"></li>
                           <li><a href="cliente_diario_dia_2.php">Día 2</a></li>
@@ -131,47 +141,6 @@ window.onload=function(){
                 </nav>
                 
             
-                <!--<div class="row inicio">
-                    <ul id="menu">
-                    	<li>
-                            <a href="#" class="menu">
-                                <div class="col-sm-2 colmenu seleccionado">
-                                    <h2><span class="glyphicon glyphicon-home"></span> Inicio</h2>
-                                </div>
-                            </a>
-                        </li>
-                        <li>
-                            <a href="#" class="menu">
-                                <div class="col-sm-2 colmenu">
-                                	
-                                    	<h2><span class="glyphicon glyphicon-calendar"></span> Coger cita</h2>
-                                    
-                                </div>
-                            </a>
-                        </li>
-                        <li>
-                            <a href="#" class="menu">
-                                <div class="col-sm-2 colmenu">
-                                    <h2><span class="glyphicon glyphicon-book"></span> Diario dietético</h2>
-                                </div>
-                            </a>
-                        </li>
-                        <li>
-                            <a href="#" class="menu">
-                                <div class="col-sm-2 colmenu">
-                                    <h2><span class="glyphicon glyphicon-heart"></span> Tu Dieta</h2>
-                                </div>
-                            </a>
-                        </li>
-                        <li>
-                            <a href="#" class="menu">
-                                <div class="col-sm-4 colmenu">
-                                    <h2><span class="glyphicon glyphicon-list"></span> Alimentos por intercambio</h2>
-                                </div>
-                            </a>
-                        </li>
-                    </ul>
-                </div>-->
                 
                 
                 
@@ -191,6 +160,18 @@ window.onload=function(){
                 <div id="contenidos">
                 	<div class="row">
                     	<div class="col-lg-12">
+                        	<h3>¿Cómo pido cita?</h3>
+							<p>Para pedir cita utilizaremos en orden los desplegables que se nos muestran de la siguiente forma:</p>
+							<ol>
+                                <li><b>Desplegable de especialistas:</b> Pinchamos en él y seleccionamos un especialista.</li> 
+                                <p>Si es la primera vez que vamos a pedir cita elegiremos el que más nos guste de los dietistas disponibles.</p>
+                                <p><b>Siempre puedes cambiar de dietista sea la razón que sea, pero recuerda que será mejor tener uno fijo</b> que conozca nuestra historia dietética que ir cambiando de uno a otro y tener que dar mucha información cada vez que acudamos a una cita con un nuevo dietista.</p>
+                                <li><b>Desplegable del Día:</b> Pinchamos en él y seleccionamos de entre los días disponibles el que deseemos.</li>
+                                <li><b>Desplegable de la Hora:</b> Pinchamos en él y seleccionamos de entre las horas disponibles la que deseemos.</li>
+                                <li>Para finalizar pulsa <b>Aceptar</b>.</li>
+                            </ol>
+							<p>Puedes consultar tu cita en esta misma página siempre que quieras.</p>
+							<p>También puedes cancelar tu cita simplemente pulsando en el botón <b>Eliminar cita</b> que se encuentra debajo de ésta.</p>
                         	<div id="contenidocitas"></div>
                         </div>
                     </div>
@@ -207,20 +188,11 @@ window.onload=function(){
                         </div>
                     </div>
                 </div>
-                <div class="row">
-                    <div class="col-md-12">
-                        <div class="muestraHistorial">
-                            <h2 class="datospers">Tu historial de peso</h2>
-                            <div id="caja">
-                                <div id="grafica"></div>
-                            </div>
-                        </div>
-                    </div>
-                </div>
+                
                 <div class="row">
                 	<div class="col-md-12">
                         <div class="muestraDatosPers">
-                            <h2 class="datospers"><button class="botondesplegable" data-toggle="tooltip" data-placement="top" title="Mostrar / Ocultar" id="flip1" style="cursor: pointer;"><span id="iconoflip1" class="glyphicon glyphicon-menu-down"></span> Perfil </button></h2>
+                            <h2 class="datospers">Perfil</h2>
                             <div id="panel1">
                                 <div class="row">
                                     <div class="col-sm-4">
@@ -285,9 +257,19 @@ window.onload=function(){
                 <div class="row">
                 	<div class="col-md-12">
                         <div class="muestraPatologias">
-                            <h2 class="datospers"><button class="botondesplegable" data-toggle="tooltip" data-placement="top" title="Mostrar / Ocultar" id="flip2" style="cursor: pointer;"> <span id="iconoflip2" class="glyphicon glyphicon-menu-down"></span> Patologías / Situación fisiológica</button> <span data-toggle="tooltip" data-placement="top" title="Actualizar"><button type="button" class="btn btn-info btn-xs" data-toggle="modal" data-target="#modalPatologias"><span class="glyphicon glyphicon-edit"></span></button></span></h2>
+                            <h2 class="datospers">Patologías / Situación fisiológica <span data-toggle="tooltip" data-placement="top" title="Actualizar"><button type="button" class="btn btn-info btn-xs" data-toggle="modal" data-target="#modalPatologias"><span class="glyphicon glyphicon-edit"></span></button></span></h2>
                             <div id="panel2">
                                 <p id="patologias"></p>
+                            </div>
+                        </div>
+                    </div>
+                </div>
+                <div class="row">
+                    <div class="col-md-12">
+                        <div class="muestraHistorial">
+                            <h2 class="datospers">Tu historial de peso</h2>
+                            <div id="caja">
+                                <div id="grafica"></div>
                             </div>
                         </div>
                     </div>

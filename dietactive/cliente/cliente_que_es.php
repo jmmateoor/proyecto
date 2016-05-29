@@ -10,7 +10,7 @@
 <html>
 <head>
 <meta charset="utf-8">
-<title>Día 3 Diario dietético - DietActive</title>
+<title>Qué es el Diario dietético - DietActive</title>
 <link rel="shortcut icon" href="images/fav.png">
 <link rel="stylesheet" href="http://maxcdn.bootstrapcdn.com/bootstrap/3.3.6/css/bootstrap.min.css">
 <script src="https://ajax.googleapis.com/ajax/libs/jquery/1.12.0/jquery.min.js"></script>
@@ -140,7 +140,6 @@ window.onload=function(){
                 </nav>
                 
             
-               
                 
                 
                 
@@ -156,32 +155,69 @@ window.onload=function(){
                 
                 
         	<div class="col-md-7">
-            	<h2 class="datospers">Diario Dietético - Día 3</h2><!-- CONTENIDO DE LA WEB -->
+            	<h2 class="datospers">Diario dietético, qué es</h2><!-- CONTENIDO DE LA WEB -->
                 <div id="contenidos">
-                	<h3>Desayuno <button class="btn btn-primary btn-sm" onClick="empezarTest(3,'desayuno');" >Empezar</button></h3>
-                    <div class="test">
-                        <div id="botondesayuno"></div>
-                        <div id="desayuno"></div>
-                        <div id="aceptardesayuno"></div>
-                    </div>
-                    <h3>Almuerzo <button class="btn btn-primary btn-sm" onClick="empezarTest(3,'almuerzo');" >Empezar</button></h3>
-                    <div class="test">
-                        <div id="botonalmuerzo"></div>
-                        <div id="almuerzo"></div>
-                        <div id="aceptaralmuerzo"></div>
-                    </div>
-                    <h3>Merienda <button class="btn btn-primary btn-sm" onClick="empezarTest(3,'merienda');" >Empezar</button></h3>
-                    <div class="test">
-                        <div id="botonmerienda"></div>
-                        <div id="merienda"></div>
-                        <div id="aceptarmerienda"></div>
-                    </div>
-                    <h3>Cena <button class="btn btn-primary btn-sm" onClick="empezarTest(3,'cena');" >Empezar</button></h3>
-                    <div class="test">
-                        <div id="botoncena"></div>
-                        <div id="cena"></div>
-                        <div id="aceptarcena"></div>
-                    </div>
+                    <p>El Diario dietético es un test que todos los usuarios deben realizar antes de acudir a la cita con el dietista.</p>
+					<p>Con este diario de tres días usted puede anotar cada alimento consumido y el peso de cada uno por separado cómodamente utilizando los desplegables.</p>
+					<p>Cada día y momento del día están separados para ser rellenados según se consumen los alimentos para evitar olvidos.</p>
+
+					<h3>¿Cómo se realiza?</h3>
+					<p>Para poder realizar el test con facilidad siga estos pasos:</p>
+					<h4>1. Cuando esté cocinando los alimentos pese o estime el peso  de cada uno sin olvidar anotarlos en una hoja de papel.</h4>
+                    <br/>
+
+					<p><b>Ejemplo:</b> Preparamos 2 filetes de pollo a la plancha y una ensalada. Para beber tomo una lata de cerveza de 330 ml.</p>
+					<p>Pesamos los dos filetes antes de cocinarlos y anotamos el peso en gramos.</p>
+					<p>Estimamos o pesamos el aceite usado (Recordar: 1 cucharada son 14 gramos de aceite).</p>
+					<p>Enjuagamos y cortamos la lechuga para pesarla (Consejo: tarar el bol de ensalada antes de añadir la lechuga deseada) y anotamos el peso.</p>
+					<p>Cortamos el tomate y pesamos (Consejo: tarar de nuevo el bol con la lechuga para pesar el tomate)</p>
+					<p><b>¡No olvidemos el aceite añadido a la ensalada! (1 cucharada= 14 gramos).</b></p>
+
+					<h4>2. Consuma los alimentos completamente o estime la cantidad final ingerida.</h4>
+					<p><b>Ejemplo:</b> Consumimos un filete de pollo, un tercio de la ensalada y la lata de cerveza entera.</p>
+					<p>Los dos filetes pesaban 180 gramos, como me comí uno anoto 90 gramos.</p>
+					<p>La lechuga pesaba 150 gramos, como me comí solo un tercio anoto 50 gramos.</p>
+					<p>De tomate llevaba 100 gramos, anoto 33 gramos que es un tercio.</p>
+					<p>El aceite consumido por parte de los filetes sería la mitad, como añadí una cucharada la mitad es 7 gramos.</p>
+					<p>El aceite añadido a la ensalada fueron dos cucharadas, es decir 28 gramos de los cuales he consumido un tercio: 9 gramos.</p>
+					<p>La lata de cerveza la tomamos entera por lo que anotamos 330 gramos.</p>
+					<p><b>Consejo: Intente hacer los cálculos de memoria para ejercitar la mente, en caso de ser muchos puede ayudarse de una calculadora.</b></p>
+
+					<h4>3. Inicie sesión en nuestra web y acceda al día y momento del día deseado y rellene los datos.</h4>
+					<p><b>Ejemplo:</b> En nuestro caso hemos tomado el pollo con ensalada en el almuerzo.</p>
+					<p>Entonces:</p>
+                    <ul>
+                        <li>Inicio sesión y pincho sobre Diario dietético.</li>
+                        <li>Como estoy rellenando el primer día, seleccione Día 1.</li>
+                        <li>Este ha sido mi almuerzo asique voy a Almuerzo y hago click en Empezar.</li>
+                        <li>Aparece un cuadro de dialogo que me informa de que los datos anteriores guardados en Almuerzo del Día 1 serán borrados. Como no tengo nada o lo que tengo quiero actualizarlo, le doy a Aceptar.</li>
+                        <li>Comenzamos el test añadiendo un campo para un alimento pulsando en el botón Agregar alimento.</li>
+                        <li>Aparecen 2 desplegables y un recuadro para escribir, que usaremos de la siguiente forma:</li>
+                            <p>- Hacemos click sobre el primer desplegable y se nos muestra una lista con los Grupos de alimentos que podemos elegir. En nuestro caso para añadir el pollo, seleccionamos Aves y huevos.</p>
+                            <p>- Luego hacemos click sobre el segundo desplegable que muestra una lista con los Alimentos que pertenecen al grupo de Aves y huevos. En nuestro ejemplo seleccionamos Pechuga de pollo.</p>
+                            <p>- Por ultimo en el recuadro para escribir, tenemos que poner en gramos el peso del alimento que hemos comido. ¡Recuerda! El peso de lo que hemos comido no lo que cocinamos. En el ejemplo comimos 90 gramos de pollo, por lo que escribimos 90.</p>
+                            <p>- Para continuar con el resto de alimentos vamos añadiendo con el botón Agregar alimentos y vamos procediendo igual que con el pollo. </p>
+                            <p>Para la ensalada seria: pulsamos en Agregar alimentos.</p>
+                            <p>Desplegable 1=> Verduras y hortalizas</p>
+                            <p>Desplegable 2=> Lechuga</p>
+                            <p>Recuadro para escribir => 50.</p>
+                            <p>Para el tomate: pulsamos en Agregar alimentos.</p>
+                            <p>Desplegable 1=> Verduras y hortalizas</p>
+                            <p>Desplegable 2=> Tomate crudo</p>
+                            <p>Recuadro para escribir => 33.</p>
+                            <p>Para el aceite de oliva podemos añadir todo junto: 7 gramos del filete + 9 gramos de la ensalada, o añadir dos campos y seleccionar dos veces el aceite y añadir en uno 7 y en otro 9: pulsamos en Agregar alimentos.</p>
+                            <p>Desplegable 1=> Aceites y grasas</p>
+                            <p>Desplegable 2=> Aceite de oliva</p>
+                            <p>Recuadro para escribir => 16.</p>
+                            <p>Para la cerveza: pulsamos en Agregar alimentos.</p>
+                            <p>Desplegable 1=> Bebidas</p>
+                            <p>Desplegable 2=> Cerveza</p>
+                            <p>Recuadro para escribir => 330.</p>
+
+						<li>Cuando terminamos de añadir todos los alimentos pulsamos en Aceptar para guardar nuestro test y en Cancelar para borrarlo.</li>
+
+           			</ul>         
+                    
                 </div>
             </div>
             
@@ -531,21 +567,15 @@ window.onload=function(){
       </div>
     </div>
     <!-- Fin Modal Actualizar Código Postal -->
-    
-    
     <script>
 	cargaPatologiasCliente(<?php echo $_SESSION["id"] ?>);
-	//              dia, momento
-	cargarTestAntiguo(3,"desayuno");
-	cargarTestAntiguo(3,"almuerzo");
-	cargarTestAntiguo(3,"merienda");
-	cargarTestAntiguo(3,"cena");
 	cargarActividadFisica();
 	cargaActividadCliente();
 	
 	graficaPeso(<?php echo $_SESSION["id"] ?>);
 	cargarIntercambios(<?php echo $_SESSION["id"] ?>);
 	datosEmpresa();
+	
 	muestraTodasPatologiasAct("<?php echo $_SESSION["sexo"] ?>");
 	$('[data-toggle="tooltip"]').tooltip();
 	</script>

@@ -3,7 +3,7 @@
 -- http://www.phpmyadmin.net
 --
 -- Servidor: 127.0.0.1
--- Tiempo de generación: 26-05-2016 a las 16:43:40
+-- Tiempo de generación: 29-05-2016 a las 13:35:29
 -- Versión del servidor: 5.6.26
 -- Versión de PHP: 5.6.12
 
@@ -39,10 +39,10 @@ CREATE TABLE IF NOT EXISTS `actividadfisica` (
 --
 
 INSERT INTO `actividadfisica` (`id`, `nombre`, `descripcion`) VALUES
-(1, 'Muy ligera', 'Descripción 1'),
-(2, 'Ligera', 'Descripción 2'),
-(3, 'Moderada', 'Descripción 3'),
-(4, 'Intensa', 'Descripción 4');
+(1, 'Muy ligera', 'Trabaja sentado o casi siempre sentado (Conductor, profesor, administrativo, cajero, Informático…). <br/><br/>Y NO hace deporte suave a la semana (2 o menos horas pilates, yoga o andar distancias cortas).<br/><br/>Y NO hace otra actividad física que no se considere suave (NO suele cargar peso, NO anda grandes distancias, NI corre, NI usa la bicicleta)'),
+(2, 'Ligera', 'Realiza solo 1 de estas 3 actividades:<br/><br/> Trabaja de pie o casi siempre de pie (camarero, cocinero, taller, electricista, fontanero, limpieza domestica, cuidado de niños…). <br/><br/>Hace deporte normalmente a la semana (2 a 3 horas de deporte suave como pilates,  yoga o andar distancias cortas). <br/><br/>Hace alguna actividad física que no se considere suave 1 vez a la semana (suele cargar peso,  anda grandes distancias (2-3 horas), corre (30 minutos) o usa la bicicleta (30 minutos))'),
+(3, 'Moderada', 'Realiza solo 2 de estas 3 actividades: <br/><br/>Trabaja de pie o casi siempre de pie (camarero, cocinero, taller, electricista, fontanero, limpieza domestica, cuidado de niños…). <br/><br/>Hace deporte regularmente suave 2 a 3 horas a la semana (pilates,  yoga o andar distancias cortas). <br/><br/>Hace deporte regularmente moderado o intenso 2 o más horas a la semana (gimnasio, bicicleta intensa, correr largas distancias, fútbol, baloncesto, tenis, escalada…)'),
+(4, 'Intensa', 'Trabajo intenso (albañil, cortar árboles, cargar/descargar camiones, montar muebles…). <br/><br/>Y hace deporte regularmente moderado o intenso 2 o más horas a la semana (gimnasio, bicicleta intensa, correr largas distancias, fútbol, baloncesto, tenis, escalada…)');
 
 -- --------------------------------------------------------
 
@@ -279,14 +279,14 @@ INSERT INTO `alimento` (`id`, `idtipoalimento`, `alimento`, `comestible`, `energ
 (188, 20, 'Lenguado', 55, 80, '16.50', '1.40', '0.20', '0.30', '0.50', '60.00', '0.50', '0.00', '100.00', '230.00', '30.00', '29.00', '260.00', '0.70', '0.40', '30.00', '0.10', '0.12', '0.43', '2.00', '11.00', '6.30', '0.00', '0.00', '0.00', '0.00'),
 (189, 20, 'Merluza', 82, 63, '11.80', '1.80', '0.35', '0.43', '0.46', '67.00', '0.00', '0.00', '100.00', '270.00', '33.10', '25.10', '190.00', '1.10', '0.37', '18.00', '0.09', '0.09', '0.16', '0.80', '16.00', '5.50', '1.70', '14.00', '0.00', '0.00'),
 (190, 20, 'Mero', 57, 118, '16.00', '6.00', '0.92', '1.79', '2.78', '47.00', '0.00', '0.00', '80.00', '255.00', '14.00', '20.00', '210.00', '0.90', '0.50', '0.00', '0.80', '0.14', '0.32', '0.00', '0.00', '0.00', '0.00', '0.00', '0.00', '0.00'),
-(191, 20, ' Pescadilla', 75, 68, '15.10', '0.80', '0.09', '0.29', '0.17', '56.80', '0.00', '0.00', '72.00', '249.00', '43.40', '27.30', '222.00', '0.77', '0.03', '27.00', '0.08', '0.12', '0.16', '2.30', '13.00', '1.74', '0.00', '7.00', '0.00', '0.30'),
-(192, 20, ' Pez espada', 94, 110, '17.00', '4.30', '1.04', '1.29', '0.89', '39.00', '1.00', '0.00', '102.00', '342.00', '19.00', '57.00', '506.00', '0.90', '0.40', '0.00', '0.10', '0.10', '0.51', '5.00', '15.00', '9.00', '1.10', '500.00', '0.00', '0.50'),
-(193, 20, ' Rape', 54, 86, '17.00', '2.00', '0.51', '0.16', '1.03', '50.00', '0.00', '0.00', '89.00', '274.00', '64.00', '20.00', '180.00', '1.00', '0.50', '0.00', '0.08', '0.10', '0.00', '1.00', '13.00', '2.00', '1.00', '0.00', '0.00', '0.00'),
-(194, 20, ' Rodaballo', 55, 97, '16.10', '3.10', '0.80', '0.70', '0.70', '60.00', '1.30', '0.00', '110.00', '290.00', '22.00', '20.00', '164.00', '1.00', '0.50', '0.00', '0.06', '0.10', '0.15', '0.80', '16.00', '5.50', '1.70', '14.00', '0.00', '0.00');
+(191, 20, 'Pescadilla', 75, 68, '15.10', '0.80', '0.09', '0.29', '0.17', '56.80', '0.00', '0.00', '72.00', '249.00', '43.40', '27.30', '222.00', '0.77', '0.03', '27.00', '0.08', '0.12', '0.16', '2.30', '13.00', '1.74', '0.00', '7.00', '0.00', '0.30'),
+(192, 20, 'Pez espada', 94, 110, '17.00', '4.30', '1.04', '1.29', '0.89', '39.00', '1.00', '0.00', '102.00', '342.00', '19.00', '57.00', '506.00', '0.90', '0.40', '0.00', '0.10', '0.10', '0.51', '5.00', '15.00', '9.00', '1.10', '500.00', '0.00', '0.50'),
+(193, 20, 'Rape', 54, 86, '17.00', '2.00', '0.51', '0.16', '1.03', '50.00', '0.00', '0.00', '89.00', '274.00', '64.00', '20.00', '180.00', '1.00', '0.50', '0.00', '0.08', '0.10', '0.00', '1.00', '13.00', '2.00', '1.00', '0.00', '0.00', '0.00'),
+(194, 20, 'Rodaballo', 55, 97, '16.10', '3.10', '0.80', '0.70', '0.70', '60.00', '1.30', '0.00', '110.00', '290.00', '22.00', '20.00', '164.00', '1.00', '0.50', '0.00', '0.06', '0.10', '0.15', '0.80', '16.00', '5.50', '1.70', '14.00', '0.00', '0.00');
 INSERT INTO `alimento` (`id`, `idtipoalimento`, `alimento`, `comestible`, `energia`, `proteinas`, `lipidos`, `ags`, `agm`, `agp`, `colesterol`, `glucidos`, `fibra`, `sodio`, `potasio`, `calcio`, `magnesio`, `fosforo`, `hierro`, `zinc`, `yodo`, `b1`, `b2`, `b6`, `b12`, `b9`, `b3`, `c`, `a`, `d`, `e`) VALUES
-(195, 20, ' Salmón', 79, 189, '20.20', '12.00', '2.20', '5.10', '3.40', '50.00', '0.00', '0.00', '45.00', '360.00', '21.00', '27.00', '250.00', '0.40', '0.60', '37.00', '0.23', '0.13', '0.75', '4.00', '26.00', '7.20', '0.00', '13.00', '8.00', '1.91'),
-(196, 20, ' Sardina', 68, 153, '17.10', '9.40', '2.60', '2.80', '2.90', '79.80', '0.00', '0.00', '100.00', '20.00', '50.40', '25.10', '258.00', '2.70', '0.89', '29.00', '0.05', '0.33', '0.96', '28.40', '8.70', '6.40', '0.00', '62.90', '7.90', '1.60'),
-(197, 20, ' Trucha', 52, 90, '15.70', '3.00', '0.70', '1.10', '1.00', '56.00', '0.00', '0.00', '60.00', '250.00', '26.00', '28.00', '180.00', '1.00', '0.80', '11.00', '0.08', '0.10', '0.23', '3.20', '0.00', '5.10', '0.00', '26.00', '0.00', '0.20'),
+(195, 20, 'Salmón', 79, 189, '20.20', '12.00', '2.20', '5.10', '3.40', '50.00', '0.00', '0.00', '45.00', '360.00', '21.00', '27.00', '250.00', '0.40', '0.60', '37.00', '0.23', '0.13', '0.75', '4.00', '26.00', '7.20', '0.00', '13.00', '8.00', '1.91'),
+(196, 20, 'Sardina', 68, 153, '17.10', '9.40', '2.60', '2.80', '2.90', '79.80', '0.00', '0.00', '100.00', '20.00', '50.40', '25.10', '258.00', '2.70', '0.89', '29.00', '0.05', '0.33', '0.96', '28.40', '8.70', '6.40', '0.00', '62.90', '7.90', '1.60'),
+(197, 20, 'Trucha', 52, 90, '15.70', '3.00', '0.70', '1.10', '1.00', '56.00', '0.00', '0.00', '60.00', '250.00', '26.00', '28.00', '180.00', '1.00', '0.80', '11.00', '0.08', '0.10', '0.23', '3.20', '0.00', '5.10', '0.00', '26.00', '0.00', '0.20'),
 (198, 21, 'Acelga', 92, 27, '2.00', '0.20', '0.03', '0.04', '0.07', '0.00', '4.50', '0.80', '170.00', '378.00', '80.00', '81.00', '43.00', '2.30', '0.02', '40.00', '0.07', '0.13', '0.10', '0.00', '22.00', '0.70', '35.00', '183.00', '0.00', '0.03'),
 (199, 21, 'Alcachofa hervida', 43, 75, '2.90', '0.20', '0.05', '0.01', '0.09', '0.00', '1.20', '9.40', '15.00', '300.00', '44.00', '27.00', '50.00', '1.00', '0.00', '0.00', '0.05', '0.04', '0.09', '0.00', '47.00', '0.80', '6.00', '163.00', '0.00', '0.20'),
 (200, 21, 'Boniato y batata', 79, 380, '1.20', '0.60', '0.21', '0.04', '0.18', '0.00', '21.50', '2.50', '20.00', '320.00', '22.00', '13.00', '60.00', '0.70', '0.30', '0.00', '0.10', '0.06', '0.22', '0.00', '52.00', '0.80', '25.00', '667.00', '0.00', '4.00'),
@@ -427,7 +427,7 @@ INSERT INTO `cita` (`cita`, `iddietista`, `idcliente`, `tipocita`) VALUES
 ('2016-05-21 19:00:00', 1, 17, 'Presencial'),
 ('2016-05-22 14:00:00', 1, 19, 'Presencial'),
 ('2016-05-24 12:00:00', 1, 19, 'Skype'),
-('2016-05-30 10:00:00', 2, 17, 'Presencial');
+('2016-06-08 09:00:00', 1, 17, 'Presencial');
 
 -- --------------------------------------------------------
 
@@ -527,12 +527,23 @@ CREATE TABLE IF NOT EXISTS `entrada` (
   `id` int(11) NOT NULL,
   `fecha` datetime NOT NULL,
   `titulo` varchar(100) COLLATE utf8_spanish_ci NOT NULL,
-  `texto` varchar(250) COLLATE utf8_spanish_ci NOT NULL,
+  `texto` varchar(1000) COLLATE utf8_spanish_ci NOT NULL,
   `imagen` varchar(200) COLLATE utf8_spanish_ci DEFAULT NULL,
   `video` varchar(200) COLLATE utf8_spanish_ci DEFAULT NULL,
   `idcategoria` int(11) NOT NULL,
   `iddietista` int(11) NOT NULL
-) ENGINE=InnoDB DEFAULT CHARSET=utf8 COLLATE=utf8_spanish_ci;
+) ENGINE=InnoDB AUTO_INCREMENT=9 DEFAULT CHARSET=utf8 COLLATE=utf8_spanish_ci;
+
+--
+-- Volcado de datos para la tabla `entrada`
+--
+
+INSERT INTO `entrada` (`id`, `fecha`, `titulo`, `texto`, `imagen`, `video`, `idcategoria`, `iddietista`) VALUES
+(4, '2016-05-28 12:56:00', 'Sobre comer verduras', 'Hay que comer mucha verdura porque es muy importante. Mejor que contarlo yo, en texto, aquí hay un buen vídeo que lo explica', '28744506zanahoriaPaint.png', '7RsjJionIGI', 1, 1),
+(5, '2016-05-28 14:11:00', 'Verdades y mentiras sobre la dietética', 'Estos son las verdades y mentiras sobre la dietética.', '65280151salad-775949_1280.jpg', '', 2, 1),
+(6, '2016-05-28 14:12:00', 'Ocho vasos de agua al día', 'Hay que beber 8 vasos de agua al día- En el siguiente vídeo se explicas muy bien el por qué.', '67272949manzanaPaint.png', 'fI1b3UUgYhY', 1, 1),
+(7, '2016-05-28 14:13:00', 'Otro consejo más', 'Hay que comer mucha fruta!', '76675415fresa.png', '', 1, 1),
+(8, '2016-05-29 13:10:00', 'Bacon y cáncer de colon', 'Mucho se está hablando últimamente sobre la relación entre comer carne procesada y los riesgos de padecer cáncer de colon. Lo que se olvidan algunos es esto no es algo nuevo y que por supuesto está relacionado con el abuso de este tipo de alimentos no con su simple consumo esporádico. Os dejo un divertido vídeo explicativo. ¡Que lo disfrutéis!', '48999023zanahoriaPaint.png', 'e7WjxRtTdIk', 1, 1);
 
 -- --------------------------------------------------------
 
@@ -922,7 +933,7 @@ ALTER TABLE `dietista`
 -- AUTO_INCREMENT de la tabla `entrada`
 --
 ALTER TABLE `entrada`
-  MODIFY `id` int(11) NOT NULL AUTO_INCREMENT;
+  MODIFY `id` int(11) NOT NULL AUTO_INCREMENT,AUTO_INCREMENT=9;
 --
 -- AUTO_INCREMENT de la tabla `patologia`
 --
