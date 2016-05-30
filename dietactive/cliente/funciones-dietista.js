@@ -1,4 +1,40 @@
 ﻿//Funciones dietista
+function poneImagen(ruta)
+{
+	if(ruta==0)
+	{
+		$("#imagenseleccionada").html("");
+	}
+	else
+	{
+		$("#imagenseleccionada").html("<img src='images/"+ruta+"' class='img-responsive imagenentrada' />");
+	}
+}
+
+function muestraImagenesPre()
+{
+	$.get("../servidor/cargar_imagenes_pre.php",function(data, status)
+								{		
+									if(status=="success")
+									{
+										
+										imagenes=JSON.parse(data);
+										var salida="<div class='form-group'><label>Imagen:</label><select onChange='poneImagen(this.value)' class='form-control' id='imagen' name='imagen'>";
+										salida+="<option value='0'>-- Selecciona --</option>";
+										for(var i=0;i<imagenes.length;i++)
+										{
+											
+												salida+="<option value='"+imagenes[i].ruta+"'>"+imagenes[i].nombre+"</option>";
+											
+										}
+										salida+="</select></div>";
+										
+										$("#imagenespre").html(salida);
+										
+									}
+								});
+}
+
 function borrarEntrada(id)
 {
 	if(confirm("¿Deseas borrar esta entrada?"))
@@ -47,7 +83,7 @@ function consultaEntrada(id)
 										
 										modalEntradas+="		  <div class='row'><div class='col-md-6'><b>Fecha:</b> "+datos[0].fecha+"</div><div class='col-md-6'><b>Categoría:</b> "+datos[0].categoria+"</div></div>";
 										
-										modalEntradas+="		  <div class='row'><div class='col-md-12'><img width='230' src='../servidor/imagenes/"+datos[0].imagen+"' /></div></div>";
+										modalEntradas+="		  <div class='row'><div class='col-md-12'><img width='230' src='images/"+datos[0].imagen+"' /></div></div>";
 										
 										modalEntradas+="		  <div class='row'><div class='col-md-12'><p><b>Entrada:</b></p></div></div>";
 										modalEntradas+="		  <div class='row'><div class='col-md-12'><p>"+datos[0].texto+"</p></div></div>";
@@ -121,9 +157,9 @@ function publicarEntrada()
 		if($("#categoria").val()!=0)
 		{
 			$("#categoria2").html("");
-			if(estadofichero)
+			if($("#imagen").val()!=0)
 			{
-				$("#fichero2").html("");
+				$("#imagenerror").html("");
 				if($("#textoentrada").val()!="")
 				{
 					$("#textoentrada3").html("");
@@ -135,7 +171,7 @@ function publicarEntrada()
 						var enlacevideo=enlace[enlace.length-1];
 						
 						$.post("../servidor/insertar_entrada.php",{
-							imagen: $("#rutaimagen").html(),
+							imagen: $("#imagen").val(),
 							idcategoria: $("#categoria").val(),
 							titulo: $("#titulo").val(),
 							texto: $("#textoentrada").val(),
@@ -148,12 +184,9 @@ function publicarEntrada()
 												{
 													
 													cuentaCaracteres();
-													$("#respuesta1").html("");
-													$("#respuesta2").html("");
-													$("#fichero2").html("");
-													$("#rutaimagen").html("");
 													
-													estadofichero=false;
+													$("#imagenseleccionada").html("");
+													
 													document.getElementById('resetear').click();
 													buscarEntradas();
 													alert("Entrada publicada correctamente.");
@@ -173,7 +206,7 @@ function publicarEntrada()
 			}
 			else
 			{
-				$("#fichero2").html("Debes seleccionar una imagen.");
+				$("#imagenerror").html("Debes seleccionar una imagen.");
 			}
 		}
 		else

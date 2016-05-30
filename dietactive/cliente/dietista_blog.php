@@ -10,7 +10,7 @@
 <html>
 <head>
 <meta charset="utf-8">
-<title>Clientes - DietActive</title>
+<title>Blog - DietActive</title>
 <link rel="shortcut icon" href="images/fav.png">
 <link rel="stylesheet" href="http://maxcdn.bootstrapcdn.com/bootstrap/3.3.6/css/bootstrap.min.css">
 <script src="https://ajax.googleapis.com/ajax/libs/jquery/1.12.0/jquery.min.js"></script>
@@ -58,56 +58,7 @@ window.onload=function(){
 	ocultaLoading();
 }
 
-$(function(){
-        $("input[name='file']").on("change", function(){
-			
-            var formData = new FormData($("#formInsertarEntrada")[0]);
-            var ruta = "../servidor/subir_imagen.php";
-            $.ajax({
-                url: ruta,
-                type: "POST",
-                data: formData,
-                contentType: false,
-                processData: false,
-                success: function(data)
-                {
-					if (/^[\],:{}\s]*$/.test(data.replace(/\\["\\\/bfnrtu]/g, '@').
-					replace(/"[^"\\\n\r]*"|true|false|null|-?\d+(?:\.\d*)?(?:[eE][+\-]?\d+)?/g, ']').
-					replace(/(?:^|:|,)(?:\s*\[)+/g, ''))) {
-					
-					  //the json is ok
-						  datos=JSON.parse(data);
-						  
-						if(datos[0].ok==1)
-						{
-							
-							$("#respuesta1").html(datos[0].nombre);
-							$("#respuesta2").html("<img width='230px' src='../servidor/imagenes/"+datos[0].ruta+"' />");
-							
-							$("#fichero2").html("");
-							
-							$("#rutaimagen").html(datos[0].ruta);
-							
-							estadofichero=true;
-							//alert(nombrearchivo[nombrearchivo.length-1]);
-						}
-						else
-						{
-							$("#respuesta2").html("El fichero es demasiado grande.");
-							estadofichero=false;
-						}
-					
-					}else{
-						$("#respuesta1").html("");
-					  $("#respuesta2").html("El fichero es demasiado grande.");
-						estadofichero=false;
-					}
-					
-					
-                }
-            });
-        });
-     });
+
 
 </script>
 </head>
@@ -243,15 +194,16 @@ $(function(){
                 
                 <span id="listacategorias"></span>
                 <span id="categoria2" class="error"></span>
-                <label for='archivo'>Imagen:</label>
-                <div class="form-group">
-                <label class="btn btn-default btn-file">Subir archivo
-                <input type="file" id="archivo" name="file" style="display: none;">
-                </label>
-                <div id="respuesta1"></div>
-  				<div class="cuadroimagen" id="respuesta2"></div>
-                <span id="fichero2" class="error"></span>
+                
+                <div class="row">
+                <div id="imagenespre" class="col-md-6">
+                
                 </div>
+                <div id="imagenseleccionada" class="col-md-6">
+                
+                </div>
+                </div>
+                <span id="imagenerror" class="error"></span>
                 <div class="form-group"><label for="textoentrada">Texto:</label><textarea type="text" id="textoentrada" name="textoentrada" class="form-control" required maxlength="1000" rows="10" cols="50" onKeyUp="cuentaCaracteres();" onChange="cuentaCaracteres();" onMouseUp="cuentaCaracteres();" onBlur="cuentaCaracteres();"></textarea><span id="textoentrada2">0</span>/1000</div>
                 
                 <span id="textoentrada3" class="error"></span>
@@ -327,9 +279,9 @@ $(function(){
     </div>
     <!-- Fin Modal Actualizar Password -->
     <div id="modalEntradas"></div>
-    <div id="rutaimagen" style="display:none;"></div>
     <script>
-	muestraCategorias()
+	muestraCategorias();
+	muestraImagenesPre();
 	datosEmpresa();
 	buscarEntradas();
 	

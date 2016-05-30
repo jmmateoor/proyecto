@@ -68,7 +68,7 @@ function consultaEntradas(inicio1,fin1)
 									salida+="<div class='row'><div class='col-md-12'><b>Autor:</b> "+datos[i].dietnombre+" "+datos[i].dietapellidos+"</div></div>";
 									salida+="<div class='row'><div class='col-md-6'><b>Categoría: </b>"+datos[i].categoria+"</div><div class='col-md-6'><b>Fecha publicación: </b>"+datos[i].fecha+"</div></div><br/>";
 									salida+="<hr />";
-									salida+="<div class='row'><div class='col-md-6'><img src='servidor/imagenes/"+datos[i].imagen+"' class='img-responsive imagenentrada' /></div><div class='col-md-6'>"+datos[i].texto+"</div></div>";
+									salida+="<div class='row'><div class='col-md-6'><img src='cliente/images/"+datos[i].imagen+"' class='img-responsive imagenentrada' /></div><div class='col-md-6'>"+datos[i].texto+"</div></div>";
 									if(datos[i].video!="")
 									{
 										salida+="<hr />";

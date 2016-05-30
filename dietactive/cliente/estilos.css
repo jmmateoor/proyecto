@@ -16,6 +16,14 @@ h4 {
 	font-size:16px;
 }
 
+.imagenentrada{
+	max-height: 200px !important;
+}
+
+#imagenseleccionada{
+	height: 200px !important;
+}
+
 .cuadroimagen{
 	margin-top:10px !important;
 	margin-bottom:10px !important;

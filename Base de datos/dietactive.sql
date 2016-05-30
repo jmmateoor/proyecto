@@ -3,7 +3,7 @@
 -- http://www.phpmyadmin.net
 --
 -- Servidor: 127.0.0.1
--- Tiempo de generación: 29-05-2016 a las 13:35:29
+-- Tiempo de generación: 30-05-2016 a las 18:54:07
 -- Versión del servidor: 5.6.26
 -- Versión de PHP: 5.6.12
 
@@ -532,18 +532,7 @@ CREATE TABLE IF NOT EXISTS `entrada` (
   `video` varchar(200) COLLATE utf8_spanish_ci DEFAULT NULL,
   `idcategoria` int(11) NOT NULL,
   `iddietista` int(11) NOT NULL
-) ENGINE=InnoDB AUTO_INCREMENT=9 DEFAULT CHARSET=utf8 COLLATE=utf8_spanish_ci;
-
---
--- Volcado de datos para la tabla `entrada`
---
-
-INSERT INTO `entrada` (`id`, `fecha`, `titulo`, `texto`, `imagen`, `video`, `idcategoria`, `iddietista`) VALUES
-(4, '2016-05-28 12:56:00', 'Sobre comer verduras', 'Hay que comer mucha verdura porque es muy importante. Mejor que contarlo yo, en texto, aquí hay un buen vídeo que lo explica', '28744506zanahoriaPaint.png', '7RsjJionIGI', 1, 1),
-(5, '2016-05-28 14:11:00', 'Verdades y mentiras sobre la dietética', 'Estos son las verdades y mentiras sobre la dietética.', '65280151salad-775949_1280.jpg', '', 2, 1),
-(6, '2016-05-28 14:12:00', 'Ocho vasos de agua al día', 'Hay que beber 8 vasos de agua al día- En el siguiente vídeo se explicas muy bien el por qué.', '67272949manzanaPaint.png', 'fI1b3UUgYhY', 1, 1),
-(7, '2016-05-28 14:13:00', 'Otro consejo más', 'Hay que comer mucha fruta!', '76675415fresa.png', '', 1, 1),
-(8, '2016-05-29 13:10:00', 'Bacon y cáncer de colon', 'Mucho se está hablando últimamente sobre la relación entre comer carne procesada y los riesgos de padecer cáncer de colon. Lo que se olvidan algunos es esto no es algo nuevo y que por supuesto está relacionado con el abuso de este tipo de alimentos no con su simple consumo esporádico. Os dejo un divertido vídeo explicativo. ¡Que lo disfrutéis!', '48999023zanahoriaPaint.png', 'e7WjxRtTdIk', 1, 1);
+) ENGINE=InnoDB AUTO_INCREMENT=11 DEFAULT CHARSET=utf8 COLLATE=utf8_spanish_ci;
 
 -- --------------------------------------------------------
 
@@ -609,6 +598,33 @@ INSERT INTO `historicopeso` (`fecha`, `idcliente`, `peso`) VALUES
 ('2016-05-10 17:08:48', 17, '72.50'),
 ('2016-05-10 17:26:44', 19, '52.00'),
 ('2016-05-23 17:50:24', 17, '72.00');
+
+-- --------------------------------------------------------
+
+--
+-- Estructura de tabla para la tabla `imagenpre`
+--
+
+CREATE TABLE IF NOT EXISTS `imagenpre` (
+  `id` int(11) NOT NULL,
+  `nombre` varchar(100) COLLATE utf8_spanish_ci NOT NULL,
+  `ruta` varchar(100) COLLATE utf8_spanish_ci NOT NULL
+) ENGINE=InnoDB AUTO_INCREMENT=10 DEFAULT CHARSET=utf8 COLLATE=utf8_spanish_ci;
+
+--
+-- Volcado de datos para la tabla `imagenpre`
+--
+
+INSERT INTO `imagenpre` (`id`, `nombre`, `ruta`) VALUES
+(1, 'Carne', 'carne.png'),
+(2, 'Fresa', 'fresa.png'),
+(3, 'Leche', 'leche.png'),
+(4, 'Manzana', 'manzana.png'),
+(5, 'Pan de molde', 'panmolde.png'),
+(6, 'Patata', 'papa.png'),
+(7, 'Tomate', 'tomate.png'),
+(8, 'Yogurt', 'yogurt.png'),
+(9, 'Zabahoria', 'zanahoria.png');
 
 -- --------------------------------------------------------
 
@@ -866,6 +882,12 @@ ALTER TABLE `historicopeso`
   ADD KEY `fk_histpeso_cliente` (`idcliente`);
 
 --
+-- Indices de la tabla `imagenpre`
+--
+ALTER TABLE `imagenpre`
+  ADD PRIMARY KEY (`id`);
+
+--
 -- Indices de la tabla `patologia`
 --
 ALTER TABLE `patologia`
@@ -933,7 +955,12 @@ ALTER TABLE `dietista`
 -- AUTO_INCREMENT de la tabla `entrada`
 --
 ALTER TABLE `entrada`
-  MODIFY `id` int(11) NOT NULL AUTO_INCREMENT,AUTO_INCREMENT=9;
+  MODIFY `id` int(11) NOT NULL AUTO_INCREMENT,AUTO_INCREMENT=11;
+--
+-- AUTO_INCREMENT de la tabla `imagenpre`
+--
+ALTER TABLE `imagenpre`
+  MODIFY `id` int(11) NOT NULL AUTO_INCREMENT,AUTO_INCREMENT=10;
 --
 -- AUTO_INCREMENT de la tabla `patologia`
 --
