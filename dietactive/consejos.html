@@ -15,7 +15,7 @@
 
 
 <script>
-window.onload=cargarEntradasInicio();
+window.onload=pagination(1);
 
 
 
@@ -77,13 +77,14 @@ hr{
                   </div>
                 </nav>
 </header>
+<span id="1"></span>
 <div id="separador"></div>
 <div class="container">
 <div class="row">
 <div class="col-lg-2"></div>
-<div class="col-lg-7"><div id="posts"></div></div>
+<div class="col-lg-7"><div id="agrega-registros"></div></div>
 <div class="col-lg-2"></div>
 </div>
-<div id="paginacion"></div>
+<div class="row"><div class="col-lg-12"><ul class="pagination" id="pagination" onClick="variable = setTimeout(ir_a,800,'#separador')"></ul></div></div>
 </body>
 </html>

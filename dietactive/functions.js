@@ -25,6 +25,26 @@ var totalentradas;
 var inicio;
 var fin;
 
+function pagination(partida)
+{
+	var url="servidor/paginacion.php";
+	$.ajax({
+		type:'POST',
+		url:url,
+		data: 'partida='+partida,
+		success:function(data){
+			var datos = JSON.parse(data);
+			
+			$('#agrega-registros').html(datos[0].salida);
+			
+			$('#pagination').html(datos[1].lista);
+			
+		}
+	});
+	return false;
+}
+
+
 function cargarEntradasInicio()
 {
 	$.post("servidor/consultar_total_entradas.php",{

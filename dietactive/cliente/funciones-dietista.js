@@ -118,7 +118,7 @@ function consultaEntrada(id)
 
 function borraModal()
 {
-	variable = setTimeout(function () {$("#modalEntradas").html("");},1000);
+	variable = setTimeout(function () {$("#modalEntradas").html("");},800);
 }
 
 function buscarEntradas()
