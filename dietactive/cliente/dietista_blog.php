@@ -109,7 +109,7 @@ window.onload=function(){
                       <span class="icon-bar"></span>
                       <span class="icon-bar"></span>
                     </button>
-                    <a href="#" class="navbar-brand" data-toggle="tooltip" data-placement="top" title="Ir a Inicio"><img src="images/logomenu.png" class="img-responsive" width="50px" alt="Ir a Inicio" /></a>
+                    <a class="navbar-brand" data-placement="top" ><img src="images/logomenu.png" class="img-responsive" width="50px" alt="DietActive" /></a>
                   </div>
                  
                   <!-- Agrupar los enlaces de navegación, los formularios y cualquier

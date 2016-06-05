@@ -10,7 +10,7 @@
 <html>
 <head>
 <meta charset="utf-8">
-<title>Clientes - DietActive</title>
+<title>Alimentos - DietActive</title>
 <link rel="shortcut icon" href="images/fav.png">
 <link rel="stylesheet" href="http://maxcdn.bootstrapcdn.com/bootstrap/3.3.6/css/bootstrap.min.css">
 <script src="https://ajax.googleapis.com/ajax/libs/jquery/1.12.0/jquery.min.js"></script>
@@ -106,7 +106,7 @@ window.onload=function(){
                       <span class="icon-bar"></span>
                       <span class="icon-bar"></span>
                     </button>
-                    <a href="#" class="navbar-brand" data-toggle="tooltip" data-placement="top" title="Ir a Inicio"><img src="images/logomenu.png" class="img-responsive" width="50px" alt="Ir a Inicio" /></a>
+                    <a class="navbar-brand" data-placement="top"><img src="images/logomenu.png" class="img-responsive" width="50px" alt="DietActive" /></a>
                   </div>
                  
                   <!-- Agrupar los enlaces de navegación, los formularios y cualquier

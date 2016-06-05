@@ -8,14 +8,18 @@ session_start();
 <title>Inicio de sesión - DietActive</title>
 <link rel="shortcut icon" href="images/fav.png">
 <link rel="stylesheet" type="text/css" href="../styles.css">
+
 <link rel="stylesheet" href="http://maxcdn.bootstrapcdn.com/bootstrap/3.3.6/css/bootstrap.min.css">
 <script src="https://ajax.googleapis.com/ajax/libs/jquery/1.12.0/jquery.min.js"></script>
 <script src="http://maxcdn.bootstrapcdn.com/bootstrap/3.3.6/js/bootstrap.min.js"></script>
 <meta name="viewport" content="width=device-width, initial-scale=1">
+
 <link rel="stylesheet" type="text/css" href="estilos.css">
 <script src="funciones.js"></script>
 <script src="../functions.js"></script>
 <script>
+
+
 window.onload=function(){
 	ocultaLoading();
 }
@@ -83,7 +87,7 @@ function clienteLogin()
                     <ul class="nav navbar-nav">
                       <li><a style="cursor:pointer;" class="navegacion" onClick="principal('../index.html#quienessomos')">Quiénes Somos</a></li>
                       <li><a style="cursor:pointer;" class="navegacion" onClick="principal('../index.html#servicios')">Servicios</a></li>
-                      <li><a style="cursor:pointer;" class="navegacion" onClick="principal('../index.html#consejos')">Consejos</a></li>
+                      <li><a href="../consejos.html">Consejos</a></li>
                       <li><a href="clientelogin.php" class="navegacion">Área cliente</a></li>
                       <li><a href="dietistalogin.php" class="navegacion">Área dietista</a></li>
                     </ul>

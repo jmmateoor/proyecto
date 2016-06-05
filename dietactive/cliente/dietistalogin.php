@@ -84,7 +84,7 @@ function dietistaLogin()
                     <ul class="nav navbar-nav">
                       <li><a style="cursor:pointer;" class="navegacion" onClick="principal('../index.html#quienessomos')">Quiénes Somos</a></li>
                       <li><a style="cursor:pointer;" class="navegacion" onClick="principal('../index.html#servicios')">Servicios</a></li>
-                      <li><a style="cursor:pointer;" class="navegacion" onClick="principal('../index.html#consejos')">Consejos</a></li>
+                      <li><a href="../consejos.html">Consejos</a></li>
                       <li><a href="clientelogin.php" class="navegacion">Área cliente</a></li>
                       <li><a href="dietistalogin.php" class="navegacion">Área dietista</a></li>
                     </ul>
