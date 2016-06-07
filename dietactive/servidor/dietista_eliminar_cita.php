@@ -17,7 +17,7 @@
 		$headers = "MIME-Version: 1.0\r\n"; 
 		$headers .= "Content-type: text/html; charset=iso-8859-1\r\n"; 
 		//dirección del remitente 
-		$headers .= "From: DietActive < info >\r\n";
+		$headers .= "From: DietActive < citas >\r\n";
 		//Enviamos el mensaje a tu_dirección_email 
 		$mensaje='Tu cita ha sido cancelada. Por favor, coge una nueva cita.';
 		$bool = mail($email,$titulo,$mensaje,$headers);
