@@ -500,56 +500,60 @@ var listaobjetos=[];
 
 function recorrerTest(dia,momento)
 {
-	alimentos=[];
-	cantidad=[];
-	validado=true;
-	var x = document.getElementById(momento).getElementsByTagName("div");
-	if(x.length>0)
+	if(confirm("¿Aceptar este momento del día?"))
 	{
-		for(var i=0;i<x.length;i++)
-		{
-			if(x[i].getElementsByTagName("select")[1].value==0 || x[i].getElementsByTagName("input")[0].value=="")
-			{
-				validado=false;
-			}
-		}
-		
-		if(validado)
+	
+		alimentos=[];
+		cantidad=[];
+		validado=true;
+		var x = document.getElementById(momento).getElementsByTagName("div");
+		if(x.length>0)
 		{
 			for(var i=0;i<x.length;i++)
 			{
-				alimentos.push(x[i].getElementsByTagName("select")[1].value);
-				cantidad.push(x[i].getElementsByTagName("input")[0].value);
+				if(x[i].getElementsByTagName("select")[1].value==0 || x[i].getElementsByTagName("input")[0].value=="")
+				{
+					validado=false;
+				}
 			}
-			$.post("../servidor/insertar_test.php",{
-				dia: dia,
-				momento: momento,
-				alimentos: alimentos,
-				cantidad: cantidad
-								},
-								function(datos, estado)
-								{
-									if(datos=="s")
+			
+			if(validado)
+			{
+				for(var i=0;i<x.length;i++)
+				{
+					alimentos.push(x[i].getElementsByTagName("select")[1].value);
+					cantidad.push(x[i].getElementsByTagName("input")[0].value);
+				}
+				$.post("../servidor/insertar_test.php",{
+					dia: dia,
+					momento: momento,
+					alimentos: alimentos,
+					cantidad: cantidad
+									},
+									function(datos, estado)
 									{
-										var boton="boton"+momento;
-										var aceptar="aceptar"+momento;
-										$("#"+boton).html("");
-										$("#"+aceptar).html("");
-										
-										cargarTestAntiguo(dia,momento);
-									}
-								});
-			
-			
+										if(datos=="s")
+										{
+											var boton="boton"+momento;
+											var aceptar="aceptar"+momento;
+											$("#"+boton).html("");
+											$("#"+aceptar).html("");
+											
+											cargarTestAntiguo(dia,momento);
+										}
+									});
+				
+				
+			}
+			else
+			{
+				alert("Faltan campos por rellenar");
+			}
 		}
 		else
 		{
-			alert("Faltan campos por rellenar");
+			alert("No has añadido ningún alimento");
 		}
-	}
-	else
-	{
-		alert("No has añadido ningún alimento");
 	}
 }
 
