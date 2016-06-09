@@ -205,7 +205,9 @@ window.onload=function(){
                         <li>Pérdida de peso real y sostenible, no se producen efecto rebote.</li>
                         <li>Aprenderás a comer sano, está basada en Dieta Mediterránea.</li>
 					</ul>
-                    
+                    <h3>Dieta Mediterránea</h3>
+                    <p>Son una serie de recomendaciones dietéticas propias de nuestro entorno en las que se basa la dieta por intercambio. Son una guía de vida sana y equilibrada.</p>
+                    <p><img src="images/dietamediterranea.png" class="img-responsive" style="max-width: 700px; width:100%;" /></p>
                     <div id="lacteos"><h3 style="display:inline;;">Lácteos</h3> <a style="cursor: pointer;" onClick="ir_a('#ancla');"> <span class="glyphicon glyphicon-menu-up"></span> Ir arriba</a></div>
                     <p><div class='table-responsive fondotabla'>
                     <table class='table table-condensed'>

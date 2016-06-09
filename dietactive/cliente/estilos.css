@@ -1,8 +1,14 @@
 /* CSS Document */
 @import url(https://fonts.googleapis.com/css?family=Comfortaa);
-h1,h2,h3,h4,h5,h6{
-	font-family: 'Comfortaa', cursive;
+@import url(https://fonts.googleapis.com/css?family=Courgette);
+h1,h2,h3,h5,h6{
+	font-family: 'Courgette', cursive;
+	color:#804040;
 }
+h4{
+	font-family: 'Courgette', cursive;
+}
+
 
 .embed-responsive-16by9{
 	padding-bottom:0 !important;
@@ -500,6 +506,14 @@ a.enlaceinicio:visited{
         min-height:400px;
     }
 }
+
+@media screen and (max-width: 480px) {
+    .cuerpo {
+        padding:0px !important;
+    }
+}
+
+
 
 .datospers{
 	border-bottom:solid 1px;

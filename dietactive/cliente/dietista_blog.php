@@ -1,6 +1,7 @@
 <?php
 	session_start();
-	if($_SESSION["logeadodietista"]!=true)
+	
+	if(!isset($_SESSION["logeadodietista"]))
 	{
 		header("location: dietistalogin.php");
 	}

@@ -168,13 +168,18 @@ function publicarEntrada()
 						video=$("#enlace").val();
 						var enlace=video.split("/watch?v=");
 						
+						
+						
 						var enlacevideo=enlace[enlace.length-1];
+						
+						
+						var textoentrada=$("#textoentrada").val().replace(/\n/g,"<br/>");
 						
 						$.post("../servidor/insertar_entrada.php",{
 							imagen: $("#imagen").val(),
 							idcategoria: $("#categoria").val(),
 							titulo: $("#titulo").val(),
-							texto: $("#textoentrada").val(),
+							texto: textoentrada,
 							video: enlacevideo
 											},
 											function(data, estado)
@@ -775,7 +780,7 @@ function datosClienteBuscado(idcliente)
 										modaldieta+="	  </div>";
 										modaldieta+="	  <div class='modal-body'>";
 										modaldieta+="		  <form role='form' name='formActualizarDieta' method='post'>";
-										modaldieta+="		  <textarea id='textodieta' class='form-control' rows='4' cols='50' onKeyUp='compruebaDieta();' onChange='compruebaDieta();'>"+datos[0].dieta+"</textarea>";
+										modaldieta+="		  <textarea id='textodieta' class='form-control' rows='4' cols='50' onKeyUp='compruebaDieta();' onChange='compruebaDieta();'>"+datos[0].dieta.replace(/<br\/>/g,"\n")+"</textarea>";
 										modaldieta+="		  <span id='textodieta2'></span>";
 										modaldieta+="		  </div>";
 										modaldieta+="		  <div class='modal-footer'>";
@@ -799,7 +804,7 @@ function datosClienteBuscado(idcliente)
 
 function actualizaDieta(idcliente)
 {
-	dieta=$("#textodieta").val();
+	dieta=$("#textodieta").val().replace(/\n/g,"<br/>");
 	$.post("../servidor/actualizar_dieta.php",{
 			idcliente: idcliente,
 			dieta: dieta
@@ -808,7 +813,7 @@ function actualizaDieta(idcliente)
 							{
 								if(datos=='s')
 								{
-									$("#textodieta").val("");
+									$("#textodieta").val(dieta.replace(/<br\/>/g,"\n"));
 									$("#ladieta").html(dieta);
 								}
 								else

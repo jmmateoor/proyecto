@@ -8,6 +8,10 @@
 	}
 }
 
+.carousel-caption{
+	top:10%;
+}
+
 .navbar-inverse .navbar-toggle .icon-bar{
 	background-color:black !important;
 }

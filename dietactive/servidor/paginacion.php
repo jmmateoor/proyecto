@@ -52,7 +52,7 @@ else
 $salida="";
 
 
-$registro = mysqli_query($connex,"select entrada.fecha, entrada.titulo, entrada.texto, entrada.imagen, entrada.video, categoria.nombre, dietista.nombre, dietista.apellidos from entrada join categoria on entrada.idcategoria = categoria.id join dietista on entrada.iddietista = dietista.id order by 2 desc LIMIT $limit, $paginacion");
+$registro = mysqli_query($connex,"select entrada.fecha, entrada.titulo, entrada.texto, entrada.imagen, entrada.video, categoria.nombre, dietista.nombre, dietista.apellidos from entrada join categoria on entrada.idcategoria = categoria.id join dietista on entrada.iddietista = dietista.id order by 1 desc LIMIT $limit, $paginacion");
 
 while($registro2 = mysqli_fetch_array($registro,MYSQLI_NUM))
 {

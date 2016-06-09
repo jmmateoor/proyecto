@@ -5,7 +5,7 @@
 	$c = new MySQLi($servidor,$usuario,$password,$bbdd);
 	$c->set_charset("utf8");
 	
-	$fecha=date("Y-m-d H:i");
+	$fecha=date("Y-m-d H:i:s");
 	
 	
 	$preparada = $c->prepare("insert into entrada(fecha, titulo, texto, imagen, video, idcategoria, iddietista) values (?, ?, ?, ?, ?, ?, ?)");

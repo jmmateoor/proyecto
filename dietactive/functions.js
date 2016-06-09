@@ -33,6 +33,7 @@ function pagination(partida)
 		url:url,
 		data: 'partida='+partida,
 		success:function(data){
+			
 			var datos = JSON.parse(data);
 			
 			$('#agrega-registros').html(datos[0].salida);
