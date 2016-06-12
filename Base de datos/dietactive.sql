@@ -3,7 +3,7 @@
 -- http://www.phpmyadmin.net
 --
 -- Servidor: 127.0.0.1
--- Tiempo de generación: 30-05-2016 a las 18:54:07
+-- Tiempo de generación: 12-06-2016 a las 23:06:49
 -- Versión del servidor: 5.6.26
 -- Versión de PHP: 5.6.12
 
@@ -82,7 +82,7 @@ CREATE TABLE IF NOT EXISTS `alimento` (
   `a` decimal(10,2) NOT NULL,
   `d` decimal(10,2) NOT NULL,
   `e` decimal(10,2) NOT NULL
-) ENGINE=InnoDB AUTO_INCREMENT=294 DEFAULT CHARSET=utf8 COLLATE=utf8_spanish_ci;
+) ENGINE=InnoDB AUTO_INCREMENT=299 DEFAULT CHARSET=utf8 COLLATE=utf8_spanish_ci;
 
 --
 -- Volcado de datos para la tabla `alimento`
@@ -382,7 +382,12 @@ INSERT INTO `alimento` (`id`, `idtipoalimento`, `alimento`, `comestible`, `energ
 (290, 25, 'Uva negra', 90, 67, '0.60', '0.70', '0.00', '0.00', '0.00', '0.00', '15.50', '0.40', '2.00', '320.00', '4.00', '4.00', '16.00', '0.30', '0.10', '0.00', '0.04', '0.02', '0.10', '0.00', '26.00', '0.30', '4.00', '3.00', '0.00', '0.70'),
 (291, 26, 'Compota', 100, 66, '0.30', '0.00', '0.00', '0.00', '0.00', '0.00', '17.30', '2.00', '3.00', '99.00', '3.00', '9.80', '13.00', '0.20', '0.00', '0.00', '0.03', '0.02', '0.02', '0.00', '2.00', '10.00', '11.00', '0.00', '0.00', '0.00'),
 (292, 26, 'Melocotón en almíbar', 100, 70, '0.40', '0.01', '0.01', '0.03', '0.05', '0.00', '18.00', '1.00', '2.50', '130.00', '4.50', '6.00', '13.00', '0.30', '0.03', '0.00', '0.02', '0.02', '0.02', '0.00', '5.00', '0.60', '4.00', '12.50', '0.00', '0.89'),
-(293, 26, 'Piña en almíbar', 100, 81, '0.30', '0.10', '0.00', '0.00', '0.00', '0.00', '21.00', '0.90', '1.00', '90.00', '11.50', '8.00', '5.00', '0.35', '0.10', '10.00', '0.06', '0.02', '0.07', '0.00', '1.00', '0.30', '8.00', '6.67', '0.00', '0.08');
+(293, 26, 'Piña en almíbar', 100, 81, '0.30', '0.10', '0.00', '0.00', '0.00', '0.00', '21.00', '0.90', '1.00', '90.00', '11.50', '8.00', '5.00', '0.35', '0.10', '10.00', '0.06', '0.02', '0.07', '0.00', '1.00', '0.30', '8.00', '6.67', '0.00', '0.08'),
+(294, 28, 'Aceite de oliva', 100, 899, '1.00', '99.90', '14.30', '73.00', '8.20', '0.00', '0.00', '0.00', '0.00', '0.00', '0.00', '0.00', '0.00', '0.40', '1.00', '0.00', '1.00', '1.00', '1.00', '0.00', '0.00', '0.00', '0.00', '0.00', '0.00', '12.00'),
+(295, 28, 'Aceite de girasol', 100, 899, '0.00', '99.90', '12.00', '20.50', '63.30', '0.00', '0.00', '0.00', '0.00', '0.00', '0.00', '0.00', '0.00', '0.03', '1.00', '1.00', '1.00', '1.00', '1.00', '0.00', '0.00', '0.00', '0.00', '4.30', '0.00', '56.00'),
+(296, 28, 'Mantequilla', 100, 897, '0.25', '99.50', '62.66', '28.92', '2.31', '286.00', '1.00', '0.00', '750.00', '15.00', '15.00', '2.00', '0.00', '0.20', '0.10', '38.00', '1.00', '0.02', '1.00', '1.00', '1.00', '0.09', '1.00', '884.00', '0.76', '2.00'),
+(297, 7, 'Queso Mozzarella', 100, 233, '19.90', '16.10', '9.92', '4.56', '0.47', '78.00', '2.20', '0.00', '373.00', '67.00', '632.00', '24.00', '0.00', '0.20', '2.21', '2.00', '0.03', '0.27', '0.01', '0.65', '10.00', '4.10', '0.00', '206.00', '0.10', '0.00'),
+(298, 21, 'Ajo', 100, 119, '4.30', '0.23', '0.05', '0.03', '0.10', '0.00', '24.30', '1.20', '19.00', '446.00', '17.80', '24.10', '0.00', '1.20', '1.10', '4.70', '0.16', '0.02', '0.32', '0.00', '4.80', '1.02', '14.00', '1.00', '0.00', '0.10');
 
 -- --------------------------------------------------------
 
@@ -454,15 +459,16 @@ CREATE TABLE IF NOT EXISTS `cliente` (
   `geet` decimal(10,2) DEFAULT NULL,
   `cp` varchar(5) COLLATE utf8_spanish_ci NOT NULL,
   `fechaingreso` date NOT NULL
-) ENGINE=InnoDB AUTO_INCREMENT=20 DEFAULT CHARSET=utf8 COLLATE=utf8_spanish_ci;
+) ENGINE=InnoDB AUTO_INCREMENT=21 DEFAULT CHARSET=utf8 COLLATE=utf8_spanish_ci;
 
 --
 -- Volcado de datos para la tabla `cliente`
 --
 
 INSERT INTO `cliente` (`id`, `codigo_activacion`, `activado`, `password`, `nombre`, `apellidos`, `telefono`, `email`, `sexo`, `peso`, `altura`, `fechanac`, `idactividad`, `pesodeseable`, `dieta`, `geet`, `cp`, `fechaingreso`) VALUES
-(17, 'a1d41c14c1d0aa9b9cc1', 's', '81dc9bdb52d04dc20036dbd8313ed055', 'Jose Maria', 'Mateo Ortega', '601013254', 'josem.mateo.ortega@gmail.com', 'h', '72.00', 176, '1989-07-11', 1, '69.50', 'Comida sana', '1684.48', '11002', '2016-04-26'),
-(19, 'acf1bc432008d31f4a55', 's', '81dc9bdb52d04dc20036dbd8313ed055', 'Laura', 'Ja', '123131231', 'jose_sin_rostro@hotmail.com', 'm', '52.00', 162, '1989-09-19', 2, '56.00', 'Comida más sana todavía', '2541.36', '11130', '2016-05-10');
+(17, 'a1d41c14c1d0aa9b9cc1', 's', '81dc9bdb52d04dc20036dbd8313ed055', 'Jose Maria', 'Mateo Ortega', '601013254', 'josem.mateo.ortega@gmail.com', 'h', '74.00', 176, '1989-07-11', 1, '69.50', 'Dieta sana', '1720.78', '11002', '2016-04-26'),
+(19, 'acf1bc432008d31f4a55', 's', '81dc9bdb52d04dc20036dbd8313ed055', 'Laura', 'Ja', '123131231', 'jose_sin_rostro@hotmail.com', 'm', '52.00', 162, '1989-09-19', 2, '56.00', 'Comida más sana todavía', '2541.36', '11130', '2016-05-10'),
+(20, '69ec5030f78a9b735402', 's', 'ad34bebfbfeef37efa1418ece476ce52', 'Lin', 'Straud', '6010101', 'brujavirgo@gmail.com', 'm', '51.00', 162, '1989-09-20', 1, '56.00', NULL, '2382.48', '11130', '2016-06-09');
 
 -- --------------------------------------------------------
 
@@ -514,7 +520,7 @@ CREATE TABLE IF NOT EXISTS `dietista` (
 --
 
 INSERT INTO `dietista` (`id`, `password`, `dni`, `nombre`, `apellidos`, `direccion`, `telefono`, `email`) VALUES
-(1, '81dc9bdb52d04dc20036dbd8313ed055', '75750489L', 'Laura', 'Ambrosio', 'Calle Dragon', '666001122', 'brujoscuro@hotmail.com'),
+(1, '81dc9bdb52d04dc20036dbd8313ed055', '75750489L', 'Laura', 'Bosques', 'Calle Dragon', '666001122', 'brujoscuro@hotmail.com'),
 (2, '81dc9bdb52d04dc20036dbd8313ed055', '75750498L', 'Anabel', 'Damian', 'Calle plaza', '666222111', 'prueba@prueba.com');
 
 -- --------------------------------------------------------
@@ -527,12 +533,26 @@ CREATE TABLE IF NOT EXISTS `entrada` (
   `id` int(11) NOT NULL,
   `fecha` datetime NOT NULL,
   `titulo` varchar(100) COLLATE utf8_spanish_ci NOT NULL,
-  `texto` varchar(1000) COLLATE utf8_spanish_ci NOT NULL,
+  `texto` text COLLATE utf8_spanish_ci NOT NULL,
   `imagen` varchar(200) COLLATE utf8_spanish_ci DEFAULT NULL,
   `video` varchar(200) COLLATE utf8_spanish_ci DEFAULT NULL,
   `idcategoria` int(11) NOT NULL,
   `iddietista` int(11) NOT NULL
-) ENGINE=InnoDB AUTO_INCREMENT=11 DEFAULT CHARSET=utf8 COLLATE=utf8_spanish_ci;
+) ENGINE=InnoDB AUTO_INCREMENT=32 DEFAULT CHARSET=utf8 COLLATE=utf8_spanish_ci;
+
+--
+-- Volcado de datos para la tabla `entrada`
+--
+
+INSERT INTO `entrada` (`id`, `fecha`, `titulo`, `texto`, `imagen`, `video`, `idcategoria`, `iddietista`) VALUES
+(21, '2016-06-09 14:44:00', '¿Las margarinas son sanas?', 'No es cierto. Es una de las ideas más extendidas. Para convertir un aceite vegetal (líquido a temperatura ambiente) en una grasa para untar, los fabricantes lo someten a un proceso de hidrogenación. Esas grasas artificialmente sólidas son las famosas grasas trans, a las que numerosos estudios han asociado efectos incluso peores que los de las propias grasas de origen animal. ¿Cómo saber si las magdalenas que compras tienen este tipo de grasas? Si la etiqueta dice grasas vegetales hidrogenadas es que tiene aceites transformados.', 'leche.png', 'KG_ybdk1VaE', 2, 1),
+(25, '2016-06-10 14:08:03', '¿La carne es cancerígena?', 'Es un tema actual la noticia que nos dio la OMS (Organización Mundial de la Salud) sobre que el consumo de la carne, sobretodo la procesada, estaba relacionado con cáncer de colon. Bien, aunque si es verdad que hay una relación, el dato que olvidan los medios de comunicación es que es el ABUSO del consumo de ésta la que tiene riesgo alto de ocasionarnos un cáncer. <br/>Os dejo un video que lo explica muy bien, que lo disfruten.<br/>', 'carne.png', 'e7WjxRtTdIk', 1, 1),
+(26, '2016-06-10 14:12:22', '¡Hay que comer fruta!', '¡Hay que comer fruta!, Lo repetimos una y otra vez y aun así no cala en la gente que como mucho compra algo de fruta, pero no la consumen.<br/>Os dejo un gracioso video para concienciar, que lo disfruten.<br/>', 'manzana.png', 'GKoyHe4Se_k', 1, 1),
+(27, '2016-06-10 14:17:12', 'Grasas, ¿Son lo peor del mundo todas?', '¿Sabéis que tipos de grasas hay? ¿Son todas malas?<br/>En este capítulo de Casi Creativo lo explican muy bien es muy importante diferenciar y no meterlas a todas en el mismo saco, que eso nunca sienta bien.<br/>', 'carne.png', 'LSTsJsuo2Xg', 2, 1),
+(28, '2016-06-12 20:42:00', 'Las 10 recomendaciones para la vida sana', 'Número 1: Disfrutar de diferentes alimentos.<br/>Número 2: Come abundantes productos a base de cereales y patatas.<br/>Número 3: Toma fruta y verdura a diario.<br/>Número 4: Busca siempre alimentos bajos en grasa.<br/>Número 5: No abuses de los productos de origen animal.<br/>Número 6: Poco azúcar y sal.<br/>Número 7: Beber 2 litros al día de agua.<br/>Número 8: Cocina a la temperatura adecuada (no quemes nada ni lo dejes crudo).<br/>Número 9: No comas con prisas, tomate tú tiempo.<br/>Número 10: Combina alimentación, deporte y ejercicio para un resultado 10.<br/>', 'tomate.png', '', 2, 1),
+(29, '2016-06-12 20:46:22', '¡Come Verduras!', 'Siempre repetimos que en la variedad está la clave de la salud. Una vez más queremos recordaros la importancias de las verduras y hortalizas en nuestra dieta y que mejor que la recomendación de un vídeo. Que lo disfruten.', 'zanahoria.png', '7RsjJionIGI', 1, 1),
+(30, '2016-06-12 20:50:47', 'Agua y beneficios', 'Alimentación variada, ejercicio y agua. Las tres bases de la vida sana. Pero, ¿Tomas suficiente al día? Os dejo la recomendación de un video, que lo disfruten.', 'leche.png', 'fI1b3UUgYhY', 1, 1),
+(31, '2016-06-12 21:00:05', 'Aceite de oliva, nuestro oro líquido ', '¿Conocéis todas las propiedades de uno de los componentes fundamentales de nuestra dieta mediterránea?<br/>-Previene accidentes cardiovasculares<br/>-Ayuda a controlar la tensión<br/>-Ayuda a bajar el colesterol malo<br/>Os dejo un vídeo con todas sus propiedades, que lo disfruten.<br/>', 'panmolde.png', 'Ebt0zqG0HlI', 1, 1);
 
 -- --------------------------------------------------------
 
@@ -597,7 +617,9 @@ INSERT INTO `historicopeso` (`fecha`, `idcliente`, `peso`) VALUES
 ('2016-05-10 16:53:00', 17, '90.00'),
 ('2016-05-10 17:08:48', 17, '72.50'),
 ('2016-05-10 17:26:44', 19, '52.00'),
-('2016-05-23 17:50:24', 17, '72.00');
+('2016-05-23 17:50:24', 17, '72.00'),
+('2016-06-09 12:14:11', 20, '51.00'),
+('2016-06-09 17:59:39', 17, '74.00');
 
 -- --------------------------------------------------------
 
@@ -700,17 +722,23 @@ CREATE TABLE IF NOT EXISTS `tablaintercambio` (
 
 INSERT INTO `tablaintercambio` (`idcliente`, `idgrupo`, `valor`) VALUES
 (17, 1, '2.5'),
-(17, 2, '4.5'),
+(17, 2, '5.0'),
 (17, 3, '1.5'),
-(17, 4, '14.0'),
+(17, 4, '14.5'),
 (17, 5, '5.0'),
-(17, 6, '3.5'),
+(17, 6, '4.0'),
 (19, 1, '3.5'),
 (19, 2, '7.0'),
 (19, 3, '2.5'),
 (19, 4, '21.5'),
 (19, 5, '7.5'),
-(19, 6, '5.5');
+(19, 6, '5.5'),
+(20, 1, '3.5'),
+(20, 2, '6.5'),
+(20, 3, '2.5'),
+(20, 4, '20.0'),
+(20, 5, '7.0'),
+(20, 6, '5.0');
 
 -- --------------------------------------------------------
 
@@ -725,7 +753,7 @@ CREATE TABLE IF NOT EXISTS `testdias` (
   `idcliente` int(11) NOT NULL,
   `idalimento` int(11) NOT NULL,
   `cantidad` decimal(10,2) NOT NULL
-) ENGINE=InnoDB AUTO_INCREMENT=69 DEFAULT CHARSET=utf8 COLLATE=utf8_spanish_ci;
+) ENGINE=InnoDB AUTO_INCREMENT=118 DEFAULT CHARSET=utf8 COLLATE=utf8_spanish_ci;
 
 --
 -- Volcado de datos para la tabla `testdias`
@@ -762,7 +790,52 @@ INSERT INTO `testdias` (`id`, `dia`, `momento`, `idcliente`, `idalimento`, `cant
 (65, 3, 'cena', 17, 112, '330.00'),
 (66, 1, 'desayuno', 17, 12, '50.00'),
 (67, 1, 'desayuno', 17, 5, '200.00'),
-(68, 1, 'desayuno', 17, 66, '24.00');
+(68, 1, 'desayuno', 17, 66, '24.00'),
+(70, 1, 'desayuno', 20, 5, '150.00'),
+(71, 1, 'desayuno', 20, 12, '50.00'),
+(72, 1, 'desayuno', 20, 37, '20.00'),
+(73, 1, 'desayuno', 20, 250, '15.00'),
+(74, 1, 'almuerzo', 20, 112, '330.00'),
+(75, 1, 'almuerzo', 20, 106, '70.00'),
+(76, 1, 'almuerzo', 20, 250, '20.00'),
+(77, 1, 'almuerzo', 20, 37, '100.00'),
+(78, 1, 'almuerzo', 20, 283, '100.00'),
+(79, 1, 'merienda', 20, 7, '200.00'),
+(80, 1, 'merienda', 20, 11, '15.00'),
+(81, 1, 'merienda', 20, 66, '30.00'),
+(82, 1, 'cena', 20, 16, '250.00'),
+(83, 1, 'cena', 20, 189, '120.00'),
+(84, 1, 'cena', 20, 287, '100.00'),
+(85, 1, 'cena', 20, 294, '28.00'),
+(86, 2, 'desayuno', 20, 294, '28.00'),
+(87, 2, 'desayuno', 20, 37, '60.00'),
+(88, 2, 'desayuno', 20, 252, '30.00'),
+(89, 2, 'desayuno', 20, 19, '200.00'),
+(92, 2, 'almuerzo', 20, 130, '100.00'),
+(93, 2, 'almuerzo', 20, 167, '20.00'),
+(94, 2, 'almuerzo', 20, 297, '20.00'),
+(95, 2, 'almuerzo', 20, 230, '100.00'),
+(96, 2, 'almuerzo', 20, 111, '330.00'),
+(97, 2, 'almuerzo', 20, 65, '125.00'),
+(98, 2, 'merienda', 20, 2, '200.00'),
+(99, 2, 'merienda', 20, 84, '150.00'),
+(101, 2, 'cena', 20, 287, '100.00'),
+(102, 2, 'cena', 20, 274, '150.00'),
+(103, 2, 'cena', 20, 64, '125.00'),
+(104, 3, 'desayuno', 20, 7, '200.00'),
+(105, 3, 'desayuno', 20, 11, '15.00'),
+(106, 3, 'almuerzo', 20, 153, '150.00'),
+(107, 3, 'almuerzo', 20, 294, '28.00'),
+(108, 3, 'almuerzo', 20, 58, '20.00'),
+(109, 3, 'almuerzo', 20, 298, '10.00'),
+(110, 3, 'almuerzo', 20, 111, '330.00'),
+(111, 3, 'almuerzo', 20, 269, '100.00'),
+(112, 3, 'almuerzo', 20, 214, '50.00'),
+(113, 3, 'almuerzo', 20, 221, '20.00'),
+(114, 3, 'almuerzo', 20, 294, '28.00'),
+(115, 3, 'merienda', 20, 64, '125.00'),
+(116, 3, 'cena', 20, 91, '50.00'),
+(117, 3, 'cena', 20, 112, '330.00');
 
 -- --------------------------------------------------------
 
@@ -935,7 +1008,7 @@ ALTER TABLE `actividadfisica`
 -- AUTO_INCREMENT de la tabla `alimento`
 --
 ALTER TABLE `alimento`
-  MODIFY `id` int(11) NOT NULL AUTO_INCREMENT,AUTO_INCREMENT=294;
+  MODIFY `id` int(11) NOT NULL AUTO_INCREMENT,AUTO_INCREMENT=299;
 --
 -- AUTO_INCREMENT de la tabla `categoria`
 --
@@ -945,7 +1018,7 @@ ALTER TABLE `categoria`
 -- AUTO_INCREMENT de la tabla `cliente`
 --
 ALTER TABLE `cliente`
-  MODIFY `id` int(11) NOT NULL AUTO_INCREMENT,AUTO_INCREMENT=20;
+  MODIFY `id` int(11) NOT NULL AUTO_INCREMENT,AUTO_INCREMENT=21;
 --
 -- AUTO_INCREMENT de la tabla `dietista`
 --
@@ -955,7 +1028,7 @@ ALTER TABLE `dietista`
 -- AUTO_INCREMENT de la tabla `entrada`
 --
 ALTER TABLE `entrada`
-  MODIFY `id` int(11) NOT NULL AUTO_INCREMENT,AUTO_INCREMENT=11;
+  MODIFY `id` int(11) NOT NULL AUTO_INCREMENT,AUTO_INCREMENT=32;
 --
 -- AUTO_INCREMENT de la tabla `imagenpre`
 --
@@ -970,7 +1043,7 @@ ALTER TABLE `patologia`
 -- AUTO_INCREMENT de la tabla `testdias`
 --
 ALTER TABLE `testdias`
-  MODIFY `id` int(11) NOT NULL AUTO_INCREMENT,AUTO_INCREMENT=69;
+  MODIFY `id` int(11) NOT NULL AUTO_INCREMENT,AUTO_INCREMENT=118;
 --
 -- AUTO_INCREMENT de la tabla `tipoalimento`
 --

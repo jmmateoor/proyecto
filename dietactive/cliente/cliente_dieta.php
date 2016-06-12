@@ -278,6 +278,7 @@ window.onload=function(){
                 </div>
                 <div class="col-md-3">
                     <h4>Aviso Legal</h4>
+                    <p class="pietexto"><a class="pieenlace" target="_blank" href="avisolegal.html"><span>Políticas</span></a></p>
                 </div>
             </div>
         </footer>

@@ -4,6 +4,7 @@
 <meta charset="utf-8">
 <title>Activación de cuenta - DietActive</title>
 <link rel="shortcut icon" href="../cliente/images/fav.png">
+<link rel="stylesheet" type="text/css" href="../styles.css">
 
 <link rel="stylesheet" href="http://maxcdn.bootstrapcdn.com/bootstrap/3.3.6/css/bootstrap.min.css">
 <script src="https://ajax.googleapis.com/ajax/libs/jquery/1.12.0/jquery.min.js"></script>
@@ -11,6 +12,7 @@
 <meta name="viewport" content="width=device-width, initial-scale=1">
 <link rel="stylesheet" type="text/css" href="../cliente/estilos.css">
 <script src="../cliente/funciones.js"></script>
+<script src="../functions.js"></script>
 <script>
 window.onload=function(){
 	ocultaLoading();
@@ -24,6 +26,38 @@ window.onload=function(){
             <img src="../cliente/images/loading.gif" alt="loading" title="loading" />
         </div>
 	<script>muestraLoading();</script>
+    
+    <header>
+    <nav class="navbar navbar-inverse menuinicio2 navbar-fixed-top" role="navigation">
+                  <!-- El logotipo y el icono que despliega el menú se agrupan
+                       para mostrarlos mejor en los dispositivos móviles -->
+                  <div class="navbar-header">
+                    <button type="button" class="navbar-toggle" data-toggle="collapse"
+                            data-target=".navbar-ex1-collapse">
+                      <span class="sr-only">Desplegar navegación</span>
+                      <span class="icon-bar"></span>
+                      <span class="icon-bar"></span>
+                      <span class="icon-bar"></span>
+                    </button>
+                    <a style="cursor:pointer;" href="../index.html" class="navbar-brand" data-toggle="tooltip" data-placement="top" ><img id="logo" src="../cliente/images/cab.png" class="img-responsive" width="240px" alt="Logo DietActive" /></a>
+                  </div>
+                 
+                  <!-- Agrupar los enlaces de navegación, los formularios y cualquier
+                       otro elemento que se pueda ocultar al minimizar la barra -->
+                  <div class="collapse navbar-collapse navbar-ex1-collapse">
+                    <ul class="nav navbar-nav">
+                      <li><a style="cursor:pointer;" class="navegacion" onClick="principal('../index.html#quienessomos')">Quiénes Somos</a></li>
+                      <li><a style="cursor:pointer;" class="navegacion" onClick="principal('../index.html#servicios')">Servicios</a></li>
+                      <li><a href="../consejos.html">Consejos</a></li>
+                      <li><a href="../cliente/clientelogin.php" class="navegacion">Área cliente</a></li>
+                      <li><a href="../cliente/dietistalogin.php" class="navegacion">Área dietista</a></li>
+                    </ul>
+                  </div>
+                </nav>
+</header>
+    
+    <div id="separador"></div>
+    
     <div class="container-fluid">
         <div class="row cabecera">
         	<div class="col-md-12">
@@ -33,7 +67,7 @@ window.onload=function(){
         </div>
         <div class="row cabecera">
         	<div class="col-md-12">
-                <h1>Área Cliente</h1>
+                <h1 id="ancla">Área Cliente</h1>
             </div>
         </div>
         <div class="row cuerpo">
@@ -87,6 +121,7 @@ if (isset($_GET['id']))
                 </div>
                 <div class="col-md-3">
                     <h4>Aviso Legal</h4>
+                    <p class="pietexto"><a class="pieenlace" target="_blank" href="../cliente/avisolegal.html"><span>Políticas</span></a></p>
                 </div>
             </div>
         </footer>
