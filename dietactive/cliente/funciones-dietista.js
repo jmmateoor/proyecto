@@ -177,6 +177,8 @@ function publicarEntrada()
 							
 							
 							var textoentrada=$("#textoentrada").val().replace(/\n/g,"<br/>");
+							textoentrada=textoentrada.replace(/"/g,"&#34;");
+							
 							
 							$.post("../servidor/insertar_entrada.php",{
 								imagen: $("#imagen").val(),
@@ -816,6 +818,7 @@ function datosClienteBuscado(idcliente)
 function actualizaDieta(idcliente)
 {
 	dieta=$("#textodieta").val().replace(/\n/g,"<br/>");
+	dieta=dieta.replace(/"/g,"&#34;");
 	$.post("../servidor/actualizar_dieta.php",{
 			idcliente: idcliente,
 			dieta: dieta
@@ -825,6 +828,7 @@ function actualizaDieta(idcliente)
 								if(datos=='s')
 								{
 									$("#textodieta").val(dieta.replace(/<br\/>/g,"\n"));
+									$("#textodieta").val(dieta.replace(/&#34;/g,"\""));
 									$("#ladieta").html(dieta);
 								}
 								else
