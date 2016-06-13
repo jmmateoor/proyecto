@@ -163,46 +163,57 @@ function publicarEntrada()
 				if($("#textoentrada").val()!="")
 				{
 					$("#textoentrada3").html("");
-					if(confirm("¿Quieres publicar esta entrada?"))
+					if($("#enlace").val()=="" || $("#enlace").val().indexOf("/watch?v=")!=-1)
 					{
-						video=$("#enlace").val();
-						var enlace=video.split("/watch?v=");
-						
-						
-						
-						var enlacevideo=enlace[enlace.length-1];
-						
-						
-						var textoentrada=$("#textoentrada").val().replace(/\n/g,"<br/>");
-						
-						$.post("../servidor/insertar_entrada.php",{
-							imagen: $("#imagen").val(),
-							idcategoria: $("#categoria").val(),
-							titulo: $("#titulo").val(),
-							texto: textoentrada,
-							video: enlacevideo
-											},
-											function(data, estado)
-											{
-												
-												if(data=="s")
+						$("#enlace2").html("");
+						if(confirm("¿Quieres publicar esta entrada?"))
+						{
+							video=$("#enlace").val();
+							var enlace=video.split("/watch?v=");
+							
+							
+							
+							var enlacevideo=enlace[enlace.length-1];
+							
+							
+							var textoentrada=$("#textoentrada").val().replace(/\n/g,"<br/>");
+							
+							$.post("../servidor/insertar_entrada.php",{
+								imagen: $("#imagen").val(),
+								idcategoria: $("#categoria").val(),
+								titulo: $("#titulo").val(),
+								texto: textoentrada,
+								video: enlacevideo
+												},
+												function(data, estado)
 												{
 													
-													cuentaCaracteres();
-													
-													$("#imagenseleccionada").html("");
-													
-													document.getElementById('resetear').click();
-													buscarEntradas();
-													alert("Entrada publicada correctamente.");
-													
-												}
-												else
-												{
-													alert("Ocurrió un error. Intentalo de nuevo más tarde.");
-												}
-											});
+													if(data=="s")
+													{
+														
+														cuentaCaracteres();
+														
+														$("#imagenseleccionada").html("");
+														
+														document.getElementById('resetear').click();
+														buscarEntradas();
+														alert("Entrada publicada correctamente.");
+														
+													}
+													else
+													{
+														alert("Ocurrió un error. Intentalo de nuevo más tarde.");
+													}
+												});
+						}
 					}
+					else
+					{
+						$("#enlace2").html("Vídeo no válido");
+					}
+						
+						
+						
 				}
 				else
 				{

@@ -210,7 +210,7 @@ window.onload=function(){
                 <span id="textoentrada3" class="error"></span>
                 
                 <div class="form-group"><label for="enlace">Enlace vídeo de youtube:</label><input type="text" id="enlace" name="enlace" class="form-control" required maxlength="200" /></div>
-                
+                <span id="enlace2" class="error"></span>
                 
                 <div class='row'><button type='button' id='buttomInsertarEntrada' class='btn btn-success' onClick='publicarEntrada();'><span class='glyphicon glyphicon-check'></span> Publicar</button> <button id="resetear" type='reset' class='btn btn-default'><span class='glyphicon glyphicon-erase'></span> Limpiar</button></div>
                 </form>
